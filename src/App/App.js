@@ -1,7 +1,9 @@
+import Header from "./Components/Header/Header";
+
 function App() {
   return (
     <div className="App">
-      <p>dasfs</p>
+      <Header />
     </div>
   );
 }
