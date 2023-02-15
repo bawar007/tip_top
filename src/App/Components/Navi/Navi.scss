@@ -1,0 +1,55 @@
+$filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
+  brightness(104%) contrast(97%);
+
+.Navi {
+  .Menu {
+    position: fixed;
+    height: 70vh;
+    width: 100px;
+    right: 0;
+    top: 15vh;
+    margin-right: 20px;
+    background-color: #09a509;
+    mix-blend-mode: normal;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      width: 68px;
+      height: 68px;
+      margin-top: 10px;
+    }
+    .Logo {
+      margin-right: 8px;
+    }
+    .Home {
+      width: 68px;
+      height: 68px;
+      &:hover {
+        filter: $filter;
+        cursor: pointer;
+      }
+    }
+    .Gallery {
+      &:hover {
+        filter: $filter;
+        cursor: pointer;
+      }
+    }
+    .Contact {
+      &:hover {
+        filter: $filter;
+        cursor: pointer;
+      }
+    }
+    .ArrowUp {
+      position: absolute;
+      bottom: 0;
+      &:hover {
+        filter: $filter;
+        cursor: pointer;
+      }
+    }
+  }
+}
