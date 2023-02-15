@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
   brightness(104%) contrast(97%);
 
@@ -5,7 +7,7 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
   .Menu {
     position: fixed;
     height: 70vh;
-    width: 100px;
+    width: 60px;
     right: 0;
     top: 15vh;
     margin-right: 20px;
@@ -15,17 +17,23 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    .active {
+      filter: $filter;
+    }
     img {
-      width: 68px;
-      height: 68px;
+      width: 60px;
+      height: 60px;
       margin-top: 10px;
     }
     .Logo {
-      margin-right: 8px;
-    }
-    .Home {
+      margin-right: 7px;
       width: 68px;
       height: 68px;
+    }
+    .Home {
       &:hover {
         filter: $filter;
         cursor: pointer;
