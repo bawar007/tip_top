@@ -31,6 +31,21 @@ const Navi = ({ homeRef, galleryRef, contactRef, ofertRef }) => {
     return document.removeEventListener("scroll", () => SetPageScroll());
   });
 
+  const animationOfertPage = () => {
+    if (page === 2) {
+      document.querySelectorAll(".infoOfert").forEach((el) => {
+        if (!el.classList.contains("animationOfert")) {
+          el.classList.toggle("animationOfert");
+          el.style.visibility = "visible";
+        }
+      });
+    }
+  };
+
+  useEffect(() => {
+    animationOfertPage();
+  });
+
   return (
     <div className="Navi">
       <div className="Menu">
