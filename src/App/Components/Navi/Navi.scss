@@ -11,7 +11,7 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
     right: 0;
     top: 15vh;
     margin-right: 20px;
-    background-color: #09a509;
+    background-color: hsla(120, 90%, 34%, 0.7);
     mix-blend-mode: normal;
     border-radius: 25px;
     display: flex;
@@ -29,10 +29,11 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
       margin-top: 10px;
       padding: 5px;
     }
-    .Logo {
-      margin-right: 7px;
-      width: 68px;
-      height: 68px;
+    .logoItem {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      margin-left: 4px;
     }
     .OfertNavi {
       &:hover {
@@ -41,6 +42,7 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
       }
     }
     .Home {
+      margin-top: 100px;
       &:hover {
         filter: $filter;
         cursor: pointer;

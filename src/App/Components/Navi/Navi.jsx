@@ -34,7 +34,7 @@ const Navi = ({ homeRef, galleryRef, contactRef, ofertRef }) => {
   return (
     <div className="Navi">
       <div className="Menu">
-        <img src="/icons/LOGO.svg" alt="logo" className="Logo" />
+        <img src="/icons/LogoTipTopCss.svg" alt="logo" className="logoItem" />
         <img
           src="/icons/Home.svg"
           alt="home"
