@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 const GalleryPicture = ({ src, id }) => {
   const picRef = useRef();
@@ -16,6 +17,7 @@ const GalleryPicture = ({ src, id }) => {
         ref={picRef}
         id={id}
       />
+      <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} />
     </div>
   );
 };

@@ -20,6 +20,7 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
     font-family: "Roboto", sans-serif;
     font-size: 12px;
     font-weight: 800;
+    z-index: 99;
     color: white;
     .active {
       filter: $filter;

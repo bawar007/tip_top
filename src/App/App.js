@@ -8,6 +8,11 @@ import HomePage from "./Components/HomePage/HomePage";
 import Navi from "./Components/Navi/Navi";
 import Ofert from "./Components/Oferta/Oferta";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init();
+
 function App() {
   const homeRef = useRef();
   const galleryRef = useRef();

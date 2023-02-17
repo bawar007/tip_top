@@ -2,72 +2,140 @@
   width: 100%;
   height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-content: center;
+  justify-content: left;
   flex-wrap: wrap;
+  flex-direction: row;
   .pics {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-right: 50px;
-  }
-  .pic {
-    width: 20%;
-    height: 30%;
-    background-color: red;
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    border-radius: 25px;
-    &:nth-child(-n + 4) {
-      animation: slide-top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse
-        both;
-    }
-    &:nth-child(n + 5) {
-      animation: slide-normal 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    }
-    &:hover {
-      padding: 10px;
-      cursor: pointer;
-      background-color: blue;
-    }
-    p {
-      margin-bottom: 10px;
-    }
+    padding-right: 40px;
+    .pic {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 35%;
+      height: 30%;
+      margin: 10px;
 
-    @keyframes slide-top {
-      0% {
-        transform: translateY(0);
-      }
-      100% {
-        transform: translateY(-100px);
-      }
-    }
-    @keyframes slide-normal {
-      0% {
-        transform: translateY(0);
-      }
-      100% {
-        transform: translateY(-100px);
+      .pic_img {
+        width: 60%;
+        height: 60%;
       }
     }
   }
-  .focusPic {
+  .selectedPics {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    height: 80%;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 1);
     position: absolute;
-    justify-content: end;
+    margin-top: 50px;
+    margin-left: 15%;
+    .selectPic {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70%;
+      width: 80%;
+      .picSolo {
+        height: 95%;
+
+        .solo_pic_img {
+          display: block;
+          max-height: 100%;
+          margin: auto;
+        }
+      }
+    }
+    .allPics {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 30%;
+      width: 80%;
+      padding-bottom: 10px;
+      .picPopUp {
+        height: 80%;
+        width: 100%;
+        .pic_img {
+          margin: 0 10px;
+          max-height: 100%;
+        }
+        .active {
+          box-shadow: 0px 0px 18px 6px #afcb1f;
+        }
+      }
+      .arrow_gallery {
+        filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
+          brightness(104%) contrast(97%);
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 101; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100vh; /* Full height */
+    background-color: rgba(0, 0, 0, 0.9);
+    margin: auto; /* Black w/ opacity */
+  }
+
+  .modal-content {
     margin: auto;
-    width: 80vw;
-    height: 80vh;
-    background-color: blue;
-    button {
-      width: 50px;
-      height: 50px;
+    display: block;
+    max-height: 100%;
+    max-width: 700px;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+    padding: 20px 0;
+
+    @keyframes zoom {
+      from {
+        transform: scale(0.1);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  @media only screen and (max-width: 700px) {
+    .modal-content {
+      width: 100%;
     }
   }
 }

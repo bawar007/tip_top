@@ -2,8 +2,13 @@ const HomePage = ({ homeRef }) => {
   return (
     <section className="homePage" ref={homeRef}>
       <div className="homeInfo">
-        <div className="logoEl"></div>
-        <div className="info">
+        <div
+          className="info"
+          data-aos="fade-left"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="1500"
+        >
           <h2>Tip - top</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
@@ -12,7 +17,13 @@ const HomePage = ({ homeRef }) => {
             distinctio placeat dolorem est dolor?
           </p>
         </div>
-        <div className="info">
+        <div
+          className="info"
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="1500"
+        >
           <h2>Tip - top</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
