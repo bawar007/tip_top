@@ -81,7 +81,7 @@ const GalleryPage = ({ galleryRef }) => {
                   if (prev > 0) {
                     return prev - 1;
                   } else {
-                    return 2;
+                    return allPicGalleryPop[0].all.length - 1;
                   }
                 })
               }
@@ -97,7 +97,7 @@ const GalleryPage = ({ galleryRef }) => {
               className="next"
               onClick={() =>
                 setPicIndex((prev) => {
-                  if (prev < 2) {
+                  if (prev < allPicGalleryPop[0].all.length - 1) {
                     return prev + 1;
                   } else {
                     return 0;
