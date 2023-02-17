@@ -24,7 +24,7 @@ function App() {
         <HomePage homeRef={homeRef} />
         <Ofert ofertRef={ofertRef} />
         <GalleryPage galleryRef={galleryRef} />
-        <ContactPage contactRef={contactRef} />
+        {/*<ContactPage contactRef={contactRef} /> */}
         <Navi
           homeRef={homeRef}
           galleryRef={galleryRef}

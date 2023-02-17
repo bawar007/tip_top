@@ -4,10 +4,10 @@ const HomePage = ({ homeRef }) => {
       <div className="homeInfo">
         <div
           className="info"
-          data-aos="fade-left"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-          data-aos-duration="1500"
+          // data-aos="fade-left"
+          // data-aos-offset="300"
+          // data-aos-easing="ease-in-sine"
+          // data-aos-duration="1500"
         >
           <h2>Tip - top</h2>
           <p>
@@ -19,10 +19,10 @@ const HomePage = ({ homeRef }) => {
         </div>
         <div
           className="info"
-          data-aos="fade-right"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-          data-aos-duration="1500"
+          // data-aos="fade-right"
+          // data-aos-offset="300"
+          // data-aos-easing="ease-in-sine"
+          // data-aos-duration="1500"
         >
           <h2>Tip - top</h2>
           <p>

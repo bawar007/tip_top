@@ -1,8 +1,10 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import { AppContext } from "../../Provider/Provider";
 
 const Navi = ({ homeRef, galleryRef, contactRef, ofertRef }) => {
   const { setPage, page } = useContext(AppContext);
+
+  const windowWidth = useRef(window.innerWidth);
 
   const handleScroll = (el, pageEl) => {
     window.scrollTo({ top: el.offsetTop, left: 0 });
@@ -50,49 +52,60 @@ const Navi = ({ homeRef, galleryRef, contactRef, ofertRef }) => {
     <div className="Navi">
       <div className="Menu">
         <img src="/icons/LogoTipTopCss.svg" alt="logo" className="logoItem" />
-        <img
-          src="/icons/Home.svg"
-          alt="home"
-          className={page === 1 ? "Home active" : "Home"}
-          onClick={() => handleScroll(homeRef.current, 1)}
-        />
-        <p>HOME</p>
-        <img
-          src="/icons/offert.svg"
-          alt="ofert"
-          className={page === 2 ? "OfertNavi active" : "OfertNavi"}
-          onClick={() => handleScroll(ofertRef.current, 2)}
-        />
-        <p>OFERTA</p>
-        <img
-          src="/icons/Galery.svg"
-          alt="gallery"
-          className={page === 3 ? "Gallery active" : "Gallery"}
-          onClick={() => handleScroll(galleryRef.current, 3)}
-        />
-        <p>GALERIA</p>
-        <img
-          src="/icons/Contact.svg"
-          alt="contact"
-          className={page === 4 ? "Contact active" : "Contact"}
-          onClick={() => handleScroll(contactRef.current, 4)}
-        />
-        <p>KONTAKT</p>
-        {page > 1 ? (
+        <section>
           <img
-            src="/icons/arrowcircleup.svg"
-            alt="arrowUp"
-            className="ArrowUp"
+            src="/icons/Home.svg"
+            alt="home"
+            className={page === 1 ? "Home active" : "Home"}
             onClick={() => handleScroll(homeRef.current, 1)}
           />
-        ) : (
+          <p>HOME</p>
+        </section>
+        <section>
           <img
-            src="/icons/arrowcircledown.svg"
-            alt="arrowUp"
-            className="ArrowUp"
+            src="/icons/offert.svg"
+            alt="ofert"
+            className={page === 2 ? "OfertNavi active" : "OfertNavi"}
+            onClick={() => handleScroll(ofertRef.current, 2)}
+          />
+          <p>OFERTA</p>
+        </section>
+        <section>
+          <img
+            src="/icons/Galery.svg"
+            alt="gallery"
+            className={page === 3 ? "Gallery active" : "Gallery"}
+            onClick={() => handleScroll(galleryRef.current, 3)}
+          />
+          <p>GALERIA</p>
+        </section>
+        <section>
+          <img
+            src="/icons/Contact.svg"
+            alt="contact"
+            className={page === 4 ? "Contact active" : "Contact"}
             onClick={() => handleScroll(contactRef.current, 4)}
           />
-        )}
+          <p>KONTAKT</p>
+        </section>
+
+        {windowWidth > 700 ? (
+          page > 1 ? (
+            <img
+              src="/icons/arrowcircleup.svg"
+              alt="arrowUp"
+              className="ArrowUp"
+              onClick={() => handleScroll(homeRef.current, 1)}
+            />
+          ) : (
+            <img
+              src="/icons/arrowcircledown.svg"
+              alt="arrowUp"
+              className="ArrowUp"
+              onClick={() => handleScroll(contactRef.current, 4)}
+            />
+          )
+        ) : null}
       </div>
     </div>
   );

@@ -3,71 +3,113 @@
 $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
   brightness(104%) contrast(97%);
 
-.Navi {
-  .Menu {
-    position: fixed;
-    height: 70vh;
-    width: 60px;
-    right: 0;
-    top: 15vh;
-    margin-right: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
-    mix-blend-mode: normal;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: "Roboto", sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    z-index: 99;
-    color: white;
-    .active {
-      filter: $filter;
-    }
-    img {
+@media (min-width: 700px) {
+  .Navi {
+    .Menu {
+      position: fixed;
+      height: 70vh;
       width: 60px;
-      height: 60px;
-      margin-top: 10px;
-      padding: 5px;
-    }
-    .logoItem {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      margin-left: 4px;
-    }
-    .OfertNavi {
-      &:hover {
+      right: 0;
+      top: 15vh;
+      margin-right: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      mix-blend-mode: normal;
+      border-radius: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: "Roboto", sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      z-index: 99;
+      color: white;
+      .active {
         filter: $filter;
-        cursor: pointer;
+      }
+      img {
+        width: 60px;
+        height: 60px;
+        margin-top: 10px;
+        padding: 5px;
+      }
+      .logoItem {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        margin-left: 4px;
+      }
+      .OfertNavi {
+        &:hover {
+          filter: $filter;
+          cursor: pointer;
+        }
+      }
+      .Home {
+        margin-top: 100px;
+        &:hover {
+          filter: $filter;
+          cursor: pointer;
+        }
+      }
+      .Gallery {
+        &:hover {
+          filter: $filter;
+          cursor: pointer;
+        }
+      }
+      .Contact {
+        &:hover {
+          filter: $filter;
+          cursor: pointer;
+        }
+      }
+      .ArrowUp {
+        position: absolute;
+        bottom: 0;
+        &:hover {
+          filter: $filter;
+          cursor: pointer;
+        }
       }
     }
-    .Home {
-      margin-top: 100px;
-      &:hover {
-        filter: $filter;
-        cursor: pointer;
+  }
+}
+
+@media (max-width: 700px) {
+  .Navi {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    background-color: black;
+    top: 0;
+    left: 0;
+    color: white;
+    padding: 10px 0;
+    .Menu {
+      padding: 0 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        img {
+          width: 50%;
+        }
       }
-    }
-    .Gallery {
-      &:hover {
-        filter: $filter;
-        cursor: pointer;
+
+      .logoItem {
+        width: 15%;
       }
-    }
-    .Contact {
-      &:hover {
-        filter: $filter;
-        cursor: pointer;
+      .OfertNavi {
+        width: 40%;
       }
-    }
-    .ArrowUp {
-      position: absolute;
-      bottom: 0;
-      &:hover {
+      .active {
         filter: $filter;
-        cursor: pointer;
       }
     }
   }

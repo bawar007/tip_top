@@ -3,7 +3,7 @@ const Ofert = ({ ofertRef }) => {
     <div className="Ofert" ref={ofertRef}>
       <section className="container">
         <section className="containerDouble">
-          <div className="infoOfert" data-aos="fade-up-right">
+          <div className="infoOfert" /*data-aos="fade-up-right"*/>
             <h1>Oferta 1</h1>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
@@ -12,8 +12,8 @@ const Ofert = ({ ofertRef }) => {
               possimus id tempore animi. Expedita, veritatis!
             </p>
           </div>
-          <div className="infoOfert" data-aos="fade-up-left">
-            <h1>Oferta 1</h1>
+          <div className="infoOfert" /*data-aos="fade-up-left"*/>
+            <h1>Oferta 2</h1>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
               laudantium deserunt fuga possimus nostrum, doloremque commodi
@@ -23,8 +23,8 @@ const Ofert = ({ ofertRef }) => {
           </div>
         </section>
         <section className="containerDouble">
-          <div className="infoOfert" data-aos="fade-up-right">
-            <h1>Oferta 1</h1>
+          <div className="infoOfert" /*data-aos="fade-up-right"*/>
+            <h1>Oferta 3</h1>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
               laudantium deserunt fuga possimus nostrum, doloremque commodi
@@ -32,8 +32,8 @@ const Ofert = ({ ofertRef }) => {
               possimus id tempore animi. Expedita, veritatis!
             </p>
           </div>
-          <div className="infoOfert" data-aos="fade-up-left">
-            <h1>Oferta 1</h1>
+          <div className="infoOfert" /*data-aos="fade-up-left"}*/>
+            <h1>Oferta 4</h1>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
               laudantium deserunt fuga possimus nostrum, doloremque commodi
