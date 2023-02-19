@@ -5,14 +5,7 @@ const ContactPage = ({ contactRef }) => {
     <>
       <div className="contactPage" ref={contactRef}>
         <div className="contact">
-          <img
-            src="/icons/LogoTipTopCss.svg"
-            alt="logo"
-            className="logoItem"
-            data-aos="flip-left"
-            data-aos-easing="ease-out-cubic"
-            data-aos-duration="2000"
-          />
+          <img src="/icons/LogoTipTopCss.svg" alt="logo" className="logoItem" />
 
           <h1>DANE KONTAKTOWE</h1>
           <ul>

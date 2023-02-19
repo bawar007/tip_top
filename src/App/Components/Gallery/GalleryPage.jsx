@@ -15,12 +15,7 @@ const GalleryPage = ({ galleryRef }) => {
   };
 
   const gallery = images.map((image, index) => (
-    <div
-      className="pic"
-      key={index}
-      data-aos="flip-down"
-      onClick={() => handleClick(image.id)}
-    >
+    <div className="pic" key={index} onClick={() => handleClick(image.id)}>
       <img src={image.first} alt={image} className="pic_img" />
       <h3>Galeria {index + 1}</h3>
     </div>
@@ -64,7 +59,7 @@ const GalleryPage = ({ galleryRef }) => {
     <div className="galleryPage" ref={galleryRef}>
       <section className="pics">{gallery}</section>
       {allPics && (
-        <section className="selectedPics" data-aos="flip-down">
+        <section className="selectedPics">
           <div className="selectPic">{OnePicFromGallery}</div>
           <div className="allPics">
             <span

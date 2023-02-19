@@ -1,14 +1,20 @@
+import { useContext, useRef } from "react";
+import { AppContext } from "../../Provider/Provider";
+
 const HomePage = ({ homeRef }) => {
+  const { windowW } = useContext(AppContext);
+
+  const ref1 = useRef(null);
+
+  const isInViewport1 = false;
+
   return (
     <section className="homePage" ref={homeRef}>
       <div className="homeInfo">
-        <div
-          className="info"
-          // data-aos="fade-left"
-          // data-aos-offset="300"
-          // data-aos-easing="ease-in-sine"
-          // data-aos-duration="1500"
-        >
+        {!windowW && (
+          <img src="/icons/LogoTipTopCss.svg" alt="logo" className="logoItem" />
+        )}
+        <div className={isInViewport1 ? "info infoAnime" : "info"} ref={ref1}>
           <h2>Tip - top</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam

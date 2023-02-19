@@ -8,11 +8,6 @@ import HomePage from "./Components/HomePage/HomePage";
 import Navi from "./Components/Navi/Navi";
 import Ofert from "./Components/Oferta/Oferta";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-AOS.init();
-
 function App() {
   const homeRef = useRef();
   const galleryRef = useRef();
@@ -24,7 +19,7 @@ function App() {
         <HomePage homeRef={homeRef} />
         <Ofert ofertRef={ofertRef} />
         <GalleryPage galleryRef={galleryRef} />
-        {/*<ContactPage contactRef={contactRef} /> */}
+        <ContactPage contactRef={contactRef} />
         <Navi
           homeRef={homeRef}
           galleryRef={galleryRef}
