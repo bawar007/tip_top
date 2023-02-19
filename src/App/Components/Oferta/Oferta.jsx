@@ -1,6 +1,6 @@
 const Ofert = ({ ofertRef }) => {
   return (
-    <div className="Ofert" ref={ofertRef}>
+    <div className="Ofert" ref={ofertRef} id="ofert">
       <section className="container">
         <section className="containerDouble">
           <div className="infoOfert" /*data-aos="fade-up-right"*/>

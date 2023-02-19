@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { AppContext } from "../../Provider/Provider";
 
-const Navi = ({ homeRef, galleryRef, contactRef, ofertRef }) => {
+const Navi = () => {
   const { setPage, page, windowW } = useContext(AppContext);
 
   let home = false;
@@ -9,8 +9,7 @@ const Navi = ({ homeRef, galleryRef, contactRef, ofertRef }) => {
   let contact = false;
   let ofert = false;
 
-  const handleScroll = (el, pageEl) => {
-    window.scrollTo({ top: el.offsetTop - 80, left: 0 });
+  const handleScroll = (pageEl) => {
     setPage(pageEl);
   };
 
@@ -42,36 +41,44 @@ const Navi = ({ homeRef, galleryRef, contactRef, ofertRef }) => {
             src="/icons/Home.svg"
             alt="home"
             className={home ? "Home active" : "Home"}
-            onClick={() => handleScroll(homeRef.current, 1)}
+            onClick={() => handleScroll(1)}
           />
-          <p>HOME</p>
+          <a href="#home">
+            <p>HOME</p>
+          </a>
         </section>
         <section>
           <img
             src="/icons/offert.svg"
             alt="ofert"
             className={ofert ? "OfertNavi active" : "OfertNavi"}
-            onClick={() => handleScroll(ofertRef.current, 2)}
+            onClick={() => handleScroll(2)}
           />
-          <p>OFERTA</p>
+          <a href="#ofert">
+            <p>OFERTA</p>
+          </a>
         </section>
         <section>
           <img
             src="/icons/Galery.svg"
             alt="gallery"
             className={gallery ? "Gallery active" : "Gallery"}
-            onClick={() => handleScroll(galleryRef.current, 3)}
+            onClick={() => handleScroll(3)}
           />
-          <p>GALERIA</p>
+          <a href="#gallery">
+            <p>GALERIA</p>
+          </a>
         </section>
         <section>
           <img
             src="/icons/Contact.svg"
             alt="contact"
             className={contact ? "Contact active" : "Contact"}
-            onClick={() => handleScroll(contactRef.current, 4)}
+            onClick={() => handleScroll(4)}
           />
-          <p>KONTAKT</p>
+          <a href="#contact">
+            <p>KONTAKT</p>
+          </a>
         </section>
 
         {windowW ? (
@@ -80,14 +87,14 @@ const Navi = ({ homeRef, galleryRef, contactRef, ofertRef }) => {
               src="/icons/arrowcircleup.svg"
               alt="arrowUp"
               className="ArrowUp"
-              onClick={() => handleScroll(homeRef.current, 1)}
+              onClick={() => handleScroll(1)}
             />
           ) : (
             <img
               src="/icons/arrowcircledown.svg"
               alt="arrowUp"
               className="ArrowUp"
-              onClick={() => handleScroll(contactRef.current, 4)}
+              onClick={() => handleScroll(4)}
             />
           )
         ) : null}

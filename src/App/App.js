@@ -7,12 +7,15 @@ import GalleryPage from "./Components/Gallery/GalleryPage";
 import HomePage from "./Components/HomePage/HomePage";
 import Navi from "./Components/Navi/Navi";
 import Ofert from "./Components/Oferta/Oferta";
+import Test from "./Components/Navi/Test";
 
 function App() {
   const homeRef = useRef();
   const galleryRef = useRef();
   const contactRef = useRef();
   const ofertRef = useRef();
+
+  const winW = useRef(window.innerWidth);
   return (
     <AppProvider>
       <div className="App">
@@ -20,12 +23,7 @@ function App() {
         <Ofert ofertRef={ofertRef} />
         <GalleryPage galleryRef={galleryRef} />
         <ContactPage contactRef={contactRef} />
-        <Navi
-          homeRef={homeRef}
-          galleryRef={galleryRef}
-          contactRef={contactRef}
-          ofertRef={ofertRef}
-        />
+        {winW.current > 700 ? <Navi /> : <Test />}
       </div>
     </AppProvider>
   );

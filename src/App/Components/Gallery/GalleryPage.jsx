@@ -56,7 +56,7 @@ const GalleryPage = ({ galleryRef }) => {
     ));
 
   return (
-    <div className="galleryPage" ref={galleryRef}>
+    <div className="galleryPage" ref={galleryRef} id="gallery">
       <section className="pics">{gallery}</section>
       {allPics && (
         <section className="selectedPics">

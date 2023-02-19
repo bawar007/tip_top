@@ -3,7 +3,7 @@ import React from "react";
 const ContactPage = ({ contactRef }) => {
   return (
     <>
-      <div className="contactPage" ref={contactRef}>
+      <div className="contactPage" ref={contactRef} id="contact">
         <div className="contact">
           <img src="/icons/LogoTipTopCss.svg" alt="logo" className="logoItem" />
 

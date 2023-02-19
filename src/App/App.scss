@@ -2,8 +2,10 @@
 * {
   font-family: "Asap", sans-serif;
 }
+@import "./Components/Navi/Test.scss";
 @import "./Components/HomePage/HomePage.scss";
 @import "./Components/Navi/Navi.scss";
+
 @import "./Components/Gallery/GalleryPage.scss";
 @import "./Components/ContactPage/ContactPage.scss";
 @import "./Components/Oferta/Oferta.scss";

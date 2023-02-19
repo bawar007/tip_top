@@ -9,7 +9,7 @@ const HomePage = ({ homeRef }) => {
   const isInViewport1 = false;
 
   return (
-    <section className="homePage" ref={homeRef}>
+    <section className="homePage" ref={homeRef} id="home">
       <div className="homeInfo">
         {!windowW && (
           <img src="/icons/LogoTipTopCss.svg" alt="logo" className="logoItem" />
