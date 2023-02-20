@@ -1,11 +1,30 @@
 import "animate.css";
+import { useEffect } from "react";
 
 const Ofert = ({ ofertRef }) => {
+  useEffect(() => {
+    const infoElements = document.querySelectorAll(".infoOfert");
+
+    const clas = "animate__fadeInBottomLeft";
+    const observer = new IntersectionObserver((entries) => {
+      // Loop over the entries
+      entries.forEach((entry) => {
+        // If the element is visible
+        if (entry.isIntersecting) {
+          // Add the animation class
+          entry.target.classList.add("animate__animated", clas);
+        }
+      });
+    });
+
+    infoElements.forEach((el) => observer.observe(el));
+  });
+
   return (
     <div className="Ofert" ref={ofertRef} id="ofert">
       <section className="container">
         <section className="containerDouble">
-          <div className="infoOfert animate__animated animate__fadeInTopLeft">
+          <div className="infoOfert">
             <h1>Oferta 1</h1>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
@@ -14,9 +33,7 @@ const Ofert = ({ ofertRef }) => {
               possimus id tempore animi. Expedita, veritatis!
             </p>
           </div>
-          <div
-            className="infoOfert animate__animated animate__fadeInTopLeft" /*data-aos="fade-up-left"*/
-          >
+          <div className="infoOfert" /*data-aos="fade-up-left"*/>
             <h1>Oferta 2</h1>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
