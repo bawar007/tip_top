@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tip_top/static/css/main.aa427a0b.css",
+    "main.js": "/tip_top/static/js/main.bbc6b645.js",
+    "static/media/ofert.jpg": "/tip_top/static/media/ofert.ddb3bbce523cde48f84b.jpg",
+    "static/media/baner2.jpg": "/tip_top/static/media/baner2.777176376cebf7ad67cf.jpg",
+    "index.html": "/tip_top/index.html",
+    "main.aa427a0b.css.map": "/tip_top/static/css/main.aa427a0b.css.map",
+    "main.bbc6b645.js.map": "/tip_top/static/js/main.bbc6b645.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aa427a0b.css",
+    "static/js/main.bbc6b645.js"
+  ]
+}
