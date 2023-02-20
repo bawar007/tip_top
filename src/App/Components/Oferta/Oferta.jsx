@@ -1,18 +1,19 @@
-import "animate.css";
 import { useEffect } from "react";
 
 const Ofert = ({ ofertRef }) => {
   useEffect(() => {
     const infoElements = document.querySelectorAll(".infoOfert");
 
-    const clas = "animate__fadeInBottomLeft";
     const observer = new IntersectionObserver((entries) => {
       // Loop over the entries
-      entries.forEach((entry) => {
+      entries.forEach((entry, index) => {
         // If the element is visible
         if (entry.isIntersecting) {
           // Add the animation class
-          entry.target.classList.add("animate__animated", clas);
+          entry.target.classList.add(
+            "animate__animated",
+            "animate__fadeInBottomLeft"
+          );
         }
       });
     });
