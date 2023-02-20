@@ -41,8 +41,7 @@
 
 @media (max-width: 700px) {
   .homePage {
-    height: calc(100vh - 80px);
-    margin-top: 80px;
+    height: 100vh;
     justify-content: left;
 
     .homeInfo {
@@ -67,8 +66,6 @@
         p {
           font-size: 1.1em;
         }
-      }
-      .infoAnime {
       }
     }
   }

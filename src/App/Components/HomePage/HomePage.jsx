@@ -1,12 +1,12 @@
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../Provider/Provider";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init();
 
 const HomePage = ({ homeRef }) => {
   const { windowW } = useContext(AppContext);
-
-  const ref1 = useRef(null);
-
-  const isInViewport1 = false;
 
   return (
     <section className="homePage" ref={homeRef} id="home">
@@ -14,7 +14,13 @@ const HomePage = ({ homeRef }) => {
         {!windowW && (
           <img src="/icons/LogoTipTopCss.svg" alt="logo" className="logoItem" />
         )}
-        <div className={isInViewport1 ? "info infoAnime" : "info"} ref={ref1}>
+        <div
+          className="info"
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="1500"
+        >
           <h2>Tip - top</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
@@ -25,10 +31,10 @@ const HomePage = ({ homeRef }) => {
         </div>
         <div
           className="info"
-          // data-aos="fade-right"
-          // data-aos-offset="300"
-          // data-aos-easing="ease-in-sine"
-          // data-aos-duration="1500"
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="1500"
         >
           <h2>Tip - top</h2>
           <p>

@@ -2,55 +2,102 @@
   width: 100%;
   min-height: 100vh;
   display: flex;
-  flex-direction: row;
-  .contact {
-    display: flex;
-    flex-direction: column;
-    justify-content: top;
-    align-items: center;
-    width: 40%;
-    height: 100%;
-    margin-left: 40px;
-    border-right: 2px solid black;
-    margin-bottom: 40px;
-    ul {
-      margin-top: 10px;
-      li {
-        padding: 3px;
-        font-size: 20px;
-        font-weight: 900;
-        span {
-          font-weight: 200;
+  .con {
+    .contact {
+      display: flex;
+      flex-direction: column;
+      justify-content: top;
+      align-items: center;
+      height: 100%;
+      margin-bottom: 40px;
+      ul {
+        margin-top: 10px;
+        li {
+          padding: 3px;
+          font-size: 20px;
+          font-weight: 900;
+          span {
+            font-weight: 200;
+          }
         }
       }
+      .logoItem {
+        margin-top: 50px;
+        width: 70%;
+      }
     }
-    .logoItem {
-      margin-top: 50px;
-      width: 70%;
+    .picture {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      img {
+        margin-top: 10%;
+        max-width: 80%;
+      }
     }
   }
-  .picture {
+  footer {
+    width: 100%;
+    border-top: 5px solid orange;
+    background-color: black;
+    color: white;
+    font-size: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40%;
-    height: 100%;
-    img {
-      margin-top: 10%;
-      max-width: 80%;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width: 700px) {
+  .contactPage {
+    flex-direction: column;
+    .con {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 90vh;
+      .contact {
+        width: 40%;
+        margin-left: 40px;
+        border-right: 2px solid black;
+      }
+      .picture {
+        width: 40%;
+      }
+    }
+    footer {
+      height: 10vh;
+      width: 100%;
     }
   }
 }
 
-footer {
-  width: 100%;
-  height: 10vh;
-  border-top: 5px solid orange;
-  background-color: black;
-  color: white;
-  font-size: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-transform: uppercase;
+@media (max-width: 700px) {
+  .contactPage {
+    flex-direction: column;
+
+    .con {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      .contact {
+        width: 100%;
+        ul {
+          li {
+            text-align: center;
+          }
+        }
+      }
+      .picture {
+        display: none;
+        width: 100%;
+      }
+    }
+
+    footer {
+      min-height: 15vh;
+    }
+  }
 }
