@@ -7,7 +7,7 @@ import GalleryPage from "./Components/Gallery/GalleryPage";
 import HomePage from "./Components/HomePage/HomePage";
 import Navi from "./Components/Navi/Navi";
 import Ofert from "./Components/Oferta/Oferta";
-import Test from "./Components/Navi/Test";
+import NaviMobile from "./Components/Navi/NaviMobile";
 
 function App() {
   const homeRef = useRef();
@@ -23,7 +23,7 @@ function App() {
         <Ofert ofertRef={ofertRef} />
         <GalleryPage galleryRef={galleryRef} />
         <ContactPage contactRef={contactRef} />
-        {winW.current > 700 ? <Navi /> : <Test />}
+        {winW.current > 700 ? <Navi /> : <NaviMobile />}
       </div>
     </AppProvider>
   );
