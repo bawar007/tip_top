@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import { images } from "./SubComponents/image-data";
 
@@ -20,7 +20,7 @@ const GalleryPage = ({ galleryRef }) => {
 
   const gallery = images.map((image, index) => (
     <div className="pic" key={index} onClick={() => handleClick(image.id)}>
-      <img src={image.first} alt={image} className="pic_img" />
+      <img src={`${image.first}`} alt={image} className="pic_img" />
       <h3>Projekt {index + 1}</h3>
     </div>
   ));
@@ -61,9 +61,34 @@ const GalleryPage = ({ galleryRef }) => {
       </div>
     ));
 
+  useEffect(() => {
+    const galerryElements = document.querySelectorAll(".pic");
+
+    const observer = new IntersectionObserver((entries) => {
+      // Loop over the entries
+      entries.forEach((entry, index) => {
+        // If the element is visible
+        if (entry.isIntersecting) {
+          // Add the animation class
+          entry.target.classList.add("animate__animated", "animate__fadeInUp");
+          document
+            .querySelector(".title_gallery")
+            .classList.add("animate__animated", "animate__fadeInUp");
+        }
+      });
+    });
+
+    galerryElements.forEach((el) => observer.observe(el));
+  });
+
   return (
     <div className="galleryPage" ref={galleryRef} id="gallery">
-      <h1 style={{ textAlign: "center" }}>PROJEKTY</h1>
+      <h1
+        style={{ textAlign: "center", margin: "20px 0" }}
+        className="title_gallery"
+      >
+        PROJEKTY
+      </h1>
       <section className="pics">{gallery}</section>
       {allPics && (
         <section className="selectedPics">
