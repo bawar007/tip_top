@@ -1,6 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 
 import { images } from "./SubComponents/image-data";
+
+import { AppContext } from "../../Provider/Provider";
 
 const GalleryPage = ({ galleryRef }) => {
   const [allPics, setAllPics] = useState(null);
@@ -8,6 +10,8 @@ const GalleryPage = ({ galleryRef }) => {
   const [picIndex, setPicIndex] = useState(0);
 
   const modal = useRef();
+
+  const { windowW } = useContext(AppContext);
 
   const handleClick = (id) => {
     setAllPics(true);
@@ -17,7 +21,7 @@ const GalleryPage = ({ galleryRef }) => {
   const gallery = images.map((image, index) => (
     <div className="pic" key={index} onClick={() => handleClick(image.id)}>
       <img src={image.first} alt={image} className="pic_img" />
-      <h3>Galeria {index + 1}</h3>
+      <h3>Projekt {index + 1}</h3>
     </div>
   ));
 
@@ -46,10 +50,12 @@ const GalleryPage = ({ galleryRef }) => {
           className="solo_pic_img"
           id="myImg"
           onClick={() => {
-            const modalEl = modal.current;
-            const modalImg = document.querySelector("#img01");
-            modalEl.style.display = "block";
-            modalImg.src = `${el}`;
+            if (windowW) {
+              const modalEl = modal.current;
+              const modalImg = document.querySelector("#img01");
+              modalEl.style.display = "block";
+              modalImg.src = `${el}`;
+            }
           }}
         />
       </div>
@@ -57,6 +63,7 @@ const GalleryPage = ({ galleryRef }) => {
 
   return (
     <div className="galleryPage" ref={galleryRef} id="gallery">
+      <h1 style={{ textAlign: "center" }}>PROJEKTY</h1>
       <section className="pics">{gallery}</section>
       {allPics && (
         <section className="selectedPics">
@@ -109,7 +116,7 @@ const GalleryPage = ({ galleryRef }) => {
           </div>
         </section>
       )}
-      <div className="modal" ref={modal}>
+      <div className="modal" ref={modal} style={{ display: "none" }}>
         <span
           className="close"
           onClick={() => (modal.current.style.display = "none")}

@@ -147,129 +147,81 @@
   .galleryPage {
     min-height: 100vh;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 19px 22px -2px rgba(184, 184, 204, 1);
     .pics {
       display: flex;
-      flex-direction: row;
-      justify-content: center;
       align-items: center;
+      flex-direction: column;
       flex-wrap: wrap;
-      padding: 0 10px;
+      text-align: center;
       .pic {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 100%;
-        height: 50%;
+        margin: 20px 0;
+        max-width: 80%;
         .pic_img {
-          width: 100%;
-          height: 100%;
+          display: block;
+          max-width: 100%;
         }
       }
     }
     .selectedPics {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       width: 100%;
       height: 100%;
-      background-color: rgba(255, 255, 255, 0.95);
-      box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 1);
       position: fixed;
-      left: 0;
       top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
       .selectPic {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 70%;
-        width: 100%;
+        width: 100vw;
+        min-height: 100vh;
+        background-color: rgba(255, 255, 255, 0.6);
+        z-index: 250;
         .picSolo {
-          height: 95%;
-
+          max-width: 100%;
+          height: 100%;
           .solo_pic_img {
-            display: block;
-            max-height: 100%;
-            margin: auto;
+            max-width: 100%;
           }
         }
       }
       .allPics {
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        height: 30%;
-        width: 100%;
-        padding-bottom: 10px;
+        .close {
+          position: absolute;
+          top: 0;
+          right: 10px;
+          color: #f1f1f1;
+          font-size: 40px;
+          font-weight: bold;
+          transition: 0.3s;
+          z-index: 251;
+        }
+        .back {
+          position: absolute;
+          left: 0;
+          top: 200px;
+          z-index: 251;
+        }
+        .next {
+          position: absolute;
+          right: 0;
+          top: 200px;
+          z-index: 251;
+        }
         .picPopUp {
-          height: 80%;
           width: 100%;
+          height: 100%;
+          display: none;
           .pic_img {
-            margin: 0 10px;
-            max-height: 100%;
-          }
-          .active {
-            box-shadow: 0px 0px 18px 6px #afcb1f;
-          }
-        }
-        .arrow_gallery {
-          filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
-            brightness(104%) contrast(97%);
-          &:hover {
-            cursor: pointer;
+            display: none;
           }
         }
       }
-    }
-
-    .modal {
-      display: none; /* Hidden by default */
-      position: fixed; /* Stay in place */
-      z-index: 101; /* Sit on top */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100vh; /* Full height */
-      background-color: rgba(0, 0, 0, 0.9);
-      margin: auto; /* Black w/ opacity */
-    }
-
-    .modal-content {
-      margin: auto;
-      display: block;
-      max-height: 100%;
-      max-width: 100%;
-      animation-name: zoom;
-      animation-duration: 0.6s;
-      padding: 20px 0;
-
-      @keyframes zoom {
-        from {
-          transform: scale(0.1);
-        }
-        to {
-          transform: scale(1);
-        }
-      }
-    }
-
-    .close {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: #bbb;
-      text-decoration: none;
-      cursor: pointer;
     }
   }
 }
