@@ -1,8 +1,10 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 import { oferts } from "./Oferts/oferts";
+import { AppContext } from "../../Provider/Provider";
 
 const Ofert = () => {
+  const { windowW } = useContext(AppContext);
   useEffect(() => {
     const infoElements = document.querySelectorAll(".infoOfert");
 
@@ -64,21 +66,22 @@ const Ofert = () => {
   const ofertLeft = oferts
     .filter((el) => el.id <= 2)
     .map((el) => (
-      <>
-        <div className="infoOfert" key={el.id} id={`io${el.id}`}>
-          <h2>{el.title}</h2>
-          <p>{el.text}</p>
-          <ul className="list_Ofert">
-            {el.items.map((el) => (
-              <li key={el} className="list_Ofert_item">
-                {el}
-              </li>
-            ))}
-            {spanElementHidden}
-          </ul>
-          {spanElementShow(el.id)}
-        </div>
-      </>
+      <div className="infoOfert" key={el.id} id={`io${el.id}`}>
+        <h2>{el.title}</h2>
+        <p>{el.text}</p>
+        <ul
+          className="list_Ofert"
+          style={windowW ? { display: "flex", flexDirection: "column" } : null}
+        >
+          {el.items.map((el) => (
+            <li key={el} className="list_Ofert_item">
+              {el}
+            </li>
+          ))}
+          {!windowW && spanElementHidden}
+        </ul>
+        {!windowW && spanElementShow(el.id)}
+      </div>
     ));
 
   const ofertRight = oferts
@@ -87,15 +90,18 @@ const Ofert = () => {
       <div className="infoOfert" key={el.id} id={`io${el.id}`}>
         <h2>{el.title}</h2>
         <p>{el.text}</p>
-        <ul className="list_Ofert">
+        <ul
+          className="list_Ofert"
+          style={windowW ? { display: "flex", flexDirection: "column" } : null}
+        >
           {el.items.map((el) => (
             <li key={el} className="list_Ofert_item">
               {el}
             </li>
           ))}
-          {spanElementHidden}
+          {!windowW && spanElementHidden}
         </ul>
-        {spanElementShow(el.id)}
+        {!windowW && spanElementShow(el.id)}
       </div>
     ));
 
