@@ -6,21 +6,25 @@ import "aos/dist/aos.css";
 AOS.init();
 
 const HomePage = ({ homeRef }) => {
-  const { windowW } = useContext(AppContext);
+  const { windowW, tip } = useContext(AppContext);
 
   return (
     <section className="homePage" ref={homeRef} id="home">
-      <div className="homeInfo">
+      <div
+        className="homeInfo"
+        data-aos="fade-right"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+        data-aos-duration="1500"
+      >
         {!windowW && (
-          <img src="/icons/LogoTipTopCss.svg" alt="logo" className="logoItem" />
+          <img
+            src={`${tip}/icons/LogoTipTopCss.svg`}
+            alt="logo"
+            className="logoItem"
+          />
         )}
-        <div
-          className="info"
-          data-aos="fade-right"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-          data-aos-duration="1500"
-        >
+        <div className="info">
           <h2>Tip - top</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
@@ -29,13 +33,7 @@ const HomePage = ({ homeRef }) => {
             distinctio placeat dolorem est dolor?
           </p>
         </div>
-        <div
-          className="info"
-          data-aos="fade-right"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-          data-aos-duration="1500"
-        >
+        <div className="info">
           <h2>Tip - top</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam

@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { AppContext } from "../../Provider/Provider";
 
 const Navi = () => {
-  const { setPage, page, windowW } = useContext(AppContext);
+  const { setPage, page, windowW, tip } = useContext(AppContext);
 
   let home = false;
   let gallery = false;
@@ -33,12 +33,16 @@ const Navi = () => {
     <div className="Navi">
       <div className="Menu">
         {windowW && (
-          <img src="/icons/LogoTipTopCss.svg" alt="logo" className="logoItem" />
+          <img
+            src={`${tip}/icons/LogoTipTopCss.svg`}
+            alt="logo"
+            className="logoItem"
+          />
         )}
 
         <section>
           <img
-            src="/icons/Home.svg"
+            src={`${tip}/icons/Home.svg`}
             alt="home"
             className={home ? "Home active" : "Home"}
             onClick={() => handleScroll(1)}
@@ -49,7 +53,7 @@ const Navi = () => {
         </section>
         <section>
           <img
-            src="/icons/offert.svg"
+            src={`${tip}/icons/offert.svg`}
             alt="ofert"
             className={ofert ? "OfertNavi active" : "OfertNavi"}
             onClick={() => handleScroll(2)}
@@ -60,7 +64,7 @@ const Navi = () => {
         </section>
         <section>
           <img
-            src="/icons/Galery.svg"
+            src={`${tip}/icons/Galery.svg`}
             alt="gallery"
             className={gallery ? "Gallery active" : "Gallery"}
             onClick={() => handleScroll(3)}
@@ -71,7 +75,7 @@ const Navi = () => {
         </section>
         <section>
           <img
-            src="/icons/Contact.svg"
+            src={`${tip}/icons/Contact.svg`}
             alt="contact"
             className={contact ? "Contact active" : "Contact"}
             onClick={() => handleScroll(4)}
@@ -83,19 +87,23 @@ const Navi = () => {
 
         {windowW ? (
           page > 1 ? (
-            <img
-              src="/icons/arrowcircleup.svg"
-              alt="arrowUp"
-              className="ArrowUp"
-              onClick={() => handleScroll(1)}
-            />
+            <a href="#home">
+              <img
+                src={`${tip}/icons/arrowcircleup.svg`}
+                alt="arrowUp"
+                className="ArrowUp"
+                onClick={() => handleScroll(1)}
+              />
+            </a>
           ) : (
-            <img
-              src="/icons/arrowcircledown.svg"
-              alt="arrowUp"
-              className="ArrowUp"
-              onClick={() => handleScroll(4)}
-            />
+            <a href="#contact">
+              <img
+                src={`${tip}/icons/arrowcircledown.svg`}
+                alt="arrowUp"
+                className="ArrowUp"
+                onClick={() => handleScroll(4)}
+              />
+            </a>
           )
         ) : null}
       </div>

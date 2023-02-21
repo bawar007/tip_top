@@ -11,7 +11,7 @@ const GalleryPage = ({ galleryRef }) => {
 
   const modal = useRef();
 
-  const { windowW } = useContext(AppContext);
+  const { windowW, tip } = useContext(AppContext);
 
   const handleClick = (id) => {
     setAllPics(true);
@@ -20,7 +20,7 @@ const GalleryPage = ({ galleryRef }) => {
 
   const gallery = images.map((image, index) => (
     <div className="pic" key={index} onClick={() => handleClick(image.id)}>
-      <img src={`${image.first}`} alt={image} className="pic_img" />
+      <img src={`${tip}${image.first}`} alt={image} className="pic_img" />
       <h3>Projekt {index + 1}</h3>
     </div>
   ));
@@ -31,7 +31,7 @@ const GalleryPage = ({ galleryRef }) => {
     (el, index) => (
       <div className="picPopUp" key={index}>
         <img
-          src={`${el}`}
+          src={`${tip}${el}`}
           alt={el}
           className={picIndex === index ? "pic_img active" : "pic_img"}
           onClick={() => setPicIndex(index)}
@@ -45,7 +45,7 @@ const GalleryPage = ({ galleryRef }) => {
     .map((el, index) => (
       <div className="picSolo" key={index}>
         <img
-          src={`${el}`}
+          src={`${tip}${el}`}
           alt={el}
           className="solo_pic_img"
           id="myImg"
@@ -114,7 +114,7 @@ const GalleryPage = ({ galleryRef }) => {
               }
             >
               <img
-                src="/icons/arrowcircleleft.svg"
+                src={`${tip}/icons/arrowcircleleft.svg`}
                 alt="arrright"
                 className="arrow_gallery"
               />
@@ -133,7 +133,7 @@ const GalleryPage = ({ galleryRef }) => {
               }
             >
               <img
-                src="/icons/arrowcircleright.svg"
+                src={`${tip}/icons/arrowcircleright.svg`}
                 alt="arrright"
                 className="arrow_gallery"
               />

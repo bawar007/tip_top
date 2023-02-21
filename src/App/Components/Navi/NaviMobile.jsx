@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../Provider/Provider";
 
 const NaviMobile = () => {
   const [check, setCheck] = useState(false);
+
+  const { tip } = useContext(AppContext);
 
   const ofertAnimation = () => {
     const ofertItems = document.querySelectorAll(".infoOfert");
@@ -32,6 +35,25 @@ const NaviMobile = () => {
     });
   };
 
+  useEffect(() => {
+    const el = document.querySelector(".footer");
+    const observer = new IntersectionObserver((entries) => {
+      // Loop over the entries
+      entries.forEach((entry) => {
+        // If the element is visible
+        if (entry.isIntersecting) {
+          // Add the animation class
+          document.querySelector(".ArrowUpTest").classList.add("white");
+          console.log(el.classList);
+        } else {
+          document.querySelector(".ArrowUpTest").classList.remove("white");
+        }
+      });
+    });
+
+    observer.observe(el);
+  });
+
   return (
     <>
       <label>
@@ -41,9 +63,9 @@ const NaviMobile = () => {
         </span>
         <ul>
           <li>
-            <a href="/#home" onClick={() => setCheck(false)}>
+            <a href="#home" onClick={() => setCheck(false)}>
               <img
-                src="/icons/Home.svg"
+                src={`${tip}/icons/Home.svg`}
                 alt="ofert"
                 className="OfertNavitest"
               />
@@ -52,14 +74,14 @@ const NaviMobile = () => {
           </li>
           <li>
             <a
-              href="/#ofert"
+              href="#ofert"
               onClick={() => {
                 setCheck(false);
                 ofertAnimation();
               }}
             >
               <img
-                src="/icons/offert.svg"
+                src={`${tip}/icons/offert.svg`}
                 alt="ofert"
                 className="OfertNavitest"
               />
@@ -67,9 +89,9 @@ const NaviMobile = () => {
             </a>
           </li>
           <li>
-            <a href="/#gallery" onClick={() => setCheck(false)}>
+            <a href="#gallery" onClick={() => setCheck(false)}>
               <img
-                src="/icons/Galery.svg"
+                src={`${tip}/icons/Galery.svg`}
                 alt="ofert"
                 className="OfertNavitest"
               />
@@ -78,14 +100,14 @@ const NaviMobile = () => {
           </li>
           <li>
             <a
-              href="/#contact"
+              href="#contact"
               onClick={() => {
                 setCheck(false);
                 contactAnimation();
               }}
             >
               <img
-                src="/icons/Contact.svg"
+                src={`${tip}/icons/Contact.svg`}
                 alt="ofert"
                 className="OfertNavitest"
               />
@@ -95,14 +117,14 @@ const NaviMobile = () => {
         </ul>
       </label>
       <a
-        href="/#home"
+        href="#home"
         className="ArrowUpTestLink"
         onClick={() => setCheck(false)}
       >
         <img
-          src="/icons/arrowcircleup.svg"
+          src={`${tip}/icons/arrowcircleup.svg`}
           alt="arrowUp"
-          className={check ? "ArrowUpTest black" : "ArrowUpTest"}
+          className="ArrowUpTest"
         />
       </a>
     </>

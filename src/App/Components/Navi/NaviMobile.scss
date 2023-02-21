@@ -5,8 +5,8 @@ $background-color_2: white;
 label {
   .hamburger {
     position: absolute;
-    bottom: 40px;
-    left: 25px;
+    bottom: 35px;
+    left: 20px;
     width: 30px;
     height: 2px;
     background: white;
@@ -84,11 +84,11 @@ label {
   }
   .menu {
     position: fixed;
-    bottom: 110px;
+    bottom: 90px;
     right: 10px;
     z-index: 100;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     background: rgba(0, 0, 0, 0.527);
     border-radius: 50%;
     -webkit-transition: 0.4s ease-in-out;
@@ -118,19 +118,18 @@ label {
   bottom: 0;
   right: 0;
   img {
-    width: 100px;
-    height: 100px;
+    width: 85px;
+    height: 85px;
     filter: brightness(0) saturate(100%);
     opacity: 0.3;
   }
-  .black {
-    filter: brightness(0) saturate(100%);
+  .white {
+    filter: brightness(100%) saturate(0);
   }
 }
 ul {
   text-decoration: none;
   list-style: none;
-
   li {
     a {
       display: flex;

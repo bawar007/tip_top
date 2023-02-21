@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { AppContext } from "../../Provider/Provider";
 
 const ContactPage = ({ contactRef }) => {
+  const { tip } = useContext(AppContext);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       // Loop over the entries
@@ -27,7 +29,7 @@ const ContactPage = ({ contactRef }) => {
         <div className="con">
           <div className="contact">
             <img
-              src="/icons/LogoTipTopCss.svg"
+              src={`${tip}/icons/LogoTipTopCss.svg`}
               alt="logo"
               className="logoItem"
               id="logoContact"
@@ -50,7 +52,7 @@ const ContactPage = ({ contactRef }) => {
             </ul>
           </div>
           <div className="picture">
-            <img src="/gallery/budowlaniec.jpg" alt="" />
+            <img src={`${tip}/gallery/budowlaniec.jpg`} alt="" />
           </div>
         </div>
         <footer className="footer">
