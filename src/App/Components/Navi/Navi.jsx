@@ -4,11 +4,6 @@ import { AppContext } from "../../Provider/Provider";
 const Navi = () => {
   const { setPage, page, windowW, tip } = useContext(AppContext);
 
-  let home = false;
-  let gallery = false;
-  let contact = false;
-  let ofert = false;
-
   const handleScroll = (pageEl) => {
     setPage(pageEl);
   };
@@ -24,42 +19,34 @@ const Navi = () => {
           />
         )}
 
-        <a href="#home">
-          <img
-            src={`${tip}/icons/Home.svg`}
-            alt="home"
-            className={home ? "Home active" : "Home"}
-            onClick={() => handleScroll(1)}
-          />
+        <a href="#home" onClick={() => handleScroll(1)}>
+          <img src={`${tip}/icons/Home.svg`} alt="home" className="Home" />
           <p>HOME</p>
         </a>
 
-        <a href="#ofert">
+        <a href="#ofert" onClick={() => handleScroll(2)}>
           <img
             src={`${tip}/icons/offert.svg`}
             alt="ofert"
-            className={ofert ? "OfertNavi active" : "OfertNavi"}
-            onClick={() => handleScroll(2)}
+            className="OfertNavi"
           />
           <p>OFERTA</p>
         </a>
 
-        <a href="#gallery">
+        <a href="#gallery" onClick={() => handleScroll(3)}>
           <img
             src={`${tip}/icons/Galery.svg`}
             alt="gallery"
-            className={gallery ? "Gallery active" : "Gallery"}
-            onClick={() => handleScroll(3)}
+            className="Gallery"
           />
           <p>GALERIA</p>
         </a>
 
-        <a href="#contact">
+        <a href="#contact" onClick={() => handleScroll(4)}>
           <img
             src={`${tip}/icons/Contact.svg`}
             alt="contact"
-            className={contact ? "Contact active" : "Contact"}
-            onClick={() => handleScroll(4)}
+            className="Contact"
           />
           <p>KONTAKT</p>
         </a>
@@ -67,22 +54,20 @@ const Navi = () => {
         {windowW && (
           <>
             {page >= 1 && page < 4 && (
-              <a href="#contact">
+              <a href="#contact" onClick={() => handleScroll(4)}>
                 <img
                   src={`${tip}/icons/arrowcircledown.svg`}
                   alt="arrowUp"
                   className="ArrowUp"
-                  onClick={() => handleScroll(4)}
                 />
               </a>
             )}
             {page === 4 && (
-              <a href="#home">
+              <a href="#home" onClick={() => handleScroll(1)}>
                 <img
                   src={`${tip}/icons/arrowcircleup.svg`}
                   alt="arrowUp"
                   className="ArrowUp"
-                  onClick={() => handleScroll(1)}
                 />
               </a>
             )}

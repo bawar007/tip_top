@@ -9,7 +9,7 @@ const AllPicsPopUp = ({
   setPicIndex,
 }) => {
   return (
-    <section className="selectedPics">
+    <section className="selectedPics" style={{ position: "fixed", top: 0 }}>
       <div className="selectPic">
         <OnePicFromGallery
           allPicGalleryPop={allPicGalleryPop}
