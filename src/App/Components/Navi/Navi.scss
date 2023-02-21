@@ -32,6 +32,13 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
     border-radius: 25px;
     z-index: 99;
     .Menu {
+      a {
+        text-decoration: none;
+        color: white;
+        &:hover {
+          color: #afcb1f;
+        }
+      }
       img {
         width: 60px;
         height: 60px;
@@ -72,6 +79,7 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
       .ArrowUp {
         position: absolute;
         bottom: 0;
+        right: 0;
         &:hover {
           filter: $filter;
           cursor: pointer;

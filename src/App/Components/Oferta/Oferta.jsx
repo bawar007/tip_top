@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import { oferts } from "./Oferts/oferts";
+
 const Ofert = () => {
   useEffect(() => {
     const infoElements = document.querySelectorAll(".infoOfert");
@@ -21,49 +23,30 @@ const Ofert = () => {
     infoElements.forEach((el) => observer.observe(el));
   });
 
+  const ofertLeft = oferts
+    .filter((el) => el.id <= 2)
+    .map((el) => (
+      <div className="infoOfert" key={el.id}>
+        <h2>{el.title}</h2>
+        <p>{el.text}</p>
+      </div>
+    ));
+
+  const ofertRight = oferts
+    .filter((el) => el.id > 2)
+    .map((el) => (
+      <div className="infoOfert" key={el.id}>
+        <h2>{el.title}</h2>
+        <p>{el.text}</p>
+      </div>
+    ));
+
   return (
     <div className="Ofert" id="ofert">
       <section className="container">
-        <section className="containerDouble">
-          <div className="infoOfert">
-            <h1>Oferta 1</h1>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
-              laudantium deserunt fuga possimus nostrum, doloremque commodi
-              cupiditate eum perferendis. Nihil atque laudantium quos ipsum
-              possimus id tempore animi. Expedita, veritatis!
-            </p>
-          </div>
-          <div className="infoOfert" /*data-aos="fade-up-left"*/>
-            <h1>Oferta 2</h1>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
-              laudantium deserunt fuga possimus nostrum, doloremque commodi
-              cupiditate eum perferendis. Nihil atque laudantium quos ipsum
-              possimus id tempore animi. Expedita, veritatis!
-            </p>
-          </div>
-        </section>
-        <section className="containerDouble">
-          <div className="infoOfert" /*data-aos="fade-up-right"*/>
-            <h1>Oferta 3</h1>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
-              laudantium deserunt fuga possimus nostrum, doloremque commodi
-              cupiditate eum perferendis. Nihil atque laudantium quos ipsum
-              possimus id tempore animi. Expedita, veritatis!
-            </p>
-          </div>
-          <div className="infoOfert" /*data-aos="fade-up-left"}*/>
-            <h1>Oferta 4</h1>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
-              laudantium deserunt fuga possimus nostrum, doloremque commodi
-              cupiditate eum perferendis. Nihil atque laudantium quos ipsum
-              possimus id tempore animi. Expedita, veritatis!
-            </p>
-          </div>
-        </section>
+        <h1>OFERTY</h1>
+        <section className="containerDouble">{ofertLeft}</section>
+        <section className="containerDouble">{ofertRight}</section>
       </section>
     </div>
   );

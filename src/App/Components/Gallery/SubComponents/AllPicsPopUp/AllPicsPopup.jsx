@@ -15,6 +15,7 @@ const AllPicsPopUp = ({
           allPicGalleryPop={allPicGalleryPop}
           picIndex={picIndex}
           modal={modal}
+          setPicIndex={setPicIndex}
         />
       </div>
       <AllPics

@@ -7,9 +7,10 @@ import { AppContext } from "../../Provider/Provider";
 import AllPicsPopUp from "./SubComponents/AllPicsPopUp/AllPicsPopup";
 
 import Modal from "./SubComponents/Modal/Modal";
+import GalleryTest from "./SubComponents/GalleryTest";
 
 const GalleryPage = () => {
-  const { tip } = useContext(AppContext);
+  const { tip, windowW } = useContext(AppContext);
 
   const [allPics, setAllPics] = useState(null);
   const [picId, setPicId] = useState(1);
@@ -51,22 +52,24 @@ const GalleryPage = () => {
 
   return (
     <div className="galleryPage" id="gallery">
-      <h1
-        style={{ textAlign: "center", margin: "20px 0" }}
-        className="title_gallery"
-      >
-        PROJEKTY
-      </h1>
+      <h1 className="title_gallery">PROJEKTY</h1>
       <section className="pics">{gallery}</section>
-      {allPics && (
-        <AllPicsPopUp
-          allPicGalleryPop={allPicGalleryPop}
-          picIndex={picIndex}
-          modal={modal}
-          setAllPics={setAllPics}
-          setPicIndex={setPicIndex}
-        />
-      )}
+      {allPics ? (
+        !windowW ? (
+          <GalleryTest
+            allPicGalleryPop={allPicGalleryPop}
+            setAllPics={setAllPics}
+          />
+        ) : (
+          <AllPicsPopUp
+            allPicGalleryPop={allPicGalleryPop}
+            picIndex={picIndex}
+            modal={modal}
+            setAllPics={setAllPics}
+            setPicIndex={setPicIndex}
+          />
+        )
+      ) : null}
       <Modal modalRef={modal} />
     </div>
   );

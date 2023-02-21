@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../../../../../Provider/Provider";
 
 const OnePicFromGallery = ({ allPicGalleryPop, picIndex, modal }) => {
@@ -24,6 +24,12 @@ const OnePicFromGallery = ({ allPicGalleryPop, picIndex, modal }) => {
         />
       </div>
     ));
+
+  useEffect(() => {
+    if (document.querySelector(".solo_pic_img")) {
+    }
+  });
+
   return <>{OnePicFromGallery}</>;
 };
 
