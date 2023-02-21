@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../Provider/Provider";
 
-const ContactPage = ({ contactRef }) => {
+const ContactPage = () => {
   const { tip } = useContext(AppContext);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -25,7 +25,7 @@ const ContactPage = ({ contactRef }) => {
   });
   return (
     <>
-      <div className="contactPage" ref={contactRef} id="contact">
+      <div className="contactPage" id="contact">
         <div className="con">
           <div className="contact">
             <img

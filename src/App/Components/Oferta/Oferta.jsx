@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const Ofert = ({ ofertRef }) => {
+const Ofert = () => {
   useEffect(() => {
     const infoElements = document.querySelectorAll(".infoOfert");
 
@@ -22,7 +22,7 @@ const Ofert = ({ ofertRef }) => {
   });
 
   return (
-    <div className="Ofert" ref={ofertRef} id="ofert">
+    <div className="Ofert" id="ofert">
       <section className="container">
         <section className="containerDouble">
           <div className="infoOfert">

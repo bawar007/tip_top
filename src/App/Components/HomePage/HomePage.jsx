@@ -5,11 +5,11 @@ import "aos/dist/aos.css";
 
 AOS.init();
 
-const HomePage = ({ homeRef }) => {
+const HomePage = () => {
   const { windowW, tip } = useContext(AppContext);
 
   return (
-    <section className="homePage" ref={homeRef} id="home">
+    <section className="homePage" id="home">
       <div
         className="homeInfo"
         data-aos="fade-right"

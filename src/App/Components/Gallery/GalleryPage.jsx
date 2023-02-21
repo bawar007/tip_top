@@ -4,14 +4,19 @@ import { images } from "./SubComponents/image-data";
 
 import { AppContext } from "../../Provider/Provider";
 
-const GalleryPage = ({ galleryRef }) => {
+import AllPicsPopUp from "./SubComponents/AllPicsPopUp/AllPicsPopup";
+
+import Modal from "./SubComponents/Modal/Modal";
+
+const GalleryPage = () => {
+  const { tip } = useContext(AppContext);
+
   const [allPics, setAllPics] = useState(null);
   const [picId, setPicId] = useState(1);
   const [picIndex, setPicIndex] = useState(0);
-
   const modal = useRef();
 
-  const { windowW, tip } = useContext(AppContext);
+  const allPicGalleryPop = [...images].filter((el) => el.id === picId);
 
   const handleClick = (id) => {
     setAllPics(true);
@@ -24,42 +29,6 @@ const GalleryPage = ({ galleryRef }) => {
       <h3>Projekt {index + 1}</h3>
     </div>
   ));
-
-  const allPicGalleryPop = [...images].filter((el) => el.id === picId);
-
-  const AllSelectedPicsFromGallery = allPicGalleryPop[0].all.map(
-    (el, index) => (
-      <div className="picPopUp" key={index}>
-        <img
-          src={`${tip}${el}`}
-          alt={el}
-          className={picIndex === index ? "pic_img active" : "pic_img"}
-          onClick={() => setPicIndex(index)}
-        />
-      </div>
-    )
-  );
-
-  const OnePicFromGallery = allPicGalleryPop[0].all
-    .filter((el, index) => index === picIndex)
-    .map((el, index) => (
-      <div className="picSolo" key={index}>
-        <img
-          src={`${tip}${el}`}
-          alt={el}
-          className="solo_pic_img"
-          id="myImg"
-          onClick={() => {
-            if (windowW) {
-              const modalEl = modal.current;
-              const modalImg = document.querySelector("#img01");
-              modalEl.style.display = "block";
-              modalImg.src = `${el}`;
-            }
-          }}
-        />
-      </div>
-    ));
 
   useEffect(() => {
     const galerryElements = document.querySelectorAll(".pic");
@@ -77,12 +46,11 @@ const GalleryPage = ({ galleryRef }) => {
         }
       });
     });
-
     galerryElements.forEach((el) => observer.observe(el));
   });
 
   return (
-    <div className="galleryPage" ref={galleryRef} id="gallery">
+    <div className="galleryPage" id="gallery">
       <h1
         style={{ textAlign: "center", margin: "20px 0" }}
         className="title_gallery"
@@ -91,65 +59,15 @@ const GalleryPage = ({ galleryRef }) => {
       </h1>
       <section className="pics">{gallery}</section>
       {allPics && (
-        <section className="selectedPics">
-          <div className="selectPic">{OnePicFromGallery}</div>
-          <div className="allPics">
-            <span
-              className="close"
-              style={{ color: "black" }}
-              onClick={() => setAllPics(false)}
-            >
-              &times;
-            </span>
-            <div
-              className="back"
-              onClick={() =>
-                setPicIndex((prev) => {
-                  if (prev > 0) {
-                    return prev - 1;
-                  } else {
-                    return allPicGalleryPop[0].all.length - 1;
-                  }
-                })
-              }
-            >
-              <img
-                src={`${tip}/icons/arrowcircleleft.svg`}
-                alt="arrright"
-                className="arrow_gallery"
-              />
-            </div>
-            {AllSelectedPicsFromGallery}
-            <div
-              className="next"
-              onClick={() =>
-                setPicIndex((prev) => {
-                  if (prev < allPicGalleryPop[0].all.length - 1) {
-                    return prev + 1;
-                  } else {
-                    return 0;
-                  }
-                })
-              }
-            >
-              <img
-                src={`${tip}/icons/arrowcircleright.svg`}
-                alt="arrright"
-                className="arrow_gallery"
-              />
-            </div>
-          </div>
-        </section>
+        <AllPicsPopUp
+          allPicGalleryPop={allPicGalleryPop}
+          picIndex={picIndex}
+          modal={modal}
+          setAllPics={setAllPics}
+          setPicIndex={setPicIndex}
+        />
       )}
-      <div className="modal" ref={modal} style={{ display: "none" }}>
-        <span
-          className="close"
-          onClick={() => (modal.current.style.display = "none")}
-        >
-          &times;
-        </span>
-        <img className="modal-content" id="img01" alt="img" />
-      </div>
+      <Modal modalRef={modal} />
     </div>
   );
 };

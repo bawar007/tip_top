@@ -10,19 +10,14 @@ import Ofert from "./Components/Oferta/Oferta";
 import NaviMobile from "./Components/Navi/NaviMobile";
 
 function App() {
-  const homeRef = useRef();
-  const galleryRef = useRef();
-  const contactRef = useRef();
-  const ofertRef = useRef();
-
   const winW = useRef(window.innerWidth);
   return (
     <AppProvider>
       <div className="App">
-        <HomePage homeRef={homeRef} />
-        <Ofert ofertRef={ofertRef} />
-        <GalleryPage galleryRef={galleryRef} />
-        <ContactPage contactRef={contactRef} />
+        <HomePage />
+        <Ofert />
+        <GalleryPage />
+        <ContactPage />
         {winW.current > 700 ? <Navi /> : <NaviMobile />}
       </div>
     </AppProvider>
