@@ -8,6 +8,7 @@ import HomePage from "./Components/HomePage/HomePage";
 import Navi from "./Components/Navi/Navi";
 import Ofert from "./Components/Oferta/Oferta";
 import NaviMobile from "./Components/Navi/NaviMobile";
+import Opinions from "./Components/Opinions/Opinions";
 
 function App() {
   const winW = useRef(window.innerWidth);
@@ -17,6 +18,7 @@ function App() {
         <HomePage />
         <Ofert />
         <GalleryPage />
+        <Opinions />
         <ContactPage />
         {winW.current > 700 ? <Navi /> : <NaviMobile />}
       </div>

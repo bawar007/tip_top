@@ -52,7 +52,7 @@ const GalleryPage = () => {
 
   return (
     <div className="galleryPage" id="gallery">
-      <h1 className="title_gallery">PROJEKTY</h1>
+      <h1 className="title_gallery">REALIZACJE</h1>
       <section className="pics">{gallery}</section>
       {allPics ? (
         !windowW ? (

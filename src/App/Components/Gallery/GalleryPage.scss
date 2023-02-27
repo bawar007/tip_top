@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   box-shadow: 0px 19px 22px -2px rgba(184, 184, 204, 1);
-
+  padding-top: 30px;
   .pics {
     display: flex;
     align-items: center;
@@ -161,19 +161,58 @@
 }
 
 @media (max-width: 700px) {
+  .galleryPop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    z-index: 201;
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .pswp-gallery {
+      margin-top: 100px;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      h2 {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      img {
+        height: 30%;
+        width: 45%;
+        margin: 5px;
+      }
+    }
+  }
   .galleryPage {
     min-height: 100vh;
     flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
     .pics {
-      flex-direction: column;
+      flex-direction: row;
       text-align: center;
+      justify-content: center;
+      margin-top: 20px;
       .pic {
-        margin: 20px 0;
+        margin: 10px;
         max-width: 80%;
         .pic_img {
-          display: block;
-          max-width: 100%;
+          border-radius: 50%;
+          width: 150px;
+          height: 150px;
         }
       }
     }
@@ -227,41 +266,6 @@
           .pic_img {
             display: none;
           }
-        }
-      }
-    }
-    .galleryPop {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      display: flex;
-      background-color: white;
-      justify-content: center;
-      z-index: 201;
-      .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-      }
-      .pswp-gallery {
-        margin-top: 100px;
-        width: 100%;
-        height: 100%;
-        padding: 20px;
-        h2 {
-          text-align: center;
-          margin-bottom: 50px;
-        }
-        img {
-          height: 30%;
-          width: 45%;
-          margin: 5px;
         }
       }
     }
