@@ -34,12 +34,8 @@ const Navi = () => {
         </a>
 
         <a href="#gallery" onClick={() => handleScroll(3)}>
-          <img
-            src={`${tip}/icons/Galery.svg`}
-            alt="gallery"
-            className="Gallery"
-          />
-          <p>GALERIA</p>
+          <i class="fa-duotone fa-user-helmet-safety"></i>
+          <p>Realzacje</p>
         </a>
 
         <a href="#contact" onClick={() => handleScroll(4)}>

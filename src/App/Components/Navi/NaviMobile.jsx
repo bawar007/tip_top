@@ -44,7 +44,6 @@ const NaviMobile = () => {
         if (entry.isIntersecting) {
           // Add the animation class
           document.querySelector(".ArrowUpTest").classList.add("white");
-          console.log(el.classList);
         } else {
           document.querySelector(".ArrowUpTest").classList.remove("white");
         }
@@ -91,11 +90,26 @@ const NaviMobile = () => {
           <li>
             <a href="#gallery" onClick={() => setCheck(false)}>
               <img
-                src={`${tip}/icons/Galery.svg`}
+                src={`${tip}/icons/projects.svg`}
                 alt="ofert"
                 className="OfertNavitest"
               />
-              Galeria
+              Realizacje
+            </a>
+          </li>
+          <li>
+            <a
+              href="#opinions"
+              onClick={() => {
+                setCheck(false);
+              }}
+            >
+              <img
+                src={`${tip}/icons/medalstar.svg`}
+                alt="opinion"
+                className="OfertNavitest"
+              />
+              Opinie
             </a>
           </li>
           <li>

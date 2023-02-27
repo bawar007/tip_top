@@ -89,7 +89,7 @@ label {
     z-index: 100;
     width: 70px;
     height: 70px;
-    background: rgba(0, 0, 0, 0.527);
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 50%;
     -webkit-transition: 0.4s ease-in-out;
     transition: 0.4s ease-in-out;
@@ -121,7 +121,7 @@ label {
     width: 85px;
     height: 85px;
     filter: brightness(0) saturate(100%);
-    opacity: 0.3;
+    opacity: 0.6;
   }
   .white {
     filter: brightness(100%) saturate(0);
