@@ -1,3 +1,6 @@
+@import "./Oferts/Mobile/ofertsMobile.scss";
+@import "./Oferts/Desktop/ofertsDesktop.scss";
+
 .Ofert {
   display: flex;
   width: 100%;
@@ -11,6 +14,8 @@
     color: white;
     h1 {
       text-align: center;
+      font-size: 36px;
+      margin-top: 20px;
     }
     .containerDouble {
       display: flex;
@@ -18,10 +23,14 @@
       width: 100%;
     }
     .infoOfert {
-      border: 2px solid black;
+      border: 0.5px solid black;
       padding: 20px;
       border-radius: 25px;
       height: 100%;
+      background-color: rgba(0, 0, 0, 0.353);
+      h2 {
+        text-align: center;
+      }
       .click {
         display: flex;
         margin-top: 20px;
@@ -34,78 +43,6 @@
         border-radius: 50px;
         img {
           height: 100%;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 700px) {
-  .Ofert {
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-    .container {
-      margin: 10px 0;
-      margin-right: 100px;
-      height: 80%;
-      width: 80%;
-      .containerDouble {
-        flex-direction: row;
-        margin-top: 30px;
-        margin-left: 20px;
-        height: auto;
-        div:nth-child(2) {
-          margin-top: 50px;
-          margin-left: 20px;
-        }
-      }
-      .infoOfert {
-        width: 50%;
-      }
-    }
-  }
-}
-
-@media (max-width: 700px) {
-  .Ofert {
-    min-height: 100vh;
-    align-items: flex-start;
-    padding: 20px;
-    .container {
-      width: 100%;
-      height: 100%;
-
-      .containerDouble {
-        flex-direction: column;
-      }
-      .infoOfert {
-        width: 100%;
-        margin-top: 30px;
-        font-size: larger;
-        padding-bottom: 0;
-        .list_Ofert {
-          margin: 10px 0;
-          display: none;
-          transform: 2s;
-          .list_Ofert_item {
-            list-style: inside;
-            font-size: 18px;
-          }
-        }
-        .click {
-          display: flex;
-          margin-top: 20px;
-          margin-bottom: 10px;
-          height: 40px;
-          width: 80%;
-          margin-left: 10%;
-          background-color: rgba(0, 0, 0, 0.286);
-          justify-content: center;
-          border-radius: 50px;
-          img {
-            height: 100%;
-          }
         }
       }
     }

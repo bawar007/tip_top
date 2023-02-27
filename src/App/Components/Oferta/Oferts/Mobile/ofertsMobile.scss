@@ -1,0 +1,93 @@
+@media (max-width: 700px) {
+  .Ofert {
+    min-height: 100vh;
+    align-items: flex-start;
+    padding: 20px;
+    .container {
+      width: 100%;
+      height: 100%;
+      .containerDouble {
+        flex-direction: column;
+      }
+      .infoOfert {
+        width: 100%;
+        margin-top: 30px;
+        letter-spacing: 3px;
+        details {
+          min-width: 100%;
+          min-height: 100%;
+          position: relative;
+          font-size: 18px;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          border-radius: 15px;
+          box-sizing: border-box;
+          transition: all 0.3s;
+          display: flex;
+          flex-direction: column;
+          summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+            &:focus {
+              outline: none;
+            }
+            &:focus::after {
+              content: "";
+              height: 100%;
+              width: 100%;
+              display: block;
+              position: absolute;
+              top: 0;
+              left: 0;
+            }
+            &::-webkit-details-marker {
+              display: none;
+            }
+          }
+        }
+        .list_Ofert {
+          margin-top: 15px;
+          align-items: center;
+          transition: all 2s;
+          .list_Ofert_item {
+            display: flex;
+            padding: 5px;
+            list-style: none;
+            font-size: 24px;
+            background-color: rgba(255, 255, 255, 0.181);
+            width: 100%;
+            height: 60px;
+            margin: 3px;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+        .control-icon {
+          fill: rgb(255, 255, 255);
+          transition: 0.3s ease;
+          pointer-events: none;
+          width: 40px;
+          height: 40px;
+        }
+        .control-icon-close {
+          display: none;
+        }
+
+        details[open] .control-icon-close {
+          display: initial;
+          transition: 0.3s ease;
+        }
+
+        details[open] .control-icon-expand {
+          display: none;
+        }
+        details[open] {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}

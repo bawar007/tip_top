@@ -1,0 +1,29 @@
+@media (min-width: 700px) {
+  .Ofert {
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    .container {
+      margin: 10px 0;
+      margin-right: 100px;
+      height: 80%;
+      width: 80%;
+      .containerDouble {
+        flex-direction: row;
+        margin-top: 30px;
+        margin-left: 20px;
+        height: auto;
+        flex-wrap: wrap;
+        div:nth-child(2),
+        div:nth-child(4) {
+          margin-top: 50px;
+          margin-left: 20px;
+        }
+      }
+      .infoOfert {
+        width: 45%;
+        max-height: 50%;
+      }
+    }
+  }
+}
