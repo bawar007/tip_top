@@ -38,16 +38,36 @@ const ContactPage = () => {
             <h1 className="tested">DANE KONTAKTOWE</h1>
             <ul className="tested">
               <li>
-                Właściciel: <span>Artur Barski</span>
+                <img
+                  src={`${tip}/icons/ovner.svg`}
+                  className="OfertNavitest"
+                  alt="ovner"
+                />
+                <span>Artur Barski</span>
               </li>
               <li>
-                Mail: <span>tiptopglazura@gmail.com</span>
+                <img
+                  src={`${tip}/icons/mail.svg`}
+                  className="OfertNavitest"
+                  alt="mail"
+                />
+                <span>tiptopglazura@gmail.com</span>
               </li>
               <li>
-                Nr. tel.: <span>508-531-655</span>
+                <img
+                  src={`${tip}/icons/phone.svg`}
+                  className="OfertNavitest"
+                  alt="phone"
+                />
+                <span>508-531-655</span>
               </li>
               <li>
-                Adres: <span>Kowalewko, 06-445 Strzegowo</span>
+                <img
+                  src={`${tip}/icons/location.svg`}
+                  className="OfertNavitest"
+                  alt="location"
+                />
+                <span>Kowalewko, 06-445 Strzegowo</span>
               </li>
             </ul>
           </div>
