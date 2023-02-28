@@ -17,32 +17,11 @@ const NaviMobile = () => {
     });
   };
 
-  const contactAnimation = () => {
-    const ofertItems = document.querySelectorAll(".tested");
-    const logoItem = document.querySelector("#logoContact");
-
-    logoItem.classList.remove("animate__rollIn", "animate__animated");
-    setTimeout(
-      () => logoItem.classList.add("animate__rollIn", "animate__animated"),
-      500
-    );
-
-    ofertItems.forEach((el) => {
-      el.classList.remove("animate__animated", "animate__jackInTheBox");
-      setTimeout(() => {
-        el.classList.add("animate__animated", "animate__jackInTheBox");
-      }, 500);
-    });
-  };
-
   useEffect(() => {
     const el = document.querySelector(".footer");
     const observer = new IntersectionObserver((entries) => {
-      // Loop over the entries
       entries.forEach((entry) => {
-        // If the element is visible
         if (entry.isIntersecting) {
-          // Add the animation class
           document.querySelector(".ArrowUpTest").classList.add("white");
         } else {
           document.querySelector(".ArrowUpTest").classList.remove("white");
@@ -117,7 +96,6 @@ const NaviMobile = () => {
               href="#contact"
               onClick={() => {
                 setCheck(false);
-                contactAnimation();
               }}
             >
               <img

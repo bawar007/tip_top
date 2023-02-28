@@ -48,7 +48,7 @@ const Opinions = () => {
 
   return (
     <section className="opinionsPage" id="opinions">
-      <h1>Referencje</h1>
+      <h1>opinie</h1>
       <div className="opinionsBox">{opinion}</div>
       {picFromProject && (
         <GalleryTest

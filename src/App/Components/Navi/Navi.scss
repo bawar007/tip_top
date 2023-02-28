@@ -22,10 +22,10 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
 
 @media (min-width: 700px) {
   .Navi {
-    height: 70vh;
-    width: 60px;
+    height: 90vh;
+    width: 70px;
     right: 0;
-    top: 15vh;
+    top: 5vh;
     margin-right: 20px;
     background-color: rgba(0, 0, 0, 0.7);
     mix-blend-mode: normal;
@@ -35,8 +35,13 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
       a {
         text-decoration: none;
         color: white;
+        text-transform: uppercase;
         &:hover {
           color: #afcb1f;
+        }
+        &:hover img {
+          filter: $filter;
+          cursor: pointer;
         }
       }
       img {
@@ -45,41 +50,26 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
         margin-top: 10px;
         padding: 5px;
       }
+      .realizations {
+        filter: brightness(0) saturate(100%) invert(85%) sepia(100%)
+          saturate(6%) hue-rotate(89deg) brightness(103%) contrast(111%);
+      }
       .logoItem {
         position: absolute;
         width: 100px;
         height: 100px;
         margin-left: 4px;
+        pointer-events: none;
       }
-      .OfertNavi {
-        &:hover {
-          filter: $filter;
-          cursor: pointer;
-        }
-      }
+
       .Home {
         margin-top: 100px;
-        &:hover {
-          filter: $filter;
-          cursor: pointer;
-        }
       }
-      .Gallery {
-        &:hover {
-          filter: $filter;
-          cursor: pointer;
-        }
-      }
-      .Contact {
-        &:hover {
-          filter: $filter;
-          cursor: pointer;
-        }
-      }
+
       .ArrowUp {
         position: absolute;
         bottom: 0;
-        right: 0;
+        right: 3px;
         &:hover {
           filter: $filter;
           cursor: pointer;

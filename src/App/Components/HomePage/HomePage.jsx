@@ -11,20 +11,31 @@ const HomePage = () => {
   useEffect(() => {
     const observerHome = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        const arrowUp = document.querySelector(".ArrowUpTestLink");
+        const arrowUpMobile = document.querySelector(".ArrowUpTestLink");
+        const arrowUpPC = document.querySelector(".ArrowUpPC");
         const menu = document.querySelector(".menu");
         if (entry.isIntersecting) {
-          arrowUp.style.display = "none";
-          menu.style.bottom = "10px";
+          if (arrowUpMobile) {
+            arrowUpMobile.style.display = "none";
+            menu.style.bottom = "10px";
+          }
+
+          if (arrowUpPC) {
+            arrowUpPC.style.display = "none";
+          }
         } else {
-          arrowUp.style.display = "block";
-          menu.style.bottom = "90px";
+          if (arrowUpMobile) {
+            arrowUpMobile.style.display = "block";
+            menu.style.bottom = "90px";
+          }
+          if (arrowUpPC) {
+            arrowUpPC.style.display = "block";
+          }
         }
       });
     });
 
     const homeEl = document.querySelector(".homePage");
-
     observerHome.observe(homeEl);
   });
 

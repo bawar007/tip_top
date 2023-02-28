@@ -2,11 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../../Provider/Provider";
 
 const Navi = () => {
-  const { setPage, page, windowW, tip } = useContext(AppContext);
-
-  const handleScroll = (pageEl) => {
-    setPage(pageEl);
-  };
+  const { windowW, tip } = useContext(AppContext);
 
   return (
     <div className="Navi">
@@ -19,12 +15,12 @@ const Navi = () => {
           />
         )}
 
-        <a href="#home" onClick={() => handleScroll(1)}>
+        <a href="#home">
           <img src={`${tip}/icons/Home.svg`} alt="home" className="Home" />
           <p>HOME</p>
         </a>
 
-        <a href="#ofert" onClick={() => handleScroll(2)}>
+        <a href="#ofert">
           <img
             src={`${tip}/icons/offert.svg`}
             alt="ofert"
@@ -33,12 +29,23 @@ const Navi = () => {
           <p>OFERTA</p>
         </a>
 
-        <a href="#gallery" onClick={() => handleScroll(3)}>
-          <i class="fa-duotone fa-user-helmet-safety"></i>
-          <p>Realzacje</p>
+        <a href="#gallery">
+          <img
+            src={`${tip}/icons/projects.svg`}
+            alt="ofert"
+            className="OfertNavitest realizations"
+          />
+          Realizacje
         </a>
-
-        <a href="#contact" onClick={() => handleScroll(4)}>
+        <a href="#opinions">
+          <img
+            src={`${tip}/icons/medalstar.svg`}
+            alt="opinion"
+            className="OfertNavitest"
+          />
+          Opinie
+        </a>
+        <a href="#contact">
           <img
             src={`${tip}/icons/Contact.svg`}
             alt="contact"
@@ -49,24 +56,13 @@ const Navi = () => {
 
         {windowW && (
           <>
-            {page >= 1 && page < 4 && (
-              <a href="#contact" onClick={() => handleScroll(4)}>
-                <img
-                  src={`${tip}/icons/arrowcircledown.svg`}
-                  alt="arrowUp"
-                  className="ArrowUp"
-                />
-              </a>
-            )}
-            {page === 4 && (
-              <a href="#home" onClick={() => handleScroll(1)}>
-                <img
-                  src={`${tip}/icons/arrowcircleup.svg`}
-                  alt="arrowUp"
-                  className="ArrowUp"
-                />
-              </a>
-            )}
+            <a href="#home" className="ArrowUpPC">
+              <img
+                src={`${tip}/icons/arrowcircleup.svg`}
+                alt="arrowUp"
+                className="ArrowUp"
+              />
+            </a>
           </>
         )}
       </div>
