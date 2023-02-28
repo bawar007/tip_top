@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 
 import { images } from "./SubComponents/image-data";
 
@@ -25,30 +25,11 @@ const GalleryPage = () => {
   };
 
   const gallery = images.map((image, index) => (
-    <div className="pic" key={index} onClick={() => handleClick(image.id)}>
+    <div className="pic test" key={index} onClick={() => handleClick(image.id)}>
       <img src={`${tip}${image.first}`} alt={image} className="pic_img" />
       <h3>Projekt {index + 1}</h3>
     </div>
   ));
-
-  useEffect(() => {
-    const galerryElements = document.querySelectorAll(".pic");
-
-    const observer = new IntersectionObserver((entries) => {
-      // Loop over the entries
-      entries.forEach((entry, index) => {
-        // If the element is visible
-        if (entry.isIntersecting) {
-          // Add the animation class
-          entry.target.classList.add("animate__animated", "animate__fadeInUp");
-          document
-            .querySelector(".title_gallery")
-            .classList.add("animate__animated", "animate__fadeInUp");
-        }
-      });
-    });
-    galerryElements.forEach((el) => observer.observe(el));
-  });
 
   return (
     <div className="galleryPage" id="gallery">
