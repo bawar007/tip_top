@@ -2,8 +2,9 @@ import { useContext } from "react";
 import AllSelectedPicsFromGallery from "../SubComponents/AllSelectedPicsFromGallery/AllSelectedPicsFromGallery";
 import { AppContext } from "../../../../../Provider/Provider";
 
-const AllPics = ({ setAllPics, setPicIndex, allPicGalleryPop, picIndex }) => {
-  const { tip } = useContext(AppContext);
+const AllPics = () => {
+  const { tip, allPicGalleryPop, setPicIndex, setAllPics } =
+    useContext(AppContext);
 
   const handleNextPic = () => {
     setPicIndex((prev) => {
@@ -41,11 +42,7 @@ const AllPics = ({ setAllPics, setPicIndex, allPicGalleryPop, picIndex }) => {
           className="arrow_gallery"
         />
       </div>
-      <AllSelectedPicsFromGallery
-        allPicGalleryPop={allPicGalleryPop}
-        picIndex={picIndex}
-        setPicIndex={setPicIndex}
-      />
+      <AllSelectedPicsFromGallery />
       <div className="next" onClick={handleNextPic}>
         <img
           src={`${tip}/icons/arrowcircleright.svg`}
@@ -58,3 +55,5 @@ const AllPics = ({ setAllPics, setPicIndex, allPicGalleryPop, picIndex }) => {
 };
 
 export default AllPics;
+
+//component małych zdjęć

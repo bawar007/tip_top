@@ -22,38 +22,17 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
 
 @media (min-width: 700px) {
   .Navi {
-    height: 90vh;
+    height: 75vh;
     width: 70px;
     right: 0;
-    top: 5vh;
+    top: 12.5vh;
     margin-right: 20px;
     background-color: rgba(0, 0, 0, 0.7);
     mix-blend-mode: normal;
     border-radius: 25px;
     z-index: 99;
+    transition: 0.5s;
     .Menu {
-      a {
-        text-decoration: none;
-        color: white;
-        text-transform: uppercase;
-        &:hover {
-          color: #afcb1f;
-        }
-        &:hover img {
-          filter: $filter;
-          cursor: pointer;
-        }
-      }
-      img {
-        width: 60px;
-        height: 60px;
-        margin-top: 10px;
-        padding: 5px;
-      }
-      .realizations {
-        filter: brightness(0) saturate(100%) invert(85%) sepia(100%)
-          saturate(6%) hue-rotate(89deg) brightness(103%) contrast(111%);
-      }
       .logoItem {
         position: absolute;
         width: 100px;
@@ -61,48 +40,85 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
         margin-left: 4px;
         pointer-events: none;
       }
+      ul {
+        li {
+          cursor: pointer;
+          transition: all ease-out 120ms;
 
-      .Home {
-        margin-top: 100px;
+          .realizations {
+            filter: brightness(0) saturate(100%) invert(85%) sepia(100%)
+              saturate(6%) hue-rotate(89deg) brightness(103%) contrast(111%);
+          }
+
+          .Home {
+            margin-top: 100px;
+          }
+
+          a {
+            text-decoration: none;
+            color: white;
+            text-transform: uppercase;
+            &:hover {
+              color: #afcb1f;
+            }
+
+            img {
+              width: 60px;
+              height: 60px;
+
+              padding: 5px;
+              margin: auto;
+              margin-top: 10px;
+            }
+          }
+
+          &:hover {
+            .tool {
+              visibility: visible;
+              opacity: 1;
+              text-transform: uppercase;
+            }
+            img {
+              filter: $filter;
+              cursor: pointer;
+            }
+          }
+          .tool {
+            display: inline-block;
+            position: absolute;
+            background-color: black;
+            padding: 15px;
+            border-radius: 3px;
+            margin-top: -50px;
+            right: 80px;
+            opacity: 0;
+            visibility: hidden;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: 0.5s ease;
+            &:before {
+              content: "";
+              display: block;
+              position: absolute;
+              right: -4px;
+              top: 15px;
+              transform: rotate(45deg);
+              width: 10px;
+              height: 10px;
+              background-color: inherit;
+            }
+          }
+        }
       }
-
       .ArrowUp {
         position: absolute;
-        bottom: 0;
-        right: 3px;
+        bottom: 10px;
+        right: 4px;
+        width: 60px;
+        height: 60px;
         &:hover {
           filter: $filter;
           cursor: pointer;
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 700px) {
-  .Navi {
-    width: 100%;
-    min-height: 80px;
-    background-color: black;
-    top: 0;
-    left: 0;
-    .Menu {
-      margin: 0 5px;
-      flex-direction: row;
-      section {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        max-width: 25%;
-        width: 25%;
-        padding: 10px 0;
-        p {
-          font-size: 1rem;
-        }
-        img {
-          max-width: 40px;
-          max-height: 40px;
         }
       }
     }

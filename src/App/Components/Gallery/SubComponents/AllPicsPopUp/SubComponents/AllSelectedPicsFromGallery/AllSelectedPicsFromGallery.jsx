@@ -1,12 +1,9 @@
 import { useContext } from "react";
 import { AppContext } from "../../../../../../Provider/Provider";
 
-const AllSelectedPicsFromGallery = ({
-  allPicGalleryPop,
-  picIndex,
-  setPicIndex,
-}) => {
-  const { tip } = useContext(AppContext);
+const AllSelectedPicsFromGallery = () => {
+  const { tip, allPicGalleryPop, picIndex, setPicIndex } =
+    useContext(AppContext);
 
   const AllSelectedPicsFromGallery = allPicGalleryPop[0].all.map(
     (el, index) => (
@@ -24,3 +21,5 @@ const AllSelectedPicsFromGallery = ({
 };
 
 export default AllSelectedPicsFromGallery;
+
+// małe zdjęcia w popUpie

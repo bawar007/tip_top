@@ -9,6 +9,7 @@ import Navi from "./Components/Navi/Navi";
 import Ofert from "./Components/Oferta/Oferta";
 import NaviMobile from "./Components/Navi/NaviMobile";
 import Opinions from "./Components/Opinions/Opinions";
+import Modal from "./Components/Gallery/SubComponents/Modal/Modal";
 
 function App() {
   const winW = useRef(window.innerWidth);
@@ -21,6 +22,7 @@ function App() {
         <Opinions />
         <ContactPage />
         {winW.current > 700 ? <Navi /> : <NaviMobile />}
+        <Modal />
       </div>
     </AppProvider>
   );

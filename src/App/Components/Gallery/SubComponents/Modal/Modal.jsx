@@ -1,9 +1,11 @@
-const Modal = ({ modalRef }) => {
+const Modal = () => {
   return (
-    <div className="modal" ref={modalRef} style={{ display: "none" }}>
+    <div className="modal" style={{ display: "none" }}>
       <span
         className="close"
-        onClick={() => (modalRef.current.style.display = "none")}
+        onClick={() =>
+          (document.querySelector(".modal").style.display = "none")
+        }
       >
         &times;
       </span>

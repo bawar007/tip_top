@@ -1,21 +1,14 @@
-import { useState } from "react";
+import { useContext } from "react";
 
-import { images } from "../../Components/Gallery/SubComponents/image-data";
-import GalleryTest from "../Gallery/SubComponents/GalleryTest";
+import MobileGallery from "../Gallery/SubComponents/Mobile/MobileGallery";
 
 import { opinions } from "./data/opinions_data";
+import { AppContext } from "../../Provider/Provider";
+
+import AllPicsPopUp from "../Gallery/SubComponents/AllPicsPopUp/AllPicsPopMenu/AllPicsPopup";
 
 const Opinions = () => {
-  const [picId, setPicId] = useState(1);
-
-  const [picFromProject, setPicsFromProject] = useState(false);
-
-  const allPicGalleryPop = [...images].filter((el) => el.id === picId);
-
-  const handleClick = (id) => {
-    setPicId(id);
-    setPicsFromProject(true);
-  };
+  const { windowW, handleClick, allPics } = useContext(AppContext);
 
   const opinion = opinions.map((opinion) => (
     <div className="opinion" key={opinion.id}>
@@ -47,16 +40,13 @@ const Opinions = () => {
   ));
 
   return (
-    <section className="opinionsPage" id="opinions">
-      <h1>opinie</h1>
-      <div className="opinionsBox">{opinion}</div>
-      {picFromProject && (
-        <GalleryTest
-          allPicGalleryPop={allPicGalleryPop}
-          setAllPics={setPicsFromProject}
-        />
-      )}
-    </section>
+    <>
+      <section className="opinionsPage" id="opinions">
+        <h1>opinie</h1>
+        <div className="opinionsBox">{opinion}</div>
+      </section>
+      {allPics ? !windowW ? <MobileGallery /> : <AllPicsPopUp /> : null}
+    </>
   );
 };
 

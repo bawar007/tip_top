@@ -1,8 +1,8 @@
 import { useContext, useEffect } from "react";
 import { AppContext } from "../../../../../Provider/Provider";
 
-const OnePicFromGallery = ({ allPicGalleryPop, picIndex, modal }) => {
-  const { windowW, tip } = useContext(AppContext);
+const OnePicFromGallery = () => {
+  const { windowW, tip, allPicGalleryPop, picIndex } = useContext(AppContext);
 
   const OnePicFromGallery = allPicGalleryPop[0].all
     .filter((el, index) => index === picIndex)
@@ -15,7 +15,7 @@ const OnePicFromGallery = ({ allPicGalleryPop, picIndex, modal }) => {
           id="myImg"
           onClick={() => {
             if (windowW) {
-              const modalEl = modal.current;
+              const modalEl = document.querySelector(".modal");
               const modalImg = document.querySelector("#img01");
               modalEl.style.display = "block";
               modalImg.src = `${tip}${el}`;

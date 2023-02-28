@@ -1,9 +1,12 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import "photoswipe/style.css";
+import { AppContext } from "../../../../Provider/Provider";
 
-const GalleryTest = ({ allPicGalleryPop, setAllPics }) => {
+const GalleryTest = () => {
+  const { setAllPics, allPicGalleryPop } = useContext(AppContext);
+
   useEffect(() => {
     let lightbox = new PhotoSwipeLightbox({
       gallery: "#my-gallerytest",

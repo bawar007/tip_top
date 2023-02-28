@@ -1,33 +1,33 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext } from "react";
 
-import { images } from "./SubComponents/image-data";
+import { images } from "./data/image-data";
 
 import { AppContext } from "../../Provider/Provider";
 
-import AllPicsPopUp from "./SubComponents/AllPicsPopUp/AllPicsPopup";
+import AllPicsPopUp from "./SubComponents/AllPicsPopUp/AllPicsPopMenu/AllPicsPopup";
 
-import Modal from "./SubComponents/Modal/Modal";
-import GalleryTest from "./SubComponents/GalleryTest";
+import MobileGallery from "./SubComponents/Mobile/MobileGallery";
 
 const GalleryPage = () => {
-  const { tip, windowW } = useContext(AppContext);
-
-  const [allPics, setAllPics] = useState(null);
-  const [picId, setPicId] = useState(1);
-  const [picIndex, setPicIndex] = useState(0);
-  const modal = useRef();
-
-  const allPicGalleryPop = [...images].filter((el) => el.id === picId);
-
-  const handleClick = (id) => {
-    setAllPics(true);
-    setPicId(id);
-  };
+  const { tip, windowW, allPics, handleClick } = useContext(AppContext);
 
   const gallery = images.map((image, index) => (
-    <div className="pic test" key={index} onClick={() => handleClick(image.id)}>
-      <img src={`${tip}${image.first}`} alt={image} className="pic_img" />
+    <div className="pic test" key={index}>
+      <img
+        src={`${tip}${image.first}`}
+        alt={image}
+        className="pic_img"
+        onClick={() => (!windowW ? handleClick(image.id) : null)}
+      />
       <h3>Projekt {index + 1}</h3>
+      {windowW && (
+        <button
+          className="btnShowProject"
+          onClick={() => handleClick(image.id)}
+        >
+          sprawdz galerię
+        </button>
+      )}
     </div>
   ));
 
@@ -35,23 +35,7 @@ const GalleryPage = () => {
     <div className="galleryPage" id="gallery">
       <h1 className="title_gallery">REALIZACJE</h1>
       <section className="pics">{gallery}</section>
-      {allPics ? (
-        !windowW ? (
-          <GalleryTest
-            allPicGalleryPop={allPicGalleryPop}
-            setAllPics={setAllPics}
-          />
-        ) : (
-          <AllPicsPopUp
-            allPicGalleryPop={allPicGalleryPop}
-            picIndex={picIndex}
-            modal={modal}
-            setAllPics={setAllPics}
-            setPicIndex={setPicIndex}
-          />
-        )
-      ) : null}
-      <Modal modalRef={modal} />
+      {allPics ? !windowW ? <MobileGallery /> : <AllPicsPopUp /> : null}
     </div>
   );
 };
