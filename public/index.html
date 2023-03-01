@@ -36,10 +36,61 @@
     />
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
+
+    <style>
+      #map {
+        height: 400px; /* The height is 400 pixels */
+        width: 400px; /* The width is the width of the web page */
+        margin-left: 50px;
+      }
+    </style>
+
     <title>TIP-TOP</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
+  <!-- <script>
+    function initMap() {
+      // The location of Uluru
+      const uluru = { lat: 52.99440455242884, lng: 20.276690939912914 };
+      // The map, centered at Uluru
+      const map = new google.maps.Map(document.querySelector("#map"), {
+        zoom: 18,
+        center: uluru,
+      });
+      const contentString =
+        '<div id="content">' +
+        '<div id="siteNotice">' +
+        "</div>" +
+        '<h1 id="firstHeading" class="firstHeading">TIP-TOP</h1>' +
+        '<div id="bodyContent">' +
+        "<p>TIP-TOP - glazura, wykończenia wnętrz </p>" +
+        "</div>" +
+        "</div>";
+      // The marker, positioned at Uluru
+      const infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        ariaLabel: "TIP-TOP",
+      });
+      const marker = new google.maps.Marker({
+        map,
+        draggable: false,
+        animation: google.maps.Animation.BOUNCE,
+        position: uluru,
+      });
+
+      infowindow.open({
+        anchor: marker,
+        map,
+      });
+    }
+
+    window.initMap = initMap;
+  </script>
+  <script
+    async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeVwoOw-20wXKQ9dkqN3aPhGShjYKPADQ&callback=initMap"
+  ></script> -->
 </html>

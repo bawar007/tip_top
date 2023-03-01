@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../Provider/Provider";
+import MyMap from "./MyMap";
 
 const ContactPage = () => {
   const { tip } = useContext(AppContext);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       // Loop over the entries
-      entries.forEach((entry, index) => {
+      entries.forEach((entry) => {
         // If the element is visible
         if (entry.isIntersecting) {
           // Add the animation class
@@ -17,6 +18,10 @@ const ContactPage = () => {
             .forEach((el) =>
               el.classList.add("animate__animated", "animate__jackInTheBox")
             );
+          document
+            .querySelector(".contact")
+            .classList.add("animationContactPage");
+          document.querySelector(".picture").classList.add("animationPicture");
         }
       });
     });
@@ -72,7 +77,9 @@ const ContactPage = () => {
             </ul>
           </div>
           <div className="picture">
-            <img src={`${tip}/gallery/budowlaniec.jpg`} alt="" />
+            <div id="map">
+              <MyMap />
+            </div>
           </div>
         </div>
         <footer className="footer">
