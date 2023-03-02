@@ -18,7 +18,7 @@
         margin-left: 10px;
         margin-top: 20px;
         .logoItem {
-          width: 50%;
+          width: 40%;
           margin: 0;
           margin-left: 25%;
         }
@@ -26,6 +26,7 @@
           display: flex;
           align-items: center;
           text-align: center;
+
           img {
             width: 40px;
           }
@@ -86,6 +87,10 @@
         width: 40%;
         padding-left: 40px;
         border-right: 2px solid black;
+
+        .logoItem {
+          width: 60%;
+        }
       }
       .animationContactPage {
         animation: animecontact 0.7s ease-in;
