@@ -10,22 +10,23 @@ $animationTime: 1.5s;
 .logoI {
   background-color: #e60881;
   position: absolute;
-  left: -45px;
-  top: 0;
+  top: 150px;
   animation: logoIA $animationTime ease;
   animation-delay: $delay;
 }
 
 @keyframes logoIA {
-  from {
-    left: 35%;
-    top: 50%;
-    display: none;
+  0% {
+    transform: rotate(360deg);
   }
-  to {
-    left: -45px;
-    top: 0;
-    display: block;
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
 
@@ -34,65 +35,100 @@ $animationTime: 1.5s;
 
   box-shadow: rgba(0, 0, 0, 0.577) 1px 1px 1px 1px;
   position: absolute;
-  top: 0;
-  right: -40px;
+  top: 150px;
+  right: 20px;
   animation: logoIIA $animationTime ease;
   animation-delay: $delay;
 }
 
 @keyframes logoIIA {
-  from {
-    right: 35%;
-    top: 50%;
-    display: none;
+  0% {
+    transform: rotate(-360deg);
   }
-  to {
-    top: 0;
-    right: -40px;
-    display: block;
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
 
 .logoIII {
   background-color: #e60881;
   position: absolute;
-  bottom: -30px;
-  left: -45px;
   animation: logoIIIA $animationTime ease;
   animation-delay: $delay;
 }
 
 @keyframes logoIIIA {
-  from {
-    left: 35%;
-    bottom: 50%;
-    display: none;
+  0% {
+    transform: rotate(360deg);
   }
-  to {
-    bottom: -30px;
-    left: -45px;
-    display: block;
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
 
 .logoIIII {
   background-color: #afcb1f;
   position: absolute;
-  bottom: -30px;
-  right: -40px;
+
   animation: logoIIIIA $animationTime ease;
   animation-delay: $delay;
 }
 
 @keyframes logoIIIIA {
-  from {
-    right: 35%;
-    bottom: 50%;
-    display: none;
+  0% {
+    transform: rotate(-360deg);
   }
-  to {
-    bottom: -30px;
-    right: -40px;
-    display: block;
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@media (min-width: 700px) {
+  .logoI {
+    left: 10%;
+  }
+
+  .logoIII {
+    bottom: 150px;
+    left: 10%;
+  }
+
+  .logoIIII {
+    bottom: 150px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .logoI {
+    left: 20px;
+  }
+
+  .logoIII {
+    bottom: -25px;
+    left: 20px;
+  }
+
+  .logoIIII {
+    bottom: -25px;
+    right: 20px;
   }
 }

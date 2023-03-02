@@ -9,8 +9,10 @@ const ContactPage = () => {
   const { tip, windowW } = useContext(AppContext);
 
   useEffect(() => {
-    const el = document.querySelector("#logoContact");
-    observer.observe(el);
+    const el = document.querySelector(".contact");
+    if (el) {
+      observer.observe(el);
+    }
   });
 
   const listContactData = contactData.map((item) => (
@@ -29,15 +31,6 @@ const ContactPage = () => {
       <div className="contactPage" id="contact">
         <div className="con">
           <div className="contact">
-            {windowW && (
-              <img
-                src={`${tip}/icons/LogoTipTopCss.svg`}
-                alt="logo"
-                className="logoItem"
-                id="logoContact"
-              />
-            )}
-
             <h1 className="tested">DANE KONTAKTOWE</h1>
 
             <ul className="tested">

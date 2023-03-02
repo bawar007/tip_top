@@ -5,17 +5,15 @@ export const observer = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       // Add the animation class
       const targetElement = entry.target;
-      const testedEl = document.querySelectorAll(".tested");
-      const contactEl = document.querySelector(".contact");
-      const pictureEl = document.querySelector(".picture");
       const logoEl = document.querySelectorAll(".logoTest");
-
+      const mapEl = document.querySelector("#map");
       targetElement.classList.add("animate__rollIn", "animate__animated");
-      testedEl.forEach((el) =>
-        el.classList.add("animate__animated", "animate__jackInTheBox")
-      );
-      contactEl.classList.add("animationContactPage");
-      pictureEl.classList.add("animationPicture");
+
+      setTimeout(() => {
+        mapEl.style.display = "block";
+        mapEl.classList.add("animationMap");
+      }, 2000);
+
       logoEl.forEach((el) => (el.style.display = "block"));
     }
   });
