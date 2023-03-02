@@ -2,78 +2,58 @@ import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../Provider/Provider";
 import MyMap from "./MyMap";
 
-const ContactPage = () => {
-  const { tip } = useContext(AppContext);
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      // Loop over the entries
-      entries.forEach((entry) => {
-        // If the element is visible
-        if (entry.isIntersecting) {
-          // Add the animation class
+import { observer } from "./helper/observer";
+import { contactData } from "./helper/contactData";
 
-          entry.target.classList.add("animate__rollIn", "animate__animated");
-          document
-            .querySelectorAll(".tested")
-            .forEach((el) =>
-              el.classList.add("animate__animated", "animate__jackInTheBox")
-            );
-          document
-            .querySelector(".contact")
-            .classList.add("animationContactPage");
-          document.querySelector(".picture").classList.add("animationPicture");
-        }
-      });
-    });
+const ContactPage = () => {
+  const { tip, windowW } = useContext(AppContext);
+
+  useEffect(() => {
     const el = document.querySelector("#logoContact");
     observer.observe(el);
   });
+
+  const listContactData = contactData.map((item) => (
+    <li key={item.id}>
+      <img
+        src={`${tip}${item.imgSrc}`}
+        className="OfertNavitest"
+        alt={item.td}
+      />
+      <span>{item.text}</span>
+    </li>
+  ));
+
   return (
     <>
       <div className="contactPage" id="contact">
         <div className="con">
           <div className="contact">
-            <img
-              src={`${tip}/icons/LogoTipTopCss.svg`}
-              alt="logo"
-              className="logoItem"
-              id="logoContact"
-            />
+            {windowW && (
+              <img
+                src={`${tip}/icons/LogoTipTopCss.svg`}
+                alt="logo"
+                className="logoItem"
+                id="logoContact"
+              />
+            )}
 
             <h1 className="tested">DANE KONTAKTOWE</h1>
+
             <ul className="tested">
-              <li>
+              {!windowW && (
                 <img
-                  src={`${tip}/icons/ovner.svg`}
-                  className="OfertNavitest"
-                  alt="ovner"
+                  src={`${tip}/icons/LogoTipTopCss.svg`}
+                  alt="logo"
+                  className="logoItem"
+                  id="logoContact"
                 />
-                <span>Artur Barski</span>
-              </li>
-              <li>
-                <img
-                  src={`${tip}/icons/mail.svg`}
-                  className="OfertNavitest"
-                  alt="mail"
-                />
-                <span>tiptopglazura@gmail.com</span>
-              </li>
-              <li>
-                <img
-                  src={`${tip}/icons/phone.svg`}
-                  className="OfertNavitest"
-                  alt="phone"
-                />
-                <span>508-531-655</span>
-              </li>
-              <li>
-                <img
-                  src={`${tip}/icons/location.svg`}
-                  className="OfertNavitest"
-                  alt="location"
-                />
-                <span>Kowalewko, 06-445 Strzegowo</span>
-              </li>
+              )}
+              <div className="logoI logoTest"></div>
+              <div className="logoII logoTest"></div>
+              <div className="logoIII logoTest"></div>
+              <div className="logoIIII logoTest"></div>
+              {listContactData}
             </ul>
           </div>
           <div className="picture">

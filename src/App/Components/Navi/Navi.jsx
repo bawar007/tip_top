@@ -2,18 +2,18 @@ import React, { useContext } from "react";
 import { AppContext } from "../../Provider/Provider";
 
 const Navi = () => {
-  const { windowW, tip } = useContext(AppContext);
+  const { windowW, windowH, tip } = useContext(AppContext);
 
   return (
     <div className="Navi">
       <div className="Menu">
-        {windowW && (
+        {windowW && windowH ? (
           <img
             src={`${tip}/icons/LogoTipTopCss.svg`}
             alt="logo"
             className="logoItem"
           />
-        )}
+        ) : null}
 
         <nav>
           <ul>

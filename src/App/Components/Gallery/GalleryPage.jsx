@@ -9,7 +9,8 @@ import AllPicsPopUp from "./SubComponents/AllPicsPopUp/AllPicsPopMenu/AllPicsPop
 import MobileGallery from "./SubComponents/Mobile/MobileGallery";
 
 const GalleryPage = () => {
-  const { tip, windowW, allPics, handleClick } = useContext(AppContext);
+  const { tip, windowW, windowH, allPics, handleClick } =
+    useContext(AppContext);
 
   const gallery = images.map((image, index) => (
     <div className="pic test" key={index}>
@@ -35,7 +36,13 @@ const GalleryPage = () => {
     <div className="galleryPage" id="gallery">
       <h1 className="title_gallery">REALIZACJE</h1>
       <section className="pics">{gallery}</section>
-      {allPics ? !windowW ? <MobileGallery /> : <AllPicsPopUp /> : null}
+      {allPics ? (
+        windowW && windowH ? (
+          <AllPicsPopUp />
+        ) : (
+          <MobileGallery />
+        )
+      ) : null}
     </div>
   );
 };

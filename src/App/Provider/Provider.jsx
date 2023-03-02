@@ -7,7 +7,9 @@ export const AppContext = createContext(null);
 const AppProvider = ({ children }) => {
   const [page, setPage] = useState(1);
   const windowWidth = useRef(window.innerWidth);
+  const windowHeight = useRef(window.innerHeight);
   const windowW = windowWidth.current > 700;
+  const windowH = windowHeight.current > 370;
   const tip = "/tip_top";
 
   const [allPics, setAllPics] = useState(false);
@@ -28,6 +30,7 @@ const AppProvider = ({ children }) => {
         page,
         setPage,
         windowW,
+        windowH,
         tip,
         setAllPics,
         allPics,

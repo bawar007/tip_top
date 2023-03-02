@@ -1,0 +1,98 @@
+$delay: 1.1s;
+$animationTime: 1.5s;
+
+.logoTest {
+  width: 34px;
+  height: 34px;
+  display: none;
+}
+
+.logoI {
+  background-color: #e60881;
+  position: absolute;
+  left: -45px;
+  top: 0;
+  animation: logoIA $animationTime ease;
+  animation-delay: $delay;
+}
+
+@keyframes logoIA {
+  from {
+    left: 35%;
+    top: 50%;
+    display: none;
+  }
+  to {
+    left: -45px;
+    top: 0;
+    display: block;
+  }
+}
+
+.logoII {
+  background-color: white;
+
+  box-shadow: rgba(0, 0, 0, 0.577) 1px 1px 1px 1px;
+  position: absolute;
+  top: 0;
+  right: -40px;
+  animation: logoIIA $animationTime ease;
+  animation-delay: $delay;
+}
+
+@keyframes logoIIA {
+  from {
+    right: 35%;
+    top: 50%;
+    display: none;
+  }
+  to {
+    top: 0;
+    right: -40px;
+    display: block;
+  }
+}
+
+.logoIII {
+  background-color: #e60881;
+  position: absolute;
+  bottom: -30px;
+  left: -45px;
+  animation: logoIIIA $animationTime ease;
+  animation-delay: $delay;
+}
+
+@keyframes logoIIIA {
+  from {
+    left: 35%;
+    bottom: 50%;
+    display: none;
+  }
+  to {
+    bottom: -30px;
+    left: -45px;
+    display: block;
+  }
+}
+
+.logoIIII {
+  background-color: #afcb1f;
+  position: absolute;
+  bottom: -30px;
+  right: -40px;
+  animation: logoIIIIA $animationTime ease;
+  animation-delay: $delay;
+}
+
+@keyframes logoIIIIA {
+  from {
+    right: 35%;
+    bottom: 50%;
+    display: none;
+  }
+  to {
+    bottom: -30px;
+    right: -40px;
+    display: block;
+  }
+}

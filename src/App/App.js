@@ -13,6 +13,7 @@ import Modal from "./Components/Gallery/SubComponents/Modal/Modal";
 
 function App() {
   const winW = useRef(window.innerWidth);
+  const winH = useRef(window.innerHeight);
   return (
     <AppProvider>
       <div className="App">
@@ -21,7 +22,7 @@ function App() {
         <GalleryPage />
         <Opinions />
         <ContactPage />
-        {winW.current > 700 ? <Navi /> : <NaviMobile />}
+        {winW.current > 700 && winH.current > 370 ? <Navi /> : <NaviMobile />}
         <Modal />
       </div>
     </AppProvider>
