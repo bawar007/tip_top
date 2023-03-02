@@ -1,3 +1,5 @@
+@import "./testanimation.scss";
+
 .contactPage {
   width: 100%;
   min-height: 100vh;
@@ -15,6 +17,11 @@
       ul {
         margin-left: 10px;
         margin-top: 20px;
+        .logoItem {
+          width: 50%;
+          margin: 0;
+          margin-left: 25%;
+        }
         li {
           display: flex;
           align-items: center;
@@ -27,12 +34,9 @@
           }
         }
       }
-      .logoItem {
-        margin-top: 50px;
-        width: 50%;
-      }
+
       .tested {
-        animation-delay: 1.5s;
+        animation-delay: 1s;
       }
     }
     .picture {
@@ -46,6 +50,19 @@
       }
     }
   }
+
+  .infoBoxMap {
+    .infoBoxMapContent {
+      display: flex;
+      margin-top: 5px;
+      flex-direction: column;
+      align-items: center;
+      a {
+        padding: 5px 0;
+      }
+    }
+  }
+
   .footer {
     width: 100%;
     border-top: 5px solid orange;
@@ -115,6 +132,12 @@
       flex-direction: column;
       .contact {
         width: 100%;
+        h1 {
+          margin-top: 40px;
+        }
+        .logoItem {
+          height: 70px;
+        }
       }
       .picture {
         width: 100%;
