@@ -6,7 +6,7 @@ import { observer } from "./helper/observer";
 import { contactData } from "./helper/contactData";
 
 const ContactPage = () => {
-  const { tip, windowW } = useContext(AppContext);
+  const { tip } = useContext(AppContext);
 
   useEffect(() => {
     const el = document.querySelector(".contact");
@@ -34,14 +34,6 @@ const ContactPage = () => {
             <h1 className="tested">DANE KONTAKTOWE</h1>
 
             <ul className="tested">
-              {!windowW && (
-                <img
-                  src={`${tip}/icons/LogoTipTopCss.svg`}
-                  alt="logo"
-                  className="logoItem"
-                  id="logoContact"
-                />
-              )}
               <div className="logoI logoTest"></div>
               <div className="logoII logoTest"></div>
               <div className="logoIII logoTest"></div>

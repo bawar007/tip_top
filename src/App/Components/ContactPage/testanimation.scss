@@ -10,7 +10,7 @@ $animationTime: 1.5s;
 .logoI {
   background-color: #e60881;
   position: absolute;
-  top: 150px;
+  top: 80px;
   animation: logoIA $animationTime ease;
   animation-delay: $delay;
 }
@@ -35,7 +35,7 @@ $animationTime: 1.5s;
 
   box-shadow: rgba(0, 0, 0, 0.577) 1px 1px 1px 1px;
   position: absolute;
-  top: 150px;
+  top: 80px;
   right: 20px;
   animation: logoIIA $animationTime ease;
   animation-delay: $delay;
@@ -103,12 +103,12 @@ $animationTime: 1.5s;
 
 @media (min-width: 700px) {
   .logoI {
-    left: 10%;
+    left: 15%;
   }
 
   .logoIII {
     bottom: 150px;
-    left: 10%;
+    left: 15%;
   }
 
   .logoIIII {
