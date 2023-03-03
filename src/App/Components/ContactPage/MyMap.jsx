@@ -8,14 +8,14 @@ import { useContext, useState } from "react";
 import { AppContext } from "../../Provider/Provider";
 
 const containerStyle = {
-  width: "400px",
-  height: "400px",
+  width: "100%",
+  height: "80%",
+  marginRight: 20,
 };
 
 const containerMobile = {
   width: "80%",
-  height: "400px",
-  margin: "auto",
+  height: "80%",
 };
 
 const center = {

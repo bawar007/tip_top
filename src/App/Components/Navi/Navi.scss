@@ -124,3 +124,10 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
     }
   }
 }
+
+@media (min-height: 550px) and (max-height: 700px) {
+  .Navi {
+    height: 95vh;
+    top: 2.5vh;
+  }
+}

@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 AOS.init();
 
 const HomePage = () => {
-  const { windowW, tip } = useContext(AppContext);
+  const { tip } = useContext(AppContext);
 
   useEffect(() => {
     const observerHome = new IntersectionObserver((entries) => {
@@ -48,13 +48,11 @@ const HomePage = () => {
         data-aos-easing="ease-in-sine"
         data-aos-duration="1500"
       >
-        {!windowW && (
-          <img
-            src={`${tip}/icons/LogoTipTopCss.svg`}
-            alt="logo"
-            className="logoItem"
-          />
-        )}
+        <img
+          src={`${tip}/icons/LogoTipTopCss.svg`}
+          alt="logo"
+          className="logoItem homeItemLogo"
+        />
         <div className="info">
           <h2>Tip - top</h2>
           <p>

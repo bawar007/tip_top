@@ -76,6 +76,7 @@
     .opinionsBox {
       margin-top: 10%;
       overflow-x: scroll;
+      flex-direction: row;
       .opinion:first-child {
         margin-left: 10%;
       }

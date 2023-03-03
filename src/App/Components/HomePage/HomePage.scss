@@ -19,11 +19,14 @@
 
 @media (min-width: 700px) {
   .homePage {
-    height: 100vh;
+    min-height: 100vh;
     align-items: center;
     flex-direction: column;
 
     .homeInfo {
+      .homeItemLogo {
+        display: none;
+      }
       .info {
         width: 40%;
         margin: 5% 0 0 5%;
@@ -41,7 +44,7 @@
 
 @media (max-width: 700px) {
   .homePage {
-    height: 100vh;
+    min-height: 100vh;
     justify-content: left;
 
     .homeInfo {

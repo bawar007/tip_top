@@ -32,14 +32,7 @@ const ContactPage = () => {
         <div className="con">
           <div className="contact">
             <h1 className="tested">DANE KONTAKTOWE</h1>
-
-            <ul className="tested">
-              <div className="logoI logoTest"></div>
-              <div className="logoII logoTest"></div>
-              <div className="logoIII logoTest"></div>
-              <div className="logoIIII logoTest"></div>
-              {listContactData}
-            </ul>
+            <ul className="tested">{listContactData}</ul>
           </div>
           <div className="picture">
             <div id="map">
