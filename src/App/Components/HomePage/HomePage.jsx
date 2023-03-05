@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { AppContext } from "../../Provider/Provider";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { images } from "../Gallery/data/image-data";
 
 AOS.init();
 
@@ -39,8 +40,23 @@ const HomePage = () => {
     observerHome.observe(homeEl);
   });
 
+  const sliderItems = images.map((el, index) => (
+    <div className="mySlides fade" key={index + el.id}>
+      <img src={`${tip}${el.first}`} style={{ maxWidth: "100%" }} alt={el.id} />
+    </div>
+  ));
+
+  const circle = images.map((el, index) => (
+    <span className="dot" key={index}></span>
+  ));
+
   return (
     <section className="homePage" id="home">
+      <div className="slider">
+        <div className="slideshow-container">{sliderItems}</div>
+        <div className="circleItems">{circle}</div>
+      </div>
+
       <div
         className="homeInfo"
         data-aos="fade-right"

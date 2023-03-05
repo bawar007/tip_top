@@ -19,9 +19,9 @@ function App() {
     <AppProvider>
       <div className="App">
         <HomePage />
-        <Ofert />
         <GalleryPage />
         <Opinions />
+        <Ofert />
         <ContactPage />
         {winW.current > 700 && winH.current > 370 ? <Navi /> : <NaviMobile />}
         <Modal />

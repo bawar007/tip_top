@@ -51,22 +51,6 @@ const NaviMobile = () => {
             </a>
           </li>
           <li>
-            <a
-              href="#ofert"
-              onClick={() => {
-                setCheck(false);
-                ofertAnimation();
-              }}
-            >
-              <img
-                src={`${tip}/icons/offert.svg`}
-                alt="ofert"
-                className="OfertNavitest"
-              />
-              Oferta
-            </a>
-          </li>
-          <li>
             <a href="#gallery" onClick={() => setCheck(false)}>
               <img
                 src={`${tip}/icons/projects.svg`}
@@ -76,6 +60,7 @@ const NaviMobile = () => {
               Realizacje
             </a>
           </li>
+
           <li>
             <a
               href="#opinions"
@@ -89,6 +74,22 @@ const NaviMobile = () => {
                 className="OfertNavitest"
               />
               Opinie
+            </a>
+          </li>
+          <li>
+            <a
+              href="#ofert"
+              onClick={() => {
+                setCheck(false);
+                ofertAnimation();
+              }}
+            >
+              <img
+                src={`${tip}/icons/offert.svg`}
+                alt="ofert"
+                className="OfertNavitest"
+              />
+              Oferta
             </a>
           </li>
           <li>

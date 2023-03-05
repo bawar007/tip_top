@@ -3,7 +3,7 @@
   max-width: 100%;
   background-image: url("../../../../public/pictures/baner2.jpg");
   background-size: cover;
-
+  background-position: center;
   .homeInfo {
     display: flex;
     flex-direction: column;
@@ -20,10 +20,79 @@
 @media (min-width: 700px) {
   .homePage {
     min-height: 100vh;
+    width: 100vw;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    .slider {
+      width: 50%;
+      height: 80vh;
+      margin-left: 30px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 25px;
+      /* Slideshow container */
+      .slideshow-container {
+        width: 100%;
+        height: 90%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
+        .mySlides {
+          display: none;
+          width: 100%;
+          height: 100%;
+          justify-content: center;
+          display: flex;
+          align-items: center;
+
+          img {
+            vertical-align: middle;
+            width: 100%;
+            height: 100%;
+            object-fit: scale-down;
+          }
+        }
+      }
+      .circleItems {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 20px 0;
+
+        .dot {
+          height: 15px;
+          width: 15px;
+          margin: 0 2px;
+          background-color: white;
+          border-radius: 50%;
+          display: inline-block;
+          transition: background-color 0.6s ease;
+          position: relative;
+        }
+        .active {
+          background-color: rgba(0, 0, 0, 0.8);
+        }
+      }
+
+      /* Fading animation */
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    }
     .homeInfo {
+      width: 50%;
       .homeItemLogo {
         display: none;
       }
