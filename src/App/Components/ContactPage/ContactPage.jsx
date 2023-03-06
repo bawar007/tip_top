@@ -29,9 +29,9 @@ const ContactPage = () => {
   return (
     <>
       <div className="contactPage" id="contact">
+        <h1 className="title_page">DANE KONTAKTOWE</h1>
         <div className="con">
           <div className="contact">
-            <h1 className="tested">DANE KONTAKTOWE</h1>
             <ul className="tested">{listContactData}</ul>
           </div>
           <div className="picture">

@@ -15,6 +15,7 @@ import Social from "./Components/Social/Social";
 function App() {
   const winW = useRef(window.innerWidth);
   const winH = useRef(window.innerHeight);
+
   return (
     <AppProvider>
       <div className="App">

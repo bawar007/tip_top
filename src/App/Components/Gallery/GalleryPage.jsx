@@ -13,11 +13,11 @@ const GalleryPage = () => {
     useContext(AppContext);
 
   const gallery = images.map((image, index) => (
-    <div className="pic test" key={index}>
+    <div className="pic test animate__fadeInUp animate__animated" key={index}>
       <img
         src={`${tip}${image.first}`}
-        alt={image}
-        className="pic_img"
+        alt={image.id}
+        className="pic_img "
         onClick={() => (!windowW ? handleClick(image.id) : null)}
       />
       <h3>Projekt {index + 1}</h3>
@@ -34,7 +34,7 @@ const GalleryPage = () => {
 
   return (
     <div className="galleryPage" id="gallery">
-      <h1 className="title_gallery">REALIZACJE</h1>
+      <h1 className="title_page">REALIZACJE</h1>
       <section className="pics">{gallery}</section>
       {allPics ? (
         windowW && windowH ? (

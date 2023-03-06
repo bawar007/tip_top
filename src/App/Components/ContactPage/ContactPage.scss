@@ -3,6 +3,10 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-top: 30px;
+  h1 {
+    color: black;
+  }
   .con {
     display: flex;
     .contact {
@@ -134,8 +138,11 @@
         width: 100%;
         margin-bottom: 50px;
         #map {
-          width: 100%;
-          height: 400px;
+          height: 50vh;
+          margin: 0;
+          #marker-example {
+            min-width: 100%;
+          }
         }
       }
     }

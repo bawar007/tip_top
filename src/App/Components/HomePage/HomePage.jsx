@@ -52,40 +52,49 @@ const HomePage = () => {
 
   return (
     <section className="homePage" id="home">
-      <div className="slider">
-        <div className="slideshow-container">{sliderItems}</div>
-        <div className="circleItems">{circle}</div>
-      </div>
-
-      <div
-        className="homeInfo"
-        data-aos="fade-right"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-sine"
-        data-aos-duration="1500"
-      >
-        <img
-          src={`${tip}/icons/LogoTipTopCss.svg`}
-          alt="logo"
-          className="logoItem homeItemLogo"
-        />
-        <div className="info">
-          <h2>Tip - top</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-            maiores, corporis labore totam ipsam laborum nostrum iste
-            consectetur obcaecati, ratione vero cumque officia eveniet rerum
-            distinctio placeat dolorem est dolor?
-          </p>
+      <div className="title_page_logo">
+        <div>
+          <span className="tip">TIP</span>
         </div>
-        <div className="info">
-          <h2>Tip - top</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-            maiores, corporis labore totam ipsam laborum nostrum iste
-            consectetur obcaecati, ratione vero cumque officia eveniet rerum
-            distinctio placeat dolorem est dolor?
-          </p>
+        <div>
+          <span className="top">TOP</span>
+        </div>
+      </div>
+      <div className="homePage_content">
+        <div className="slider">
+          <div className="slideshow-container">{sliderItems}</div>
+          <div className="circleItems">{circle}</div>
+        </div>
+        <div
+          className="homeInfo"
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="1500"
+        >
+          <img
+            src={`${tip}/icons/LogoTipTopCss.svg`}
+            alt="logo"
+            className="logoItem homeItemLogo"
+          />
+          <div className="info">
+            <h2>Tip - top</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+              maiores, corporis labore totam ipsam laborum nostrum iste
+              consectetur obcaecati, ratione vero cumque officia eveniet rerum
+              distinctio placeat dolorem est dolor?
+            </p>
+          </div>
+          <div className="info">
+            <h2>Tip - top</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+              maiores, corporis labore totam ipsam laborum nostrum iste
+              consectetur obcaecati, ratione vero cumque officia eveniet rerum
+              distinctio placeat dolorem est dolor?
+            </p>
+          </div>
         </div>
       </div>
     </section>

@@ -1,12 +1,13 @@
+@import "./data/AddOpinion.scss";
+
 .opinionsPage {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  padding-top: 30px;
   h1 {
-    margin-top: 50px;
-    text-transform: uppercase;
-    font-size: 36px;
-    letter-spacing: 2px;
+    color: black;
   }
   .opinionsBox {
     display: flex;
@@ -71,7 +72,6 @@
   .opinionsPage {
     width: 100vw;
     align-items: center;
-    padding-top: 20px;
     box-shadow: 0px 19px 22px -2px rgba(184, 184, 204, 1);
     .opinionsBox {
       margin-top: 10%;
@@ -93,7 +93,7 @@
 
 @media (min-width: 700px) {
   .opinionsPage {
-    align-items: center;
+    align-items: flex-start;
     .opinionsBox {
       flex-wrap: wrap;
       margin-top: 5%;
