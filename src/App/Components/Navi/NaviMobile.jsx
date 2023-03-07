@@ -34,7 +34,7 @@ const NaviMobile = () => {
 
   return (
     <>
-      <label>
+      <label className="navi-mobile-label">
         <input type="checkbox" checked={check} readOnly />
         <span className="menu" onClick={() => setCheck((prev) => !prev)}>
           <span className="hamburger"></span>

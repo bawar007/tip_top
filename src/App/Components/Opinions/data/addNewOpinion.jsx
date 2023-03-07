@@ -4,8 +4,8 @@ import { useState } from "react";
 import validator from "validator";
 
 const AddNewOpinion = ({ getUsers, phoneNumber }) => {
-  const [imie, setImie] = useState("");
-  const [nazwisko, setNazwisko] = useState("");
+  const [imie, setImie] = useState();
+  const [nazwisko, setNazwisko] = useState();
   const [email, setEmail] = useState("");
   const [projekt_id, setProjectId] = useState();
   const [text, setText] = useState("");
@@ -96,56 +96,89 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
       }
     });
     numbers.innerHTML = `Twoja ocena: ${star}/5`;
+    numbers.style.visibility = "visible";
   };
   const handleChangePublicData = (e) => setPublic_data(e.target.value);
   const handleChangePhone = (e) => setPhone(e.target.value);
+
+  const hoverChangeStars = (star) => {
+    const starsEl = document.querySelectorAll(".checkedAdd");
+    starsEl.forEach((el, index) => {
+      if (index < star) {
+        el.style.color = "orange";
+      } else {
+        el.style.color = "";
+      }
+    });
+  };
+
+  const mouseOut = () => {
+    const starsEl = document.querySelectorAll(".checkedAdd");
+    starsEl.forEach((el, index) => {
+      if (index < stars) {
+        el.style.color = "orange";
+      } else {
+        el.style.color = "";
+      }
+    });
+  };
 
   return (
     <div className="add_opinion_box">
       <div className="add_opinion">
         <form onSubmit={saveOpinion}>
-          <h3>DODAJ SWOJĄ OPINIĘ</h3>
-          <label>
-            <h2>Imię</h2>
-            <input
-              type="text"
-              value={imie}
-              onChange={handleChangeImie}
-              className="imie_form"
-              placeholder="Twoje Imie. Minimum 5 znaków"
-            />
-          </label>
-          <label>
-            <h2>Nazwisko</h2>
-            <input
-              type="text"
-              value={nazwisko}
-              onChange={handleChangeNazwisko}
-              className="nazwisko_form"
-              placeholder="Twoje Nazwisko. Minimum 4 znaki"
-            />
-          </label>
-          <label>
-            <h2>Email</h2>
-            <input
-              type="email"
-              value={email}
-              onChange={handleChangeEmail}
-              className="email_form"
-              placeholder="Twój email"
-            />
-          </label>
-          <label>
-            <h2>Numer telefonu</h2>
-            <input
-              type="number"
-              value={phone}
-              onChange={handleChangePhone}
-              className="phone_form"
-              placeholder="Twój nr tel. XXXXXXXXX"
-            />
-          </label>
-          <label>
+          <h1>DODAJ SWOJĄ OPINIĘ</h1>
+          <div className="omrs-input-group">
+            <label className="omrs-input-underlined">
+              <input
+                type="text"
+                value={imie}
+                onChange={handleChangeImie}
+                className="imie_form"
+                required
+              />
+              <span className="omrs-input-label">Imię</span>
+              <span className="omrs-input-helper">Minimum 5 znaków</span>
+            </label>
+          </div>
+          <div className="omrs-input-group">
+            <label className="omrs-input-underlined">
+              <input
+                type="text"
+                value={nazwisko}
+                onChange={handleChangeNazwisko}
+                className="nazwisko_form"
+                required
+              />
+              <span className="omrs-input-label">Nazwisko</span>
+              <span className="omrs-input-helper">Minimum 4 znaki</span>
+            </label>
+          </div>
+          <div className="omrs-input-group">
+            <label className="omrs-input-underlined">
+              <input
+                type="email"
+                value={email}
+                onChange={handleChangeEmail}
+                className="email_form"
+                required
+              />
+              <span className="omrs-input-label">Email</span>
+            </label>
+          </div>
+          <div className="omrs-input-group">
+            <label className="omrs-input-underlined">
+              <input
+                type="number"
+                value={phone}
+                onChange={handleChangePhone}
+                className="phone_form"
+                required
+              />
+              <span className="omrs-input-label">Numer telefonu</span>
+            </label>
+          </div>
+          <label className="project_label">
             <h2>Wybierz swój projekt:</h2>
             <select value={projekt_id} onChange={handleChangeProjektId}>
               <option value="0">1</option>
@@ -156,17 +189,22 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
               <option value="5">6</option>
             </select>
           </label>
-          <label>
-            <h2>Opinia:</h2>
-            <input
-              type="text"
-              value={text}
-              onChange={handleChangeText}
-              className="opinion_form"
-              placeholder="Twoja opinia. Minimum 50 znaków"
-            />
-          </label>
-          <p>Ilość znaków {textLenght}</p>
+
+          <div className="omrs-input-group">
+            <label className="omrs-input-underlined">
+              <input
+                type="text"
+                value={text}
+                onChange={handleChangeText}
+                className="opinion_form"
+                required
+              />
+              <span className="omrs-input-label">Opinia</span>
+              <span className="omrs-input-helper">
+                Minimum 50 znaków. Ilość znaków {textLenght}
+              </span>
+            </label>
+          </div>
           <label>
             <h2>Ocena usługi</h2>
             <div className="starsBox">
@@ -175,46 +213,60 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
                 onClick={() => {
                   handleChangeStars(1);
                 }}
+                onMouseOver={() => hoverChangeStars(1)}
+                onMouseOut={() => mouseOut()}
               ></span>
               <span
                 className="fa fa-starfa fa-star checkedAdd"
                 onClick={() => {
                   handleChangeStars(2);
                 }}
+                onMouseOver={() => hoverChangeStars(2)}
+                onMouseOut={() => mouseOut()}
               ></span>
               <span
                 className="fa fa-starfa fa-star checkedAdd"
                 onClick={() => {
                   handleChangeStars(3);
                 }}
+                onMouseOver={() => hoverChangeStars(3)}
+                onMouseOut={() => mouseOut()}
               ></span>
               <span
                 className="fa fa-starfa fa-star checkedAdd"
                 onClick={() => {
                   handleChangeStars(4);
                 }}
+                onMouseOver={() => hoverChangeStars(4)}
+                onMouseOut={() => mouseOut()}
               ></span>
               <span
                 className="fa fa-starfa fa-star checkedAdd"
                 onClick={() => {
                   handleChangeStars(5);
                 }}
+                onMouseOver={() => hoverChangeStars(5)}
+                onMouseOut={() => mouseOut()}
               ></span>
             </div>
             <div className="starInfoBox">
               <span className="info"></span>
             </div>
           </label>
-          <label>
-            <h2> Data ukończenia projektu</h2>
-            <input
-              type="date"
-              value={public_data}
-              onChange={handleChangePublicData}
-              className="date_form"
-              min="2020-01-01"
-            />
-          </label>
+          <div className="omrs-input-group">
+            <label className="omrs-input-underlined">
+              <input
+                type="date"
+                value={public_data}
+                onChange={handleChangePublicData}
+                className="date_form"
+                min="2020-01-01"
+                required
+              />
+              <span className="omrs-input-label">Data ukończenia projektu</span>
+              <span className="omrs-input-label">Data ukończenia projektu</span>
+            </label>
+          </div>
 
           <button onSubmit={saveOpinion}>Dodaj Opinię</button>
         </form>

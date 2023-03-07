@@ -2,7 +2,7 @@ $color_1: #000;
 $background-color_1: black;
 $background-color_2: white;
 
-label {
+.navi-mobile-label {
   .hamburger {
     position: absolute;
     bottom: 35px;
@@ -148,7 +148,7 @@ ul {
 }
 
 @media (orientation: landscape) {
-  label {
+  .navi-mobile-label {
     ul {
       display: flex;
       flex-direction: row;
