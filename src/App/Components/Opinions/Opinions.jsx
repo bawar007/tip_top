@@ -32,6 +32,11 @@ const Opinions = () => {
     setPhoneNumber(response.data);
   };
 
+  const handleToogleAddOpinion = () => {
+    const opinion_box = document.querySelector(".add_opinion_box");
+    opinion_box.classList.add("openModalOpinion");
+  };
+
   const opinion = opinionsEl.map((opinion) => (
     <div className="opinion" key={opinion.id}>
       <h2>
@@ -72,6 +77,7 @@ const Opinions = () => {
         <h1 className="title_page">opinie</h1>
         <div className="opinionsBox">{opinion}</div>
         <AddNewOpinion getUsers={getUsers} phoneNumber={phoneNumber} />
+        <button onClick={handleToogleAddOpinion}>Dodaj swoją opinię</button>
       </section>
       {allPics ? !windowW ? <MobileGallery /> : <AllPicsPopUp /> : null}
     </>

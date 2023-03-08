@@ -1,143 +1,144 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
 .add_opinion_box {
   width: 100%;
   display: flex;
+  visibility: hidden;
   justify-content: center;
-
+  font-family: "Roboto";
+  transform: scale(0);
   .add_opinion {
     position: fixed;
-    top: 2.5vh;
+    top: 10vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     border: 6px solid orange;
     border-radius: 40px;
     padding: 10px;
-    margin: 5px;
-    width: 40%;
-    background-color: orange;
-    height: 95vh;
-    justify-content: center;
+    width: 30%;
+    background-color: white;
+    min-height: 80vh;
     form {
       display: flex;
       flex-direction: column;
       width: 100%;
+      align-items: center;
+
+      div.omrs-input-group {
+        margin-bottom: 1.2rem;
+        padding: 0;
+        position: relative;
+        width: 100%;
+        .omrs-input-underlined {
+          &:not(.omrs-input-danger) > input:focus + .omrs-input-label {
+            color: #1e4bd1;
+          }
+
+          &:not(.omrs-input-danger) > input:focus {
+            border-color: #1e4bd1;
+          }
+
+          input {
+            border: none;
+            border-bottom: 0.125rem solid rgba(19, 19, 21, 0.6);
+            width: 100%;
+            height: 2rem;
+            font-size: 1.0625rem;
+            padding-left: 0.875rem;
+            line-height: 147.6%;
+            padding-top: 0.825rem;
+            padding-bottom: 0.5rem;
+            &:focus {
+              outline: none;
+            }
+            &:hover {
+              background: rgba(73, 133, 224, 0.12);
+              border-color: #121212;
+            }
+            &:focus + .omrs-input-label,
+            &:valid + .omrs-input-label {
+              top: -12px;
+              font-size: 1.2rem;
+              margin-bottom: 32px;
+            }
+          }
+
+          .omrs-input-label {
+            position: absolute;
+            top: 0;
+            left: 5px;
+            color: rgba(19, 19, 21, 0.6);
+            transition: top 0.2s;
+          }
+
+          .omrs-input-helper {
+            font-size: 0.8rem;
+            color: rgba(19, 19, 21, 0.6);
+            letter-spacing: 0.0275rem;
+            margin: 0.125rem 0.875rem;
+          }
+        }
+      }
       h1 {
         text-align: center;
-        padding: 10px 0;
         letter-spacing: 2px;
+        margin-bottom: 1.2rem;
       }
-    }
+      h2 {
+        width: 100%;
+        text-align: center;
 
-    h2 {
-      border-top: 4px solid orange;
-      border-bottom: 3px orange solid;
-      width: 100%;
-      text-align: center;
-      padding-bottom: 10px;
-      padding-top: 10px;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-      color: rgba(0, 0, 0, 0.7);
-      letter-spacing: 1px;
-    }
-    p {
-      padding: 10px;
-      color: rgba(0, 0, 0, 0.55);
-      border-bottom: 3px orange solid;
-    }
-    .checked {
-      color: orange;
-    }
-    .stars {
-      padding: 10px 0;
-      border-bottom: 3px orange solid;
-      width: 100%;
-      text-align: center;
-      span {
-        font-size: 1.2em;
-        margin: 0 2px;
+        letter-spacing: 1px;
+        font-size: 1.4rem;
+      }
+
+      .starsBox {
+        padding: 5px 0;
+        border-bottom: 3px orange solid;
+        width: 100%;
+        text-align: center;
+        span {
+          font-size: 1.4rem;
+          margin: 0 2px;
+        }
+      }
+      .starInfoBox {
+        text-align: center;
+      }
+      .btn_send {
+        width: 80%;
+        height: 3rem;
+        margin-top: 1.2rem;
+        font-size: 1.4rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        background-color: orange;
+        border: 0;
+        border-radius: 10px;
+        &:hover {
+          transform: scale(1.02);
+          cursor: pointer;
+        }
       }
     }
   }
 }
 
-/** BEGIN: Non Openmrs CSS **/
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
-* {
-  font-family: "Roboto";
+.openModalOpinion {
+  transform: scale(1);
 }
 
-:root {
-  --omrs-color-ink-lowest-contrast: rgba(47, 60, 85, 0.18);
-  --omrs-color-ink-low-contrast: rgba(60, 60, 67, 0.3);
-  --omrs-color-ink-medium-contrast: rgba(19, 19, 21, 0.6);
-  --omrs-color-interaction: #1e4bd1;
-  --omrs-color-interaction-minus-two: rgba(73, 133, 224, 0.12);
-  --omrs-color-danger: #b50706;
-  --omrs-color-bg-low-contrast: #eff1f2;
-  --omrs-color-ink-high-contrast: #121212;
-  --omrs-color-bg-high-contrast: #ffffff;
-}
-/** END: Non Openmrs CSS **/
-div.omrs-input-group {
-  margin-bottom: 1.5rem;
-  position: relative;
-}
+.closeModalOpinion {
+  animation: closeM 0.2s ease-out;
 
-/* Input*/
-.omrs-input-underlined > input {
-  border: none;
-  border-bottom: 0.125rem solid rgba(19, 19, 21, 0.6);
-  width: 100%;
-  height: 2rem;
-  font-size: 1.0625rem;
-  padding-left: 0.875rem;
-  line-height: 147.6%;
-  padding-top: 0.825rem;
-  padding-bottom: 0.5rem;
-}
-
-.omrs-input-underlined > input:focus {
-  outline: none;
-}
-
-.omrs-input-underlined > .omrs-input-label {
-  position: absolute;
-  top: 0;
-  left: 5px;
-  color: rgba(19, 19, 21, 0.6);
-  transition: top 0.2s;
-}
-
-.omrs-input-underlined > .omrs-input-helper {
-  font-size: 0.8rem;
-  color: rgba(19, 19, 21, 0.6);
-  letter-spacing: 0.0275rem;
-  margin: 0.125rem 0.875rem;
-}
-
-.omrs-input-underlined > input:hover {
-  background: rgba(73, 133, 224, 0.12);
-  border-color: #121212;
-}
-
-.omrs-input-underlined > input:focus + .omrs-input-label,
-.omrs-input-underlined > input:valid + .omrs-input-label {
-  top: -12px;
-  font-size: 1.2rem;
-  margin-bottom: 32px;
-}
-
-.omrs-input-underlined:not(.omrs-input-danger)
-  > input:focus
-  + .omrs-input-label {
-  color: var(--omrs-color-interaction);
-}
-
-.omrs-input-underlined:not(.omrs-input-danger) > input:focus {
-  border-color: var(--omrs-color-interaction);
-}
-/** DANGER **/
-
-.omrs-input-underlined > input {
-  background: #ffffff;
+  @keyframes closeM {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(0);
+      display: none;
+    }
+  }
 }
