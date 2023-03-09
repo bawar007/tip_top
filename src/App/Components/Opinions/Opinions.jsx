@@ -8,6 +8,7 @@ import AllPicsPopUp from "../Gallery/SubComponents/AllPicsPopUp/AllPicsPopMenu/A
 import AddNewOpinion from "./data/addNewOpinion";
 
 import axios from "axios";
+import OpinionBtn from "./subcomp/OpinionBtn";
 
 const Opinions = () => {
   const { windowW, handleClick, allPics } = useContext(AppContext);
@@ -22,19 +23,12 @@ const Opinions = () => {
 
   const getUsers = async () => {
     const response = await axios.get("http://localhost:5000/opinions");
-    console.log(response.data);
     setOpinions(response.data);
   };
 
   const getUser = async () => {
     const response = await axios.get("http://localhost:5000/users");
-    console.log(phoneNumber);
     setPhoneNumber(response.data);
-  };
-
-  const handleToogleAddOpinion = () => {
-    const opinion_box = document.querySelector(".add_opinion_box");
-    opinion_box.classList.add("openModalOpinion");
   };
 
   const opinion = opinionsEl.map((opinion) => (
@@ -73,11 +67,12 @@ const Opinions = () => {
   return (
     <>
       <section className="opinionsPage" id="opinions">
-        {console.log(opinionsEl)}
         <h1 className="title_page">opinie</h1>
-        <div className="opinionsBox">{opinion}</div>
+        <div className="opinionsBox">
+          {opinion}
+          <OpinionBtn />
+        </div>
         <AddNewOpinion getUsers={getUsers} phoneNumber={phoneNumber} />
-        <button onClick={handleToogleAddOpinion}>Dodaj swoją opinię</button>
       </section>
       {allPics ? !windowW ? <MobileGallery /> : <AllPicsPopUp /> : null}
     </>

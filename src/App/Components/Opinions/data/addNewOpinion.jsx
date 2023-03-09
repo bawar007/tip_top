@@ -144,11 +144,17 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
     });
   };
 
+  const handleCloseAddOpinion = () => {
+    const opinion_box = document.querySelector(".add_opinion_box");
+    const opinionAdd = document.querySelector(".add_opinion");
+    opinionAdd.classList.remove("openModalOpinion");
+    opinion_box.classList.remove("openModalBg");
+  };
+
   return (
     <div className="add_opinion_box">
       <div className="add_opinion">
         <form onSubmit={saveOpinion}>
-          <h1>DODAJ SWOJĄ OPINIĘ</h1>
           <div className="omrs-input-group">
             <label className="omrs-input-underlined">
               <input
@@ -278,9 +284,14 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
             </div>
           </label>
 
-          <button onSubmit={saveOpinion} className="btn_send">
-            Dodaj Opinię
-          </button>
+          <div className="btnBox">
+            <button onSubmit={saveOpinion} className="btn_send">
+              Dodaj Opinię
+            </button>
+            <button onClick={handleCloseAddOpinion} className="btn_send">
+              Odrzuć
+            </button>
+          </div>
         </form>
       </div>
     </div>

@@ -3,13 +3,15 @@
 .add_opinion_box {
   width: 100%;
   display: flex;
-  visibility: hidden;
+  height: 100vh;
   justify-content: center;
   font-family: "Roboto";
   transform: scale(0);
+  position: fixed;
+  top: 0;
+  align-items: center;
+  z-index: 1000;
   .add_opinion {
-    position: fixed;
-    top: 10vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,7 +20,8 @@
     padding: 10px;
     width: 30%;
     background-color: white;
-    min-height: 80vh;
+    height: auto;
+    z-index: 1002;
     form {
       display: flex;
       flex-direction: column;
@@ -101,44 +104,64 @@
         span {
           font-size: 1.4rem;
           margin: 0 2px;
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
       .starInfoBox {
         text-align: center;
       }
-      .btn_send {
-        width: 80%;
-        height: 3rem;
-        margin-top: 1.2rem;
-        font-size: 1.4rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        background-color: orange;
-        border: 0;
-        border-radius: 10px;
-        &:hover {
-          transform: scale(1.02);
-          cursor: pointer;
+      .btnBox {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        .btn_send {
+          width: 49%;
+          height: 3rem;
+          margin-top: 1.2rem;
+          font-size: 1.2rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          background-color: orange;
+          border: 0;
+          border-radius: 10px;
+          &:first-child {
+            margin-right: 1%;
+          }
+          &:hover {
+            transform: scale(1.02);
+            cursor: pointer;
+          }
         }
       }
     }
   }
 }
 
-.openModalOpinion {
+.openModalBg {
   transform: scale(1);
+  background: rgba(0, 0, 0, 0.7);
+}
+.openModalOpinion {
+  animation: openModal 0.5s forwards;
 }
 
-.closeModalOpinion {
-  animation: closeM 0.2s ease-out;
-
-  @keyframes closeM {
-    from {
-      transform: scale(1);
-    }
-    to {
-      transform: scale(0);
-      display: none;
-    }
+@keyframes openModal {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  95% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 }
