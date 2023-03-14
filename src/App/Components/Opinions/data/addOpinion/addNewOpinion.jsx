@@ -1,7 +1,9 @@
-import axios from "axios";
 import { useState } from "react";
 
+import Stars from "../sub/Stars";
+
 import validator from "validator";
+import axios from "axios";
 
 const AddNewOpinion = ({ getUsers, phoneNumber }) => {
   const [imie, setImie] = useState();
@@ -10,11 +12,10 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
 
   const [text, setText] = useState("");
   const [textLenght, setTextLenght] = useState(0);
-  const [stars, setStars] = useState();
+  const [stars, setStars] = useState(0);
   const [public_data, setPublic_data] = useState();
   const [phone, setPhone] = useState();
 
-  const [phoneValid, setPhoneValid] = useState(false);
   const [imieValid, setImieValid] = useState(false);
   const [nazwiskoValid, setNazwiskoValid] = useState(false);
   const [textValid, setTextValid] = useState(false);
@@ -26,23 +27,27 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
     e.preventDefault();
     validation();
   };
+
   const validation = () => {
     const phones = phoneNumber.map((el) => el.phone_number);
     const findPhone = phones.findIndex((el) => el === Number(phone));
 
+    let phoneT = false;
+
     if (findPhone === -1 || phone.length !== 9) {
       alert("Nie możesz dodać opini ponieważ nie jesteś naszym klientem");
-      setPhoneValid(false);
+      phoneT = false;
     } else {
-      setPhoneValid(true);
+      phoneT = true;
     }
 
     if (validator.isDate(public_data)) {
     } else {
       alert("Podaj datę !");
     }
-    if (imieValid && nazwiskoValid && phoneValid && textValid && starsValid) {
+    if (imieValid && nazwiskoValid && phoneT && textValid && starsValid) {
       opinionPost();
+      resetForm();
     } else {
       alert("Formularz zawiera błędy");
     }
@@ -59,20 +64,25 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
         text,
         stars,
         public_data,
+        phone,
       });
-
-      setImie("");
-      setNazwisko("");
-      setEmail("");
-      setText("");
-      setStars(0);
-      setPublic_data("");
-      setPhone("");
-      setTextLenght(0);
-      getUsers();
     } catch (error) {
       console.log(error);
     }
+    await getUsers();
+  };
+
+  const resetForm = () => {
+    setImie("");
+    setNazwisko("");
+    setEmail("");
+    setText("");
+    setStars(0);
+    setPublic_data("");
+    setPhone("");
+    setTextLenght(0);
+    getUsers();
+    handleCloseAddOpinion();
   };
 
   const handleChangeImie = (e) => {
@@ -95,7 +105,6 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
       setNazwiskoValid(true);
     }
   };
-  const handleChangeEmail = (e) => setEmail(e.target.value);
   const handleChangeText = (e) => {
     const value = e.target.value;
     setText(value);
@@ -106,43 +115,11 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
       setTextValid(true);
     }
   };
-  const handleChangeStars = (star) => {
-    setStars(star);
-    const starsEl = document.querySelectorAll(".checkedAdd");
-    const numbers = document.querySelector(".starInfoBox > .info");
-    setStarsValid(true);
-    starsEl.forEach((el, index) => {
-      if (index < star) {
-        el.style.color = "orange";
-      } else {
-        el.style.color = "";
-      }
-    });
-    numbers.innerHTML = `Twoja ocena: ${star}/5`;
-    numbers.style.visibility = "visible";
-  };
   const handleChangePublicData = (e) => setPublic_data(e.target.value);
-  const handleChangePhone = (e) => setPhone(e.target.value);
-  const hoverChangeStars = (star) => {
-    const starsEl = document.querySelectorAll(".checkedAdd");
-    starsEl.forEach((el, index) => {
-      if (index < star) {
-        el.style.color = "orange";
-      } else {
-        el.style.color = "";
-      }
-    });
+  const handleChangePhone = (e) => {
+    setPhone(e.target.value);
   };
-  const mouseOut = () => {
-    const starsEl = document.querySelectorAll(".checkedAdd");
-    starsEl.forEach((el, index) => {
-      if (index < stars) {
-        el.style.color = "orange";
-      } else {
-        el.style.color = "";
-      }
-    });
-  };
+  const handleChangeEmail = (e) => setEmail(e.target.value);
 
   const handleCloseAddOpinion = () => {
     const opinion_box = document.querySelector(".add_opinion_box");
@@ -181,6 +158,7 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
               <span className="omrs-input-helper"></span>
             </label>
           </div>
+
           <div className="omrs-input-group">
             <label className="omrs-input-underlined">
               <input
@@ -193,6 +171,7 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
               <span className="omrs-input-label">Email</span>
             </label>
           </div>
+
           <div className="omrs-input-group">
             <label className="omrs-input-underlined">
               <input
@@ -205,6 +184,7 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
               <span className="omrs-input-label">Numer telefonu</span>
             </label>
           </div>
+
           <div className="omrs-input-group">
             <label className="omrs-input-underlined">
               <input
@@ -220,6 +200,7 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
               </span>
             </label>
           </div>
+
           <div className="omrs-input-group">
             <label className="omrs-input-underlined">
               <input
@@ -235,60 +216,23 @@ const AddNewOpinion = ({ getUsers, phoneNumber }) => {
               </span>
             </label>
           </div>
-          <label>
-            <h2>Ocena usługi</h2>
-            <div className="starsBox">
-              <span
-                className="fa fa-starfa fa-star checkedAdd"
-                onClick={() => {
-                  handleChangeStars(1);
-                }}
-                onMouseOver={() => hoverChangeStars(1)}
-                onMouseOut={() => mouseOut()}
-              ></span>
-              <span
-                className="fa fa-starfa fa-star checkedAdd"
-                onClick={() => {
-                  handleChangeStars(2);
-                }}
-                onMouseOver={() => hoverChangeStars(2)}
-                onMouseOut={() => mouseOut()}
-              ></span>
-              <span
-                className="fa fa-starfa fa-star checkedAdd"
-                onClick={() => {
-                  handleChangeStars(3);
-                }}
-                onMouseOver={() => hoverChangeStars(3)}
-                onMouseOut={() => mouseOut()}
-              ></span>
-              <span
-                className="fa fa-starfa fa-star checkedAdd"
-                onClick={() => {
-                  handleChangeStars(4);
-                }}
-                onMouseOver={() => hoverChangeStars(4)}
-                onMouseOut={() => mouseOut()}
-              ></span>
-              <span
-                className="fa fa-starfa fa-star checkedAdd"
-                onClick={() => {
-                  handleChangeStars(5);
-                }}
-                onMouseOver={() => hoverChangeStars(5)}
-                onMouseOut={() => mouseOut()}
-              ></span>
-            </div>
-            <div className="starInfoBox">
-              <span className="info"></span>
-            </div>
-          </label>
 
+          <Stars
+            setStarsValid={setStarsValid}
+            stars={stars}
+            setStars={setStars}
+          />
           <div className="btnBox">
             <button onSubmit={saveOpinion} className="btn_send">
               Dodaj Opinię
             </button>
-            <button onClick={handleCloseAddOpinion} className="btn_send">
+            <button
+              onClick={() => {
+                handleCloseAddOpinion();
+                resetForm();
+              }}
+              className="btn_send"
+            >
               Odrzuć
             </button>
           </div>

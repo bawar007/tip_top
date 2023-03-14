@@ -48,3 +48,29 @@ body {
     margin: 0 auto;
   }
 }
+
+.openModalBg {
+  transform: scale(1);
+  background: rgba(0, 0, 0, 0.7);
+}
+.openModalOpinion {
+  animation: openModal 0.5s forwards;
+}
+
+@keyframes openModal {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  95% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

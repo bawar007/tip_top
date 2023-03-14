@@ -5,10 +5,11 @@ import MobileGallery from "../Gallery/SubComponents/Mobile/MobileGallery";
 import { AppContext } from "../../Provider/Provider";
 
 import AllPicsPopUp from "../Gallery/SubComponents/AllPicsPopUp/AllPicsPopMenu/AllPicsPopup";
-import AddNewOpinion from "./data/addNewOpinion";
+import AddNewOpinion from "./data/addOpinion/addNewOpinion";
 
 import axios from "axios";
 import OpinionBtn from "./subcomp/OpinionBtn";
+import EditOpinion from "./data/editOpinion/EditOpinion";
 
 const Opinions = () => {
   const { windowW, handleClick, allPics } = useContext(AppContext);
@@ -73,6 +74,7 @@ const Opinions = () => {
           <OpinionBtn />
         </div>
         <AddNewOpinion getUsers={getUsers} phoneNumber={phoneNumber} />
+        <EditOpinion />
       </section>
       {allPics ? !windowW ? <MobileGallery /> : <AllPicsPopUp /> : null}
     </>

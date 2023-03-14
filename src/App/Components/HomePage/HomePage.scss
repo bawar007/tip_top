@@ -62,12 +62,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding-left: 50px;
       flex-wrap: wrap;
     }
     .slider {
       width: 90%;
       height: 40vh;
+
       /* Slideshow container */
       .slideshow-container {
         width: 100%;
@@ -76,7 +76,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
         .mySlides {
           display: none;
           width: 100%;
@@ -84,7 +83,7 @@
           justify-content: center;
           display: flex;
           align-items: center;
-
+          border-radius: 500px;
           img {
             vertical-align: middle;
             width: 100%;

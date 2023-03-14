@@ -42,7 +42,26 @@ const HomePage = () => {
 
   const sliderItems = images.map((el, index) => (
     <div className="mySlides fade" key={index + el.id}>
-      <img src={`${tip}${el.first}`} style={{ maxWidth: "100%" }} alt={el.id} />
+      <img
+        src={`${tip}${el.first}`}
+        style={{ maxWidth: "25%", minHeight: "100%" }}
+        alt={el.id}
+      />
+      <img
+        src={`${tip}/gallery/pic_${index + 2}.jpg`}
+        style={{ maxWidth: "25%", minHeight: "100%" }}
+        alt={el.id}
+      />
+      <img
+        src={`${tip}/gallery/pic_${index + 3}.jpg`}
+        style={{ maxWidth: "25%", minHeight: "100%" }}
+        alt={el.id}
+      />
+      <img
+        src={`${tip}/gallery/pic_${index + 4}.jpg`}
+        style={{ maxWidth: "25%", minHeight: "100%" }}
+        alt={el.id}
+      />
     </div>
   ));
 
@@ -65,13 +84,7 @@ const HomePage = () => {
           <div className="slideshow-container">{sliderItems}</div>
           <div className="circleItems">{circle}</div>
         </div>
-        <div
-          className="homeInfo"
-          data-aos="fade-right"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-          data-aos-duration="1500"
-        >
+        <div className="homeInfo">
           <img
             src={`${tip}/icons/LogoTipTopCss.svg`}
             alt="logo"

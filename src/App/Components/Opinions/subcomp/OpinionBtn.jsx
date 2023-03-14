@@ -5,6 +5,13 @@ const OpinionBtn = () => {
     opinionAdd.classList.add("openModalOpinion");
     opinion_box.classList.add("openModalBg");
   };
+
+  const handleOpenEditOpinion = () => {
+    const opinion_edit_box = document.querySelector(".edit_opinion_box");
+    const opinionEdit = document.querySelector(".edit_opinion");
+    opinionEdit.classList.add("openModalOpinion");
+    opinion_edit_box.classList.add("openModalBg");
+  };
   return (
     <div className="opinion">
       <h2>Jesteś naszym klientem?</h2>
@@ -20,6 +27,9 @@ const OpinionBtn = () => {
       </div>
       <button onClick={handleOpenAddOpinion} className="btn_Accept">
         Dodaj swoją opinię
+      </button>
+      <button className="btn_Accept" onClick={handleOpenEditOpinion}>
+        Edytuj Opinię
       </button>
     </div>
   );
