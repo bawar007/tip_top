@@ -26,10 +26,10 @@ const OpinionBtn = () => {
         <span className="fa fa-star checked"></span>
       </div>
       <button onClick={handleOpenAddOpinion} className="btn_Accept">
-        Dodaj swoją opinię
+        DODAJ OPINIĘ
       </button>
       <button className="btn_Accept" onClick={handleOpenEditOpinion}>
-        Edytuj Opinię
+        EDYTUJ OPINIĘ
       </button>
     </div>
   );

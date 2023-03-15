@@ -4,7 +4,7 @@ import axios from "axios";
 
 import EditOpinionContent from "./EditOpinionContent/EditOpinionContent";
 
-const EditOpinion = ({ getUsers, phoneNumber }) => {
+const EditOpinion = () => {
   const [imie, setImie] = useState();
   const [nazwisko, setNazwisko] = useState();
   const [email, setEmail] = useState("");
@@ -60,29 +60,33 @@ const EditOpinion = ({ getUsers, phoneNumber }) => {
     handleCloseAddOpinion();
   };
 
-  const handleChangeImie = (e) => {
-    setImie(e.target.value);
-    if (!e.target.value.match(/^[a-zA-Z]+$/)) {
-      info[0].innerHTML = "Imię nie może zawierać cyfr";
-      setImieValid(false);
-    } else {
-      info[0].innerHTML = "";
-      setImieValid(true);
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    if (name === "imie") {
+      setImie(value);
+      if (!value.match(/^[a-zA-Z]+$/)) {
+        info[0].innerHTML = "Imię nie może zawierać cyfr";
+        setImieValid(false);
+      } else {
+        info[0].innerHTML = "";
+        setImieValid(true);
+      }
+    }
+    if (name === "nazwisko") {
+      setNazwisko(value);
+      if (!value.match(/^[a-zA-Z]+$/)) {
+        info[1].innerHTML = "Nazwisko nie może zawierać cyfr";
+        setNazwiskoValid(false);
+      } else {
+        info[1].innerHTML = "";
+        setNazwiskoValid(true);
+      }
+    }
+    if (name === "email") {
+      setEmail(value);
     }
   };
-
-  const handleChangeNazwisko = (e) => {
-    setNazwisko(e.target.value);
-    if (!e.target.value.match(/^[a-zA-Z]+$/)) {
-      info[1].innerHTML = "Nazwisko nie może zawierać cyfr";
-      setNazwiskoValid(false);
-    } else {
-      info[1].innerHTML = "";
-      setNazwiskoValid(true);
-    }
-  };
-
-  const handleChangeEmail = (e) => setEmail(e.target.value);
 
   const handleCloseAddOpinion = () => {
     const opinion_box = document.querySelector(".edit_opinion_box");
@@ -109,8 +113,9 @@ const EditOpinion = ({ getUsers, phoneNumber }) => {
                 <input
                   type="text"
                   value={imie}
-                  onChange={handleChangeImie}
+                  onChange={handleChange}
                   className="imie_form"
+                  name="imie"
                   required
                 />
                 <span className="omrs-input-label">Imię</span>
@@ -122,8 +127,9 @@ const EditOpinion = ({ getUsers, phoneNumber }) => {
                 <input
                   type="text"
                   value={nazwisko}
-                  onChange={handleChangeNazwisko}
+                  onChange={handleChange}
                   className="nazwisko_form"
+                  name="nazwisko"
                   required
                 />
                 <span className="omrs-input-label">Nazwisko</span>
@@ -135,8 +141,9 @@ const EditOpinion = ({ getUsers, phoneNumber }) => {
                 <input
                   type="email"
                   value={email}
-                  onChange={handleChangeEmail}
+                  onChange={handleChange}
                   className="email_form"
+                  name="email"
                   required
                 />
                 <span className="omrs-input-label">Email</span>

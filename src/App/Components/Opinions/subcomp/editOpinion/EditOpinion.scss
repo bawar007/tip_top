@@ -119,8 +119,9 @@
         width: 100%;
         justify-content: center;
         align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
         .btn_send {
-          width: 49%;
           height: 3rem;
           margin-top: 1.2rem;
           font-size: 1.2rem;
@@ -131,6 +132,13 @@
           border-radius: 10px;
           &:first-child {
             margin-right: 1%;
+            width: 49%;
+          }
+          &:nth-child(2) {
+            width: 50%;
+          }
+          &:nth-child(3) {
+            width: 100%;
           }
           &:hover {
             transform: scale(1.02);
@@ -139,5 +147,31 @@
         }
       }
     }
+  }
+}
+
+.updatePop_box {
+  width: 100vw;
+  display: flex;
+  height: auto;
+  justify-content: center;
+  font-family: "Roboto";
+  position: fixed;
+  top: 50px;
+  left: 0;
+  align-items: center;
+  z-index: 1000;
+  .updatepop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 6px solid orange;
+    border-radius: 40px;
+    padding: 10px;
+    width: 30%;
+    background-color: white;
+    height: auto;
+    z-index: 1002;
+    text-align: center;
   }
 }

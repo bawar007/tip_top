@@ -1,6 +1,8 @@
-import React, { createContext, useState, useRef } from "react";
+import React, { createContext, useState, useRef, useEffect } from "react";
 
 import { images } from "../Components/Gallery/data/image-data";
+
+import axios from "axios";
 
 export const AppContext = createContext(null);
 
@@ -24,6 +26,24 @@ const AppProvider = ({ children }) => {
     setPicIndex(0);
   };
 
+  const getUsers = async () => {
+    const response = await axios.get("http://localhost:5000/opinions");
+    setOpinions(response.data);
+  };
+
+  const getUser = async () => {
+    const response = await axios.get("http://localhost:5000/users");
+    setPhoneNumber(response.data);
+  };
+
+  const [opinionsEl, setOpinions] = useState([]);
+  const [phoneNumber, setPhoneNumber] = useState([]);
+
+  useEffect(() => {
+    getUser();
+    getUsers();
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
@@ -40,6 +60,10 @@ const AppProvider = ({ children }) => {
         handleClick,
         picIndex,
         setPicIndex,
+        getUser,
+        getUsers,
+        opinionsEl,
+        phoneNumber,
       }}
     >
       {children}

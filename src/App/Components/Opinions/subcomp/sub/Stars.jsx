@@ -1,5 +1,10 @@
-const Stars = ({ setStarsValid, setStars, stars }) => {
-  const handleChangeStars = (star) => {
+import { useContext } from "react";
+import { FormAddOpinionContext } from "../../helpers/formHelper";
+
+const Stars = () => {
+  const { setStarsValid, setStars, stars } = useContext(FormAddOpinionContext);
+
+  const handleChangeAddOpinionStars = (star) => {
     setStars(star);
     const starsEl = document.querySelectorAll(".checkedAdd");
     const numbers = document.querySelector(".starInfoBox > .info");
@@ -15,7 +20,7 @@ const Stars = ({ setStarsValid, setStars, stars }) => {
     numbers.style.visibility = "visible";
   };
 
-  const hoverChangeStars = (star) => {
+  const hoverChangeAddOpinionStars = (star) => {
     const starsEl = document.querySelectorAll(".checkedAdd");
     starsEl.forEach((el, index) => {
       if (index < star) {
@@ -25,7 +30,7 @@ const Stars = ({ setStarsValid, setStars, stars }) => {
       }
     });
   };
-  const mouseOut = () => {
+  const mouseOutAddOpinion = () => {
     const starsEl = document.querySelectorAll(".checkedAdd");
     starsEl.forEach((el, index) => {
       if (index < stars) {
@@ -43,42 +48,42 @@ const Stars = ({ setStarsValid, setStars, stars }) => {
         <span
           className="fa fa-starfa fa-star checkedAdd"
           onClick={() => {
-            handleChangeStars(1);
+            handleChangeAddOpinionStars(1);
           }}
-          onMouseOver={() => hoverChangeStars(1)}
-          onMouseOut={() => mouseOut()}
+          onMouseOver={() => hoverChangeAddOpinionStars(1)}
+          onMouseOut={() => mouseOutAddOpinion()}
         ></span>
         <span
           className="fa fa-starfa fa-star checkedAdd"
           onClick={() => {
-            handleChangeStars(2);
+            handleChangeAddOpinionStars(2);
           }}
-          onMouseOver={() => hoverChangeStars(2)}
-          onMouseOut={() => mouseOut()}
+          onMouseOver={() => hoverChangeAddOpinionStars(2)}
+          onMouseOut={() => mouseOutAddOpinion()}
         ></span>
         <span
           className="fa fa-starfa fa-star checkedAdd"
           onClick={() => {
-            handleChangeStars(3);
+            handleChangeAddOpinionStars(3);
           }}
-          onMouseOver={() => hoverChangeStars(3)}
-          onMouseOut={() => mouseOut()}
+          onMouseOver={() => hoverChangeAddOpinionStars(3)}
+          onMouseOut={() => mouseOutAddOpinion()}
         ></span>
         <span
           className="fa fa-starfa fa-star checkedAdd"
           onClick={() => {
-            handleChangeStars(4);
+            handleChangeAddOpinionStars(4);
           }}
-          onMouseOver={() => hoverChangeStars(4)}
-          onMouseOut={() => mouseOut()}
+          onMouseOver={() => hoverChangeAddOpinionStars(4)}
+          onMouseOut={() => mouseOutAddOpinion()}
         ></span>
         <span
           className="fa fa-starfa fa-star checkedAdd"
           onClick={() => {
-            handleChangeStars(5);
+            handleChangeAddOpinionStars(5);
           }}
-          onMouseOver={() => hoverChangeStars(5)}
-          onMouseOut={() => mouseOut()}
+          onMouseOver={() => hoverChangeAddOpinionStars(5)}
+          onMouseOut={() => mouseOutAddOpinion()}
         ></span>
       </div>
       <div className="starInfoBox">
