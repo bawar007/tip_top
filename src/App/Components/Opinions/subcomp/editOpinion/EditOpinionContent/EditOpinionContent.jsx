@@ -6,7 +6,11 @@ import EditOpinionStars from "./helpers/EditOpinionStars/stars";
 import { OpinionUpdate } from "./helpers/OpinionUpdate/OpinionUpdate";
 import { handleDeleteOpinion } from "./helpers/DeleteOpinion/DeleteOpinion";
 
-const EditOpinionContent = ({ editOpinion, setNextEditPage }) => {
+const EditOpinionContent = ({
+  editOpinion,
+  setNextEditPage,
+  resetFormOpinionEdit,
+}) => {
   const { imie, nazwisko, email, text, stars, public_data, phone } =
     editOpinion[0];
 
@@ -29,6 +33,7 @@ const EditOpinionContent = ({ editOpinion, setNextEditPage }) => {
       OpinionUpdate(email, textO, starsO);
       handleCloseAddOpinion();
       resetForm();
+      resetFormOpinionEdit();
     } else {
       alert("Formularz zawiera błędy");
     }
@@ -51,6 +56,8 @@ const EditOpinionContent = ({ editOpinion, setNextEditPage }) => {
     opinionAdd.classList.remove("openModalOpinion");
     opinion_box.classList.remove("openModalBg");
     setNextEditPage(false);
+    resetFormOpinionEdit();
+    resetForm();
   };
 
   return (
@@ -131,15 +138,18 @@ const EditOpinionContent = ({ editOpinion, setNextEditPage }) => {
             Aktualizuj
           </button>
           <button
-            onClick={() => handleDeleteOpinion(email)}
+            onClick={() => {
+              handleDeleteOpinion(email);
+              handleCloseAddOpinion();
+            }}
             className="btn_send"
+            type="button"
           >
             Usuń
           </button>
           <button
             onClick={() => {
               handleCloseAddOpinion();
-              resetForm();
             }}
             className="btn_send"
           >

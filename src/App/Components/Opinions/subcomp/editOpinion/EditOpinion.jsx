@@ -12,8 +12,6 @@ const EditOpinion = () => {
   const [imieValid, setImieValid] = useState(false);
   const [nazwiskoValid, setNazwiskoValid] = useState(false);
 
-  const info = document.querySelectorAll(".omrs-input-helper");
-
   const [editOpinion, setEditOpinion] = useState(null);
   const [NextEditPage, setNextEditPage] = useState(false);
 
@@ -23,6 +21,7 @@ const EditOpinion = () => {
   };
 
   const validation = () => {
+    console.log(nazwiskoValid);
     if (imieValid && nazwiskoValid) {
       getOpinion();
     } else {
@@ -53,7 +52,7 @@ const EditOpinion = () => {
     }
   };
 
-  const resetForm = () => {
+  const resetFormOpinionEdit = () => {
     setImie("");
     setNazwisko("");
     setEmail("");
@@ -66,20 +65,16 @@ const EditOpinion = () => {
     if (name === "imie") {
       setImie(value);
       if (!value.match(/^[a-zA-Z]+$/)) {
-        info[0].innerHTML = "Imię nie może zawierać cyfr";
         setImieValid(false);
       } else {
-        info[0].innerHTML = "";
         setImieValid(true);
       }
     }
     if (name === "nazwisko") {
       setNazwisko(value);
-      if (!value.match(/^[a-zA-Z]+$/)) {
-        info[1].innerHTML = "Nazwisko nie może zawierać cyfr";
+      if (value.match(/[0-9]+$/)) {
         setNazwiskoValid(false);
       } else {
-        info[1].innerHTML = "";
         setNazwiskoValid(true);
       }
     }
@@ -102,6 +97,7 @@ const EditOpinion = () => {
           <EditOpinionContent
             editOpinion={editOpinion}
             setNextEditPage={setNextEditPage}
+            resetFormOpinionEdit={resetFormOpinionEdit}
           />
         ) : (
           <form onSubmit={saveOpinion}>
@@ -156,7 +152,7 @@ const EditOpinion = () => {
               <button
                 onClick={() => {
                   handleCloseAddOpinion();
-                  resetForm();
+                  resetFormOpinionEdit();
                 }}
                 className="btn_send"
               >

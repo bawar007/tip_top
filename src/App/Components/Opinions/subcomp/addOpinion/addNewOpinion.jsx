@@ -84,6 +84,7 @@ const AddNewOpinion = () => {
                 required
               />
               <span className="omrs-input-label">Numer telefonu</span>
+              <span className="omrs-input-helper"></span>
             </label>
           </div>
 

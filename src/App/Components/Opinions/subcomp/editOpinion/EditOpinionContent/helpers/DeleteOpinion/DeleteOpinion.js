@@ -19,5 +19,4 @@ export const handleDeleteOpinion = async (email) => {
   } catch (error) {
     console.log(error);
   }
-  console.log(email);
 };

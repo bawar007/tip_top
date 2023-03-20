@@ -43,6 +43,7 @@ const FormHelper = ({ children }) => {
     } else {
       alert("Podaj datę !");
     }
+    console.log(textValid);
     if (phoneT && textValid && starsValid) {
       opinionPost();
       resetForm();
@@ -89,7 +90,7 @@ const FormHelper = ({ children }) => {
     if (name === "text") {
       setText(value);
       setTextLenght(value.length);
-      if (value <= 50) {
+      if (value.length <= 50) {
         setTextValid(false);
       } else {
         setTextValid(true);
