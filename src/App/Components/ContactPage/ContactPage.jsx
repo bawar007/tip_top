@@ -1,30 +1,16 @@
-import React, { useContext, useEffect } from "react";
-import { AppContext } from "../../Provider/Provider";
-import MyMap from "./MyMap";
+import React, { useEffect } from "react";
+import MyMap from "./subcomponents/MyMap/MyMap";
 
-import { observer } from "./helper/observer";
-import { contactData } from "./helper/contactData";
+import { observer } from "./helper/Observer/observer";
+import { listContactData } from "./helper/contactData/contactData";
 
 const ContactPage = () => {
-  const { tip } = useContext(AppContext);
-
   useEffect(() => {
     const el = document.querySelector(".contact");
     if (el) {
       observer.observe(el);
     }
   });
-
-  const listContactData = contactData.map((item) => (
-    <li key={item.id}>
-      <img
-        src={`${tip}${item.imgSrc}`}
-        className="OfertNavitest"
-        alt={item.td}
-      />
-      <span>{item.text}</span>
-    </li>
-  ));
 
   return (
     <>
@@ -35,9 +21,7 @@ const ContactPage = () => {
             <ul className="tested">{listContactData}</ul>
           </div>
           <div className="picture">
-            <div id="map">
-              <MyMap />
-            </div>
+            <MyMap />
           </div>
         </div>
         <footer className="footer">

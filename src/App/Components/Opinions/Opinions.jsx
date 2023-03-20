@@ -4,7 +4,7 @@ import MobileGallery from "../Gallery/SubComponents/Mobile/MobileGallery";
 
 import { AppContext } from "../../Provider/Provider";
 
-import AllPicsPopUp from "../Gallery/SubComponents/AllPicsPopUp/AllPicsPopMenu/AllPicsPopup";
+import AllPicsPopUp from "../Gallery/SubComponents/AllPicsPopUp/AllPicsPopup";
 import AddNewOpinion from "./subcomp/addOpinion/addNewOpinion";
 
 import OpinionBtn from "./subcomp/sub/OpinionBtn";

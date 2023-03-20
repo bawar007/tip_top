@@ -1,3 +1,5 @@
+@import "./subcomponents/MyMap/MyMap.scss";
+
 .contactPage {
   width: 100%;
   min-height: 100vh;
@@ -42,28 +44,6 @@
         animation-delay: 1s;
       }
     }
-    .picture {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      img {
-        margin-top: 10%;
-        max-width: 80%;
-      }
-    }
-  }
-
-  .infoBoxMap {
-    .infoBoxMapContent {
-      display: flex;
-      margin-top: 5px;
-      flex-direction: column;
-      align-items: center;
-      a {
-        padding: 5px 0;
-      }
-    }
   }
 
   .footer {
@@ -98,18 +78,6 @@
           width: 60%;
         }
       }
-      .picture {
-        width: 50%;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        #map {
-          padding: 0;
-          margin: 0;
-          display: flex;
-          align-items: center;
-        }
-      }
     }
     .footer {
       height: 10vh;
@@ -132,17 +100,6 @@
         }
         .logoItem {
           height: 70px;
-        }
-      }
-      .picture {
-        width: 100%;
-        margin-bottom: 50px;
-        #map {
-          height: 50vh;
-          margin: 0;
-          #marker-example {
-            min-width: 100%;
-          }
         }
       }
     }

@@ -1,4 +1,4 @@
-export const contactData = [
+const contactData = [
   {
     id: 1,
     text: "Artur Barski",
@@ -31,3 +31,14 @@ export const contactData = [
     imgSrc: "/icons/location.svg",
   },
 ];
+
+export const listContactData = contactData.map((item) => (
+  <li key={item.id}>
+    <img
+      src={`/tip_top${item.imgSrc}`}
+      className="OfertNavitest"
+      alt={item.td}
+    />
+    <span>{item.text}</span>
+  </li>
+));

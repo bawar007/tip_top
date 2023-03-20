@@ -1,5 +1,5 @@
-import OnePicFromGallery from "../OnePicFromGallery/OnePicFromGallery";
-import AllPics from "../SubComponents/allPics";
+import OnePicFromGallery from "./OnePicFromGallery/OnePicFromGallery";
+import AllPics from "./SubComponents/allPics";
 
 const AllPicsPopUp = () => {
   return (

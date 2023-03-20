@@ -1,0 +1,93 @@
+.pics {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media only screen and (min-width: 700px) {
+  .pics {
+    flex-direction: row;
+    justify-content: center;
+    width: 90%;
+    height: 90%;
+    margin: 20px;
+    .pic {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 320px;
+      min-height: 340px;
+      margin: 10px;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+      transition: transform 0.3s ease;
+      h3 {
+        margin-top: 10px;
+      }
+      &:nth-child(even) {
+        transform: rotate(4deg);
+      }
+
+      &:nth-child(odd) {
+        transform: rotate(-4deg);
+      }
+
+      .pic_img {
+        margin-top: 10px;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+      }
+      .btnShowProject {
+        background-color: orange;
+        border: 0;
+        height: 40px;
+        min-width: 40%;
+        padding: 0 5px;
+        margin-top: 20px;
+        visibility: hidden;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: white;
+        font-weight: 600;
+        transition: 0.2s;
+        border-radius: 20px;
+        &:hover {
+          cursor: pointer;
+          font-size: 14px;
+        }
+      }
+    }
+    &:hover > .pic:hover {
+      transform: scale(1.1);
+      .pic_img {
+        width: 255px;
+        height: 255px;
+      }
+      .btnShowProject {
+        visibility: visible;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 700px) {
+  .pics {
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    margin-top: 20px;
+    .pic {
+      margin: 10px;
+      max-width: 80%;
+      .pic_img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+      }
+      .btnShowProject {
+        display: none;
+      }
+    }
+  }
+}

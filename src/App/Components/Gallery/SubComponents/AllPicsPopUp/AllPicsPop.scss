@@ -1,0 +1,44 @@
+@import "./OnePicFromGallery/OnePicFromGallery.scss";
+@import "./SubComponents/allPics.scss";
+
+.selectedPics {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+}
+
+@media only screen and (min-width: 700px) {
+  .selectedPics {
+    align-items: center;
+    margin-left: 15%;
+    width: 70%;
+    height: 80%;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 1);
+    margin-top: 50px;
+
+    .selectPic {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70%;
+      width: 80%;
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .selectedPics {
+    width: 100%;
+    height: 100%;
+    top: 0;
+
+    .selectPic {
+      width: 100vw;
+      min-height: 100vh;
+      background-color: rgba(255, 255, 255, 0.6);
+      z-index: 250;
+    }
+  }
+}
