@@ -6,7 +6,6 @@ import { observerHome } from "./helpers/observer/observer";
 
 import Slider from "./subcomponents/Slider/Slider";
 import HomeInfo from "./subcomponents/HomeInfo/HomeInfo";
-import TitlePageLogo from "./subcomponents/TitlePageLogo/TitlePageLogo";
 
 AOS.init();
 
@@ -18,7 +17,6 @@ const HomePage = () => {
 
   return (
     <section className="homePage" id="home">
-      <TitlePageLogo />
       <div className="homePage_content">
         <Slider />
         <HomeInfo />

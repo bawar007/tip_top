@@ -9,7 +9,7 @@ const Slider = () => {
     <div className="mySlides fade" key={index + el.id}>
       <img
         src={`${tip}${el.first}`}
-        style={{ maxWidth: "25%", minHeight: "100%" }}
+        style={{ maxWidth: "100%", minHeight: "100%" }}
         alt={el.id}
       />
     </div>

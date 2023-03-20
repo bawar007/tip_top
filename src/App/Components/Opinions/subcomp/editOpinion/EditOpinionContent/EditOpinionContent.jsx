@@ -2,17 +2,18 @@ import { useContext, useState } from "react";
 
 import { AppContext } from "../../../../../Provider/Provider";
 import { FormAddOpinionContext } from "../../../helpers/formHelper";
-import EditOpinionStars from "./helpers/EditOpinionStars/stars";
+import EditOpinionStars from "./subcomponents/EditOpinionStars/stars";
 import { OpinionUpdate } from "./helpers/OpinionUpdate/OpinionUpdate";
-import { handleDeleteOpinion } from "./helpers/DeleteOpinion/DeleteOpinion";
+import ButtonsBox from "./subcomponents/ButtonsBox/ButtonsBox";
+import StaticElementsFromForm from "./subcomponents/StaticElementsFromForm/StaticElementsFromForm";
+import DynamicElementsFromForm from "./subcomponents/DynamicElementsFromForm/DynamicElementsFromForm";
 
 const EditOpinionContent = ({
   editOpinion,
   setNextEditPage,
   resetFormOpinionEdit,
 }) => {
-  const { imie, nazwisko, email, text, stars, public_data, phone } =
-    editOpinion[0];
+  const { email, text, stars, public_data } = editOpinion[0];
 
   const { getUsers } = useContext(AppContext);
   const { resetForm } = useContext(FormAddOpinionContext);
@@ -25,19 +26,12 @@ const EditOpinionContent = ({
 
   const saveOpinion = (e) => {
     e.preventDefault();
-    validation();
-  };
-
-  const validation = () => {
     if (textValid && starsValid) {
       OpinionUpdate(email, textO, starsO);
       handleCloseAddOpinion();
-      resetForm();
-      resetFormOpinionEdit();
     } else {
       alert("Formularz zawiera błędy");
     }
-    getUsers();
   };
 
   const handleChangeText = (e) => {
@@ -58,74 +52,19 @@ const EditOpinionContent = ({
     setNextEditPage(false);
     resetFormOpinionEdit();
     resetForm();
+    getUsers();
   };
 
   return (
     <>
       <form onSubmit={saveOpinion}>
-        <div className="omrs-input-group">
-          <label className="omrs-input-underlined">
-            <input type="text" value={imie} className="imie_form" disabled />
-          </label>
-        </div>
-        <div className="omrs-input-group">
-          <label className="omrs-input-underlined">
-            <input
-              type="text"
-              value={nazwisko}
-              className="nazwisko_form"
-              disabled
-            />
-          </label>
-        </div>
+        <StaticElementsFromForm editOpinion={editOpinion} />
 
-        <div className="omrs-input-group">
-          <label className="omrs-input-underlined">
-            <input type="email" value={email} className="email_form" disabled />
-          </label>
-        </div>
-
-        <div className="omrs-input-group">
-          <label className="omrs-input-underlined">
-            <input
-              type="number"
-              value={phone}
-              className="phone_form"
-              required
-              disabled
-            />
-          </label>
-        </div>
-
-        <div className="omrs-input-group">
-          <label className="omrs-input-underlined">
-            <input
-              type="text"
-              value={textO}
-              onChange={handleChangeText}
-              className="opinion_form"
-              required
-            />
-            <span className="omrs-input-label">Opinia</span>
-            <span className="omrs-input-helper">
-              Minimum 50 znaków. Ilość znaków {textO.length}
-            </span>
-          </label>
-        </div>
-
-        <div className="omrs-input-group">
-          <label className="omrs-input-underlined">
-            <input
-              type="date"
-              value={public_data}
-              className="date_form"
-              min="2020-01-01"
-              required
-              disabled
-            />
-            <span className="omrs-input-helper">Data ukończenia projektu</span>
-          </label>
-        </div>
+        <DynamicElementsFromForm
+          handleChangeText={handleChangeText}
+          textO={textO}
+          public_data={public_data}
+        />
 
         <EditOpinionStars
           setStars={setStars}
@@ -133,29 +72,10 @@ const EditOpinionContent = ({
           starsO={starsO}
         />
 
-        <div className="btnBox">
-          <button type="submit" className="btn_send">
-            Aktualizuj
-          </button>
-          <button
-            onClick={() => {
-              handleDeleteOpinion(email);
-              handleCloseAddOpinion();
-            }}
-            className="btn_send"
-            type="button"
-          >
-            Usuń
-          </button>
-          <button
-            onClick={() => {
-              handleCloseAddOpinion();
-            }}
-            className="btn_send"
-          >
-            Anuluj
-          </button>
-        </div>
+        <ButtonsBox
+          email={email}
+          handleCloseAddOpinion={handleCloseAddOpinion}
+        />
       </form>
     </>
   );

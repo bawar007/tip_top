@@ -21,7 +21,6 @@ const EditOpinion = () => {
   };
 
   const validation = () => {
-    console.log(nazwiskoValid);
     if (imieValid && nazwiskoValid) {
       getOpinion();
     } else {
@@ -146,7 +145,7 @@ const EditOpinion = () => {
               </label>
             </div>
             <div className="btnBox">
-              <button onSubmit={saveOpinion} className="btn_send">
+              <button type="submit" className="btn_send">
                 Zaakceptuj
               </button>
               <button
@@ -155,6 +154,7 @@ const EditOpinion = () => {
                   resetFormOpinionEdit();
                 }}
                 className="btn_send"
+                type="button"
               >
                 Odrzuć
               </button>

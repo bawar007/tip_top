@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { AppContext } from "../../../../Provider/Provider";
 
+import TitlePageLogo from "../TitlePageLogo/TitlePageLogo";
+
 const HomeInfo = () => {
   const { tip } = useContext(AppContext);
   return (
@@ -10,6 +12,7 @@ const HomeInfo = () => {
         alt="logo"
         className="logoItem homeItemLogo"
       />
+      <TitlePageLogo />
       <div className="info">
         <h2>Tip - top</h2>
         <p>

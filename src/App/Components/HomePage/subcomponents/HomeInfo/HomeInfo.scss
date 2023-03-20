@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   .info {
-    color: white;
     h2 {
       text-transform: uppercase;
       font-weight: bold;
@@ -12,7 +11,8 @@
 
 @media (min-width: 700px) {
   .homeInfo {
-    width: 100%;
+    width: 50%;
+    align-items: center;
     .homeItemLogo {
       display: none;
     }
