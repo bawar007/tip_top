@@ -108,7 +108,8 @@ $background-color_2: white;
   }
   a {
     margin-bottom: 1em;
-    display: block;
+    display: flex;
+    align-items: center;
     color: $color_1;
     text-decoration: none;
   }

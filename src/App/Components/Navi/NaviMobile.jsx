@@ -19,12 +19,15 @@ const NaviMobile = () => {
 
   useEffect(() => {
     const el = document.querySelector(".footer");
+    const ArrowUp = document.querySelector(".ArrowUpTest");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          document.querySelector(".ArrowUpTest").classList.add("white");
-        } else {
-          document.querySelector(".ArrowUpTest").classList.remove("white");
+        if (ArrowUp) {
+          if (entry.isIntersecting) {
+            ArrowUp.classList.add("white");
+          } else {
+            ArrowUp.classList.remove("white");
+          }
         }
       });
     });

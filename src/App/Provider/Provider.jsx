@@ -8,10 +8,13 @@ export const AppContext = createContext(null);
 
 const AppProvider = ({ children }) => {
   const [page, setPage] = useState(1);
-  const windowWidth = useRef(window.innerWidth);
-  const windowHeight = useRef(window.innerHeight);
-  const windowW = windowWidth.current > 700;
-  const windowH = windowHeight.current > 370;
+  const windowWidthFirst = useRef(window.innerWidth);
+  const windowHeightFirst = useRef(window.innerHeight);
+  const [windowWidth, setWindowWidth] = useState(windowWidthFirst.current);
+  const [windowHeight, setWindowHeight] = useState(windowHeightFirst.current);
+
+  const windowW = windowWidth > 700;
+  const windowH = windowHeight > 370;
   const tip = "/tip_top";
 
   const [allPics, setAllPics] = useState(false);
@@ -42,6 +45,14 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     getUser();
     getUsers();
+    const GetSize = () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      setWindowWidth(w);
+      setWindowHeight(h);
+    };
+    window.addEventListener("resize", () => GetSize());
+    return window.removeEventListener("resize", () => GetSize());
   }, []);
 
   return (
