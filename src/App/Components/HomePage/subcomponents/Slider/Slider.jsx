@@ -6,7 +6,7 @@ const Slider = () => {
   const { tip } = useContext(AppContext);
 
   const sliderItems = images.map((el, index) => (
-    <div className="mySlides fade" key={index + el.id}>
+    <div className="mySlides" key={index + el.id}>
       <img
         src={`${tip}${el.first}`}
         style={{ maxWidth: "100%", minHeight: "100%" }}

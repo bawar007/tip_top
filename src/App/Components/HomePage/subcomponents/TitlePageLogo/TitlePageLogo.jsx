@@ -7,6 +7,9 @@ const TitlePageLogo = () => {
       <div>
         <span className="top">TOP</span>
       </div>
+      <div>
+        <span>glazura i wykończenia wnętrz</span>
+      </div>
     </div>
   );
 };
