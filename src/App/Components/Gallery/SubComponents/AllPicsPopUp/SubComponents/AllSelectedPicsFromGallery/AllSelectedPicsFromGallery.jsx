@@ -17,7 +17,8 @@ const AllSelectedPicsFromGallery = () => {
       </div>
     )
   );
-  return <>{AllSelectedPicsFromGallery}</>;
+
+  return <div className="picPopUpBox">{AllSelectedPicsFromGallery}</div>;
 };
 
 export default AllSelectedPicsFromGallery;

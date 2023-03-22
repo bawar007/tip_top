@@ -2,7 +2,17 @@ export const images = [
   {
     id: 1,
     first: "/gallery/pic_1.jpg",
-    all: ["/gallery/pic_1.jpg", "/gallery/pic_5.jpg", "/gallery/pic_6.jpg"],
+    all: [
+      "/gallery/pic_1.jpg",
+      "/gallery/pic_5.jpg",
+      "/gallery/pic_6.jpg",
+      "/gallery/pic_1.jpg",
+      "/gallery/pic_2.jpg",
+      "/gallery/pic_3.jpg",
+      "/gallery/pic_4.jpg",
+      "/gallery/pic_6.jpg",
+      "/gallery/pic_5.jpg",
+    ],
   },
   {
     id: 2,

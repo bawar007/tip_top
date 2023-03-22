@@ -11,7 +11,7 @@ const GalleryPage = () => {
 
   return (
     <div className="galleryPage" id="gallery">
-      <h1 className="title_page">REALIZACJE</h1>
+      <h1 className="title_page">nasze REALIZACJE</h1>
       <GalleryPics />
       {allPics ? (
         windowW && windowH ? (
