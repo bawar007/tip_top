@@ -13,7 +13,7 @@ import FormHelper from "./helpers/formHelper";
 import SingleOpinion from "./subcomp/sub/SingleOpinion";
 
 const Opinions = () => {
-  const { windowW, allPics } = useContext(AppContext);
+  const { windowW, allPicsFromOpinion } = useContext(AppContext);
 
   return (
     <FormHelper>
@@ -26,7 +26,13 @@ const Opinions = () => {
         <AddNewOpinion />
         <EditOpinion />
       </section>
-      {allPics ? !windowW ? <MobileGallery /> : <AllPicsPopUp /> : null}
+      {allPicsFromOpinion ? (
+        !windowW ? (
+          <MobileGallery />
+        ) : (
+          <AllPicsPopUp />
+        )
+      ) : null}
     </FormHelper>
   );
 };

@@ -5,10 +5,11 @@ $shadow: 0px 0px 17px 0px #000000;
     width: 50%;
     height: 70vh;
     box-shadow: $shadow;
-    border-radius: 5px;
-    background-color: hsla(0, 0%, 100%, 0.8);
+    border-radius: 15px;
+    margin-top: 40px;
     margin-bottom: auto;
     z-index: 222;
+    background: rgba(255, 255, 255, 0.9);
     /* Slideshow container */
     .slideshow-container {
       width: 100%;
@@ -25,8 +26,6 @@ $shadow: 0px 0px 17px 0px #000000;
         justify-content: center;
         display: flex;
         align-items: center;
-        background-color: rgba(0, 0, 0, 0.9);
-
         overflow: hidden;
         img {
           vertical-align: middle;

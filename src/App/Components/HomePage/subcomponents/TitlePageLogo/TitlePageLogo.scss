@@ -3,7 +3,6 @@
 .title_page_logo {
   display: flex;
   text-align: left;
-  width: 40%;
   min-width: 400px;
   font-size: 36px;
   text-transform: uppercase;
@@ -56,7 +55,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     height: 115px;
-    margin-left: 10%;
     margin-bottom: 20px;
     & > div {
       width: 50%;
@@ -68,8 +66,7 @@
   .title_page_logo {
     flex-direction: column;
     & > div {
-      width: 60%;
-      margin-left: 10%;
+      width: 80%;
       &:first-child {
         margin-bottom: 5px;
       }

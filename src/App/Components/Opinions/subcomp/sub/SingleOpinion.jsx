@@ -2,7 +2,14 @@ import { useContext } from "react";
 import { AppContext } from "../../../../Provider/Provider";
 
 const SingleOpinion = () => {
-  const { handleClick, opinionsEl } = useContext(AppContext);
+  const { opinionsEl, setPicId, setPicIndex, setAllPicsFromOpinion } =
+    useContext(AppContext);
+
+  const handleClick = (id) => {
+    setPicId(id);
+    setPicIndex(0);
+    setAllPicsFromOpinion(true);
+  };
 
   const opinion = opinionsEl.map((opinion) => (
     <div className="opinion" key={opinion.id}>
@@ -29,7 +36,7 @@ const SingleOpinion = () => {
         ></span>
       </div>
       <div className="projectLink">
-        <h3 onClick={handleClick.bind(this, opinion.projekt_id)}>
+        <h3 onClick={() => handleClick(opinion.projekt_id)}>
           Link do projektu
         </h3>
       </div>

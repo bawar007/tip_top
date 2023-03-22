@@ -21,6 +21,8 @@ const AppProvider = ({ children }) => {
   const [picId, setPicId] = useState(1);
   const [picIndex, setPicIndex] = useState(0);
 
+  const [allPicsFromOpinion, setAllPicsFromOpinion] = useState(false);
+
   const allPicGalleryPop = [...images].filter((el) => el.id === picId);
 
   const handleClick = (id) => {
@@ -75,6 +77,8 @@ const AppProvider = ({ children }) => {
         getUsers,
         opinionsEl,
         phoneNumber,
+        allPicsFromOpinion,
+        setAllPicsFromOpinion,
       }}
     >
       {children}

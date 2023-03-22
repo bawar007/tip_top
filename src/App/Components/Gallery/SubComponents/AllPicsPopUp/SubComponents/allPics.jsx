@@ -3,8 +3,14 @@ import AllSelectedPicsFromGallery from "../SubComponents/AllSelectedPicsFromGall
 import { AppContext } from "../../../../../Provider/Provider";
 
 const AllPics = () => {
-  const { tip, allPicGalleryPop, setPicIndex, setAllPics } =
-    useContext(AppContext);
+  const {
+    tip,
+    allPicGalleryPop,
+    setPicIndex,
+    setAllPics,
+    picIndex,
+    setAllPicsFromOpinion,
+  } = useContext(AppContext);
 
   const handleNextPic = () => {
     setPicIndex((prev) => {
@@ -14,6 +20,8 @@ const AllPics = () => {
         return 0;
       }
     });
+
+    clickNext();
   };
 
   const handleBackPic = () => {
@@ -24,6 +32,29 @@ const AllPics = () => {
         return allPicGalleryPop[0].all.length - 1;
       }
     });
+    clickBack();
+  };
+
+  const clickNext = () => {
+    const elements = document.querySelectorAll(".picPopUp");
+    const ScrollIndexMove = picIndex + 1;
+    const scrollElementsLength = allPicGalleryPop[0].all.length - 1;
+    if (scrollElementsLength <= picIndex) {
+      elements[0].scrollIntoView();
+    } else {
+      elements[ScrollIndexMove].scrollIntoView();
+    }
+  };
+
+  const clickBack = () => {
+    const elements = document.querySelectorAll(".picPopUp");
+    const ScrollIndexMove = picIndex - 1;
+    const lastScrollElement = allPicGalleryPop[0].all.length - 1;
+    if (picIndex === 0) {
+      elements[lastScrollElement].scrollIntoView();
+    } else {
+      elements[ScrollIndexMove].scrollIntoView();
+    }
   };
 
   return (
@@ -31,7 +62,10 @@ const AllPics = () => {
       <span
         className="close"
         style={{ color: "black" }}
-        onClick={() => setAllPics(false)}
+        onClick={() => {
+          setAllPics(false);
+          setAllPicsFromOpinion(false);
+        }}
       >
         &times;
       </span>
