@@ -1,16 +1,16 @@
 @media (max-width: 700px) {
-  .Ofert {
+  .Ofert_Page {
     min-height: 100vh;
     align-items: flex-start;
 
-    .container {
+    .Ofert_Page--Content {
       width: 100%;
       height: 100%;
       padding: 20px;
-      .containerDouble {
+      .content_multi-container {
         flex-direction: column;
       }
-      .infoOfert {
+      .multi-container--infoBox {
         width: 100%;
         margin-top: 30px;
         letter-spacing: 3px;
@@ -49,11 +49,13 @@
             }
           }
         }
-        .list_Ofert {
+        .infoBox_list {
           margin-top: 15px;
           align-items: center;
           transition: all 2s;
-          .list_Ofert_item {
+          display: flex;
+          flex-direction: column;
+          .infoBox_list--item {
             display: flex;
             padding: 5px;
             list-style: none;

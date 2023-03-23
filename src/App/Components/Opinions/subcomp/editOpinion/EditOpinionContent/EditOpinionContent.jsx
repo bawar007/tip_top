@@ -57,7 +57,7 @@ const EditOpinionContent = ({
 
   return (
     <>
-      <form onSubmit={saveOpinion}>
+      <form onSubmit={saveOpinion} className="opinion_form ">
         <StaticElementsFromForm editOpinion={editOpinion} />
 
         <DynamicElementsFromForm

@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap");
 
+$logoHeight: 60px;
+
 .title_page_logo {
   display: flex;
   text-align: left;
   min-width: 400px;
-  font-size: 36px;
+  font-size: 2.25rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   span {
@@ -13,19 +15,19 @@
   div:nth-child(1) {
     background-color: #e60881;
     color: #afcb1f;
-    height: 50px;
+    height: $logoHeight;
   }
   div:nth-child(2) {
     background-color: #afcb1f;
     color: #e60881;
-    height: 50px;
+    height: $logoHeight;
   }
   div:nth-child(3) {
     background-color: #afcb1f;
     color: #e60881;
     width: 100%;
     height: auto;
-    font-size: 20px;
+    font-size: 1.3rem;
     display: flex;
     align-items: center;
     justify-content: center;

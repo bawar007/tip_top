@@ -3,11 +3,13 @@ import AllPics from "./SubComponents/allPics";
 
 const AllPicsPopUp = () => {
   return (
-    <section className="selectedPics" style={{ position: "fixed", top: 0 }}>
-      <div className="selectPic">
-        <OnePicFromGallery />
-      </div>
-      <AllPics />
+    <section className="Selected_Pics_Modal--Bg">
+      <section className="Selected_Pics_Modal--BOX">
+        <div className="Selected_Pics_Modal--Main_Photo">
+          <OnePicFromGallery />
+        </div>
+        <AllPics />
+      </section>
     </section>
   );
 };

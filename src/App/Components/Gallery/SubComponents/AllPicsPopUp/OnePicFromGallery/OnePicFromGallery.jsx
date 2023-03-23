@@ -7,11 +7,11 @@ const OnePicFromGallery = () => {
   const OnePicFromGallery = allPicGalleryPop[0].all
     .filter((el, index) => index === picIndex)
     .map((el, index) => (
-      <div className="picSolo" key={index}>
+      <div className="Main_Photo--Content" key={index}>
         <img
           src={`${tip}${el}`}
           alt={el}
-          className="solo_pic_img"
+          className="Main_Photo--Content_img"
           id="myImg"
           onClick={() => {
             if (windowW) {
@@ -26,7 +26,7 @@ const OnePicFromGallery = () => {
     ));
 
   useEffect(() => {
-    if (document.querySelector(".solo_pic_img")) {
+    if (document.querySelector(".Main_Photo--Content_img")) {
     }
   });
 

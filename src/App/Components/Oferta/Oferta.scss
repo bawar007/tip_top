@@ -1,7 +1,7 @@
 @import "./Oferts/Mobile/ofertsMobile.scss";
 @import "./Oferts/Desktop/ofertsDesktop.scss";
 
-.Ofert {
+.Ofert_Page {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -11,18 +11,24 @@
   background-size: cover;
   box-shadow: 0px 19px 22px -2px rgba(184, 184, 204, 1);
   padding-top: 30px;
-  .container {
+  .Ofert_Page--Content {
     display: flex;
     flex-direction: column;
     color: white;
     height: 80%;
     justify-content: center;
-    .containerDouble {
+    .content_multi-container {
       display: flex;
       height: 50%;
       width: 100%;
+      .content_multi-conrainer--arrow {
+        visibility: hidden;
+        position: absolute;
+        width: 0;
+        height: 0;
+      }
     }
-    .infoOfert {
+    .multi-container--infoBox {
       border: 0.5px solid black;
       padding: 20px;
       border-radius: 25px;

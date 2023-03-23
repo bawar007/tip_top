@@ -16,9 +16,9 @@ const AddNewOpinion = () => {
   };
 
   return (
-    <div className="add_opinion_box">
-      <div className="add_opinion">
-        <form onSubmit={saveOpinion}>
+    <div className="add_opinion_box opinion_form_box">
+      <div className="add_opinion opinion_form_content">
+        <form onSubmit={saveOpinion} className="opinion_form ">
           {imie && <StaticElements imie={imie} nazwisko={nazwisko} />}
 
           <DynamicElements />

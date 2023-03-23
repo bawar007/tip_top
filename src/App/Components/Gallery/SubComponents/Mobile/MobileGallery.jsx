@@ -4,12 +4,12 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
 import "photoswipe/style.css";
 import { AppContext } from "../../../../Provider/Provider";
 
-const GalleryTest = () => {
+const MobileGallery = () => {
   const { setAllPics, allPicGalleryPop } = useContext(AppContext);
 
   useEffect(() => {
     let lightbox = new PhotoSwipeLightbox({
-      gallery: "#my-gallerytest",
+      gallery: "#my-galleryMobile",
       children: "a",
       pswpModule: () => import("photoswipe"),
     });
@@ -21,15 +21,11 @@ const GalleryTest = () => {
     };
   });
   return (
-    <div className="galleryPop">
-      <span
-        className="close"
-        style={{ color: "black" }}
-        onClick={() => setAllPics(false)}
-      >
+    <div className="Mobile_Gallery--Pop">
+      <span className="close" onClick={() => setAllPics(false)}>
         &times;
       </span>
-      <div className="pswp-gallery" id="my-gallerytest">
+      <div className="pswp-gallery" id="my-galleryMobile">
         <h2>Galeria projektu</h2>
         {allPicGalleryPop[0].all.map((image, index) => (
           <a
@@ -46,4 +42,4 @@ const GalleryTest = () => {
   );
 };
 
-export default GalleryTest;
+export default MobileGallery;

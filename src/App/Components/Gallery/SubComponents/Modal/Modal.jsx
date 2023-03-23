@@ -1,6 +1,6 @@
 const Modal = () => {
   return (
-    <div className="modal" style={{ display: "none" }}>
+    <div className="modal">
       <span
         className="close"
         onClick={() =>

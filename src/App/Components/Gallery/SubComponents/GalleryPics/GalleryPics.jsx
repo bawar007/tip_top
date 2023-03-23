@@ -7,11 +7,11 @@ const GalleryPics = () => {
   const { handleClick, tip, windowW } = useContext(AppContext);
 
   const gallery = images.map((image, index) => (
-    <div className="pic test animate__fadeInUp animate__animated" key={index}>
+    <div className="GalleryPicOnPage_content" key={index}>
       <img
         src={`${tip}${image.first}`}
         alt={image.id}
-        className="pic_img "
+        className="GalleryPicOnPage_content--img"
         onClick={() => (!windowW ? handleClick(image.id) : null)}
       />
       <h3>Projekt {index + 1}</h3>
@@ -26,7 +26,7 @@ const GalleryPics = () => {
     </div>
   ));
 
-  return <section className="pics">{gallery}</section>;
+  return <section className="GalleryPicOnPage_box">{gallery}</section>;
 };
 
 export default GalleryPics;

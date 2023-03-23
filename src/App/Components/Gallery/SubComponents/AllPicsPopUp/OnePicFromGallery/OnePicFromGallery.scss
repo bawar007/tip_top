@@ -1,8 +1,8 @@
 @media only screen and (min-width: 700px) {
-  .picSolo {
+  .Main_Photo--Content {
     height: 95%;
 
-    .solo_pic_img {
+    .Main_Photo--Content_img {
       display: block;
       max-height: 100%;
       margin: auto;
@@ -11,10 +11,10 @@
 }
 
 @media only screen and (max-width: 700px) {
-  .picSolo {
+  .Main_Photo--Content {
     max-width: 100%;
     height: 100%;
-    .solo_pic_img {
+    .Main_Photo--Content_img {
       max-width: 100%;
     }
   }

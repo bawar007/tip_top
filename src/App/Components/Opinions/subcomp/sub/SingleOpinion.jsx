@@ -40,8 +40,10 @@ const SingleOpinion = () => {
           Link do projektu
         </h3>
       </div>
-      <span>DATA PUBLIKACJI</span>
-      <span>{opinion.public_data}</span>
+      <div className="datePublic">
+        <span>DATA PUBLIKACJI</span>
+        <span>{opinion.public_data}</span>
+      </div>
     </div>
   ));
 

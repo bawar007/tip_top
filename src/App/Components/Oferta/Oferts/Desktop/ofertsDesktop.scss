@@ -1,14 +1,14 @@
 @media (min-width: 700px) {
-  .Ofert {
+  .Ofert_Page {
     min-height: 100vh;
     align-items: center;
     justify-content: center;
-    .container {
+    .Ofert_Page--Content {
       margin: 10px 0;
       margin-right: 100px;
       height: 80%;
       width: 80%;
-      .containerDouble {
+      .content_multi-container {
         flex-direction: row;
         margin-top: 30px;
         margin-left: 20px;
@@ -20,7 +20,7 @@
           margin-left: 20px;
         }
       }
-      .infoOfert {
+      .multi-container--infoBox {
         width: 45%;
         max-height: 50%;
       }

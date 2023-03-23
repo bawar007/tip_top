@@ -1,12 +1,12 @@
 @import "../SubComponents/AllSelectedPicsFromGallery/AlleSelectedPicsFromGallery.scss";
 
-.allPics {
+.Selected_Pics_Modal--Group_Photos_From_Project {
   display: flex;
   flex-direction: row;
 }
 
 @media only screen and (min-width: 700px) {
-  .allPics {
+  .Selected_Pics_Modal--Group_Photos_From_Project {
     justify-content: center;
     align-items: center;
     height: 30%;
@@ -19,17 +19,20 @@
         cursor: pointer;
       }
     }
+    .close {
+      color: black;
+    }
   }
 }
 @media only screen and (max-width: 700px) {
-  .allPics {
+  .Selected_Pics_Modal--Group_Photos_From_Project {
     width: 100%;
     height: 100%;
     .close {
       position: absolute;
       top: 0;
       right: 10px;
-      color: #f1f1f1;
+      color: black;
       font-size: 40px;
       font-weight: bold;
       transition: 0.3s;

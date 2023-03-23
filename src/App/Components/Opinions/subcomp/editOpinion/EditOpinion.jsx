@@ -90,8 +90,8 @@ const EditOpinion = () => {
   };
 
   return (
-    <div className="edit_opinion_box">
-      <div className="edit_opinion">
+    <div className="edit_opinion_box opinion_form_box">
+      <div className="edit_opinion opinion_form_content">
         {NextEditPage ? (
           <EditOpinionContent
             editOpinion={editOpinion}
@@ -99,7 +99,7 @@ const EditOpinion = () => {
             resetFormOpinionEdit={resetFormOpinionEdit}
           />
         ) : (
-          <form onSubmit={saveOpinion}>
+          <form onSubmit={saveOpinion} className="opinion_form ">
             <h4 style={{ paddingBottom: 20 }}>
               Podaj dane abyśmy mogli znaleźć Twoją opinię
             </h4>

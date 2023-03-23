@@ -7,7 +7,7 @@ const NaviMobile = () => {
   const { tip } = useContext(AppContext);
 
   const ofertAnimation = () => {
-    const ofertItems = document.querySelectorAll(".infoOfert");
+    const ofertItems = document.querySelectorAll(".multi-container--infoBox");
     ofertItems.forEach((el) => {
       el.classList.remove("animate__animated", "animate__fadeInBottomLeft");
 

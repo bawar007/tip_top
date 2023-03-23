@@ -36,7 +36,7 @@ const AllPics = () => {
   };
 
   const clickNext = () => {
-    const elements = document.querySelectorAll(".picPopUp");
+    const elements = document.querySelectorAll(".Photos_Box--SinglePhoto");
     const ScrollIndexMove = picIndex + 1;
     const scrollElementsLength = allPicGalleryPop[0].all.length - 1;
     if (scrollElementsLength <= picIndex) {
@@ -47,7 +47,7 @@ const AllPics = () => {
   };
 
   const clickBack = () => {
-    const elements = document.querySelectorAll(".picPopUp");
+    const elements = document.querySelectorAll(".Photos_Box--SinglePhoto");
     const ScrollIndexMove = picIndex - 1;
     const lastScrollElement = allPicGalleryPop[0].all.length - 1;
     if (picIndex === 0) {
@@ -58,10 +58,9 @@ const AllPics = () => {
   };
 
   return (
-    <div className="allPics">
+    <div className="Selected_Pics_Modal--Group_Photos_From_Project">
       <span
         className="close"
-        style={{ color: "black" }}
         onClick={() => {
           setAllPics(false);
           setAllPicsFromOpinion(false);

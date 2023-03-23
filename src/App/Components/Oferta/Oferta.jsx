@@ -9,7 +9,7 @@ const Ofert = () => {
   const { windowW } = useContext(AppContext);
 
   useEffect(() => {
-    const infoElements = document.querySelectorAll(".infoOfert");
+    const infoElements = document.querySelectorAll(".multi-container--infoBox");
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -25,9 +25,9 @@ const Ofert = () => {
   });
 
   return (
-    <div className="Ofert" id="ofert">
+    <div className="Ofert_Page" id="ofert">
       <h1 className="title_page">OFERTY</h1>
-      <section className="container">
+      <section className="Ofert_Page--Content">
         {windowW ? <OfertsDesktop /> : <OfertsMobile />}
       </section>
     </div>

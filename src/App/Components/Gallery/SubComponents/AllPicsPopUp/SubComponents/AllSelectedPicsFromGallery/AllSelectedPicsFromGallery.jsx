@@ -7,7 +7,7 @@ const AllSelectedPicsFromGallery = () => {
 
   const AllSelectedPicsFromGallery = allPicGalleryPop[0].all.map(
     (el, index) => (
-      <div className="picPopUp" key={index}>
+      <div className="Photos_Box--SinglePhoto" key={index}>
         <img
           src={`${tip}${el}`}
           alt={el}
@@ -18,7 +18,11 @@ const AllSelectedPicsFromGallery = () => {
     )
   );
 
-  return <div className="picPopUpBox">{AllSelectedPicsFromGallery}</div>;
+  return (
+    <div className="Group_Photos_From_Project--Photos_Box">
+      {AllSelectedPicsFromGallery}
+    </div>
+  );
 };
 
 export default AllSelectedPicsFromGallery;
