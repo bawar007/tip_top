@@ -43,7 +43,6 @@ const FormHelper = ({ children }) => {
     } else {
       alert("Podaj datę !");
     }
-    console.log(textValid);
     if (phoneT && textValid && starsValid) {
       opinionPost();
       resetForm();
@@ -55,15 +54,15 @@ const FormHelper = ({ children }) => {
   const opinionPost = async () => {
     const { project_id, phone_number } = project_id_test[0];
     try {
-      await axios.post("http://localhost:5000/opinions", {
+      await axios.post("https://tip-top-backend.onrender.com/opinions", {
         imie,
         nazwisko,
         email,
-        projekt_id: project_id,
+        phone: phone_number,
+        project_id,
         text,
         stars,
         public_data,
-        phone: phone_number,
       });
     } catch (error) {
       console.log(error);

@@ -14,7 +14,9 @@ const deletePop = () => {
 
 export const handleDeleteOpinion = async (email) => {
   try {
-    await axios.delete(`http://localhost:5000/opinions/${email}`);
+    await axios.delete(
+      `https://tip-top-backend.onrender.com/opinions/${email}`
+    );
     setTimeout(() => deletePop(), 500);
   } catch (error) {
     console.log(error);

@@ -36,7 +36,7 @@ const SingleOpinion = () => {
         ></span>
       </div>
       <div className="projectLink">
-        <h3 onClick={() => handleClick(opinion.projekt_id)}>
+        <h3 onClick={() => handleClick(opinion.project_id)}>
           Link do projektu
         </h3>
       </div>

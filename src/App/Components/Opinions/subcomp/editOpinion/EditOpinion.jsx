@@ -29,10 +29,11 @@ const EditOpinion = () => {
   };
 
   const getOpinion = async () => {
-    const response = await axios.get("http://localhost:5000/opinions/");
+    const response = await axios.get(
+      "https://tip-top-backend.onrender.com/opinions"
+    );
 
     const c = response.data.filter((el) => el.email === email);
-
     if (c.length >= 1) {
       const imieEl = c[0].imie.toLowerCase();
       const nazwiskoEl = c[0].nazwisko.toLowerCase();

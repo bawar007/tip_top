@@ -32,13 +32,18 @@ const AppProvider = ({ children }) => {
   };
 
   const getUsers = async () => {
-    const response = await axios.get("http://localhost:5000/opinions");
+    const response = await axios.get(
+      "https://tip-top-backend.onrender.com/opinions"
+    );
     setOpinions(response.data);
   };
 
   const getUser = async () => {
-    const response = await axios.get("http://localhost:5000/users");
+    const response = await axios.get(
+      "https://tip-top-backend.onrender.com/user"
+    );
     setPhoneNumber(response.data);
+    console.log(response.error);
   };
 
   const [opinionsEl, setOpinions] = useState([]);
