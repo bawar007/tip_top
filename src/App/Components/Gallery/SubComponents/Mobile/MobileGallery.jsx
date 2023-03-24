@@ -5,7 +5,8 @@ import "photoswipe/style.css";
 import { AppContext } from "../../../../Provider/Provider";
 
 const MobileGallery = () => {
-  const { setAllPics, allPicGalleryPop } = useContext(AppContext);
+  const { setAllPics, allPicGalleryPop, setAllPicsFromOpinion } =
+    useContext(AppContext);
 
   useEffect(() => {
     let lightbox = new PhotoSwipeLightbox({
@@ -22,7 +23,13 @@ const MobileGallery = () => {
   });
   return (
     <div className="Mobile_Gallery--Pop">
-      <span className="close" onClick={() => setAllPics(false)}>
+      <span
+        className="close"
+        onClick={() => {
+          setAllPics(false);
+          setAllPicsFromOpinion(false);
+        }}
+      >
         &times;
       </span>
       <div className="pswp-gallery" id="my-galleryMobile">
