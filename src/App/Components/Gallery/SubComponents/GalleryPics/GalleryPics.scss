@@ -11,6 +11,32 @@
     width: 90%;
     height: 90%;
     margin: 20px;
+    .btnShowMore {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .btnShowMoreProjects {
+        background-color: orange;
+        border: 0;
+        height: 40px;
+        width: 50%;
+        padding: 0 5px;
+        margin: 10px 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: white;
+        font-weight: 600;
+        transition: 0.2s;
+        border-radius: 20px;
+        font-size: 16px;
+        &:hover {
+          cursor: pointer;
+          font-size: 17px;
+        }
+      }
+    }
+
     .GalleryPicOnPage_content {
       display: flex;
       justify-content: center;
@@ -88,6 +114,30 @@
       }
       .btnShowProject {
         display: none;
+      }
+    }
+    .btnShowMore {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .btnShowMoreProjects {
+        background-color: orange;
+        border: 0;
+        height: 50px;
+        width: 100%;
+        padding: 0 5px;
+        margin: 10px 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: white;
+        font-weight: 600;
+        transition: 0.2s;
+        border-radius: 20px;
+        font-size: 26px;
+        &:first-child {
+          margin-top: 20px;
+        }
       }
     }
   }

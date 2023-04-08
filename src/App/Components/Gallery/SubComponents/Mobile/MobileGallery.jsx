@@ -33,7 +33,6 @@ const MobileGallery = () => {
         &times;
       </span>
       <div className="pswp-gallery" id="my-galleryMobile">
-        <h2>Galeria projektu</h2>
         {allPicGalleryPop[0].all.map((image, index) => (
           <a
             href={`/tip_top/${image}`}

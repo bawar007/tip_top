@@ -6,7 +6,7 @@ const Slider = () => {
   const { tip } = useContext(AppContext);
 
   const sliderItems = images.map((el, index) => (
-    <div className="mySlides" key={index + el.id}>
+    <div className="mySlides" key={Math.random(20)}>
       <img src={`${tip}${el.first}`} alt={el.id} />
     </div>
   ));

@@ -28,10 +28,10 @@ const AppProvider = ({ children }) => {
 
   const SETHOST = 1;
 
-  const HOST = SETHOST === 1 ? LOCAL : SETHOST === 0 ? SERVER : SERVER;
+  // 0 - SERVER
+  // 1 - LOCAL
 
-  // 0 - server
-  // 1 - local
+  const HOST = SETHOST === 1 ? LOCAL : SETHOST === 0 ? SERVER : SERVER;
 
   const [allPics, setAllPics] = useState(false);
   const [picId, setPicId] = useState(1);
