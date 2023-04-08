@@ -31,6 +31,9 @@
 }
 
 @media only screen and (max-width: 700px) {
+  .modal {
+    display: none;
+  }
   .modal-content {
     width: 100%;
   }
