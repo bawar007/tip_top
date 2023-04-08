@@ -7,7 +7,7 @@ import { AppContext } from "../../../Provider/Provider";
 export const FormAddOpinionContext = createContext(null);
 
 const FormHelper = ({ children }) => {
-  const { phoneNumber, getUsers } = useContext(AppContext);
+  const { phoneNumber, getUsers, HOST } = useContext(AppContext);
 
   const [imie, setImie] = useState();
   const [nazwisko, setNazwisko] = useState();
@@ -47,14 +47,22 @@ const FormHelper = ({ children }) => {
       opinionPost();
       resetForm();
     } else {
-      alert("Formularz zawiera błędy");
+      if (!phoneT) {
+        alert(`Tego numeru: ${phone} nie ma w naszej bazie!`);
+      }
+      if (!textValid) {
+        alert(`Sprawdz swoją opinię !`);
+      }
+      if (!starsValid) {
+        alert(`Sprawdz gwiazdki !`);
+      }
     }
   };
 
   const opinionPost = async () => {
     const { project_id, phone_number } = project_id_test[0];
     try {
-      await axios.post("https://tip-top-backend.onrender.com/opinions", {
+      await axios.post(`${HOST}/opinions`, {
         imie,
         nazwisko,
         email,

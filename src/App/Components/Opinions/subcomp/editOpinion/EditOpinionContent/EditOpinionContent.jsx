@@ -15,7 +15,7 @@ const EditOpinionContent = ({
 }) => {
   const { email, text, stars, public_data } = editOpinion[0];
 
-  const { getUsers } = useContext(AppContext);
+  const { getUsers, HOST } = useContext(AppContext);
   const { resetForm } = useContext(FormAddOpinionContext);
 
   const [textO, setText] = useState(text);
@@ -27,7 +27,7 @@ const EditOpinionContent = ({
   const saveOpinion = (e) => {
     e.preventDefault();
     if (textValid && starsValid) {
-      OpinionUpdate(email, textO, starsO);
+      OpinionUpdate(email, textO, starsO, HOST);
       handleCloseAddOpinion();
     } else {
       alert("Formularz zawiera błędy");

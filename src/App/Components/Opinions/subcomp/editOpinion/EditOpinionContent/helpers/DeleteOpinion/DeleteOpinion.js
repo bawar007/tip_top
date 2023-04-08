@@ -12,11 +12,9 @@ const deletePop = () => {
   setTimeout(() => deletePopBox.remove(), 2500);
 };
 
-export const handleDeleteOpinion = async (email) => {
+export const handleDeleteOpinion = async (email, HOST) => {
   try {
-    await axios.delete(
-      `https://tip-top-backend.onrender.com/opinions/${email}`
-    );
+    await axios.delete(`${HOST}/opinions/${email}`);
     setTimeout(() => deletePop(), 500);
   } catch (error) {
     console.log(error);

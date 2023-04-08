@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import axios from "axios";
 
 import EditOpinionContent from "./EditOpinionContent/EditOpinionContent";
+import { AppContext } from "../../../../Provider/Provider";
 
 const EditOpinion = () => {
   const [imie, setImie] = useState();
@@ -14,6 +15,8 @@ const EditOpinion = () => {
 
   const [editOpinion, setEditOpinion] = useState(null);
   const [NextEditPage, setNextEditPage] = useState(false);
+
+  const { HOST } = useContext(AppContext);
 
   const saveOpinion = (e) => {
     e.preventDefault();
@@ -29,19 +32,17 @@ const EditOpinion = () => {
   };
 
   const getOpinion = async () => {
-    const response = await axios.get(
-      "https://tip-top-backend.onrender.com/opinions"
-    );
+    const response = await axios.get(`${HOST}/opinions`);
 
-    const c = response.data.filter((el) => el.email === email);
-    if (c.length >= 1) {
-      const imieEl = c[0].imie.toLowerCase();
-      const nazwiskoEl = c[0].nazwisko.toLowerCase();
+    const emailFound = response.data.filter((el) => el.email === email);
+    if (emailFound.length >= 1) {
+      const imieEl = emailFound[0].imie.toLowerCase();
+      const nazwiskoEl = emailFound[0].nazwisko.toLowerCase();
       if (
         imieEl === imie.toLowerCase() &&
         nazwiskoEl === nazwisko.toLowerCase()
       ) {
-        setEditOpinion(c);
+        setEditOpinion(emailFound);
         setNextEditPage(true);
       } else {
         alert("Formularz zawiera błędy !!!");

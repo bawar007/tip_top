@@ -1,4 +1,10 @@
-import React, { createContext, useState, useRef, useEffect } from "react";
+import React, {
+  createContext,
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+} from "react";
 
 import { images } from "../Components/Gallery/data/image-data";
 
@@ -17,6 +23,16 @@ const AppProvider = ({ children }) => {
   const windowH = windowHeight > 370;
   const tip = "/tip_top";
 
+  const SERVER = "https://tip-top-backend.onrender.com";
+  const LOCAL = "http://localhost:5000";
+
+  const SETHOST = 1;
+
+  const HOST = SETHOST === 1 ? LOCAL : SETHOST === 0 ? SERVER : SERVER;
+
+  // 0 - server
+  // 1 - local
+
   const [allPics, setAllPics] = useState(false);
   const [picId, setPicId] = useState(1);
   const [picIndex, setPicIndex] = useState(0);
@@ -31,27 +47,28 @@ const AppProvider = ({ children }) => {
     setPicIndex(0);
   };
 
-  const getUsers = async () => {
-    const response = await axios.get(
-      "https://tip-top-backend.onrender.com/opinions"
-    );
+  const getUsers = useCallback(async () => {
+    const response = await axios.get(`${HOST}/opinions`);
     setOpinions(response.data);
-  };
+    if (response.error) {
+      console.error(response.error);
+    }
+  }, [HOST]);
 
-  const getUser = async () => {
-    const response = await axios.get(
-      "https://tip-top-backend.onrender.com/user"
-    );
+  const getUser = useCallback(async () => {
+    const response = await axios.get(`${HOST}/user`);
     setPhoneNumber(response.data);
-    console.log(response.error);
-  };
+    if (response.error) {
+      console.error(response.error);
+    }
+  }, [HOST]);
 
   const [opinionsEl, setOpinions] = useState([]);
   const [phoneNumber, setPhoneNumber] = useState([]);
 
   useEffect(() => {
-    getUser();
     getUsers();
+    getUser();
     const GetSize = () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
@@ -60,7 +77,7 @@ const AppProvider = ({ children }) => {
     };
     window.addEventListener("resize", () => GetSize());
     return window.removeEventListener("resize", () => GetSize());
-  }, []);
+  }, [getUsers, getUser]);
 
   return (
     <AppContext.Provider
@@ -84,6 +101,7 @@ const AppProvider = ({ children }) => {
         phoneNumber,
         allPicsFromOpinion,
         setAllPicsFromOpinion,
+        HOST,
       }}
     >
       {children}

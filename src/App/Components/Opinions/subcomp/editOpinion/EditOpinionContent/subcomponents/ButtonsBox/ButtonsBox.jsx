@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { handleDeleteOpinion } from "../../helpers/DeleteOpinion/DeleteOpinion";
+import { AppContext } from "../../../../../../../Provider/Provider";
 
 const ButtonsBox = ({ email, handleCloseAddOpinion }) => {
+  const { HOST } = useContext(AppContext);
   return (
     <div className="btnBox">
       <button type="submit" className="btn_send">
@@ -8,7 +11,7 @@ const ButtonsBox = ({ email, handleCloseAddOpinion }) => {
       </button>
       <button
         onClick={() => {
-          handleDeleteOpinion(email);
+          handleDeleteOpinion(email, HOST);
           handleCloseAddOpinion();
         }}
         className="btn_send"

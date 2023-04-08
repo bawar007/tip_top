@@ -12,15 +12,12 @@ const updatePop = () => {
   setTimeout(() => updatePopBox.remove(), 2500);
 };
 
-export const OpinionUpdate = async (email, textO, starsO) => {
+export const OpinionUpdate = async (email, textO, starsO, HOST) => {
   try {
-    await axios.patch(
-      `https://tip-top-backend.onrender.com/opinions/${email}`,
-      {
-        text: textO,
-        stars: starsO,
-      }
-    );
+    await axios.patch(`${HOST}/opinions/${email}`, {
+      text: textO,
+      stars: starsO,
+    });
     setTimeout(() => updatePop(), 500);
   } catch (error) {
     console.log(error);
