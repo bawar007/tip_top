@@ -18,7 +18,7 @@ const GalleryPics = () => {
             className="GalleryPicOnPage_content--img"
             onClick={() => (!windowW ? handleClick(image.id) : null)}
           />
-          <h3>Projekt {index + 1}</h3>
+          {windowW && <h3>Projekt {index + 1}</h3>}
           {windowW && (
             <button
               className="btnShowProject"
