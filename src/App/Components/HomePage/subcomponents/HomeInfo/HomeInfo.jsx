@@ -15,12 +15,13 @@ const HomeInfo = () => {
 
       <div className="info">
         <TitlePageLogo />
-        <h2>FIRMA KTÓRA ODMIENII KAŻDE WNĘTRZE</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-          maiores, corporis labore totam ipsam laborum nostrum iste consectetur
-          obcaecati, ratione vero cumque officia eveniet rerum distinctio
-          placeat dolorem est dolor?
+          <b>TIP-TOP</b> to firma, która jest zwięczeniem 15-letniego
+          doświadczenia w glazurnictwie oraz wykończeniach wnętrz. Dzięki tak
+          dużemu doświadczeniu nasze usługi są wykonywane profesjonalnie w
+          dodatku szybko i solidnie. Głównym naszym celem jest kontakt z
+          klientem, dzięki czemu współpraca na tej linii przebiega bez
+          najmniejszych komplikacji.
         </p>
       </div>
     </div>

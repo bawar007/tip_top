@@ -5,13 +5,15 @@ import { AppContext } from "../../../../Provider/Provider";
 const Slider = () => {
   const { tip } = useContext(AppContext);
 
-  const sliderItems = images.map((el, index) => (
+  const imagesEl = images.filter((el, index) => index < 6);
+
+  const sliderItems = imagesEl.map((el) => (
     <div className="mySlides" key={Math.random(20)}>
       <img src={`${tip}${el.first}`} alt={el.id} />
     </div>
   ));
 
-  const circle = images.map((el, index) => (
+  const circle = imagesEl.map((el, index) => (
     <span className="dot" key={index}></span>
   ));
 
