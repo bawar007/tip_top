@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../../../../Provider/Provider";
 
 const OnePicFromGallery = () => {
@@ -24,11 +24,6 @@ const OnePicFromGallery = () => {
         />
       </div>
     ));
-
-  useEffect(() => {
-    if (document.querySelector(".Main_Photo--Content_img")) {
-    }
-  });
 
   return <>{OnePicFromGallery}</>;
 };

@@ -1,4 +1,4 @@
-export const observer = new IntersectionObserver((entries) => {
+export const observerContact = new IntersectionObserver((entries) => {
   // Loop over the entries
   entries.forEach((entry) => {
     // If the element is visible

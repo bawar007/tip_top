@@ -1,0 +1,41 @@
+.WhyThisPage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 30px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  h1 {
+    color: black;
+  }
+  .WhyThis-Content {
+    width: 90%;
+    height: 90vh;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    .title {
+      width: 50%;
+      height: 50px;
+      &:first-child {
+        padding-top: 10px;
+      }
+    }
+    .title_left {
+      border-right: 2px solid black;
+    }
+    .title_right {
+      border-left: 2px solid black;
+      margin-left: calc(50% - 2px);
+      padding-left: 10px;
+    }
+  }
+  .line {
+    height: 50px;
+    width: 2px;
+    border-left: 3px solid black;
+    margin-left: calc(50% - 3px);
+    margin-top: 2px;
+  }
+}

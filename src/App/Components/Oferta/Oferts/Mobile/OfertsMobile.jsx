@@ -1,11 +1,15 @@
 import { oferts } from "../data/oferts";
 
 const OfertsMobile = () => {
-  const ofertsElMobile = oferts.map((el) => (
+  const ofertsElMobile = oferts.map((el, index) => (
     <div className="multi-container--infoBox" key={el.id} id={`io${el.id}`}>
       <details>
         <summary>
-          <h2>{el.title}</h2>
+          <h2>
+            {index === 0 && <i className="fa fa-solid fa-bath"></i>}
+            {index === 1 && <i className="fa fa-solid fa-building"></i>}
+            {el.title}
+          </h2>
           <svg
             className="control-icon control-icon-expand"
             width="24"
@@ -40,6 +44,7 @@ const OfertsMobile = () => {
       </details>
     </div>
   ));
+
   return (
     <section className="content_multi-container">
       <div className="content_multi-conrainer--arrow">

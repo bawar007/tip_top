@@ -16,9 +16,8 @@ const GalleryPics = () => {
             src={`${tip}${image.first}`}
             alt={image.id}
             className="GalleryPicOnPage_content--img"
-            onClick={() => (!windowW ? handleClick(image.id) : null)}
+            onClick={() => handleClick(image.id)}
           />
-          {windowW && <h3>Projekt {index + 1}</h3>}
           {windowW && (
             <button
               className="btnShowProject"
@@ -46,7 +45,6 @@ const GalleryPics = () => {
       } else {
         setShowNumberOfPics(19);
       }
-      console.log(showNumberOfPics);
     }
   };
 

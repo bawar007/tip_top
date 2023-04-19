@@ -11,6 +11,10 @@ import NaviMobile from "./Components/Navi/NaviMobile";
 import Opinions from "./Components/Opinions/Opinions";
 import Modal from "./Components/Gallery/SubComponents/Modal/Modal";
 import Social from "./Components/Social/Social";
+import WhyThis from "./Components/WhyThis/WhyThis";
+
+import { observerHome } from "./Components/HomePage/helpers/observer/observerHome";
+import { observerContact } from "./Components/ContactPage/helper/Observer/observerContact";
 
 function App() {
   const winWF = useRef(window.innerWidth);
@@ -25,6 +29,18 @@ function App() {
       const h = window.innerHeight;
       setWinW(w);
       setWinH(h);
+
+      //observers//
+
+      const homeEl = document.querySelector(".homePage");
+      observerHome.observe(homeEl);
+
+      const constactEl = document.querySelector(".contact");
+      if (constactEl) {
+        observerContact.observe(constactEl);
+      }
+
+      //***************/
     };
     window.addEventListener("resize", () => GetSize());
     return window.removeEventListener("resize", () => GetSize());
@@ -37,6 +53,7 @@ function App() {
         <GalleryPage />
         <Opinions />
         <Ofert />
+        <WhyThis />
         <ContactPage />
         {winW > 700 && winH > 370 ? <Navi /> : <NaviMobile />}
         <Modal />

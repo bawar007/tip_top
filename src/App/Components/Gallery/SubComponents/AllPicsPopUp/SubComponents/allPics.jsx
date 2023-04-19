@@ -2,14 +2,15 @@ import { useContext } from "react";
 import AllSelectedPicsFromGallery from "../SubComponents/AllSelectedPicsFromGallery/AllSelectedPicsFromGallery";
 import { AppContext } from "../../../../../Provider/Provider";
 
+import { clickBack, clickNext } from "./helpers/clickMove";
+
 const AllPics = () => {
   const {
     tip,
     allPicGalleryPop,
     setPicIndex,
-    setAllPics,
     picIndex,
-    setAllPicsFromOpinion,
+    handleClickCloseGalleryModal,
   } = useContext(AppContext);
 
   const handleNextPic = () => {
@@ -20,8 +21,7 @@ const AllPics = () => {
         return 0;
       }
     });
-
-    clickNext();
+    clickNext(picIndex, allPicGalleryPop);
   };
 
   const handleBackPic = () => {
@@ -32,40 +32,12 @@ const AllPics = () => {
         return allPicGalleryPop[0].all.length - 1;
       }
     });
-    clickBack();
-  };
-
-  const clickNext = () => {
-    const elements = document.querySelectorAll(".Photos_Box--SinglePhoto");
-    const ScrollIndexMove = picIndex + 1;
-    const scrollElementsLength = allPicGalleryPop[0].all.length - 1;
-    if (scrollElementsLength <= picIndex) {
-      elements[0].scrollIntoView();
-    } else {
-      elements[ScrollIndexMove].scrollIntoView();
-    }
-  };
-
-  const clickBack = () => {
-    const elements = document.querySelectorAll(".Photos_Box--SinglePhoto");
-    const ScrollIndexMove = picIndex - 1;
-    const lastScrollElement = allPicGalleryPop[0].all.length - 1;
-    if (picIndex === 0) {
-      elements[lastScrollElement].scrollIntoView();
-    } else {
-      elements[ScrollIndexMove].scrollIntoView();
-    }
+    clickBack(picIndex, allPicGalleryPop);
   };
 
   return (
     <div className="Selected_Pics_Modal--Group_Photos_From_Project">
-      <span
-        className="close"
-        onClick={() => {
-          setAllPics(false);
-          setAllPicsFromOpinion(false);
-        }}
-      >
+      <span className="close" onClick={handleClickCloseGalleryModal}>
         &times;
       </span>
       <div className="back" onClick={handleBackPic}>

@@ -64,6 +64,9 @@
         width: 250px;
         height: 250px;
         border-radius: 50%;
+        &:hover {
+          cursor: pointer;
+        }
       }
       .btnShowProject {
         background-color: orange;
@@ -125,7 +128,7 @@
         background-color: orange;
         border: 0;
         height: 50px;
-        width: 100%;
+        width: 115%;
         padding: 0 5px;
         margin: 10px 0;
         text-transform: uppercase;

@@ -26,7 +26,7 @@ const Ofert = () => {
 
   return (
     <div className="Ofert_Page" id="ofert">
-      <h1 className="title_page">OFERTY</h1>
+      <h1 className="title_page">OFERTA</h1>
       <section className="Ofert_Page--Content">
         {windowW ? <OfertsDesktop /> : <OfertsMobile />}
       </section>

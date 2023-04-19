@@ -26,7 +26,7 @@ const AppProvider = ({ children }) => {
   const SERVER = "https://tip-top-backend.onrender.com";
   const LOCAL = "http://localhost:5000";
 
-  const SETHOST = 0;
+  const SETHOST = 1;
 
   // 0 - SERVER
   // 1 - LOCALSERVER
@@ -79,6 +79,11 @@ const AppProvider = ({ children }) => {
     return window.removeEventListener("resize", () => GetSize());
   }, [getUsers, getUser]);
 
+  const handleClickCloseGalleryModal = () => {
+    setAllPics(false);
+    setAllPicsFromOpinion(false);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -102,6 +107,7 @@ const AppProvider = ({ children }) => {
         allPicsFromOpinion,
         setAllPicsFromOpinion,
         HOST,
+        handleClickCloseGalleryModal,
       }}
     >
       {children}

@@ -1,4 +1,8 @@
 @media only screen and (max-width: 700px) {
+  .pswp__img {
+    height: auto !important;
+    margin-top: 100px !important;
+  }
   .Mobile_Gallery--Pop {
     position: fixed;
     width: 100%;

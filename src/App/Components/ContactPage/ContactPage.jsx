@@ -1,16 +1,10 @@
 import React, { useEffect } from "react";
 import MyMap from "./subcomponents/MyMap/MyMap";
 
-import { observer } from "./helper/Observer/observer";
 import { listContactData } from "./helper/contactData/contactData";
 
 const ContactPage = () => {
-  useEffect(() => {
-    const el = document.querySelector(".contact");
-    if (el) {
-      observer.observe(el);
-    }
-  });
+  useEffect(() => {});
 
   return (
     <>
