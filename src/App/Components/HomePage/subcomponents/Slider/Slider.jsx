@@ -7,8 +7,12 @@ const Slider = () => {
 
   const imagesEl = images.filter((el, index) => index < 6);
 
-  const sliderItems = imagesEl.map((el) => (
-    <div className="mySlides" key={Math.random(20)}>
+  const sliderItems = imagesEl.map((el, index) => (
+    <div
+      className="mySlides"
+      key={Math.random(20)}
+      style={index === 0 ? { display: "flex" } : { display: "none" }}
+    >
       <img src={`${tip}${el.first}`} alt={el.id} />
     </div>
   ));
