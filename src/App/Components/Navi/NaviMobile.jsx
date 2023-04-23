@@ -24,6 +24,7 @@ const NaviMobile = () => {
       entries.forEach((entry) => {
         if (ArrowUp) {
           if (entry.isIntersecting) {
+            console.log("entry: " + entry.isIntersecting);
             ArrowUp.classList.add("white");
           } else {
             ArrowUp.classList.remove("white");

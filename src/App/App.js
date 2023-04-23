@@ -30,18 +30,17 @@ function App() {
       setWinW(w);
       setWinH(h);
 
-      //observers//
-
-      const homeEl = document.querySelector(".homePage");
-      observerHome.observe(homeEl);
-
-      const constactEl = document.querySelector(".contact");
-      if (constactEl) {
-        observerContact.observe(constactEl);
-      }
-
       //***************/
     };
+    //observers//
+
+    const homeEl = document.querySelector(".homePage");
+    observerHome.observe(homeEl);
+
+    const constactEl = document.querySelector(".contact");
+    if (constactEl) {
+      observerContact.observe(constactEl);
+    }
     window.addEventListener("resize", () => GetSize());
     return window.removeEventListener("resize", () => GetSize());
   }, []);

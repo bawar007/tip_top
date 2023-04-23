@@ -8,12 +8,12 @@ export const observerContact = new IntersectionObserver((entries) => {
       const targetElement = entry.target;
       const logoEl = document.querySelectorAll(".logoTest");
 
-      social.style.display = "flex";
+      social.style.visibility = "visible";
       targetElement.classList.add("animate__rollIn", "animate__animated");
 
       logoEl.forEach((el) => (el.style.display = "block"));
     } else {
-      social.style.display = "none";
+      social.style.visibility = "hidden";
     }
   });
 });
