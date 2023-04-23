@@ -89,7 +89,6 @@
 @media (max-width: 700px) {
   .contactPage {
     overflow: hidden;
-    padding: 30px 0;
     .con {
       min-height: 85vh;
       flex-direction: column;
@@ -103,7 +102,6 @@
         }
       }
     }
-
     .footer {
       min-height: 15vh;
     }
