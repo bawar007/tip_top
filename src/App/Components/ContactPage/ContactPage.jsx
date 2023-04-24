@@ -9,7 +9,7 @@ const ContactPage = () => {
   return (
     <>
       <div className="contactPage" id="contact">
-        <h1 className="title_page">DANE KONTAKTOWE</h1>
+        <h1 className="title_page">KONTAKT</h1>
         <div className="con">
           <div className="contact">
             <ul className="tested">{listContactData}</ul>
