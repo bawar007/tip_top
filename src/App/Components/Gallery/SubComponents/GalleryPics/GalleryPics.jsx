@@ -46,6 +46,13 @@ const GalleryPics = () => {
         setShowNumberOfPics(19);
       }
     }
+    if (i === "minus") {
+      if (showNumberOfPics - 4 > 0) {
+        setShowNumberOfPics((prev) => prev - 4);
+      } else {
+        setShowNumberOfPics(4);
+      }
+    }
   };
 
   return (
@@ -54,12 +61,20 @@ const GalleryPics = () => {
         {gallery}
         <div className="btnShowMore">
           {showNumberOfPics === 19 ? (
-            <button
-              onClick={() => ShowMorePics("first")}
-              className="btnShowMoreProjects"
-            >
-              ukryj
-            </button>
+            <>
+              <button
+                onClick={() => ShowMorePics("minus")}
+                className="btnShowMoreProjects"
+              >
+                Pokaż mniej
+              </button>
+              <button
+                onClick={() => ShowMorePics("first")}
+                className="btnShowMoreProjects"
+              >
+                ukryj wszystko
+              </button>
+            </>
           ) : (
             <>
               <button
@@ -68,7 +83,14 @@ const GalleryPics = () => {
               >
                 Pokaż więcej
               </button>
-
+              {showNumberOfPics > 4 ? (
+                <button
+                  onClick={() => ShowMorePics("minus")}
+                  className="btnShowMoreProjects"
+                >
+                  Pokaż mniej
+                </button>
+              ) : null}
               <button
                 onClick={() => ShowMorePics("last")}
                 className="btnShowMoreProjects"
