@@ -21,7 +21,7 @@ const Navi = () => {
               <a href="#home" className="Home">
                 <img src={`${tip}/icons/Home.svg`} alt="home" />
               </a>
-              <span className="tool">HOME</span>
+              <span className="tool">Strona Główna</span>
             </li>
             <li>
               <a href="#gallery">
@@ -53,6 +53,16 @@ const Navi = () => {
                 />
               </a>
               <span className="tool">OFERTA</span>
+            </li>
+            <li>
+              <a href="#whyUs">
+                <img
+                  src={`${tip}/icons/whyus.svg`}
+                  alt="ofert"
+                  className="OfertNavi realizations"
+                />
+              </a>
+              <span className="tool">DLACZEGO MY?</span>
             </li>
             <li>
               <a href="#contact">

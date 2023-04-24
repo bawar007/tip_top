@@ -12,7 +12,7 @@ const WhyThis = () => {
   ));
 
   return (
-    <section className="WhyThisPage">
+    <section className="WhyThisPage" id="whyUs">
       <h1 className="title_page">Dlaczego my?</h1>
       <div className="WhyThis-Content">{ContentItems}</div>
     </section>

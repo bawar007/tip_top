@@ -51,7 +51,7 @@ const NaviMobile = () => {
                 alt="ofert"
                 className="OfertNavitest"
               />
-              Home
+              Strona Główna
             </a>
           </li>
           <li>
