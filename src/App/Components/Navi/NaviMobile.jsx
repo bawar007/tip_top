@@ -98,6 +98,21 @@ const NaviMobile = () => {
           </li>
           <li>
             <a
+              href="#whyUs"
+              onClick={() => {
+                setCheck(false);
+              }}
+            >
+              <img
+                src={`${tip}/icons/whyus.svg`}
+                alt="ofert"
+                className="OfertNavitest"
+              />
+              DLACZEGO MY?
+            </a>
+          </li>
+          <li>
+            <a
               href="#contact"
               onClick={() => {
                 setCheck(false);
