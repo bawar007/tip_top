@@ -23,7 +23,7 @@ const HomeInfo = () => {
             profesjonalnie w dodatku szybko i solidnie.
           </p>
           <p>
-            Głównym naszym celem jest kontakt z klientem, dzięki czemu
+            Priorytetem dla nas jest dobry kontakt z klientem, dzięki czemu
             współpraca na tej linii przebiega bez najmniejszych komplikacji.
           </p>
         </span>

@@ -7,7 +7,7 @@ export const WhyThisItems = [
 
   {
     id: 2,
-    text: "Najnowocześniejszy sprzęt",
+    text: "Nowoczesny sprzęt",
     imgSrc: "/tip_top/icons/wkretarka.svg",
   },
   {
