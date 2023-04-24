@@ -14,8 +14,7 @@
         margin-left: 20px;
         height: auto;
         flex-wrap: wrap;
-        div:nth-child(2),
-        div:nth-child(4) {
+        div:nth-child(2) {
           margin-top: 50px;
           margin-left: 20px;
         }
@@ -23,6 +22,27 @@
       .multi-container--infoBox {
         width: 45%;
         max-height: 50%;
+        text-align: center;
+        h1 {
+          font-size: 34px;
+          i {
+            margin-right: 20px;
+          }
+        }
+        .infoBox_list {
+          margin: 10px 0;
+          padding: 5px;
+          .infoBox_list--item {
+            display: flex;
+            font-size: 30px;
+            justify-content: space-between;
+            margin: 10px 0;
+            .OfertListItem--img {
+              height: 40px;
+              margin-right: 20px;
+            }
+          }
+        }
       }
     }
   }
