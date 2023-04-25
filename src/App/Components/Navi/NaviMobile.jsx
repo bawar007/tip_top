@@ -108,7 +108,7 @@ const NaviMobile = () => {
                 alt="ofert"
                 className="OfertNavitest"
               />
-              DLACZEGO MY?
+              Dlaczego My?
             </a>
           </li>
           <li>

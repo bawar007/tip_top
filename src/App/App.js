@@ -15,6 +15,7 @@ import WhyThis from "./Components/WhyThis/WhyThis";
 
 import { observerHome } from "./Components/HomePage/helpers/observer/observerHome";
 import { observerContact } from "./Components/ContactPage/helper/Observer/observerContact";
+import LogoLoadPage from "./Components/LogoLoadPage/LogoLoadPage";
 
 function App() {
   const winWF = useRef(window.innerWidth);
@@ -57,6 +58,7 @@ function App() {
         {winW > 700 && winH > 370 ? <Navi /> : <NaviMobile />}
         <Modal />
         <Social />
+        <LogoLoadPage />
       </div>
     </AppProvider>
   );

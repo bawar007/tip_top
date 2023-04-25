@@ -62,7 +62,7 @@ const Navi = () => {
                   className="OfertNavi realizations"
                 />
               </a>
-              <span className="tool">DLACZEGO MY?</span>
+              <span className="tool">Dlaczego My?</span>
             </li>
             <li>
               <a href="#contact">

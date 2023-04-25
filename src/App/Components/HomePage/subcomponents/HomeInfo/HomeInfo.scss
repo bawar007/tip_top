@@ -43,6 +43,9 @@
       .info_text {
         font-size: 24px;
         letter-spacing: 1.35px;
+        .LogoHomeInfo--img {
+          display: none;
+        }
       }
     }
   }
@@ -63,13 +66,18 @@
       flex-direction: column;
       span {
         font-size: 20px;
-        text-align: center;
+        text-align: justify;
         letter-spacing: 0.1em;
         background-color: rgba(215, 143, 10, 0.732);
         padding: 25px;
         border-radius: 15px;
         color: white;
-        margin: 10px 10px;
+        margin: 10px;
+      }
+      .LogoHomeInfo--img {
+        width: 120px;
+        height: 120px;
+        float: left;
       }
     }
   }
