@@ -16,7 +16,7 @@ const OpinionBtn = () => {
     <div className="opinion">
       <h2>Jesteś naszym klientem?</h2>
       <p>
-        Jeżeli tak do zapraszamy do dodania Twojej opinii na temat naszych usług
+        Jeżeli tak to zapraszamy do dodania Twojej opinii na temat naszych usług
       </p>
       <div className="stars">
         <span className="fa fa-star checked"></span>
