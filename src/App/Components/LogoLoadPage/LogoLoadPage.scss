@@ -1,32 +1,45 @@
+.LogoLoadPage {
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: LogoPageAnimation 0.5s ease-in forwards;
+  animation-delay: 2.5s;
+}
+
 @media (max-width: 700px) {
   .LogoLoadPage {
-    width: 100vw;
-    height: 100vh;
-    background-color: white;
-    position: absolute;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     .LogoLoadPage--img {
       margin-left: 5px;
       max-width: 100vw;
     }
-    animation: LogoPageAnimation 0.5s ease-in forwards;
-    animation-delay: 2.5s;
   }
-  @keyframes LogoPageAnimation {
-    0% {
-      transform: scale(1);
+}
+
+@media (min-width: 700px) {
+  .LogoLoadPage {
+    z-index: 10000;
+    .LogoLoadPage--img {
+      width: 50%;
     }
-    25% {
-      transform: scale(1.1);
-      background-color: transparent;
-    }
-    100% {
-      background-color: transparent;
-      display: none;
-      transform: scale(0);
-    }
+  }
+}
+
+@keyframes LogoPageAnimation {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+    background-color: transparent;
+  }
+  100% {
+    background-color: transparent;
+    display: none;
+    transform: scale(0);
   }
 }
