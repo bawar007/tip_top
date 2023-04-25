@@ -1,8 +1,36 @@
+import { useState } from "react";
+
 import { oferts } from "../data/oferts";
 
 const OfertsMobile = () => {
+  const [howOfertsShow, setHowOfertsShow] = useState(4);
+  const [howOfertsShowVisibled, setHowOfertsShowVisibled] = useState(true);
   //
   //
+
+  const btnTrue = (
+    <button
+      onClick={() => {
+        setHowOfertsShow(12);
+        setHowOfertsShowVisibled(false);
+      }}
+      className="btnShowMoreOferts"
+    >
+      Pokaż więcej
+    </button>
+  );
+
+  const btnFalse = (
+    <button
+      onClick={() => {
+        setHowOfertsShow(4);
+        setHowOfertsShowVisibled(true);
+      }}
+      className="btnShowMoreOferts"
+    >
+      Pokaż mniej
+    </button>
+  );
 
   const ofertsElMobile = oferts.map((el, index) => (
     <div className="multi-container--infoBox" key={el.id} id={`io${el.id}`}>
@@ -13,25 +41,25 @@ const OfertsMobile = () => {
         {el.title}
       </h1>
       <ul className="infoBox_list">
-        {el.items.map((el, index) => (
-          <div key={el}>
-            <li
-              className={`infoBox_list--item animate__fadeInUp  animate__delay-${index}s animate__animated`}
-              id={`li${index}`}
-            >
-              <img
-                src="/tip_top/icons/measure.svg"
-                alt="da"
-                className="OfertListItem--img"
-              />
-              {el}
-            </li>
-            <hr
-              className={`animate__fadeInUp  animate__delay-${index}s animate__animated`}
-            />
-          </div>
-        ))}
+        {el.items.map((el, index) => {
+          if (index < howOfertsShow) {
+            return (
+              <div key={el}>
+                <li className={`infoBox_list--item`} id={`li${index}`}>
+                  <img
+                    src="/tip_top/icons/measure.svg"
+                    alt="da"
+                    className="OfertListItem--img"
+                  />
+                  {el}
+                </li>
+                <hr className={`animate__fadeInUp`} />
+              </div>
+            );
+          } else return null;
+        })}
       </ul>
+      {howOfertsShowVisibled ? btnTrue : btnFalse}
     </div>
   ));
 

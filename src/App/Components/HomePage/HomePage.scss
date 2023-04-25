@@ -31,7 +31,8 @@
 @media (max-width: 700px) {
   .homePage {
     min-height: 100vh;
-    justify-content: left;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     padding: 30px 0;
     box-shadow: 0px 19px 22px -2px rgba(184, 184, 204, 1);

@@ -1,5 +1,24 @@
 @media (min-width: 700px) {
   .Ofert_Page {
+    .btnShowMoreOferts {
+      border: 3.5px solid orange;
+      background-color: transparent;
+      height: 40px;
+      width: 80%;
+      padding: 0 5px;
+      margin: 10px 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: white;
+      font-weight: 600;
+      transition: 0.2s;
+      border-radius: 20px;
+      font-size: 1.2rem;
+      &:hover {
+        cursor: pointer;
+        font-size: 17px;
+      }
+    }
     min-height: 100vh;
     align-items: center;
     justify-content: center;
@@ -35,7 +54,7 @@
           padding: 5px;
           .infoBox_list--item {
             display: flex;
-            font-size: 24px;
+            font-size: 22px;
             justify-content: space-between;
             margin: 10px 0;
             .OfertListItem--img {
