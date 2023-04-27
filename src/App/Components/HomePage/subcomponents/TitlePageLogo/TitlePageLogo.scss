@@ -5,10 +5,11 @@ $logoHeight: 60px;
 .title_page_logo {
   display: flex;
   text-align: left;
-  min-width: 400px;
+  min-width: 500px;
   font-size: 2.25rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+  margin-left: -50px;
   span {
     font-family: "Libre Baskerville", serif;
   }
@@ -68,13 +69,13 @@ $logoHeight: 60px;
   .title_page_logo {
     flex-direction: column;
     & > div {
-      width: 80%;
+      width: 70%;
       &:first-child {
         margin-bottom: 5px;
       }
       &:last-child {
         margin-left: 0;
-        width: 80%;
+        width: 70%;
         margin-bottom: 20px;
       }
     }

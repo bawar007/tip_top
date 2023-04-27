@@ -28,6 +28,10 @@ body {
 $titlePagePadding: 10px 0 10px 30px;
 $titlePageMargin: 0 0 30px 50px;
 
+html {
+  scroll-behavior: smooth;
+}
+
 .title_page {
   padding: $titlePagePadding;
   margin: $titlePageMargin;

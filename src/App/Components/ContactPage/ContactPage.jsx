@@ -19,7 +19,9 @@ const ContactPage = () => {
           </div>
         </div>
         <footer className="footer">
-          <p>Powered By Kamil Barski 2023</p>
+          <p>Copyright © 2023 Tip-Top</p>
+          <p>Wszelkie prawa zastrzeżone</p>
+          <p>Powered By Kamil Barski</p>
         </footer>
       </div>
     </>

@@ -5,9 +5,9 @@ export const oferts = [
     items: [
       "pełny zakres remontu",
       "renowacja łazienki",
-      "przebóbki hydrauliczne",
+      "przeróbki hydrauliczne",
       "montaż baterii podtynkowych",
-      "montaż pdpływu liniowego",
+      "montaż odpływu liniowego",
       "montaż kabin prysznicowych",
       "biały montaż",
       "glazura, terakota",

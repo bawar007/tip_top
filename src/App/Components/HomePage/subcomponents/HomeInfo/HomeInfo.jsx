@@ -21,7 +21,7 @@ const HomeInfo = () => {
           <br />
           <p>
             Dzięki tak dużemu doświadczeniu nasze usługi są wykonywane
-            profesjonalnie w dodatku szybko i solidnie.
+            profesjonalnie, szybko i solidnie.
           </p>
           <br />
           <p>
