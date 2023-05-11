@@ -9,6 +9,7 @@ const LogoLoadPage = () => {
         src={`${tip}/icons/LogoTipTopCss.svg`}
         alt="logo"
         className="LogoLoadPage--img"
+        fetchpriority="high"
       />
     </div>
   );

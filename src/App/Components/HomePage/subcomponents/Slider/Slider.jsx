@@ -13,7 +13,11 @@ const Slider = () => {
       key={Math.random(20)}
       style={index === 0 ? { display: "flex" } : { display: "none" }}
     >
-      <img src={`${tip}${el.first}`} alt={el.id} />
+      <img
+        src={`${tip}${el.first}`}
+        alt={el.id}
+        loading={index > 0 ? "lazy" : undefined}
+      />
     </div>
   ));
 

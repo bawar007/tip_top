@@ -17,6 +17,8 @@ const GalleryPics = () => {
             alt={image.id}
             className="GalleryPicOnPage_content--img"
             onClick={() => handleClick(image.id)}
+            width="250"
+            height="250"
           />
           {windowW && (
             <button

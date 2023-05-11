@@ -29,6 +29,8 @@ const Navi = () => {
                   src={`${tip}/icons/projects.svg`}
                   alt="ofert"
                   className="OfertNavitest realizations"
+                  width="40"
+                  height="40"
                 />
               </a>
               <span className="tool">Realizacje</span>
@@ -40,6 +42,8 @@ const Navi = () => {
                   src={`${tip}/icons/medalstar.svg`}
                   alt="opinion"
                   className="OfertNavitest realizations"
+                  width="40"
+                  height="40"
                 />
               </a>
               <span className="tool">Opinie</span>
@@ -50,6 +54,8 @@ const Navi = () => {
                   src={`${tip}/icons/offert.svg`}
                   alt="ofert"
                   className="OfertNavi"
+                  width="40"
+                  height="40"
                 />
               </a>
               <span className="tool">OFERTA</span>
@@ -60,6 +66,8 @@ const Navi = () => {
                   src={`${tip}/icons/whyus.svg`}
                   alt="ofert"
                   className="OfertNavi realizations"
+                  width="40"
+                  height="40"
                 />
               </a>
               <span className="tool">Dlaczego My?</span>
@@ -70,6 +78,8 @@ const Navi = () => {
                   src={`${tip}/icons/Contact.svg`}
                   alt="contact"
                   className="Contact"
+                  width="40"
+                  height="40"
                 />
               </a>
               <span className="tool">KONTAKT</span>
@@ -78,15 +88,13 @@ const Navi = () => {
         </nav>
 
         {windowW && (
-          <>
-            <a href="#home" className="ArrowUpPC">
-              <img
-                src={`${tip}/icons/arrowcircleup.svg`}
-                alt="arrowUp"
-                className="ArrowUp"
-              />
-            </a>
-          </>
+          <a href="#home" className="ArrowUpPC">
+            <img
+              src={`${tip}/icons/arrowcircleup.svg`}
+              alt="arrowUp"
+              className="ArrowUp"
+            />
+          </a>
         )}
       </div>
     </div>

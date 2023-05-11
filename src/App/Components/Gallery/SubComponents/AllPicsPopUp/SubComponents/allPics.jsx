@@ -45,6 +45,9 @@ const AllPics = () => {
           src={`${tip}/icons/arrowcircleleft.svg`}
           alt="arrright"
           className="arrow_gallery"
+          loading="lazy"
+          height="70"
+          width="70"
         />
       </div>
       <AllSelectedPicsFromGallery />
@@ -53,6 +56,9 @@ const AllPics = () => {
           src={`${tip}/icons/arrowcircleright.svg`}
           alt="arrright"
           className="arrow_gallery"
+          loading="lazy"
+          height="70"
+          width="70"
         />
       </div>
     </div>

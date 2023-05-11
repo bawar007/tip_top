@@ -21,6 +21,8 @@ const OfertsDesktop = () => {
                   src="/tip_top/icons/measure.svg"
                   alt="da"
                   className="OfertListItem--img"
+                  width="40"
+                  height="40"
                 />
                 {el}
               </li>

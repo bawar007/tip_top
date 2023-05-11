@@ -10,7 +10,7 @@ const GalleryPage = () => {
   const { windowW, windowH, allPics } = useContext(AppContext);
 
   return (
-    <div className="galleryPage" id="gallery">
+    <section className="galleryPage" id="gallery">
       <h1 className="title_page">REALIZACJE</h1>
       <GalleryPics />
       {allPics ? (
@@ -20,7 +20,7 @@ const GalleryPage = () => {
           <MobileGallery />
         )
       ) : null}
-    </div>
+    </section>
   );
 };
 

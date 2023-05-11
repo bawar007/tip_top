@@ -7,7 +7,6 @@ import React, {
 } from "react";
 
 import { images } from "../Components/Gallery/data/image-data";
-
 import axios from "axios";
 
 export const AppContext = createContext(null);
@@ -20,13 +19,13 @@ const AppProvider = ({ children }) => {
   const [windowHeight, setWindowHeight] = useState(windowHeightFirst.current);
 
   const windowW = windowWidth > 700;
-  const windowH = windowHeight > 370;
+  const windowH = windowHeight > 360;
   const tip = "/tip_top";
 
   const SERVER = "https://tip-top-backend.onrender.com";
   const LOCAL = "http://localhost:5000";
 
-  const SETHOST = 1;
+  const SETHOST = 0;
 
   // 0 - SERVER
   // 1 - LOCALSERVER

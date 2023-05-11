@@ -1,9 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-
-import AppProvider from "./Provider/Provider";
-
+import { lazy } from "react";
 import ContactPage from "./Components/ContactPage/ContactPage";
-import GalleryPage from "./Components/Gallery/GalleryPage";
+
 import HomePage from "./Components/HomePage/HomePage";
 import Navi from "./Components/Navi/Navi";
 import Ofert from "./Components/Oferta/Oferta";
@@ -13,54 +10,29 @@ import Modal from "./Components/Gallery/SubComponents/Modal/Modal";
 import Social from "./Components/Social/Social";
 import WhyThis from "./Components/WhyThis/WhyThis";
 
-import { observerHome } from "./Components/HomePage/helpers/observer/observerHome";
-import { observerContact } from "./Components/ContactPage/helper/Observer/observerContact";
 import LogoLoadPage from "./Components/LogoLoadPage/LogoLoadPage";
+import { useContext } from "react";
+import { AppContext } from "./Provider/Provider";
+
+const GalleryPage = lazy(() => import("./Components/Gallery/GalleryPage"));
 
 function App() {
-  const winWF = useRef(window.innerWidth);
-  const winHF = useRef(window.innerHeight);
-
-  const [winH, setWinH] = useState(winHF.current);
-  const [winW, setWinW] = useState(winWF.current);
-
-  useEffect(() => {
-    const GetSize = () => {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      setWinW(w);
-      setWinH(h);
-
-      //***************/
-    };
-    //observers//
-
-    const homeEl = document.querySelector(".homePage");
-    observerHome.observe(homeEl);
-
-    const constactEl = document.querySelector(".contact");
-    if (constactEl) {
-      observerContact.observe(constactEl);
-    }
-    window.addEventListener("resize", () => GetSize());
-    return window.removeEventListener("resize", () => GetSize());
-  }, []);
+  const { windowH, windowW } = useContext(AppContext);
 
   return (
-    <AppProvider>
-      <div className="App">
-        <HomePage />
-        <GalleryPage />
-        <Opinions />
-        <Ofert />
-        <WhyThis />
-        <ContactPage />
-        {winW > 700 && winH > 370 ? <Navi /> : <NaviMobile />}
-        <Modal />
-        <Social />
-        <LogoLoadPage />
-      </div>
-    </AppProvider>
+    <div className="App">
+      <HomePage />
+      <GalleryPage />
+      <Opinions />
+      <Ofert />
+      <WhyThis />
+      <ContactPage />
+      {windowW && windowH ? <Navi /> : <NaviMobile />}
+
+      <Modal />
+      <Social />
+      <LogoLoadPage />
+    </div>
   );
 }
 

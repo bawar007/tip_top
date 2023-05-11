@@ -50,6 +50,8 @@ const OfertsMobile = () => {
                     src="/tip_top/icons/measure.svg"
                     alt="da"
                     className="OfertListItem--img"
+                    width="20"
+                    height="20"
                   />
                   {el}
                 </li>

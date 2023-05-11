@@ -6,12 +6,12 @@ const contactData = [
   },
 
   {
-    id: 3,
+    id: 2,
     text: "508-531-655",
     imgSrc: "/icons/phone.svg",
   },
   {
-    id: 2,
+    id: 3,
     text: "tiptopglazura@gmail.com",
     imgSrc: "/icons/mail.svg",
   },
@@ -27,7 +27,9 @@ export const listContactData = contactData.map((item) => (
     <img
       src={`/tip_top${item.imgSrc}`}
       className="OfertNavitest"
-      alt={item.td}
+      alt={item.id}
+      width="40"
+      height="40"
     />
     <span>{item.text}</span>
   </li>

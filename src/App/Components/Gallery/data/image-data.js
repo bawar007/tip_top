@@ -1,7 +1,7 @@
 export const images = [
   {
     id: 1,
-    first: "/projects_pics/p_1/p_1_1.jpg",
+    first: "/projects_pics/p_1/p_1_1.webp",
     all: [
       "/projects_pics/p_1/p_1_1.jpg",
       "/projects_pics/p_1/p_1_2.jpg",
@@ -9,42 +9,42 @@ export const images = [
       "/projects_pics/p_1/p_1_4.jpg",
       "/projects_pics/p_1/p_1_5.jpg",
       "/projects_pics/p_1/p_1_6.jpg",
-      "/projects_pics/p_1/p_1_7.jpg",
-      "/projects_pics/p_1/p_1_8.jpg",
+      "/projects_pics/p_1/p_1_7.webp",
+      "/projects_pics/p_1/p_1_8.webp",
     ],
   },
   {
     id: 2,
-    first: "/projects_pics/p_2/p_2_1.jpg",
+    first: "/projects_pics/p_2/p_2_1.webp",
     all: [
       "/projects_pics/p_2/p_2_1.jpg",
       "/projects_pics/p_2/p_2_2.jpg",
       "/projects_pics/p_2/p_2_3.jpg",
-      "/projects_pics/p_2/p_2_4.jpg",
-      "/projects_pics/p_2/p_2_5.jpg",
+      "/projects_pics/p_2/p_2_4.webp",
+      "/projects_pics/p_2/p_2_5.webp",
     ],
   },
   {
     id: 3,
-    first: "/projects_pics/p_3/p_3_1.jpg",
+    first: "/projects_pics/p_3/p_3_1.webp",
     all: [
       "/projects_pics/p_3/p_3_1.jpg",
       "/projects_pics/p_3/p_3_2.jpg",
       "/projects_pics/p_3/p_3_3.jpg",
       "/projects_pics/p_3/p_3_4.jpg",
       "/projects_pics/p_3/p_3_5.jpg",
-      "/projects_pics/p_3/p_3_6.jpg",
-      "/projects_pics/p_3/p_3_7.jpg",
+      "/projects_pics/p_3/p_3_6.webp",
+      "/projects_pics/p_3/p_3_7.webp",
     ],
   },
   {
     id: 4,
-    first: "/projects_pics/p_4/p_4_1.jpg",
+    first: "/projects_pics/p_4/p_4_1.webp",
     all: ["/projects_pics/p_4/p_4_1.jpg"],
   },
   {
     id: 5,
-    first: "/projects_pics/p_5/p_5_1.jpg",
+    first: "/projects_pics/p_5/p_5_1.webp",
     all: [
       "/projects_pics/p_5/p_5_1.jpg",
       "/projects_pics/p_5/p_5_2.jpg",
@@ -55,7 +55,7 @@ export const images = [
   },
   {
     id: 6,
-    first: "/projects_pics/p_6/p_6_1.jpg",
+    first: "/projects_pics/p_6/p_6_1.webp",
     all: [
       "/projects_pics/p_6/p_6_1.jpg",
       "/projects_pics/p_6/p_6_2.jpg",
@@ -70,7 +70,7 @@ export const images = [
   },
   {
     id: 7,
-    first: "/projects_pics/p_7/p_7_1.jpg",
+    first: "/projects_pics/p_7/p_7_1.webp",
     all: [
       "/projects_pics/p_7/p_7_1.jpg",
       "/projects_pics/p_7/p_7_2.jpg",
@@ -82,7 +82,7 @@ export const images = [
   },
   {
     id: 8,
-    first: "/projects_pics/p_8/p_8_1.jpg",
+    first: "/projects_pics/p_8/p_8_1.webp",
     all: [
       "/projects_pics/p_8/p_8_1.jpg",
       "/projects_pics/p_8/p_8_2.jpg",
@@ -92,7 +92,7 @@ export const images = [
   },
   {
     id: 9,
-    first: "/projects_pics/p_9/p_9_1.jpg",
+    first: "/projects_pics/p_9/p_9_1.webp",
     all: [
       "/projects_pics/p_9/p_9_1.jpg",
       "/projects_pics/p_9/p_9_2.jpg",
@@ -104,7 +104,7 @@ export const images = [
   },
   {
     id: 10,
-    first: "/projects_pics/p_10/p_10_1.jpg",
+    first: "/projects_pics/p_10/p_10_1.webp",
     all: [
       "/projects_pics/p_10/p_10_1.jpg",
       "/projects_pics/p_10/p_10_2.jpg",
@@ -115,7 +115,7 @@ export const images = [
   },
   {
     id: 11,
-    first: "/projects_pics/p_11/p_11_1.jpg",
+    first: "/projects_pics/p_11/p_11_1.webp",
     all: [
       "/projects_pics/p_11/p_11_1.jpg",
       "/projects_pics/p_11/p_11_2.jpg",
@@ -125,7 +125,7 @@ export const images = [
   },
   {
     id: 12,
-    first: "/projects_pics/p_12/p_12_1.jpg",
+    first: "/projects_pics/p_12/p_12_1.webp",
     all: [
       "/projects_pics/p_12/p_12_1.jpg",
       "/projects_pics/p_12/p_12_2.jpg",
@@ -135,7 +135,7 @@ export const images = [
   },
   {
     id: 13,
-    first: "/projects_pics/p_13/p_13_1.jpg",
+    first: "/projects_pics/p_13/p_13_1.webp",
     all: [
       "/projects_pics/p_13/p_13_1.jpg",
       "/projects_pics/p_13/p_13_2.jpg",
@@ -145,7 +145,7 @@ export const images = [
   },
   {
     id: 14,
-    first: "/projects_pics/p_14/p_14_1.jpg",
+    first: "/projects_pics/p_14/p_14_1.webp",
     all: [
       "/projects_pics/p_14/p_14_1.jpg",
       "/projects_pics/p_14/p_14_2.jpg",
@@ -155,12 +155,12 @@ export const images = [
   },
   {
     id: 15,
-    first: "/projects_pics/p_15/p_15_1.jpg",
+    first: "/projects_pics/p_15/p_15_1.webp",
     all: ["/projects_pics/p_15/p_15_1.jpg", "/projects_pics/p_15/p_15_2.jpg"],
   },
   {
     id: 16,
-    first: "/projects_pics/p_16/p_16_1.jpg",
+    first: "/projects_pics/p_16/p_16_1.webp",
     all: [
       "/projects_pics/p_16/p_16_1.jpg",
       "/projects_pics/p_16/p_16_2.jpg",
@@ -173,7 +173,7 @@ export const images = [
   },
   {
     id: 17,
-    first: "/projects_pics/p_17/p_17_1.jpg",
+    first: "/projects_pics/p_17/p_17_1.webp",
     all: [
       "/projects_pics/p_17/p_17_1.jpg",
       "/projects_pics/p_17/p_17_2.jpg",
@@ -185,7 +185,7 @@ export const images = [
   },
   {
     id: 18,
-    first: "/projects_pics/p_18/p_18_1.jpg",
+    first: "/projects_pics/p_18/p_18_1.webp",
     all: [
       "/projects_pics/p_18/p_18_1.jpg",
       "/projects_pics/p_18/p_18_2.jpg",
@@ -194,13 +194,15 @@ export const images = [
     ],
   },
   {
-    id: 9,
-    first: "/projects_pics/p_19/p_19_1.jpg",
+    id: 19,
+    first: "/projects_pics/p_19/p_19_1.webp",
     all: [
       "/projects_pics/p_19/p_19_1.jpg",
       "/projects_pics/p_19/p_19_2.jpg",
       "/projects_pics/p_19/p_19_3.jpg",
       "/projects_pics/p_19/p_19_4.jpg",
     ],
+    width250: "/projects_pics/p_19/p_19_1_250x333.webp",
+    width150: "/projects_pics/p_19/p_19_1_150x150.jpg",
   },
 ];

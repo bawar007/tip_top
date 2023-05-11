@@ -13,6 +13,8 @@ const HomeInfo = () => {
             src={`${tip}/icons/LogoTipTopCss.svg`}
             alt="logo"
             className="LogoHomeInfo--img"
+            width="120"
+            height="120"
           />{" "}
           <p style={{ marginTop: 10 }}>
             to firma, która jest zwięczeniem 15-letniego doświadczenia w

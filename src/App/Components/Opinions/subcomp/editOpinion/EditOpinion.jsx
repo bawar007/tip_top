@@ -102,9 +102,9 @@ const EditOpinion = () => {
           />
         ) : (
           <form onSubmit={saveOpinion} className="opinion_form ">
-            <h4 style={{ paddingBottom: 20 }}>
+            <h2 style={{ paddingBottom: 20 }}>
               Podaj dane abyśmy mogli znaleźć Twoją opinię
-            </h4>
+            </h2>
             <div className="omrs-input-group">
               <label className="omrs-input-underlined">
                 <input

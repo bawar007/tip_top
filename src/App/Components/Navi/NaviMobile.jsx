@@ -24,7 +24,6 @@ const NaviMobile = () => {
       entries.forEach((entry) => {
         if (ArrowUp) {
           if (entry.isIntersecting) {
-            console.log("entry: " + entry.isIntersecting);
             ArrowUp.classList.add("white");
           } else {
             ArrowUp.classList.remove("white");
@@ -50,6 +49,8 @@ const NaviMobile = () => {
                 src={`${tip}/icons/Home.svg`}
                 alt="ofert"
                 className="OfertNavitest"
+                width="40"
+                height="40"
               />
               Strona Główna
             </a>
@@ -60,6 +61,8 @@ const NaviMobile = () => {
                 src={`${tip}/icons/projects.svg`}
                 alt="ofert"
                 className="OfertNavitest"
+                width="40"
+                height="40"
               />
               Realizacje
             </a>
@@ -76,6 +79,8 @@ const NaviMobile = () => {
                 src={`${tip}/icons/medalstar.svg`}
                 alt="opinion"
                 className="OfertNavitest"
+                width="40"
+                height="40"
               />
               Opinie
             </a>
@@ -92,6 +97,8 @@ const NaviMobile = () => {
                 src={`${tip}/icons/offert.svg`}
                 alt="ofert"
                 className="OfertNavitest"
+                width="40"
+                height="40"
               />
               Oferta
             </a>
@@ -107,6 +114,8 @@ const NaviMobile = () => {
                 src={`${tip}/icons/whyus.svg`}
                 alt="ofert"
                 className="OfertNavitest"
+                width="40"
+                height="40"
               />
               Dlaczego My?
             </a>
@@ -122,6 +131,8 @@ const NaviMobile = () => {
                 src={`${tip}/icons/Contact.svg`}
                 alt="ofert"
                 className="OfertNavitest"
+                width="40"
+                height="40"
               />
               Kontakt
             </a>
@@ -137,6 +148,8 @@ const NaviMobile = () => {
           src={`${tip}/icons/arrowcircleup.svg`}
           alt="arrowUp"
           className="ArrowUpTest"
+          width="40"
+          height="40"
         />
       </a>
     </>
