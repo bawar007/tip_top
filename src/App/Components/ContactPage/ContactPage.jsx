@@ -4,7 +4,11 @@ import { listContactData } from "./helper/contactData/contactData";
 
 const ContactPage = () => {
   return (
-    <section className="contactPage" id="contact">
+    <section
+      className="contactPage"
+      id="contact"
+      data-naviitem=".Contact-NaviItem"
+    >
       <h1 className="title_page">KONTAKT</h1>
       <div className="con">
         <div className="contact">

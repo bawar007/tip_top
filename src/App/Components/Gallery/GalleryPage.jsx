@@ -10,7 +10,11 @@ const GalleryPage = () => {
   const { windowW, windowH, allPics } = useContext(AppContext);
 
   return (
-    <section className="galleryPage" id="gallery">
+    <section
+      className="galleryPage"
+      id="gallery"
+      data-naviitem=".Projects--NaviItem"
+    >
       <h1 className="title_page">REALIZACJE</h1>
       <GalleryPics />
       {allPics ? (

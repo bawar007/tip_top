@@ -23,7 +23,7 @@ const contactData = [
 ];
 
 export const listContactData = contactData.map((item) => (
-  <li key={item.id}>
+  <li key={item.id + item.text}>
     <img
       src={`/tip_top${item.imgSrc}`}
       className="OfertNavitest"

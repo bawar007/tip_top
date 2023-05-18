@@ -8,7 +8,7 @@ const AllSelectedPicsFromGallery = () => {
   return (
     <div className="Group_Photos_From_Project--Photos_Box">
       {allPicGalleryPop[0].all.map((el, index) => (
-        <div className="Photos_Box--SinglePhoto" key={index}>
+        <div className="Photos_Box--SinglePhoto" key={index + index + el}>
           <img
             src={`${tip}${el}`}
             alt={el}

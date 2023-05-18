@@ -25,11 +25,11 @@ const Ofert = () => {
   });
 
   return (
-    <section className="Ofert_Page" id="ofert">
+    <section className="Ofert_Page" id="ofert" data-naviitem=".Ofert-NaviItem">
       <h1 className="title_page">OFERTA</h1>
-      <section className="Ofert_Page--Content">
+      <div className="Ofert_Page--Content">
         {windowW ? <OfertsDesktop /> : <OfertsMobile />}
-      </section>
+      </div>
     </section>
   );
 };

@@ -9,7 +9,7 @@ const OnePicFromGallery = () => {
       {allPicGalleryPop[0].all
         .filter((el, index) => index === picIndex)
         .map((el, index) => (
-          <div className="Main_Photo--Content" key={index}>
+          <div className="Main_Photo--Content" key={index + el}>
             <img
               src={`${tip}${el}`}
               alt={el}

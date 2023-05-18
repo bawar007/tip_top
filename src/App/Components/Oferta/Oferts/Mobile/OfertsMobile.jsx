@@ -33,7 +33,11 @@ const OfertsMobile = () => {
   );
 
   const ofertsElMobile = oferts.map((el, index) => (
-    <div className="multi-container--infoBox" key={el.id} id={`io${el.id}`}>
+    <div
+      className="multi-container--infoBox"
+      key={el.id * 2 * index + "v"}
+      id={`io${el.id}`}
+    >
       <h1>
         {index === 0 ? <i className="fa fa-solid fa-bath"></i> : null}
         {index === 1 ? <i className="fa fa-solid fa-building"></i> : null}
@@ -44,8 +48,12 @@ const OfertsMobile = () => {
         {el.items.map((el, index) => {
           if (index < howOfertsShow) {
             return (
-              <div key={el}>
-                <li className={`infoBox_list--item`} id={`li${index}`}>
+              <>
+                <li
+                  key={el + el + index + el + "d"}
+                  className={`infoBox_list--item`}
+                  id={`li${index}`}
+                >
                   <img
                     src="/tip_top/icons/measure.svg"
                     alt="da"
@@ -56,7 +64,7 @@ const OfertsMobile = () => {
                   {el}
                 </li>
                 <hr className={`animate__fadeInUp`} />
-              </div>
+              </>
             );
           } else return null;
         })}

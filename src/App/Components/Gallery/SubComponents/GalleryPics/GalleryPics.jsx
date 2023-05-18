@@ -11,7 +11,7 @@ const GalleryPics = () => {
   const gallery = images.map((image, index) => {
     if (index < showNumberOfPics) {
       return (
-        <div className="GalleryPicOnPage_content" key={index}>
+        <div className="GalleryPicOnPage_content" key={index * 3 + image}>
           <img
             src={`${tip}${image.first}`}
             alt={image.id}
@@ -58,7 +58,7 @@ const GalleryPics = () => {
   };
 
   return (
-    <section className="GalleryPicOnPage_box">
+    <div className="GalleryPicOnPage_box">
       <>
         {gallery}
         <div className="btnShowMore">
@@ -103,7 +103,7 @@ const GalleryPics = () => {
           )}
         </div>
       </>
-    </section>
+    </div>
   );
 };
 

@@ -16,7 +16,7 @@ const OfertsDesktop = () => {
         {el.items.map((el, index) => {
           if (index < howOfertsShow) {
             return (
-              <li key={el} className="infoBox_list--item">
+              <li key={el + index * 2 + el} className="infoBox_list--item">
                 <img
                   src="/tip_top/icons/measure.svg"
                   alt="da"
@@ -53,7 +53,7 @@ const OfertsDesktop = () => {
       )}
     </div>
   ));
-  return <section className="content_multi-container">{ofertsEl}</section>;
+  return <div className="content_multi-container">{ofertsEl}</div>;
 };
 
 export default OfertsDesktop;
