@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Asap&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap");
 * {
   font-family: "Asap", sans-serif;
 }
@@ -61,6 +63,7 @@ html {
 }
 
 .openModalBg {
+  will-change: auto;
   transform: scale(1);
   background: rgba(0, 0, 0, 0.7);
 }

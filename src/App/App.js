@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 import ContactPage from "./Components/ContactPage/ContactPage";
 
 import HomePage from "./Components/HomePage/HomePage";
@@ -22,7 +22,10 @@ function App() {
   return (
     <div className="App">
       <HomePage />
-      <GalleryPage />
+      <Suspense fallback={<div>Loading..</div>}>
+        <GalleryPage />
+      </Suspense>
+
       <Opinions />
       <Ofert />
       <WhyThis />
