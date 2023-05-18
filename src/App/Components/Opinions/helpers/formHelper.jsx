@@ -3,14 +3,17 @@ import { createContext, useContext, useState } from "react";
 import validator from "validator";
 import axios from "axios";
 import { AppContext } from "../../../Provider/Provider";
+import { PopUpOpinions } from "../subcomp/editOpinion/EditOpinionContent/helpers/PopUp/PopUp";
 
 export const FormAddOpinionContext = createContext(null);
 
 const FormHelper = ({ children }) => {
-  const { phoneNumber, getUsers, HOST } = useContext(AppContext);
+  const { phoneNumberFromZleceniodawcy, getOpinions, HOST, opinionsEl } =
+    useContext(AppContext);
 
   const [imie, setImie] = useState();
   const [nazwisko, setNazwisko] = useState();
+
   const [email, setEmail] = useState("");
 
   const [text, setText] = useState("");
@@ -21,44 +24,75 @@ const FormHelper = ({ children }) => {
 
   const [textValid, setTextValid] = useState(false);
   const [starsValid, setStarsValid] = useState(false);
+  const [phoneValid, setPhoneValid] = useState(false);
+  const [emailValid, setEmailValid] = useState(false);
 
-  const project_id_test = phoneNumber.filter(
+  const project_id_test = phoneNumberFromZleceniodawcy.filter(
     (el) => el.phone_number === Number(phone)
   );
 
   const validation = () => {
-    const findPhone = phoneNumber.findIndex(
-      (el) => el.phone_number === Number(phone)
+    //sprawdzanie czy numer jest w bazie danych
+    if (project_id_test.length === 0 || phone.length !== 9) {
+      setPhoneValid(false);
+      alert(`Numeru ${phone} nie ma w bazie danych !!`);
+      return;
+    } else {
+      setPhoneValid(true);
+    }
+
+    //sprawdzanie czy numer dodał już opinie
+
+    const opinionsElCheckedPhone = opinionsEl.filter(
+      (el) => el.phone === Number(phone)
     );
 
-    let phoneT = false;
-
-    if (findPhone === -1 || phone.length !== 9) {
-      phoneT = false;
+    if (opinionsElCheckedPhone.length >= 1) {
+      setPhoneValid(false);
+      alert(`Numer ${phone} dodał już opinię, ale możesz ją edytować !!`);
+      return;
     } else {
-      phoneT = true;
+      setPhoneValid(true);
+    }
+
+    // sprawdzanie czy email dodał już opinię
+
+    const opinionsElCheckedEmail = opinionsEl.filter(
+      (el) => el.email === email
+    );
+
+    if (opinionsElCheckedEmail.length > 0) {
+      setEmailValid(false);
+      alert(
+        "Podany email " +
+          email +
+          " znajduje się już w naszej bazie. Może chcesz edytować swoją opinie?"
+      );
+
+      return;
+    } else {
+      setEmailValid(true);
     }
 
     if (validator.isDate(public_data)) {
     } else {
       alert("Podaj datę !");
     }
-    if (phoneT && textValid && starsValid) {
+
+    if (phoneValid && textValid && starsValid && emailValid) {
       opinionPost();
+      PopUpOpinions("Opinia została dodana!");
       resetForm();
     } else {
-      if (!phoneT) {
-        alert(`Tego numeru: ${phone} nie ma w naszej bazie!`);
-      }
       if (!textValid) {
         alert(`Sprawdz swoją opinię !`);
+        return;
       }
       if (!starsValid) {
         alert(`Sprawdz gwiazdki !`);
       }
     }
   };
-
   const opinionPost = async () => {
     const { project_id, phone_number } = project_id_test[0];
     try {
@@ -75,7 +109,6 @@ const FormHelper = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
-    await getUsers();
   };
 
   const resetForm = () => {
@@ -87,7 +120,7 @@ const FormHelper = ({ children }) => {
     setPublic_data("");
     setPhone("");
     setTextLenght(0);
-    getUsers();
+    getOpinions();
     handleCloseAddOpinion();
   };
 
