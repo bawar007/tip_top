@@ -15,7 +15,7 @@ const EditOpinionContent = ({
 }) => {
   const { email, text, stars, public_data } = editOpinion[0];
 
-  const { getUsers, HOST } = useContext(AppContext);
+  const { getOpinions, HOST } = useContext(AppContext);
   const { resetForm } = useContext(FormAddOpinionContext);
 
   const [textO, setText] = useState(text);
@@ -52,7 +52,7 @@ const EditOpinionContent = ({
     setNextEditPage(false);
     resetFormOpinionEdit();
     resetForm();
-    getUsers();
+    getOpinions();
   };
 
   return (

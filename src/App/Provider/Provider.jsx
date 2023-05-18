@@ -46,7 +46,7 @@ const AppProvider = ({ children }) => {
     setPicIndex(0);
   };
 
-  const getUsers = useCallback(async () => {
+  const getOpinions = useCallback(async () => {
     const response = await axios.get(`${HOST}/opinions`);
     setOpinions(response.data);
     if (response.error) {
@@ -56,17 +56,18 @@ const AppProvider = ({ children }) => {
 
   const getUser = useCallback(async () => {
     const response = await axios.get(`${HOST}/user`);
-    setPhoneNumber(response.data);
+    setPhoneNumberFromZleceniodawcy(response.data);
     if (response.error) {
       console.error(response.error);
     }
   }, [HOST]);
 
   const [opinionsEl, setOpinions] = useState([]);
-  const [phoneNumber, setPhoneNumber] = useState([]);
+  const [phoneNumberFromZleceniodawcy, setPhoneNumberFromZleceniodawcy] =
+    useState([]);
 
   useEffect(() => {
-    getUsers();
+    getOpinions();
     getUser();
     const GetSize = () => {
       const w = window.innerWidth;
@@ -76,7 +77,7 @@ const AppProvider = ({ children }) => {
     };
     window.addEventListener("resize", () => GetSize());
     return window.removeEventListener("resize", () => GetSize());
-  }, [getUsers, getUser]);
+  }, [getOpinions, getUser]);
 
   const handleClickCloseGalleryModal = () => {
     setAllPics(false);
@@ -100,9 +101,9 @@ const AppProvider = ({ children }) => {
         picIndex,
         setPicIndex,
         getUser,
-        getUsers,
+        getOpinions,
         opinionsEl,
-        phoneNumber,
+        phoneNumberFromZleceniodawcy,
         allPicsFromOpinion,
         setAllPicsFromOpinion,
         HOST,

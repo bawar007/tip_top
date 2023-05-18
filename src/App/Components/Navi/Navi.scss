@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
 $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
   brightness(104%) contrast(97%);
 
@@ -21,6 +19,9 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
 }
 
 @media (min-width: 700px) {
+  .activeNaviLogo {
+    filter: $filter !important;
+  }
   .Navi {
     height: 75vh;
     width: 70px;
@@ -50,7 +51,7 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
               saturate(6%) hue-rotate(89deg) brightness(103%) contrast(111%);
           }
 
-          .Home {
+          .Home--NaviItem {
             margin-top: 100px;
           }
 

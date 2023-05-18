@@ -6,7 +6,7 @@ const LogoLoadPage = () => {
   return (
     <div className="LogoLoadPage">
       <img
-        src={`${tip}/icons/LogoTipTopCss.svg`}
+        srcSet={`${tip}/icons/LogoTipTopCss.svg`}
         alt="logo"
         className="LogoLoadPage--img"
         fetchpriority="high"

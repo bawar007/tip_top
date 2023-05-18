@@ -1,16 +1,5 @@
 import axios from "axios";
-
-const updatePop = () => {
-  const opinionsBox = document.querySelector(".opinionsBox");
-  const updatePopBox = document.createElement("div");
-  updatePopBox.classList.add("updatePop_box");
-  const updatePop = document.createElement("div");
-  updatePop.classList.add("updatepop");
-  updatePop.innerHTML = "<h2>Dane zostały zaktualizowane</h2>";
-  updatePopBox.appendChild(updatePop);
-  opinionsBox.appendChild(updatePopBox);
-  setTimeout(() => updatePopBox.remove(), 2500);
-};
+import { PopUpOpinions } from "../PopUp/PopUp";
 
 export const OpinionUpdate = async (email, textO, starsO, HOST) => {
   try {
@@ -18,7 +7,7 @@ export const OpinionUpdate = async (email, textO, starsO, HOST) => {
       text: textO,
       stars: starsO,
     });
-    setTimeout(() => updatePop(), 500);
+    setTimeout(() => PopUpOpinions("Dane zostały zaktualizowane"), 500);
   } catch (error) {
     console.log(error);
   }

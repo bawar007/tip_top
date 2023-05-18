@@ -11,6 +11,7 @@
     margin: auto; /* Black w/ opacity */
   }
   .modal-content {
+    will-change: auto;
     margin: auto;
     display: block;
     max-height: 100%;

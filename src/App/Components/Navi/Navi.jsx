@@ -1,8 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../Provider/Provider";
+import { obliczProcentWidocznosci } from "../../Provider/SomeFunctions/HowPercentsIsVisibled";
 
 const Navi = () => {
   const { windowW, windowH, tip } = useContext(AppContext);
+
+  useEffect(() => {
+    if (windowW) {
+      const sections = document.querySelectorAll("section");
+      sections.forEach((el) => {
+        const i = document.querySelector(`${el.dataset.naviitem} > img`);
+        i.classList.remove("activeNaviItem");
+        window.addEventListener("scroll", () => obliczProcentWidocznosci(el));
+      });
+    }
+  }, [windowW]);
 
   return (
     <div className="Navi">
@@ -18,13 +30,17 @@ const Navi = () => {
         <nav>
           <ul>
             <li>
-              <a href="#home" className="Home">
-                <img src={`${tip}/icons/Home.svg`} alt="home" />
+              <a href="#home" className="Home--NaviItem">
+                <img
+                  src={`${tip}/icons/Home.svg`}
+                  alt="home"
+                  className="HomeNavi--logo activeNaviLogo"
+                />
               </a>
               <span className="tool">Strona Główna</span>
             </li>
             <li>
-              <a href="#gallery">
+              <a href="#gallery" className="Projects--NaviItem">
                 <img
                   src={`${tip}/icons/projects.svg`}
                   alt="ofert"
@@ -37,7 +53,7 @@ const Navi = () => {
             </li>
 
             <li>
-              <a href="#opinions">
+              <a href="#opinions" className="Opinions-NaviItem">
                 <img
                   src={`${tip}/icons/medalstar.svg`}
                   alt="opinion"
@@ -49,7 +65,7 @@ const Navi = () => {
               <span className="tool">Opinie</span>
             </li>
             <li>
-              <a href="#ofert">
+              <a href="#ofert" className="Ofert-NaviItem">
                 <img
                   src={`${tip}/icons/offert.svg`}
                   alt="ofert"
@@ -61,7 +77,7 @@ const Navi = () => {
               <span className="tool">OFERTA</span>
             </li>
             <li>
-              <a href="#whyUs">
+              <a href="#whyUs" className="WhyUs-NaviItem">
                 <img
                   src={`${tip}/icons/whyus.svg`}
                   alt="ofert"
@@ -73,7 +89,7 @@ const Navi = () => {
               <span className="tool">Dlaczego My?</span>
             </li>
             <li>
-              <a href="#contact">
+              <a href="#contact" className="Contact-NaviItem">
                 <img
                   src={`${tip}/icons/Contact.svg`}
                   alt="contact"

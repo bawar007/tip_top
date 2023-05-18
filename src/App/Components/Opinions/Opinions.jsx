@@ -17,7 +17,11 @@ const Opinions = () => {
 
   return (
     <FormHelper>
-      <section className="opinionsPage" id="opinions">
+      <section
+        className="opinionsPage"
+        id="opinions"
+        data-naviitem=".Opinions-NaviItem"
+      >
         <h1 className="title_page">opinie</h1>
         <div className="opinionsBox">
           <SingleOpinion />

@@ -53,10 +53,12 @@
         margin-top: 10px;
       }
       &:nth-child(even) {
+        will-change: auto;
         transform: rotate(4deg);
       }
 
       &:nth-child(odd) {
+        will-change: auto;
         transform: rotate(-4deg);
       }
 
@@ -91,6 +93,7 @@
       }
     }
     &:hover > .GalleryPicOnPage_content:hover {
+      will-change: auto;
       transform: scale(1.1);
       .GalleryPicOnPage_content--img {
         width: 255px;

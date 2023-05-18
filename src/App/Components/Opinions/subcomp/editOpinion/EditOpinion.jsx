@@ -1,7 +1,5 @@
 import { useContext, useState } from "react";
 
-import axios from "axios";
-
 import EditOpinionContent from "./EditOpinionContent/EditOpinionContent";
 import { AppContext } from "../../../../Provider/Provider";
 
@@ -16,7 +14,7 @@ const EditOpinion = () => {
   const [editOpinion, setEditOpinion] = useState(null);
   const [NextEditPage, setNextEditPage] = useState(false);
 
-  const { HOST } = useContext(AppContext);
+  const { opinionsEl } = useContext(AppContext);
 
   const saveOpinion = (e) => {
     e.preventDefault();
@@ -32,9 +30,7 @@ const EditOpinion = () => {
   };
 
   const getOpinion = async () => {
-    const response = await axios.get(`${HOST}/opinions`);
-
-    const emailFound = response.data.filter((el) => el.email === email);
+    const emailFound = opinionsEl.filter((el) => el.email === email);
     if (emailFound.length >= 1) {
       const imieEl = emailFound[0].imie.toLowerCase();
       const nazwiskoEl = emailFound[0].nazwisko.toLowerCase();

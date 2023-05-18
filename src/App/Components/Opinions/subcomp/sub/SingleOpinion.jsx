@@ -12,7 +12,7 @@ const SingleOpinion = () => {
   };
 
   const opinion = opinionsEl.map((opinion) => (
-    <div className="opinion" key={opinion.id}>
+    <div className="opinion" key={opinion.id + "a"}>
       <h2>
         {opinion.imie}
         {" " + opinion.nazwisko}
