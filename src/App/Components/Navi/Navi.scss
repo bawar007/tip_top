@@ -21,6 +21,15 @@ $filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
 @media (min-width: 700px) {
   .activeNaviLogo {
     filter: $filter !important;
+    animation: OP 600ms ease forwards;
+  }
+  @keyframes OP {
+    from {
+      opacity: 0.5;
+    }
+    to {
+      opacity: 1;
+    }
   }
   .Navi {
     height: 75vh;
