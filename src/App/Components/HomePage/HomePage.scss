@@ -2,21 +2,23 @@
 @import "./subcomponents/Slider/Slider.scss";
 @import "./subcomponents/TitlePageLogo/TitlePageLogo.scss";
 
+$banerBG: url("../../../../public/pictures/baner2.webp");
+
 .homePage {
   display: flex;
+  align-items: center;
+  flex-direction: column;
   max-width: 100%;
+  min-height: 100vh;
   padding-top: 30px;
+  background-image: $banerBG;
+  background-size: cover;
 }
 
 @media (min-width: 700px) {
   .homePage {
-    min-height: 100vh;
     width: 100vw;
-    align-items: center;
-    flex-direction: column;
     padding-top: 100px;
-    background-image: url("../../../../public/pictures/baner2.webp");
-    background-size: cover;
 
     .homePage_content {
       width: 90%;
@@ -31,13 +33,8 @@
 
 @media (max-width: 700px) {
   .homePage {
-    min-height: 100vh;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
     padding: 30px 0;
     box-shadow: 0px 19px 22px -2px rgba(184, 184, 204, 1);
-    background-image: url("../../../../public/pictures/baner2.webp");
-    background-size: cover;
   }
 }
