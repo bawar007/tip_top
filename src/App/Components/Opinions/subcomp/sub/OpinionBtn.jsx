@@ -12,16 +12,27 @@ const OpinionBtn = () => {
     opinionEdit.classList.add("openModalOpinion");
     opinion_edit_box.classList.add("openModalBg");
   };
+
+  const starEl = (
+    <img
+      src="/tip_top/icons/star.svg"
+      alt="star"
+      width="20"
+      height="20"
+      className="checked"
+    />
+  );
+
   return (
     <div className="opinion">
       <h2>Jesteś naszym klientem?</h2>
       <p>Jeżeli tak to zapraszamy do dodania opinii na temat naszych usług</p>
       <div className="stars">
-        <span className="fa fa-star checked"></span>
-        <span className="fa fa-star checked"></span>
-        <span className="fa fa-star checked"></span>
-        <span className="fa fa-star checked"></span>
-        <span className="fa fa-star checked"></span>
+        {starEl}
+        {starEl}
+        {starEl}
+        {starEl}
+        {starEl}
       </div>
       <button onClick={handleOpenAddOpinion} className="btn_Accept">
         DODAJ OPINIĘ

@@ -7,7 +7,12 @@ const Social = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <i className="fa fa-facebook-official" />
+          <img
+            src="/tip_top/icons/facebook_icon.svg"
+            width="40"
+            height="40"
+            alt="facebook"
+          />
           <div className="facebook-open dymek">
             <span>Facebook</span>
           </div>

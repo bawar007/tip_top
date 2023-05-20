@@ -7,11 +7,24 @@ const OfertsDesktop = () => {
 
   const ofertsEl = oferts.map((el, index) => (
     <div className="multi-container--infoBox" key={el.id} id={`io${el.id}`}>
-      <h1>
-        {index === 0 ? <i className="fa fa-solid fa-bath"></i> : null}
-        {index === 1 ? <i className="fa fa-solid fa-building"></i> : null}
-        {el.title}
-      </h1>
+      <div className="ofert_title">
+        {index === 1 ? (
+          <img
+            src="/tip_top/icons/houseforofert.svg"
+            alt="houseforofert"
+            width="45"
+            height="45"
+          />
+        ) : index === 0 ? (
+          <img
+            src="/tip_top/icons/shower.svg"
+            alt="houseforofert"
+            width="45"
+            height="45"
+          />
+        ) : null}
+        <h1>{el.title}</h1>
+      </div>
       <ul className="infoBox_list">
         {el.items.map((el, index) => {
           if (index < howOfertsShow) {

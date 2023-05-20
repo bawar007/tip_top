@@ -11,9 +11,10 @@ const Stars = () => {
     setStarsValid(true);
     starsEl.forEach((el, index) => {
       if (index < star) {
-        el.style.color = "orange";
+        el.style.filter = `invert(58%) sepia(48%) saturate(1566%) hue-rotate(2deg)
+        brightness(107%) contrast(104%)`;
       } else {
-        el.style.color = "";
+        el.style.filter = "";
       }
     });
     numbers.innerHTML = `Twoja ocena: ${star}/5`;
@@ -24,9 +25,10 @@ const Stars = () => {
     const starsEl = document.querySelectorAll(".checkedAdd");
     starsEl.forEach((el, index) => {
       if (index < star) {
-        el.style.color = "orange";
+        el.style.filter = `invert(58%) sepia(48%) saturate(1566%) hue-rotate(2deg)
+        brightness(107%) contrast(104%)`;
       } else {
-        el.style.color = "";
+        el.style.filter = "";
       }
     });
   };
@@ -34,9 +36,10 @@ const Stars = () => {
     const starsEl = document.querySelectorAll(".checkedAdd");
     starsEl.forEach((el, index) => {
       if (index < stars) {
-        el.style.color = "orange";
+        el.style.filter = `invert(58%) sepia(48%) saturate(1566%) hue-rotate(2deg)
+        brightness(107%) contrast(104%)`;
       } else {
-        el.style.color = "";
+        el.style.filter = "";
       }
     });
   };
@@ -45,46 +48,66 @@ const Stars = () => {
     <label>
       <h2>Ocena usługi</h2>
       <div className="starsBox">
-        <span
-          className="fa fa-starfa fa-star checkedAdd"
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className="checkedAdd"
           onClick={() => {
             handleChangeAddOpinionStars(1);
           }}
           onMouseOver={() => hoverChangeAddOpinionStars(1)}
           onMouseOut={() => mouseOutAddOpinion()}
-        ></span>
-        <span
-          className="fa fa-starfa fa-star checkedAdd"
+        />
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className="checkedAdd"
           onClick={() => {
             handleChangeAddOpinionStars(2);
           }}
           onMouseOver={() => hoverChangeAddOpinionStars(2)}
           onMouseOut={() => mouseOutAddOpinion()}
-        ></span>
-        <span
-          className="fa fa-starfa fa-star checkedAdd"
+        />
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className="checkedAdd"
           onClick={() => {
             handleChangeAddOpinionStars(3);
           }}
           onMouseOver={() => hoverChangeAddOpinionStars(3)}
           onMouseOut={() => mouseOutAddOpinion()}
-        ></span>
-        <span
-          className="fa fa-starfa fa-star checkedAdd"
+        />
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className="checkedAdd"
           onClick={() => {
             handleChangeAddOpinionStars(4);
           }}
           onMouseOver={() => hoverChangeAddOpinionStars(4)}
           onMouseOut={() => mouseOutAddOpinion()}
-        ></span>
-        <span
-          className="fa fa-starfa fa-star checkedAdd"
+        />
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className="checkedAdd"
           onClick={() => {
             handleChangeAddOpinionStars(5);
           }}
           onMouseOver={() => hoverChangeAddOpinionStars(5)}
           onMouseOut={() => mouseOutAddOpinion()}
-        ></span>
+        />
       </div>
       <div className="starInfoBox">
         <span className="info"></span>

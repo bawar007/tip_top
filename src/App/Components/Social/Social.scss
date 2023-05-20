@@ -15,7 +15,7 @@
     height: 30px;
     background-color: rgba(0, 0, 0, 0.6);
     position: fixed;
-    left: 36.5px;
+    left: 42px;
     visibility: hidden;
     border-radius: 20px;
     display: flex;
@@ -30,14 +30,6 @@
   }
 
   .fb {
-    i {
-      font-size: 40px;
-      color: blue;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
     &:hover {
       .facebook-open {
         visibility: visible;

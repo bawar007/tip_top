@@ -10,9 +10,9 @@ $banerBG: url("../../../../public/pictures/baner2.webp");
   flex-direction: column;
   max-width: 100%;
   min-height: 100vh;
-  padding-top: 30px;
   background-image: $banerBG;
   background-size: cover;
+  padding-bottom: 50px;
 }
 
 @media (min-width: 700px) {

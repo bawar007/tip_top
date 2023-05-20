@@ -19,21 +19,41 @@ const SingleOpinion = () => {
       </h2>
       <p>{opinion.text}</p>
       <div className="stars">
-        <span
-          className={opinion.stars >= 1 ? "fa fa-star checked" : "fa fa-star"}
-        ></span>
-        <span
-          className={opinion.stars >= 2 ? "fa fa-star checked" : "fa fa-star"}
-        ></span>
-        <span
-          className={opinion.stars >= 3 ? "fa fa-star checked" : "fa fa-star"}
-        ></span>
-        <span
-          className={opinion.stars >= 4 ? "fa fa-star checked" : "fa fa-star"}
-        ></span>
-        <span
-          className={opinion.stars === 5 ? "fa fa-star checked" : "fa fa-star"}
-        ></span>
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className={opinion.stars >= 1 ? "checked" : null}
+        />
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className={opinion.stars >= 2 ? "checked" : null}
+        />
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className={opinion.stars >= 3 ? "checked" : null}
+        />
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className={opinion.stars >= 4 ? "checked" : null}
+        />
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className={opinion.stars >= 5 ? "checked" : null}
+        />
       </div>
       <div className="projectLink">
         <h3 onClick={() => handleClick(opinion.project_id)}>

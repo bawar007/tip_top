@@ -39,56 +39,66 @@ const EditOpinionStars = ({ setStars, setStarsValid, starsO }) => {
   return (
     <>
       <div className="stars">
-        <span
-          className={
-            starsO >= 1 ? "fa fa-star checked editStar" : "fa fa-star editStar"
-          }
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className={starsO >= 1 ? "checked editStar" : "editStar"}
           onClick={() => {
             handleChangeStars(1);
           }}
           onMouseOver={() => hoverChangeStars(1)}
           onMouseOut={() => mouseOut()}
-        ></span>
-        <span
-          className={
-            starsO >= 2 ? "fa fa-star checked editStar" : "fa fa-star editStar"
-          }
+        />
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className={starsO >= 2 ? "checked editStar" : "editStar"}
           onClick={() => {
             handleChangeStars(2);
           }}
           onMouseOver={() => hoverChangeStars(2)}
           onMouseOut={() => mouseOut()}
-        ></span>
-        <span
-          className={
-            starsO >= 3 ? "fa fa-star checked editStar" : "fa fa-star editStar"
-          }
+        />
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className={starsO >= 3 ? "checked editStar" : "editStar"}
           onClick={() => {
             handleChangeStars(3);
           }}
           onMouseOver={() => hoverChangeStars(3)}
           onMouseOut={() => mouseOut()}
-        ></span>
-        <span
-          className={
-            starsO >= 4 ? "fa fa-star checked editStar" : "fa fa-star editStar"
-          }
+        />
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className={starsO >= 4 ? "checked editStar" : "editStar"}
           onClick={() => {
             handleChangeStars(4);
           }}
           onMouseOver={() => hoverChangeStars(4)}
           onMouseOut={() => mouseOut()}
-        ></span>
-        <span
-          className={
-            starsO === 5 ? "fa fa-star checked editStar" : "fa fa-star editStar"
-          }
+        />
+        <img
+          src="/tip_top/icons/star.svg"
+          alt="star"
+          width="20"
+          height="20"
+          className={starsO >= 5 ? "checked editStar" : "editStar"}
           onClick={() => {
             handleChangeStars(5);
           }}
           onMouseOver={() => hoverChangeStars(5)}
           onMouseOut={() => mouseOut()}
-        ></span>
+        />
       </div>
       <div className="starInfoBoxEdit">
         <span className="info"></span>
