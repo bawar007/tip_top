@@ -6,7 +6,7 @@ import AllPicsPopUp from "./SubComponents/AllPicsPopUp/AllPicsPopup";
 import MobileGallery from "./SubComponents/Mobile/MobileGallery";
 import GalleryPics from "./SubComponents/GalleryPics/GalleryPics";
 
-const GalleryPage = () => {
+const GalleryPage = React.memo(() => {
   const { windowW, windowH, allPics } = useContext(AppContext);
 
   return (
@@ -26,6 +26,6 @@ const GalleryPage = () => {
       ) : null}
     </section>
   );
-};
+});
 
 export default GalleryPage;

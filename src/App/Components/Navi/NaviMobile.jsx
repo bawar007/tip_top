@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../../Provider/Provider";
 
 const NaviMobile = () => {
@@ -16,24 +16,6 @@ const NaviMobile = () => {
       }, 500);
     });
   };
-
-  useEffect(() => {
-    const el = document.querySelector(".footer");
-    const ArrowUp = document.querySelector(".ArrowUpTest");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (ArrowUp) {
-          if (entry.isIntersecting) {
-            ArrowUp.classList.add("white");
-          } else {
-            ArrowUp.classList.remove("white");
-          }
-        }
-      });
-    });
-
-    observer.observe(el);
-  });
 
   return (
     <>

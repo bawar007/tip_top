@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import ContactPage from "./Components/ContactPage/ContactPage";
 
 import HomePage from "./Components/HomePage/HomePage";
@@ -13,28 +13,47 @@ import WhyThis from "./Components/WhyThis/WhyThis";
 import LogoLoadPage from "./Components/LogoLoadPage/LogoLoadPage";
 import { useContext } from "react";
 import { AppContext } from "./Provider/Provider";
+import { ObserverSections } from "./Provider/SomeFunctions/ObserverSections";
 
 const GalleryPage = lazy(() => import("./Components/Gallery/GalleryPage"));
 
 function App() {
   const { windowH, windowW } = useContext(AppContext);
 
+  ///////////////////////////////////
+  ///////////OBSERVERS///////////////
+  ///////////////////////////////////
+  useEffect(() => {
+    const homePageObserverEl = document.querySelector(".homePage");
+    const contactPageObserverEl = document.querySelector(".contactPage");
+    const footerObserverEl = document.querySelector(".footer");
+    const infoFromOfertsEl = document.querySelectorAll(
+      ".multi-container--infoBox"
+    );
+
+    ObserverSections.observe(homePageObserverEl);
+    ObserverSections.observe(contactPageObserverEl);
+    ObserverSections.observe(footerObserverEl);
+    infoFromOfertsEl.forEach((el) => ObserverSections.observe(el));
+  });
+  /////////////////////////////////
+  /////////////////////////////////
+  /////////////////////////////////
+
   return (
     <div className="App">
       <HomePage />
-      <Suspense fallback={<div>Loading..</div>}>
-        <GalleryPage />
-      </Suspense>
-
+      <GalleryPage />
       <Opinions />
       <Ofert />
       <WhyThis />
       <ContactPage />
       {windowW && windowH ? <Navi /> : <NaviMobile />}
-
       <Modal />
       <Social />
-      <LogoLoadPage />
+      <Suspense fallback={<div>Loading...</div>}>
+        <LogoLoadPage />
+      </Suspense>
     </div>
   );
 }
