@@ -46,6 +46,7 @@ const AppProvider = ({ children }) => {
     setPicIndex(0);
   };
 
+  //pobieranie opinii
   const getOpinions = useCallback(async () => {
     const response = await axios.get(`${HOST}/opinions`);
     setOpinions(response.data);
@@ -53,7 +54,7 @@ const AppProvider = ({ children }) => {
       console.error(response.error);
     }
   }, [HOST]);
-
+  //pobieranie użytkowników
   const getUser = useCallback(async () => {
     const response = await axios.get(`${HOST}/user`);
     setPhoneNumberFromZleceniodawcy(response.data);
@@ -62,11 +63,12 @@ const AppProvider = ({ children }) => {
     }
   }, [HOST]);
 
-  const [opinionsEl, setOpinions] = useState([]);
+  const [opinionsFromDB, setOpinions] = useState([]);
   const [phoneNumberFromZleceniodawcy, setPhoneNumberFromZleceniodawcy] =
     useState([]);
 
   useEffect(() => {
+    //pobieranie opinni i użytkowników u których były wykonywane prace
     getOpinions();
     getUser();
     const GetSize = () => {
@@ -102,7 +104,7 @@ const AppProvider = ({ children }) => {
         setPicIndex,
         getUser,
         getOpinions,
-        opinionsEl,
+        opinionsFromDB,
         phoneNumberFromZleceniodawcy,
         allPicsFromOpinion,
         setAllPicsFromOpinion,

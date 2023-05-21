@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../../../../Provider/Provider";
 
 const SingleOpinion = () => {
-  const { opinionsEl, setPicId, setPicIndex, setAllPicsFromOpinion } =
+  const { opinionsFromDB, setPicId, setPicIndex, setAllPicsFromOpinion } =
     useContext(AppContext);
 
   const handleClick = (id) => {
@@ -11,7 +11,7 @@ const SingleOpinion = () => {
     setAllPicsFromOpinion(true);
   };
 
-  const opinion = opinionsEl.map((opinion) => (
+  const opinion = opinionsFromDB.map((opinion) => (
     <div className="opinion" key={opinion.id + "a"}>
       <h2>
         {opinion.imie}

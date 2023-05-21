@@ -1,6 +1,13 @@
 import { createContext, useContext, useState } from "react";
+import {
+  PHONE_LENGTH,
+  checkPhoneNumberFromZleceniodawcy,
+  checkTheNumberHasAlreadyAddedReview,
+  opinionsElCheckedEmail,
+} from "./variables";
 
-import validator from "validator";
+import { handleCloseAddOpinion } from "./handlers/handlers";
+
 import axios from "axios";
 import { AppContext } from "../../../Provider/Provider";
 import { PopUpOpinions } from "../subcomp/editOpinion/EditOpinionContent/helpers/PopUp/PopUp";
@@ -8,14 +15,12 @@ import { PopUpOpinions } from "../subcomp/editOpinion/EditOpinionContent/helpers
 export const FormAddOpinionContext = createContext(null);
 
 const FormHelper = ({ children }) => {
-  const { phoneNumberFromZleceniodawcy, getOpinions, HOST, opinionsEl } =
+  const { phoneNumberFromZleceniodawcy, getOpinions, HOST, opinionsFromDB } =
     useContext(AppContext);
 
   const [imie, setImie] = useState();
   const [nazwisko, setNazwisko] = useState();
-
   const [email, setEmail] = useState("");
-
   const [text, setText] = useState("");
   const [textLenght, setTextLenght] = useState(0);
   const [stars, setStars] = useState(0);
@@ -27,13 +32,12 @@ const FormHelper = ({ children }) => {
   const [phoneValid, setPhoneValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
 
-  const project_id_test = phoneNumberFromZleceniodawcy.filter(
-    (el) => el.phone_number === Number(phone)
-  );
-
   const validation = () => {
     //sprawdzanie czy numer jest w bazie danych
-    if (project_id_test.length === 0 || phone.length !== 9) {
+    if (
+      checkPhoneNumberFromZleceniodawcy(phoneNumberFromZleceniodawcy, phone) ||
+      phone.length !== PHONE_LENGTH
+    ) {
       setPhoneValid(false);
       alert(`Numeru ${phone} nie ma w bazie danych !!`);
       return;
@@ -43,11 +47,7 @@ const FormHelper = ({ children }) => {
 
     //sprawdzanie czy numer dodał już opinie
 
-    const opinionsElCheckedPhone = opinionsEl.filter(
-      (el) => el.phone === Number(phone)
-    );
-
-    if (opinionsElCheckedPhone.length >= 1) {
+    if (checkTheNumberHasAlreadyAddedReview(opinionsFromDB, phone)) {
       setPhoneValid(false);
       alert(`Numer ${phone} dodał już opinię, ale możesz ją edytować !!`);
       return;
@@ -57,11 +57,7 @@ const FormHelper = ({ children }) => {
 
     // sprawdzanie czy email dodał już opinię
 
-    const opinionsElCheckedEmail = opinionsEl.filter(
-      (el) => el.email === email
-    );
-
-    if (opinionsElCheckedEmail.length > 0) {
+    if (opinionsElCheckedEmail(opinionsFromDB, email)) {
       setEmailValid(false);
       alert(
         "Podany email " +
@@ -72,11 +68,6 @@ const FormHelper = ({ children }) => {
       return;
     } else {
       setEmailValid(true);
-    }
-
-    if (validator.isDate(public_data)) {
-    } else {
-      alert("Podaj datę !");
     }
 
     if (phoneValid && textValid && starsValid && emailValid) {
@@ -93,6 +84,13 @@ const FormHelper = ({ children }) => {
       }
     }
   };
+
+  //wyciąganie numeru projektu z bazy
+
+  const project_id_test = phoneNumberFromZleceniodawcy.filter(
+    (el) => el.phone_number === Number(phone)
+  );
+
   const opinionPost = async () => {
     const { project_id, phone_number } = project_id_test[0];
     try {
@@ -151,15 +149,6 @@ const FormHelper = ({ children }) => {
     }
   };
 
-  const handleCloseAddOpinion = () => {
-    const opinion_box = document.querySelector(".add_opinion_box");
-    const opinionAdd = document.querySelector(".add_opinion");
-    if (opinion_box || opinionAdd) {
-      opinionAdd.classList.remove("openModalOpinion");
-      opinion_box.classList.remove("openModalBg");
-    }
-  };
-
   return (
     <FormAddOpinionContext.Provider
       value={{
@@ -172,7 +161,6 @@ const FormHelper = ({ children }) => {
         text,
         textLenght,
         public_data,
-        handleCloseAddOpinion,
         resetForm,
         setStars,
         stars,

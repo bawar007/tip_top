@@ -14,7 +14,7 @@ const EditOpinion = () => {
   const [editOpinion, setEditOpinion] = useState(null);
   const [NextEditPage, setNextEditPage] = useState(false);
 
-  const { opinionsEl } = useContext(AppContext);
+  const { opinionsFromDB } = useContext(AppContext);
 
   const saveOpinion = (e) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ const EditOpinion = () => {
   };
 
   const getOpinion = async () => {
-    const emailFound = opinionsEl.filter((el) => el.email === email);
+    const emailFound = opinionsFromDB.filter((el) => el.email === email);
     if (emailFound.length >= 1) {
       const imieEl = emailFound[0].imie.toLowerCase();
       const nazwiskoEl = emailFound[0].nazwisko.toLowerCase();

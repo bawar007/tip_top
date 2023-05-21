@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { FormAddOpinionContext } from "../../../../helpers/formHelper";
+import { handleCloseAddOpinion } from "../../../../helpers/handlers/handlers";
 
 const ButtonsAddOpinion = () => {
-  const { handleCloseAddOpinion, resetForm } = useContext(
-    FormAddOpinionContext
-  );
+  const { resetForm } = useContext(FormAddOpinionContext);
   return (
     <div className="btnBox">
       <button type="submit" className="btn_send">
