@@ -30,11 +30,13 @@ function App() {
     const infoFromOfertsEl = document.querySelectorAll(
       ".multi-container--infoBox"
     );
+    const whyUsEl = document.querySelectorAll(".whyUs--item");
 
     ObserverSections.observe(homePageObserverEl);
     ObserverSections.observe(contactPageObserverEl);
     ObserverSections.observe(footerObserverEl);
     infoFromOfertsEl.forEach((el) => ObserverSections.observe(el));
+    whyUsEl.forEach((el) => ObserverSections.observe(el));
   });
   /////////////////////////////////
   /////////////////////////////////
@@ -42,6 +44,9 @@ function App() {
 
   return (
     <div className="App">
+      <Suspense fallback={<div>Loading...</div>}>
+        <LogoLoadPage />
+      </Suspense>
       <HomePage />
       <GalleryPage />
       <Opinions />
@@ -51,9 +56,6 @@ function App() {
       {windowW && windowH ? <Navi /> : <NaviMobile />}
       <Modal />
       <Social />
-      <Suspense fallback={<div>Loading...</div>}>
-        <LogoLoadPage />
-      </Suspense>
     </div>
   );
 }

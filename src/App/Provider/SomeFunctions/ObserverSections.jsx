@@ -6,6 +6,7 @@ export const ObserverSections = new IntersectionObserver((entries) => {
     const checkedInfoFromOferts = entry.target.classList.contains(
       "multi-container--infoBox"
     );
+    const checkedItemFromWhyUS = entry.target.classList.contains("whyUs--item");
 
     if (checkedContactPage) {
       const social = document.querySelector(".social");
@@ -63,6 +64,11 @@ export const ObserverSections = new IntersectionObserver((entries) => {
           "animate__animated",
           "animate__fadeInBottomLeft"
         );
+      }
+    }
+    if (checkedItemFromWhyUS) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate__animated", "animate__fadeInUp");
       }
     }
   });
