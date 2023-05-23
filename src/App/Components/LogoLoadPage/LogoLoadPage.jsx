@@ -6,10 +6,13 @@ const LogoLoadPage = () => {
   useEffect(() => {
     const homePage = document.querySelector(".homePage");
     const logoPage = document.querySelector(".LogoLoadPage");
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       homePage.scrollIntoView();
       setTimeout(() => logoPage.remove(), 1000);
-    }, 2500);
+    }, 2000);
+    return () => {
+      clearTimeout(timer);
+    };
   });
   return (
     <div className="LogoLoadPage">
