@@ -6,10 +6,7 @@ const WhyThis = () => {
       <h1 className="title_page">Dlaczego my?</h1>
       <div className="WhyThis-Content">
         {WhyThisItems.map((el, index) => (
-          <div
-            key={el.id + "b"}
-            className={`whyUs--item animate__delay-${index}s`}
-          >
+          <div key={el.id + "b"} className="whyUs--item">
             <div className="title">
               <img
                 src={el.imgSrc}

@@ -1,5 +1,5 @@
 .LogoLoadPage {
-  width: 100vw;
+  max-width: 100vw;
   height: 100vh;
   background-color: white;
   display: flex;
@@ -10,7 +10,6 @@
 @media (max-width: 700px) {
   .LogoLoadPage {
     .LogoLoadPage--img {
-      max-width: 100vw;
       margin: auto;
     }
   }

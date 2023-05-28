@@ -11,13 +11,7 @@ export const ObserverSections = new IntersectionObserver((entries) => {
     if (checkedContactPage) {
       const social = document.querySelector(".social");
       if (entry.isIntersecting) {
-        const targetElement = entry.target;
-        const logoEl = document.querySelectorAll(".logoTest");
-
         social.style.visibility = "visible";
-        targetElement.classList.add("animate__rollIn", "animate__animated");
-
-        logoEl.forEach((el) => (el.style.display = "block"));
       } else {
         social.style.visibility = "hidden";
       }
@@ -27,6 +21,7 @@ export const ObserverSections = new IntersectionObserver((entries) => {
       const arrowUpMobile = document.querySelector(".ArrowUpTestLink");
       const arrowUpPC = document.querySelector(".ArrowUpPC");
       const menu = document.querySelector(".menu");
+
       if (entry.isIntersecting) {
         if (arrowUpMobile) {
           arrowUpMobile.style.display = "none";
@@ -69,6 +64,7 @@ export const ObserverSections = new IntersectionObserver((entries) => {
     if (checkedItemFromWhyUS) {
       if (entry.isIntersecting) {
         entry.target.classList.add("animate__animated", "animate__fadeInUp");
+        entry.target.style.setProperty("--animate-duration", "2s");
       }
     }
   });
