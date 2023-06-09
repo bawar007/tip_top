@@ -18,6 +18,16 @@ const Social = () => {
           </div>
         </a>
       </div>
+      <div className="phone myIcon">
+        <a href="tel:518591113" rel="noreferrer">
+          <img
+            src="/tip_top/icons/call.svg"
+            width="50"
+            height="50"
+            alt="facebook"
+          />
+        </a>
+      </div>
     </div>
   );
 };
