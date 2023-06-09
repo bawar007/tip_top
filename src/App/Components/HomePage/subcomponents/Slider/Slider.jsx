@@ -21,14 +21,9 @@ const Slider = () => {
     </div>
   ));
 
-  const circle = imagesEl.map((el, index) => (
-    <span className="dot" key={index}></span>
-  ));
-
   return (
     <div className="slider">
       <div className="slideshow-container">{sliderItems}</div>
-      <div className="circleItems">{circle}</div>
     </div>
   );
 };
