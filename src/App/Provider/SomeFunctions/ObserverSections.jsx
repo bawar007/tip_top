@@ -23,6 +23,18 @@ export const ObserverSections = new IntersectionObserver((entries) => {
       const menu = document.querySelector(".menu");
 
       if (entry.isIntersecting) {
+        const homePageFlipContent = document.querySelectorAll(".flip-content");
+        homePageFlipContent[1].classList.add("flipFirst");
+        setTimeout(() => {
+          homePageFlipContent.forEach((el, index) =>
+            index > 1 ? el.classList.add("shake") : null
+          );
+        }, 500);
+        setTimeout(
+          () => homePageFlipContent[1].classList.remove("flipFirst"),
+          7000
+        );
+
         if (arrowUpMobile) {
           arrowUpMobile.style.display = "none";
           menu.style.bottom = "10px";

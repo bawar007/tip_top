@@ -11,7 +11,11 @@ const Slider = () => {
     <div
       className="mySlides"
       key={Math.random(20)}
-      style={index === 0 ? { display: "flex" } : { display: "none" }}
+      style={
+        index === 0
+          ? { display: "flex", justifyContent: "center" }
+          : { display: "none" }
+      }
     >
       <img
         src={`${tip}${el.first}`}

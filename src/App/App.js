@@ -45,7 +45,7 @@ function App() {
   return (
     <div className="App">
       <Suspense fallback={<div>Loading...</div>}>
-        <LogoLoadPage />
+        {!windowW ? <LogoLoadPage /> : null}
       </Suspense>
       <HomePage />
       <GalleryPage />
