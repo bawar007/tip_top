@@ -1,40 +1,7 @@
-import {
-  GoogleMap,
-  InfoWindowF,
-  LoadScript,
-  MarkerF,
-} from "@react-google-maps/api";
-import { useContext, useState } from "react";
-import { AppContext } from "../../../../Provider/Provider";
-
-const containerStyle = {
-  width: "100%",
-  height: "80%",
-  marginRight: 20,
-};
-
-const containerMobile = {
-  width: "80%",
-  height: "80%",
-};
-
-const center = {
-  lat: 52.994974111638015,
-  lng: 20.276628259163807,
-};
-
 const MyMap = () => {
-  const { windowW } = useContext(AppContext);
-
-  const [info, setinfo] = useState(true);
-
-  const handleClickMarker = () => {
-    setinfo(true);
-  };
-
   return (
     <div id="map">
-      <LoadScript googleMapsApiKey="AIzaSyDeVwoOw-20wXKQ9dkqN3aPhGShjYKPADQ">
+      {/* <LoadScript googleMapsApiKey="AIzaSyDeVwoOw-20wXKQ9dkqN3aPhGShjYKPADQ">
         <GoogleMap
           id="marker-example"
           mapContainerStyle={windowW ? containerStyle : containerMobile}
@@ -73,12 +40,16 @@ const MyMap = () => {
                       Wyznacz trasę
                     </a>
                   </div>
-                </div>
-              </InfoWindowF>
-            )}
-          </MarkerF>
-        </GoogleMap>
-      </LoadScript>
+                </div>*/}
+      <iframe
+        title="map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2401.44445629043!2d20.274115777069962!3d52.99439230099879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471c4b487650795d%3A0xaa2fc1d8a57f73f6!2sKowalewko%2048%2C%2006-522%20Kowalewko!5e0!3m2!1spl!2spl!4v1686319480411!5m2!1spl!2spl"
+        width="500"
+        height="500"
+        style={{ border: 0 }}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      ></iframe>
     </div>
   );
 };
