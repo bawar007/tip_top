@@ -1,13 +1,8 @@
-import { useContext } from "react";
-import { AppContext } from "../../Provider/Provider";
-
 const LogoLoadPage = () => {
-  const { tip } = useContext(AppContext);
-
   return (
     <div className="LogoLoadPage">
       <img
-        srcSet={`${tip}/icons/LogoTipTopCss.svg`}
+        srcSet="/icons/LogoTipTopCss.svg"
         alt="logo"
         className="LogoLoadPage--img"
         fetchpriority="high"

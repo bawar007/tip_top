@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../../../../../Provider/Provider";
 
 const OnePicFromGallery = () => {
-  const { windowW, tip, allPicGalleryPop, picIndex } = useContext(AppContext);
+  const { windowW, allPicGalleryPop, picIndex } = useContext(AppContext);
 
   return (
     <>
@@ -11,7 +11,7 @@ const OnePicFromGallery = () => {
         .map((el, index) => (
           <div className="Main_Photo--Content" key={index + el}>
             <img
-              src={`${tip}${el}`}
+              src={el}
               alt={el}
               className="Main_Photo--Content_img"
               id="myImg"
@@ -21,7 +21,7 @@ const OnePicFromGallery = () => {
                   const modalEl = document.querySelector(".modal");
                   const modalImg = document.querySelector("#img01");
                   modalEl.style.display = "block";
-                  modalImg.src = `${tip}${el}`;
+                  modalImg.src = { el };
                 }
               }}
             />

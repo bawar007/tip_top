@@ -47,7 +47,7 @@ const OfertsFirst = () => {
       return (
         <li className="infoBox_list--item" key={item}>
           <img
-            src="/tip_top/icons/measure.svg"
+            src="/icons/measure.svg"
             alt="da"
             className="OfertListItem--img"
             width="40"
@@ -63,7 +63,7 @@ const OfertsFirst = () => {
     <div className="multi-container--infoBox">
       <div className="ofert_title">
         <img
-          src="/tip_top/icons/shower.svg"
+          src="/icons/shower.svg"
           alt="houseforofert"
           width="45"
           height="45"

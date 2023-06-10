@@ -49,7 +49,7 @@ const Stars = () => {
       <h2>Ocena usługi</h2>
       <div className="starsBox">
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"
@@ -61,7 +61,7 @@ const Stars = () => {
           onMouseOut={() => mouseOutAddOpinion()}
         />
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"
@@ -73,7 +73,7 @@ const Stars = () => {
           onMouseOut={() => mouseOutAddOpinion()}
         />
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"
@@ -85,7 +85,7 @@ const Stars = () => {
           onMouseOut={() => mouseOutAddOpinion()}
         />
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"
@@ -97,7 +97,7 @@ const Stars = () => {
           onMouseOut={() => mouseOutAddOpinion()}
         />
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"

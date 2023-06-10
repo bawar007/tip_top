@@ -4,7 +4,7 @@ import { AppContext } from "../../../../Provider/Provider";
 import { images } from "../../data/image-data";
 
 const GalleryPics = () => {
-  const { handleClick, tip, windowW } = useContext(AppContext);
+  const { handleClick, windowW } = useContext(AppContext);
 
   const [showNumberOfPics, setShowNumberOfPics] = useState(4);
 
@@ -13,7 +13,7 @@ const GalleryPics = () => {
       return (
         <div className="GalleryPicOnPage_content" key={index * 3 + image}>
           <img
-            src={`${tip}${image.first}`}
+            src={image.first}
             alt={image.id}
             className="GalleryPicOnPage_content--img"
             onClick={() => handleClick(image.id)}

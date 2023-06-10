@@ -40,7 +40,7 @@ const EditOpinionStars = ({ setStars, setStarsValid, starsO }) => {
     <>
       <div className="stars">
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"
@@ -52,7 +52,7 @@ const EditOpinionStars = ({ setStars, setStarsValid, starsO }) => {
           onMouseOut={() => mouseOut()}
         />
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"
@@ -64,7 +64,7 @@ const EditOpinionStars = ({ setStars, setStarsValid, starsO }) => {
           onMouseOut={() => mouseOut()}
         />
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"
@@ -76,7 +76,7 @@ const EditOpinionStars = ({ setStars, setStarsValid, starsO }) => {
           onMouseOut={() => mouseOut()}
         />
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"
@@ -88,7 +88,7 @@ const EditOpinionStars = ({ setStars, setStarsValid, starsO }) => {
           onMouseOut={() => mouseOut()}
         />
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"

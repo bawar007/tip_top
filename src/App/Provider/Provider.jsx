@@ -20,7 +20,6 @@ const AppProvider = ({ children }) => {
 
   const windowW = windowWidth > 700;
   const windowH = windowHeight > 360;
-  const tip = "/tip_top";
 
   const SERVER = "https://tip-top-backend.onrender.com";
   const LOCAL = "http://localhost:5000";
@@ -93,7 +92,6 @@ const AppProvider = ({ children }) => {
         setPage,
         windowW,
         windowH,
-        tip,
         setAllPics,
         allPics,
         picId,

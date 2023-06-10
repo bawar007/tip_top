@@ -9,13 +9,8 @@ const MobileGallery = () => {
     useContext(AppContext);
 
   const GalleryMobilePics = allPicGalleryPop[0].all.map((image, index) => (
-    <a
-      href={`/tip_top/${image}`}
-      key={index + image}
-      target="_blank"
-      rel="noreferrer"
-    >
-      <img src={`/tip_top/${image}`} alt={image} height="155" width="150" />
+    <a href={`${image}`} key={index + image} target="_blank" rel="noreferrer">
+      <img src={`${image}`} alt={image} height="155" width="150" />
     </a>
   ));
 

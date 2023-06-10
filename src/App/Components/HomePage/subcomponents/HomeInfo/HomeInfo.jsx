@@ -24,12 +24,7 @@ const HomeInfo = () => {
       <div className="box-flip">
         <div className="flip-content">
           <div className="front" style={{ backgroundColor: "white" }}>
-            <img
-              src="/tip_top/icons/tiling.svg"
-              alt="exp"
-              width={200}
-              height={200}
-            />
+            <img src="/icons/tiling.svg" alt="exp" width={200} height={200} />
             <span>TIP - TOP</span>
           </div>
           <div className="back">
@@ -45,7 +40,7 @@ const HomeInfo = () => {
         <div className="flip-content">
           <div className="front" style={{ backgroundColor: "#e60881" }}>
             <img
-              src="/tip_top/icons/experience.svg"
+              src="/icons/experience.svg"
               alt="exp"
               width={200}
               height={200}
@@ -64,12 +59,7 @@ const HomeInfo = () => {
       <div className="box-flip">
         <div className="flip-content">
           <div className="front" style={{ backgroundColor: "#afcb1f" }}>
-            <img
-              src="/tip_top/icons/priority.svg"
-              alt="exp"
-              width={200}
-              height={200}
-            />
+            <img src="/icons/priority.svg" alt="exp" width={200} height={200} />
             <span>Priorytety</span>
           </div>
           <div className="back">

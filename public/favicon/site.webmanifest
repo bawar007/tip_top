@@ -3,7 +3,7 @@
   "short_name": "TIP-TOP, Glazura i wykończenia wnętrz",
   "icons": [
     {
-      "src": "/tip_top/favicon/android-chrome-192x192.png",
+      "src": "/favicon/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"

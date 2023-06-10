@@ -49,7 +49,7 @@ const OfertsSecond = () => {
       return (
         <li key={item} className="infoBox_list--item">
           <img
-            src="/tip_top/icons/measure.svg"
+            src="/icons/measure.svg"
             alt="da"
             className="OfertListItem--img"
             width="40"
@@ -65,10 +65,10 @@ const OfertsSecond = () => {
     <div className="multi-container--infoBox animate__delay-1s">
       <div className="ofert_title">
         <img
-          src="/tip_top/icons/shower.svg"
+          src="/icons/interior.svg"
           alt="houseforofert"
-          width="45"
-          height="45"
+          width="60"
+          height="60"
         />
         <h1>Wykończenia</h1>
       </div>

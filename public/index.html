@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="pl">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-YWVMWHLXWT"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-YWVMWHLXWT");
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+    <meta name="description" content="Glazura Wykończenia Łazienka Tip Top" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -36,14 +47,15 @@
 
     <style>
       #map {
-        height: 400px; /* The height is 400 pixels */
-        width: 400px; /* The width is the width of the web page */
+        height: 400px;
+        width: 400px;
         margin-left: 50px;
       }
     </style>
 
     <title>TIP-TOP</title>
   </head>
+
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>

@@ -1,10 +1,7 @@
-import { useContext, useState } from "react";
-import { AppContext } from "../../Provider/Provider";
+import { useState } from "react";
 
 const NaviMobile = () => {
   const [check, setCheck] = useState(false);
-
-  const { tip } = useContext(AppContext);
 
   const ofertAnimation = () => {
     const ofertItems = document.querySelectorAll(".multi-container--infoBox");
@@ -28,7 +25,7 @@ const NaviMobile = () => {
           <li>
             <a href="#home" onClick={() => setCheck(false)}>
               <img
-                src={`${tip}/icons/Home.svg`}
+                src="/icons/Home.svg"
                 alt="ofert"
                 className="OfertNavitest"
                 width="40"
@@ -40,7 +37,7 @@ const NaviMobile = () => {
           <li>
             <a href="#gallery" onClick={() => setCheck(false)}>
               <img
-                src={`${tip}/icons/projects.svg`}
+                src="/icons/projects.svg"
                 alt="ofert"
                 className="OfertNavitest"
                 width="40"
@@ -58,7 +55,7 @@ const NaviMobile = () => {
               }}
             >
               <img
-                src={`${tip}/icons/medalstar.svg`}
+                src="/icons/medalstar.svg"
                 alt="opinion"
                 className="OfertNavitest"
                 width="40"
@@ -76,7 +73,7 @@ const NaviMobile = () => {
               }}
             >
               <img
-                src={`${tip}/icons/offert.svg`}
+                src="/icons/offert.svg"
                 alt="ofert"
                 className="OfertNavitest"
                 width="40"
@@ -93,7 +90,7 @@ const NaviMobile = () => {
               }}
             >
               <img
-                src={`${tip}/icons/whyus.svg`}
+                src="/icons/whyus.svg"
                 alt="ofert"
                 className="OfertNavitest"
                 width="40"
@@ -110,7 +107,7 @@ const NaviMobile = () => {
               }}
             >
               <img
-                src={`${tip}/icons/Contact.svg`}
+                src="/icons/Contact.svg"
                 alt="ofert"
                 className="OfertNavitest"
                 width="40"
@@ -127,7 +124,7 @@ const NaviMobile = () => {
         onClick={() => setCheck(false)}
       >
         <img
-          src={`${tip}/icons/arrowcircleup.svg`}
+          src="/icons/arrowcircleup.svg"
           alt="arrowUp"
           className="ArrowUpTest"
           width="40"

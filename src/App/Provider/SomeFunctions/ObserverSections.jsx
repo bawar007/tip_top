@@ -27,9 +27,9 @@ export const ObserverSections = new IntersectionObserver((entries) => {
         homePageFlipContent[1].classList.add("flipFirst");
         setTimeout(() => {
           homePageFlipContent.forEach((el, index) =>
-            index > 1 ? el.classList.add("shake") : null
+            index !== 1 ? el.classList.add("shake") : null
           );
-        }, 500);
+        }, 4000);
         setTimeout(
           () => homePageFlipContent[1].classList.remove("flipFirst"),
           7000

@@ -20,35 +20,35 @@ const SingleOpinion = () => {
       <p>{opinion.text}</p>
       <div className="stars">
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"
           className={opinion.stars >= 1 ? "checked" : null}
         />
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"
           className={opinion.stars >= 2 ? "checked" : null}
         />
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"
           className={opinion.stars >= 3 ? "checked" : null}
         />
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"
           className={opinion.stars >= 4 ? "checked" : null}
         />
         <img
-          src="/tip_top/icons/star.svg"
+          src="/icons/star.svg"
           alt="star"
           width="20"
           height="20"

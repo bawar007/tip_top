@@ -6,7 +6,6 @@ import { clickBack, clickNext } from "./helpers/clickMove";
 
 const AllPics = () => {
   const {
-    tip,
     allPicGalleryPop,
     setPicIndex,
     picIndex,
@@ -42,7 +41,7 @@ const AllPics = () => {
       </span>
       <div className="back" onClick={handleBackPic}>
         <img
-          src={`${tip}/icons/arrowcircleleft.svg`}
+          src="/icons/arrowcircleleft.svg"
           alt="arrright"
           className="arrow_gallery"
           loading="lazy"
@@ -53,7 +52,7 @@ const AllPics = () => {
       <AllSelectedPicsFromGallery />
       <div className="next" onClick={handleNextPic}>
         <img
-          src={`${tip}/icons/arrowcircleright.svg`}
+          src="/icons/arrowcircleright.svg"
           alt="arrright"
           className="arrow_gallery"
           loading="lazy"

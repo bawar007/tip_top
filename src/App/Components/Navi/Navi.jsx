@@ -3,7 +3,7 @@ import { AppContext } from "../../Provider/Provider";
 import { obliczProcentWidocznosci } from "../../Provider/SomeFunctions/HowPercentsIsVisibled";
 
 const Navi = () => {
-  const { windowW, windowH, tip } = useContext(AppContext);
+  const { windowW, windowH } = useContext(AppContext);
 
   useEffect(() => {
     if (windowW) {
@@ -20,11 +20,7 @@ const Navi = () => {
     <div className="Navi">
       <div className="Menu">
         {windowW && windowH ? (
-          <img
-            src={`${tip}/icons/LogoTipTopCss.svg`}
-            alt="logo"
-            className="logoItem"
-          />
+          <img src="/icons/LogoTipTopCss.svg" alt="logo" className="logoItem" />
         ) : null}
 
         <nav>
@@ -32,7 +28,7 @@ const Navi = () => {
             <li>
               <a href="#home" className="Home--NaviItem">
                 <img
-                  src={`${tip}/icons/Home.svg`}
+                  src="/icons/Home.svg"
                   alt="home"
                   className="HomeNavi--logo activeNaviLogo"
                 />
@@ -42,7 +38,7 @@ const Navi = () => {
             <li>
               <a href="#gallery" className="Projects--NaviItem">
                 <img
-                  src={`${tip}/icons/projects.svg`}
+                  src="/icons/projects.svg"
                   alt="ofert"
                   className="OfertNavitest realizations"
                   width="40"
@@ -55,7 +51,7 @@ const Navi = () => {
             <li>
               <a href="#opinions" className="Opinions-NaviItem">
                 <img
-                  src={`${tip}/icons/medalstar.svg`}
+                  src="/icons/medalstar.svg"
                   alt="opinion"
                   className="OfertNavitest realizations"
                   width="40"
@@ -67,7 +63,7 @@ const Navi = () => {
             <li>
               <a href="#ofert" className="Ofert-NaviItem">
                 <img
-                  src={`${tip}/icons/offert.svg`}
+                  src="/icons/offert.svg"
                   alt="ofert"
                   className="OfertNavi"
                   width="40"
@@ -79,7 +75,7 @@ const Navi = () => {
             <li>
               <a href="#whyUs" className="WhyUs-NaviItem">
                 <img
-                  src={`${tip}/icons/whyus.svg`}
+                  src="/icons/whyus.svg"
                   alt="ofert"
                   className="OfertNavi realizations"
                   width="40"
@@ -91,7 +87,7 @@ const Navi = () => {
             <li>
               <a href="#contact" className="Contact-NaviItem">
                 <img
-                  src={`${tip}/icons/Contact.svg`}
+                  src="/icons/Contact.svg"
                   alt="contact"
                   className="Contact"
                   width="40"
@@ -106,7 +102,7 @@ const Navi = () => {
         {windowW && (
           <a href="#home" className="ArrowUpPC">
             <img
-              src={`${tip}/icons/arrowcircleup.svg`}
+              src="/icons/arrowcircleup.svg"
               alt="arrowUp"
               className="ArrowUp"
             />
