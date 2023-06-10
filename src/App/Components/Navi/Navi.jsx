@@ -48,7 +48,7 @@ const Navi = () => {
               <span className="tool">Realizacje</span>
             </li>
 
-            <li>
+            {/* <li>
               <a href="#opinions" className="Opinions-NaviItem">
                 <img
                   src="/icons/medalstar.svg"
@@ -59,7 +59,7 @@ const Navi = () => {
                 />
               </a>
               <span className="tool">Opinie</span>
-            </li>
+            </li> */}
             <li>
               <a href="#ofert" className="Ofert-NaviItem">
                 <img

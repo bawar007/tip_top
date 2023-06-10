@@ -47,7 +47,7 @@ const NaviMobile = () => {
             </a>
           </li>
 
-          <li>
+          {/* <li>
             <a
               href="#opinions"
               onClick={() => {
@@ -63,7 +63,7 @@ const NaviMobile = () => {
               />
               Opinie
             </a>
-          </li>
+          </li> */}
           <li>
             <a
               href="#ofert"

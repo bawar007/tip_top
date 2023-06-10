@@ -5,7 +5,7 @@ import HomePage from "./Components/HomePage/HomePage";
 import Navi from "./Components/Navi/Navi";
 import Ofert from "./Components/Oferta/Oferta";
 import NaviMobile from "./Components/Navi/NaviMobile";
-import Opinions from "./Components/Opinions/Opinions";
+// import Opinions from "./Components/Opinions/Opinions";
 import Modal from "./Components/Gallery/SubComponents/Modal/Modal";
 import Social from "./Components/Social/Social";
 import WhyThis from "./Components/WhyThis/WhyThis";
@@ -49,7 +49,7 @@ function App() {
       </Suspense>
       <HomePage />
       <GalleryPage />
-      <Opinions />
+      {/* <Opinions /> */}
       <Ofert />
       <WhyThis />
       <ContactPage />
