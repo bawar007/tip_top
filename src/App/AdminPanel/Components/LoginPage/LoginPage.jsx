@@ -2,13 +2,13 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { verifyPassword } from "../../Helper/PasswordEncryption";
 import { AppContext } from "../../../Provider/Provider";
-import AdminPanelContent from "../AdminPanelContent/AdminPanelContent";
+import { Navigate } from "react-router-dom";
 
 const LoginPage = () => {
   const { HOST } = useContext(AppContext);
   const [login, setLogin] = useState(null);
   const [password, setPassword] = useState(null);
-  const [adminPanel, setAdminPanel] = useState(false);
+  const [admin, setAdmin] = useState(false);
 
   const handleLogin = async (encryptedPassword) => {
     const response = await axios.get(`${HOST}/adminpanel`);
@@ -26,11 +26,29 @@ const LoginPage = () => {
     const loginIsMatch = login === loginDB[0];
 
     if (passwordIsMatch && loginIsMatch) {
-      setAdminPanel(true);
+      setPassCookie(passwordDB[0], true);
+      setAdmin(true);
     } else {
-      setAdminPanel(false);
       alert("Błędne dane!!!");
+      setAdmin(false);
     }
+  };
+
+  const setPassCookie = (pass, id) => {
+    // Ustawienie daty wygaśnięcia cookie na 30 dni od teraz
+    var expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + 30);
+
+    // Utworzenie ciasteczka
+    var cookie =
+      "password=" + pass + "; expires=" + expirationDate.toUTCString();
+
+    var cookietwo =
+      "isMatch=" + id + "; expires=" + expirationDate.toUTCString();
+
+    // Ustawienie ciasteczka w przeglądarce
+    document.cookie = cookie;
+    document.cookie = cookietwo;
   };
 
   const handleChange = (e) => {
@@ -50,24 +68,21 @@ const LoginPage = () => {
 
   return (
     <section className="LoginPage">
-      {adminPanel ? (
-        <AdminPanelContent />
-      ) : (
-        <div className="login">
-          <h1>Panel Administratora</h1>
-          <form className="LoginPage--form" onSubmit={handleSubmit}>
-            <label>
-              Login
-              <input type="text" name="login" onChange={handleChange} />
-            </label>
-            <label>
-              Hasło
-              <input type="password" name="password" onChange={handleChange} />
-            </label>
-            <button type="submit">Zaloguj</button>
-          </form>
-        </div>
-      )}
+      {admin && <Navigate to="/adminpanel" />}
+      <div className="login">
+        <h1>Panel Administratora</h1>
+        <form className="LoginPage--form" onSubmit={handleSubmit}>
+          <label>
+            Login
+            <input type="text" name="login" onChange={handleChange} />
+          </label>
+          <label>
+            Hasło
+            <input type="password" name="password" onChange={handleChange} />
+          </label>
+          <button type="submit">Zaloguj</button>
+        </form>
+      </div>
     </section>
   );
 };
