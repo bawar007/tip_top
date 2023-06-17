@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
 
-const AdminPanelContent = () => {
+const AdminPanel = () => {
   const getPassCookie = () => {
     var name = "isMatch=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -38,4 +38,4 @@ const AdminPanelContent = () => {
   );
 };
 
-export default AdminPanelContent;
+export default AdminPanel;
