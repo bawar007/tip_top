@@ -23,9 +23,8 @@ const AdminPanel = () => {
     } else if (cookie) {
       let usersDB = phoneNumberFromZleceniodawcy;
       usersDB = usersDB.map((user) => user.password);
-      const c = await verifyPassword(usersDB[0], cookie);
-      console.log(c);
-      if (c) {
+      const verifyCookie = await verifyPassword(usersDB[0], cookie);
+      if (verifyCookie) {
         setIsMatch(true);
       } else {
         setIsMatch(false);

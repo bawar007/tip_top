@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { deletePassCookie, setPassCookie } from "./helpers/SetCookie";
 import { WrongHandler } from "./Wrong/WrongHelpers";
 
-const USER_ADMIN = 110;
+const USER_ADMIN = Number(process.env.REACT_APP_USER_ADMIN);
 
 const LoginPage = () => {
   const { phoneNumberFromZleceniodawcy } = useContext(AppContext);
@@ -36,7 +36,6 @@ const LoginPage = () => {
       (user) =>
         user.login === USER_HOST.login && user.password === USER_HOST.password
     );
-
     if (usersDB.length > 0) {
       if (usersDB[0].role === USER_ADMIN) {
         const SESION_TOKEN = await encryptPassword(usersDB[0].password);
