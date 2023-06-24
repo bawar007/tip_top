@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { deletePassCookie } from "../../LoginPage/helpers/SetCookie";
 
 const Navigation = () => {
   return (
@@ -10,7 +11,9 @@ const Navigation = () => {
         <li>Dlaczego my</li>
 
         <li>
-          <Link to="/admin">Wyloguj się</Link>
+          <Link to="/admin" onClick={() => deletePassCookie()}>
+            Wyloguj się
+          </Link>
         </li>
       </ul>
     </div>

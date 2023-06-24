@@ -1,29 +1,49 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
+import {
+  deletePassCookie,
+  getSesionPasCookie,
+} from "../LoginPage/helpers/SetCookie";
+import { useCallback, useContext, useEffect, useState } from "react";
+import { verifyPassword } from "../../Helper/PasswordEncryption";
+import { AppContext } from "../../../Provider/Provider";
 
 const AdminPanel = () => {
-  const getPassCookie = () => {
-    var name = "isMatch=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var cookieArray = decodedCookie.split(";");
+  const [isMatch, setIsMatch] = useState(true);
+  const location = useLocation();
+  const SESION_TOKEN = location.state?.SESION_TOKEN;
+  const cookie = getSesionPasCookie("SESION_TOKEN=");
+  const { phoneNumberFromZleceniodawcy } = useContext(AppContext);
 
-    // Przeszukiwanie wszystkich ciasteczek w poszukiwaniu wartości username
-    for (var i = 0; i < cookieArray.length; i++) {
-      var cookie = cookieArray[i];
-      while (cookie.charAt(0) === " ") {
-        cookie = cookie.substring(1);
+  const deleteCookie = useCallback(() => deletePassCookie(), []);
+
+  const checkSesionToken = useCallback(async () => {
+    if (SESION_TOKEN) {
+      setIsMatch(true);
+    } else if (cookie) {
+      let usersDB = phoneNumberFromZleceniodawcy;
+      usersDB = usersDB.map((user) => user.password);
+      const c = await verifyPassword(usersDB[0], cookie);
+      console.log(c);
+      if (c) {
+        setIsMatch(true);
+      } else {
+        setIsMatch(false);
+        deleteCookie();
       }
-      if (cookie.indexOf(name) === 0) {
-        return cookie.substring(name.length, cookie.length);
-      }
+    } else {
+      setIsMatch(false);
+      deleteCookie();
     }
-    return "";
-  };
+  }, [SESION_TOKEN, cookie, deleteCookie, phoneNumberFromZleceniodawcy]);
 
-  const userIsMatch = getPassCookie();
+  useEffect(() => {
+    checkSesionToken();
+  }, [checkSesionToken]);
+
   return (
     <>
-      {userIsMatch ? (
+      {isMatch ? (
         <div className="AdminPanelContent">
           <Navigation />
 

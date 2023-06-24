@@ -11,23 +11,15 @@ import Gallerysettings from "./App/AdminPanel/Components/AdminPanelContent/Setti
 import WhyUsSettings from "./App/AdminPanel/Components/AdminPanelContent/Settings/WhyUsSettings/WhyUsSettings";
 import LoginPage from "./App/AdminPanel/Components/LoginPage/LoginPage";
 
-import { deletePassCookie } from "./App/AdminPanel/Components/LoginPage/helpers/SetCookie";
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <AppProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
-          <Route
-            path="/admin"
-            render={() => {
-              deletePassCookie();
-              return null;
-            }}
-            element={<LoginPage />}
-          />
+          <Route path="/admin" element={<LoginPage />} />
           <Route path="/adminpanel" element={<AdminPanel />}>
             <Route path="gallerysettings" element={<Gallerysettings />} />
             <Route path="whyussettings" element={<WhyUsSettings />} />

@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 // Funkcja do szyfrowania hasła
 export const encryptPassword = async (password) => {
   try {
-    const salt = await bcrypt.genSalt(10); // Generowanie soli
+    const salt = await bcrypt.genSalt(11); // Generowanie soli
     const encryptedPassword = await bcrypt.hash(password, salt); // Szyfrowanie hasła
     return encryptedPassword;
   } catch (error) {
@@ -18,7 +18,6 @@ export const verifyPassword = async (password, encryptedPassword) => {
     const isMatch = await bcrypt.compare(password, encryptedPassword); // Porównanie hasła
     return isMatch;
   } catch (error) {
-    console.error("Błąd podczas weryfikacji hasła:", error);
-    throw new Error("Błąd podczas weryfikacji hasła");
+    return false;
   }
 };

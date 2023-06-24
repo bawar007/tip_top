@@ -1,94 +1,82 @@
 import { useContext, useRef, useState } from "react";
-import axios from "axios";
-import { verifyPassword } from "../../Helper/PasswordEncryption";
+import { encryptPassword } from "../../Helper/PasswordEncryption";
 import { AppContext } from "../../../Provider/Provider";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import { setPassCookie } from "./helpers/SetCookie";
+import { deletePassCookie, setPassCookie } from "./helpers/SetCookie";
+import { WrongHandler } from "./Wrong/WrongHelpers";
+
+const USER_ADMIN = 110;
 
 const LoginPage = () => {
-  const { HOST } = useContext(AppContext);
-  const [login, setLogin] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [admin, setAdmin] = useState(false);
+  const { phoneNumberFromZleceniodawcy } = useContext(AppContext);
+  const [USER_HOST, setUserHost] = useState({
+    password: "",
+    login: "",
+  });
+
+  const navigate = useNavigate();
 
   const wrongSpan = useRef(null);
   const wrongButton = useRef(null);
+  const inputs = document.querySelectorAll(".adminInput");
 
-  const handleLogin = async (encryptedPassword) => {
-    const response = await axios.get(`${HOST}/adminpanel`);
-    if (response.error) {
-      console.error(response.error);
+  const handleLogin = async () => {
+    if (USER_HOST.login && USER_HOST.password) {
+      VerifyLogin();
+    } else {
+      WrongHandler(wrongSpan, wrongButton, inputs, "NO_DATE");
+      deletePassCookie();
     }
-    const passwordDB = response.data.map((el) => el.password);
-    const loginDB = response.data.map((el) => el.login);
+  };
 
-    const spanEl = wrongSpan.current;
-    const btnEl = wrongButton.current;
+  const VerifyLogin = async () => {
+    let usersDB = phoneNumberFromZleceniodawcy;
+    usersDB = usersDB.filter(
+      (user) =>
+        user.login === USER_HOST.login && user.password === USER_HOST.password
+    );
 
-    const wrongClassBtn = "btn-wrong";
-    const wrongClassBtnAnimation = "wrongAnimation";
-    const wrongClassSpan = "wrong";
-
-    const inputs = document.querySelectorAll(".adminInput");
-
-    const clearWrongSpan = () =>
-      setTimeout(() => {
-        spanEl.innerHTML = "";
-        spanEl.classList.remove(wrongClassSpan);
-        btnEl.classList.remove(wrongClassBtn);
-        btnEl.classList.remove(wrongClassBtnAnimation);
-        inputs.forEach((input) => input.classList.remove("adminInputWrong"));
-      }, 3000);
-
-    const addWrongClass = () => {
-      spanEl.classList.add(wrongClassSpan);
-
-      btnEl.classList.add(wrongClassBtn);
-      btnEl.classList.add(wrongClassBtnAnimation);
-
-      inputs.forEach((input) => input.classList.add("adminInputWrong"));
-    };
-
-    if (login && password) {
-      // Weryfikacja hasła
-      const passwordIsMatch = await verifyPassword(
-        encryptedPassword,
-        passwordDB[0]
-      );
-      const loginIsMatch = login === loginDB[0];
-
-      if (passwordIsMatch && loginIsMatch) {
-        setPassCookie(passwordDB[0], true);
-        setAdmin(true);
+    if (usersDB.length > 0) {
+      if (usersDB[0].role === USER_ADMIN) {
+        const SESION_TOKEN = await encryptPassword(usersDB[0].password);
+        navigate("/adminpanel", { state: { SESION_TOKEN } });
+        setPassCookie(SESION_TOKEN);
       } else {
-        spanEl.innerHTML = "Błędny login lub hasło";
-
-        addWrongClass();
-        clearWrongSpan();
-
-        setPassCookie(null, false);
-        setAdmin(false);
+        console.error("error no such user");
       }
     } else {
-      spanEl.innerHTML = "wprowadz dane";
-
-      addWrongClass();
-      clearWrongSpan();
-
-      setPassCookie(null, false);
-      setAdmin(false);
+      WrongHandler(wrongSpan, wrongButton, inputs, "BAD_L_P");
+      setPassCookie(false);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(password);
+    handleLogin();
+  };
+
+  const handleChange = (e) => {
+    if (e.target.name === "login") {
+      setUserHost((prev) => {
+        return {
+          ...prev,
+          login: e.target.value,
+        };
+      });
+    }
+    if (e.target.name === "password") {
+      setUserHost((prev) => {
+        return {
+          ...prev,
+          password: e.target.value,
+        };
+      });
+    }
   };
 
   return (
     <section className="LoginPage">
-      {admin && <Navigate to="/adminpanel" />}
       <div className="login">
         <h1>Panel Administratora</h1>
         <form className="LoginPage--form" onSubmit={handleSubmit}>
@@ -97,7 +85,7 @@ const LoginPage = () => {
             <input
               type="text"
               name="login"
-              onChange={(e) => setLogin(e.target.value)}
+              onChange={handleChange}
               className="adminInput"
             />
           </label>
@@ -106,7 +94,7 @@ const LoginPage = () => {
             <input
               type="password"
               name="password"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handleChange}
               className="adminInput"
             />
           </label>
