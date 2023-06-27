@@ -1,0 +1,280 @@
+@import "./Components/styles/btnstyles.scss";
+
+.Gallerysettings {
+  width: 100%;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  .gallerysettings-form {
+    width: 50%;
+    margin: 0 auto;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    padding: 20px;
+    h1 {
+      font-size: 1.7em;
+      text-align: center;
+    }
+    .newFolderGroup {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      width: 80%;
+      justify-content: center;
+      align-items: center;
+      .upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 20px;
+
+        .btn {
+          border: 2px solid orange;
+          color: orange;
+          background-color: black;
+          padding: 8px 20px;
+          border-radius: 8px;
+          font-size: 1.2rem;
+          font-weight: bold;
+          width: 100%;
+        }
+        input[type="file"] {
+          font-size: 100px;
+          position: absolute;
+          left: 0;
+          top: 0;
+          opacity: 0;
+        }
+      }
+      .selectFile {
+        width: 100%;
+        h2 {
+          font-size: 1.6rem;
+          text-align: center;
+          margin: 5px 0;
+        }
+        select,
+        .form__input-text,
+        .form__btn {
+          width: 100%;
+          padding: 8px 20px;
+          margin: 15px 0;
+          background-color: black;
+          border: none;
+          border-bottom: 2px solid orange;
+          color: white;
+        }
+        .foldername {
+          position: relative;
+          display: block;
+          height: auto;
+          .form__input-text {
+            display: block;
+            &:focus + span {
+              top: -20px;
+              font-weight: 900;
+              font-size: smaller;
+            }
+          }
+          span {
+            position: absolute;
+            left: 0px;
+            top: 6px;
+            margin-left: 6px;
+            width: fit-content;
+            color: white;
+            transition: 0.5s ease;
+          }
+        }
+
+        .form__input-text {
+        }
+        .form__btn {
+          border: 2px solid orange;
+          color: orange;
+          background-color: black;
+          padding: 8px 20px;
+          border-radius: 8px;
+          font-size: 1.2rem;
+          font-weight: bold;
+          width: 100%;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+      .form__file-label {
+        .form__input {
+          background-color: red;
+          width: 100&;
+          height: 40px;
+          padding: 10px;
+        }
+      }
+    }
+    .buttons_group {
+      width: 80%;
+      .form__btn {
+        position: relative;
+        display: inline-block;
+        transition: 0.5s;
+        border: 2px solid orange;
+        color: orange;
+        background-color: black;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        width: 100%;
+        margin: 10px 0;
+        overflow: hidden;
+        &:hover {
+          cursor: pointer;
+          border: 2px solid transparent;
+        }
+        &:hover span {
+          position: absolute;
+          display: block;
+          &:nth-child(1) {
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, black, orange);
+            animation: btn-anim1 1s linear infinite;
+          }
+          &:nth-child(2) {
+            top: -100%;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, orange, black);
+            animation: btn-anim2 1s linear infinite;
+            animation-delay: 0.25s;
+          }
+          &:nth-child(3) {
+            bottom: 0;
+            right: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(270deg, black, orange);
+            animation: btn-anim3 1s linear infinite;
+            animation-delay: 0.5s;
+          }
+          &:nth-child(4) {
+            bottom: -100%;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(360deg, orange, black);
+            animation: btn-anim4 1s linear infinite;
+            animation-delay: 0.75s;
+          }
+        }
+
+        @keyframes btn-anim1 {
+          0% {
+            left: -100%;
+          }
+          50%,
+          100% {
+            left: 100%;
+          }
+        }
+        @keyframes btn-anim2 {
+          0% {
+            top: -100%;
+          }
+          50%,
+          100% {
+            top: 100%;
+          }
+        }
+        @keyframes btn-anim3 {
+          0% {
+            right: -100%;
+          }
+          50%,
+          100% {
+            right: 100%;
+          }
+        }
+        @keyframes btn-anim4 {
+          0% {
+            bottom: -100%;
+          }
+          50%,
+          100% {
+            bottom: 100%;
+          }
+        }
+      }
+    }
+  }
+  .gallerysettings-counter {
+    max-height: calc(100vh - 200px);
+    height: calc(100vh - 200px);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 10px;
+    width: 50%;
+    .gallerysettings-counter-images {
+      max-width: calc(50% - 10px);
+      width: 100%;
+      min-width: 260px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      border: 2px solid orange;
+      padding: 10px;
+      margin: 5px;
+      h2 {
+        width: 100%;
+        text-align: center;
+        margin: 0 0 10px 0;
+        padding: 10px;
+        border-bottom: 2px solid orange;
+      }
+
+      .image_checkbox__group {
+        display: inline-block;
+        position: relative;
+        .counter__image {
+          width: 75px;
+          height: 75px;
+          margin: 2px;
+          box-sizing: border-box;
+          padding: 1px;
+          border-radius: 25px;
+          &:hover &::after {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+          }
+        }
+        input {
+          opacity: 0;
+          position: absolute;
+          right: 0;
+          top: 5px;
+          border: 1px solid blue;
+        }
+        input:checked {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

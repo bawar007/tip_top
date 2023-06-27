@@ -1,6 +1,7 @@
 @import "./Navigation/NavigationAminPanel.scss";
 
 @import "../LoginPage/LoginPage.scss";
+@import "../AdminPanelContent/Settings/Gallerysettings/Gallerysettings.scss";
 
 .AdminPanelContent {
   width: 100%;
@@ -12,6 +13,6 @@
   .AdminPanelContent--setings {
     width: 80%;
     height: 80%;
-    background-color: blue;
+    background-color: black;
   }
 }

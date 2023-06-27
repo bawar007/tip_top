@@ -36,6 +36,7 @@ const LoginPage = () => {
       (user) =>
         user.login === USER_HOST.login && user.password === USER_HOST.password
     );
+
     if (usersDB.length > 0) {
       if (usersDB[0].role === USER_ADMIN) {
         const SESION_TOKEN = await encryptPassword(usersDB[0].password);

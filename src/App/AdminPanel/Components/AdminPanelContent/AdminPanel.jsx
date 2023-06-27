@@ -7,6 +7,7 @@ import {
 import { useCallback, useContext, useEffect, useState } from "react";
 import { verifyPassword } from "../../Helper/PasswordEncryption";
 import { AppContext } from "../../../Provider/Provider";
+import SettingsProvider from "./Settings/settingsProvider/SettingsProvider";
 
 const AdminPanel = () => {
   const [isMatch, setIsMatch] = useState(true);
@@ -41,7 +42,7 @@ const AdminPanel = () => {
   }, [checkSesionToken]);
 
   return (
-    <>
+    <SettingsProvider>
       {isMatch ? (
         <div className="AdminPanelContent">
           <Navigation />
@@ -53,7 +54,7 @@ const AdminPanel = () => {
       ) : (
         <Navigate to="/admin" replace={true} />
       )}
-    </>
+    </SettingsProvider>
   );
 };
 
