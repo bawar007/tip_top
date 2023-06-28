@@ -3,7 +3,7 @@ import axios from "axios";
 import { SettingsProviderContext } from "../../../settingsProvider/SettingsProvider";
 import { AppContext } from "../../../../../../../Provider/Provider";
 
-const SettingsForm = () => {
+const SettingsForm = ({ setSettings, settings }) => {
   const {
     handleAddCustomOption,
     handleFileChange,
@@ -44,10 +44,20 @@ const SettingsForm = () => {
 
   return (
     <form onSubmit={handleUpload} className="gallerysettings-form">
-      <h1>Wyślij pliki na serwer</h1>
+      <div className="headerForm">
+        <h1>Wyślij pliki na serwer</h1>{" "}
+        <img
+          src="/icons/settings_close.svg"
+          alt="sett2"
+          width="50"
+          height="50"
+          onClick={() => setSettings(false)}
+        />
+      </div>
+
       <div className="newFolderGroup">
         <div class="upload-btn-wrapper">
-          <button class="btn">
+          <button className="btn">
             <span></span>
             <span></span>
             <span></span>
@@ -82,12 +92,27 @@ const SettingsForm = () => {
             onClick={(e) => {
               e.preventDefault();
               handleAddCustomOption();
+              console.log(
+                getComputedStyle(document.documentElement).getPropertyValue(
+                  "--gallerysettings-width-form'"
+                )
+              );
             }}
             className="form__btn"
           >
             Dodaj nowy folder
           </button>
-          <button className="form__btn">Dodaj wybrane pliki na serwer</button>
+          <button className="form__btn btn_send">
+            <span>
+              <img
+                src={"/icons/send_icon.svg"}
+                alt="send"
+                width="50"
+                height="50"
+              />
+            </span>
+            <span className="left">Upload</span>
+          </button>
         </div>
       </div>
       <div className="buttons_group">

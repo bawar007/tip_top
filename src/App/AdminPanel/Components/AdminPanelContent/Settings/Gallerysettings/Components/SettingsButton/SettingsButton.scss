@@ -1,0 +1,27 @@
+.settings_btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80px;
+  min-height: 100%;
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, red, rgba(0, 0, 0, 0)) 1 100%;
+  padding: 10px;
+  margin: 0 5px;
+  img {
+    margin: 10px 0;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, black, orange, black);
+    border-image-slice: 1;
+    &:nth-child(2) {
+      width: 60px;
+      height: 60px;
+      padding-bottom: 20px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
