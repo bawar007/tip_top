@@ -3,6 +3,8 @@ import axios from "axios";
 import { SettingsProviderContext } from "../../../settingsProvider/SettingsProvider";
 import { AppContext } from "../../../../../../../Provider/Provider";
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 const SettingsForm = ({ setSettings, settings }) => {
   const {
     handleAddCustomOption,
@@ -19,7 +21,9 @@ const SettingsForm = ({ setSettings, settings }) => {
   const { HOST } = useContext(AppContext);
 
   const deleteFunction = async (folderName, fileNameS) => {
-    await axios.delete(`${HOST}/delete?s=${folderName}&fileName=${fileNameS}`);
+    await axios.delete(
+      `${HOST}/delete?s=${folderName}&fileName=${fileNameS}&api=${API_KEY}`
+    );
     await getPics();
   };
 
@@ -29,6 +33,7 @@ const SettingsForm = ({ setSettings, settings }) => {
       deleteFunction(el.name, el.fileNameToDelete)
     );
     setFilesToDelete([]);
+    await getPics();
   };
 
   const OptionsSelectElement = options
@@ -56,7 +61,7 @@ const SettingsForm = ({ setSettings, settings }) => {
       </div>
 
       <div className="newFolderGroup">
-        <div class="upload-btn-wrapper">
+        <div className="upload-btn-wrapper">
           <button className="btn">
             <span></span>
             <span></span>
@@ -85,18 +90,21 @@ const SettingsForm = ({ setSettings, settings }) => {
               }}
               className="form__input-text"
             />
-            <span>Nazwa folderu</span>
+            <span
+              style={
+                customOption.length > 1
+                  ? { top: "-20px", fontWeight: 900, fontSize: "smaller" }
+                  : null
+              }
+            >
+              Nazwa folderu
+            </span>
           </label>
 
           <button
             onClick={(e) => {
               e.preventDefault();
               handleAddCustomOption();
-              console.log(
-                getComputedStyle(document.documentElement).getPropertyValue(
-                  "--gallerysettings-width-form'"
-                )
-              );
             }}
             className="form__btn"
           >

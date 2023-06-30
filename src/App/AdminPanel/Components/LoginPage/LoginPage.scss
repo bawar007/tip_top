@@ -33,10 +33,30 @@
         padding: 10px;
         margin: 5px auto;
         font-size: 1.2rem;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
+        display: inline-block;
+        position: relative;
+        span {
+          position: absolute;
+          color: black;
+          left: 30px;
+          top: 15px;
+          font-size: 1.1rem;
+          transition: 1s;
+        }
+      }
+      .admin-login {
+        &:focus + .login-span {
+          left: 10px;
+          top: -15px;
+          color: white;
+        }
+      }
+      .admin-pass {
+        &:focus + .pass-span {
+          left: 10px;
+          top: -15px;
+          color: white;
+        }
       }
       .adminInput {
         margin-left: 5px;
@@ -46,6 +66,15 @@
         padding: 5px 10px;
         font-size: 1.1rem;
         border: 3.5px solid transparent;
+
+        &:valid {
+          span {
+            position: absolute;
+            left: 30px;
+            top: -12px;
+            font-size: 1rem;
+          }
+        }
       }
       .adminInputWrong {
         border-color: red;

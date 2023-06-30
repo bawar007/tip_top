@@ -1,0 +1,100 @@
+.gallerysettings-counter {
+  .counter-settings {
+    width: 100%;
+    height: 200px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid orange;
+    border-image: linear-gradient(200deg, black, orange, black);
+    border-image-slice: 1;
+  }
+  .counter-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .gallerysettings-counter-images {
+      max-width: calc(50% - 20px);
+      width: 100%;
+      min-width: 260px;
+      min-height: 450px;
+      padding: 10px;
+      margin: 10px;
+      border-image: linear-gradient(200deg, black, orange, black);
+      border-image-slice: 1;
+      h2 {
+        width: 100%;
+        text-align: center;
+        margin: 0 0 10px 0;
+        padding: 10px;
+        border-bottom: 2px solid transparent;
+        border-image: linear-gradient(90deg, black, orange, black);
+        border-image-slice: 1;
+      }
+      .butttonsImageGroup {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 10px 0;
+        justify-content: space-between;
+        &:hover {
+          cursor: pointer;
+        }
+        .ImageGroup--btn {
+          width: calc(30% - 10px);
+          height: 50px;
+          border: 2px solid orange;
+          color: orange;
+          background-color: black;
+          border-radius: 8px;
+          font-size: 1.1rem;
+          font-weight: bold;
+          margin: 5px;
+          &:hover {
+            cursor: pointer;
+          }
+          &:first-child:hover {
+            border-color: green;
+            color: green;
+          }
+          &:nth-child(2):hover {
+            border-color: red;
+            color: red;
+          }
+        }
+      }
+
+      .image_checkbox__group {
+        display: inline-block;
+        position: relative;
+        .counter__image {
+          width: 75px;
+          height: 75px;
+          margin: 2px;
+          box-sizing: border-box;
+          padding: 1px;
+          border-radius: 25px;
+          &:hover {
+            cursor: pointer;
+          }
+          &:hover &::after {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+          }
+        }
+        input {
+          opacity: 0;
+          position: absolute;
+          right: 0;
+          top: 5px;
+          border: 1px solid blue;
+        }
+        input:checked {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

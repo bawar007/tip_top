@@ -81,22 +81,40 @@ const LoginPage = () => {
         <h1>Panel Administratora</h1>
         <form className="LoginPage--form" onSubmit={handleSubmit}>
           <label>
-            Login
             <input
               type="text"
               name="login"
               onChange={handleChange}
-              className="adminInput"
+              className="adminInput admin-login"
             />
+            <span
+              className="login-span"
+              style={
+                USER_HOST.login.length > 1
+                  ? { left: " 10px", top: "-15px", color: "white" }
+                  : null
+              }
+            >
+              Login
+            </span>
           </label>
           <label>
-            Hasło
             <input
               type="password"
               name="password"
               onChange={handleChange}
-              className="adminInput"
+              className="adminInput admin-pass"
             />
+            <span
+              className="pass-span"
+              style={
+                USER_HOST.password.length > 1
+                  ? { left: " 10px", top: "-15px", color: "white" }
+                  : null
+              }
+            >
+              Hasło
+            </span>
           </label>
           <span ref={wrongSpan}></span>
           <button className="btn draw-border" type="submit" ref={wrongButton}>

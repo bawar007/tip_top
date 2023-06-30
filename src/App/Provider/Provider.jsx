@@ -18,6 +18,8 @@ const AppProvider = ({ children }) => {
   const [windowWidth, setWindowWidth] = useState(windowWidthFirst.current);
   const [windowHeight, setWindowHeight] = useState(windowHeightFirst.current);
 
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
   const windowW = windowWidth > 700;
   const windowH = windowHeight > 360;
 
@@ -47,20 +49,20 @@ const AppProvider = ({ children }) => {
 
   //pobieranie opinii
   const getOpinions = useCallback(async () => {
-    const response = await axios.get(`${HOST}/opinions`);
+    const response = await axios.get(`${HOST}/opinions?api=${API_KEY}`);
     setOpinions(response.data);
     if (response.error) {
       console.error(response.error);
     }
-  }, [HOST]);
+  }, [HOST, API_KEY]);
   //pobieranie użytkowników
   const getUser = useCallback(async () => {
-    const response = await axios.get(`${HOST}/user`);
+    const response = await axios.get(`${HOST}/user?api=${API_KEY}`);
     setPhoneNumberFromZleceniodawcy(response.data);
     if (response.error) {
       console.error(response.error);
     }
-  }, [HOST]);
+  }, [HOST, API_KEY]);
 
   const [opinionsFromDB, setOpinions] = useState([]);
   const [phoneNumberFromZleceniodawcy, setPhoneNumberFromZleceniodawcy] =

@@ -1,8 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { SettingsProviderContext } from "../../../settingsProvider/SettingsProvider";
 
 const ImagesGroup = () => {
-  const { fileData, filesToDelete, setFilesToDelete } = useContext(
+  const { fileData, filesToDelete, setFilesToDelete, options } = useContext(
     SettingsProviderContext
   );
 
@@ -89,12 +89,32 @@ const ImagesGroup = () => {
         return acc;
       }, {})
     : null;
+  const firstTableMap = Object.entries(imageMap)
+    ? Object.entries(imageMap)
+    : [];
+  const [TableToMap, setTableToMap] = useState(firstTableMap);
 
-  const imageGroups = imageMap
-    ? Object.entries(imageMap).map(([name, images]) => {
+  const HandleTableToMap = (e) => {
+    const selectValue = e.target.value;
+    if (selectValue === "all") {
+      setTableToMap(Object.entries(imageMap));
+    } else {
+      const newTab = Object.entries(imageMap).filter(
+        ([name]) => name === selectValue
+      );
+      setTableToMap(newTab);
+    }
+  };
+
+  const imageGroups = TableToMap
+    ? TableToMap.map(([name, images]) => {
         if (images.length > 0) {
           return (
-            <div key={name} className="gallerysettings-counter-images">
+            <div
+              key={name}
+              className="gallerysettings-counter-images"
+              style={TableToMap.length === 1 ? { maxWidth: "100%" } : null}
+            >
               <h2>{name}</h2>
               <div className="butttonsImageGroup">
                 <img
@@ -135,6 +155,11 @@ const ImagesGroup = () => {
                     alt={imageName}
                     className="counter__image"
                     onClick={() => handleCheckBoxFromIcon(name, imageName)}
+                    style={
+                      TableToMap.length === 1
+                        ? { width: "120px", height: "120px" }
+                        : null
+                    }
                   />
                   <input
                     type="checkbox"
@@ -150,7 +175,28 @@ const ImagesGroup = () => {
       })
     : null;
 
-  return <div className="gallerysettings-counter">{imageGroups}</div>;
+  const OptionsSelectElement = options
+    ? ["all", ...options].map(
+        (option, index) =>
+          option && (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          )
+      )
+    : null;
+
+  return (
+    <div className="gallerysettings-counter">
+      <div className="counter-settings">
+        <label>
+          <h3>Co chcesz wyświetlić ?</h3>
+          <select onChange={HandleTableToMap}>{OptionsSelectElement}</select>
+        </label>
+      </div>
+      <div className="counter-content">{imageGroups}</div>
+    </div>
+  );
 };
 
 export default ImagesGroup;

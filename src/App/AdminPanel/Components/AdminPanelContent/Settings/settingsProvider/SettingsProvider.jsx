@@ -10,11 +10,13 @@ import { AppContext } from "../../../../../Provider/Provider";
 
 export const SettingsProviderContext = createContext(null);
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 const SettingsProvider = ({ children }) => {
   const { HOST } = useContext(AppContext);
   //gallery state
   const [customOption, setCustomOption] = useState("");
-  const [options, setOptions] = useState(null);
+  const [options, setOptions] = useState([]);
   const [fileNameForm, setFileName] = useState(null);
   const [filesToDelete, setFilesToDelete] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -23,7 +25,22 @@ const SettingsProvider = ({ children }) => {
   //handlers
   const handleAddCustomOption = () => {
     if (customOption) {
-      setOptions([...options, customOption]);
+      const tab = [...options, customOption];
+      const newC = tab.sort((a, b) => {
+        if (typeof a === "string" && typeof b === "string") {
+          const numA = parseInt(a.split("_")[1]);
+          const numB = parseInt(b.split("_")[1]);
+          return numA - numB;
+        } else if (typeof a === "string") {
+          return -1;
+        } else if (typeof b === "string") {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+
+      setOptions(newC);
       setCustomOption("");
       if (fileNameForm === null) {
         setFileName(customOption);
@@ -46,17 +63,25 @@ const SettingsProvider = ({ children }) => {
   const handleUpload = async (e) => {
     e.preventDefault();
     let formData = new FormData();
-    for (let i = 0; i < selectedFile.length; i++) {
-      formData.append("files", selectedFile[i]);
+    if (selectedFile) {
+      for (let i = 0; i < selectedFile.length; i++) {
+        formData.append("files", selectedFile[i]);
+      }
+      await axios.post(
+        `${HOST}/upload?s=${fileNameForm}&api=${API_KEY}`,
+        formData
+      );
+      setSelectedFile([]);
+      await getPics();
+    } else {
+      alert("Nie wybrałeś plików");
+      await getPics();
     }
-    await axios.post(`${HOST}/upload?s=${fileNameForm}`, formData);
-    setSelectedFile([]);
-    await getPics();
   };
 
   const getPics = useCallback(async () => {
     await axios
-      .get(`${HOST}/files`)
+      .get(`${HOST}/files?api=${API_KEY}`)
       .then((response) => {
         setFileData(response.data);
         const files = response.data.files;
@@ -67,7 +92,20 @@ const SettingsProvider = ({ children }) => {
           }
           return false;
         });
-        setOptions(tab);
+        const newTab = tab.sort((a, b) => {
+          if (typeof a === "string" && typeof b === "string") {
+            const numA = parseInt(a.split("_")[1]);
+            const numB = parseInt(b.split("_")[1]);
+            return numA - numB;
+          } else if (typeof a === "string") {
+            return -1;
+          } else if (typeof b === "string") {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+        setOptions(newTab);
       })
       .catch((error) => {
         console.error("Error fetching file:", error);
