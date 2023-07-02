@@ -21,19 +21,22 @@ const SettingsProvider = ({ children }) => {
   const [filesToDelete, setFilesToDelete] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileData, setFileData] = useState(null);
+  const [filesModal, setFilesModal] = useState(false);
+  const [searchItems, setSearchItems] = useState([]);
+  const [TableToMap, setTableToMap] = useState([]);
 
   //handlers
   const handleAddCustomOption = () => {
     if (customOption) {
-      const tab = [...options, customOption];
+      const tab = [...options, { value: customOption, label: customOption }];
       const newC = tab.sort((a, b) => {
-        if (typeof a === "string" && typeof b === "string") {
-          const numA = parseInt(a.split("_")[1]);
-          const numB = parseInt(b.split("_")[1]);
+        if (typeof a.value === "string" && typeof b.value === "string") {
+          const numA = parseInt(a.value.split("_")[1]);
+          const numB = parseInt(b.value.split("_")[1]);
           return numA - numB;
-        } else if (typeof a === "string") {
+        } else if (typeof a.value === "string") {
           return -1;
-        } else if (typeof b === "string") {
+        } else if (typeof b.value === "string") {
           return 1;
         } else {
           return 0;
@@ -63,43 +66,49 @@ const SettingsProvider = ({ children }) => {
   const handleUpload = async (e) => {
     e.preventDefault();
     let formData = new FormData();
-    if (selectedFile) {
+    if (selectedFile.length > 0) {
       for (let i = 0; i < selectedFile.length; i++) {
         formData.append("files", selectedFile[i]);
       }
-      await axios.post(
-        `${HOST}/upload?s=${fileNameForm}&api=${API_KEY}`,
-        formData
-      );
+      await axios.post(`${HOST}/upload?s=${fileNameForm}`, formData, {
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      });
       setSelectedFile([]);
       await getPics();
+      alert("Pliki zostały dodane do serwera");
     } else {
       alert("Nie wybrałeś plików");
-      await getPics();
     }
   };
 
   const getPics = useCallback(async () => {
     await axios
-      .get(`${HOST}/files?api=${API_KEY}`)
+      .get(`${HOST}/files`, {
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      })
       .then((response) => {
         setFileData(response.data);
         const files = response.data.files;
-
-        const tab = files.map((fileName) => {
-          if (fileName.table.length !== 0) {
-            return fileName.name;
-          }
-          return false;
-        });
-        const newTab = tab.sort((a, b) => {
-          if (typeof a === "string" && typeof b === "string") {
-            const numA = parseInt(a.split("_")[1]);
-            const numB = parseInt(b.split("_")[1]);
+        const tab = files
+          .filter((item) => item.table.length !== 0)
+          .map((fileName) => {
+            return {
+              value: fileName.name,
+              label: fileName.name,
+            };
+          });
+        const newTab = [{ value: "all", label: "all" }, ...tab].sort((a, b) => {
+          if (typeof a.value === "string" && typeof b.value === "string") {
+            const numA = parseInt(a.value.split("_")[1]);
+            const numB = parseInt(b.value.split("_")[1]);
             return numA - numB;
-          } else if (typeof a === "string") {
+          } else if (typeof a.value === "string") {
             return -1;
-          } else if (typeof b === "string") {
+          } else if (typeof b.value === "string") {
             return 1;
           } else {
             return 0;
@@ -135,6 +144,12 @@ const SettingsProvider = ({ children }) => {
         handleFileChange,
         handleUpload,
         getPics,
+        filesModal,
+        setFilesModal,
+        searchItems,
+        setSearchItems,
+        TableToMap,
+        setTableToMap,
       }}
     >
       {children}

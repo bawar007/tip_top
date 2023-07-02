@@ -2,6 +2,7 @@
 @import "./Components/SettingsButton/SettingsButton.scss";
 @import "./Components/SettingsForm/styles/SettingsForm.scss";
 @import "./Components/ImagesGroup/ImageGroup.scss";
+@import "./Components/Modal/Modal.scss";
 
 $gallerysettings-width-form: 50%;
 $gallerysettings-width-pics: calc(100% - $gallerysettings-width-form);

@@ -49,7 +49,11 @@ const AppProvider = ({ children }) => {
 
   //pobieranie opinii
   const getOpinions = useCallback(async () => {
-    const response = await axios.get(`${HOST}/opinions?api=${API_KEY}`);
+    const response = await axios.get(`${HOST}/opinions`, {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+      },
+    });
     setOpinions(response.data);
     if (response.error) {
       console.error(response.error);
@@ -57,7 +61,11 @@ const AppProvider = ({ children }) => {
   }, [HOST, API_KEY]);
   //pobieranie użytkowników
   const getUser = useCallback(async () => {
-    const response = await axios.get(`${HOST}/user?api=${API_KEY}`);
+    const response = await axios.get(`${HOST}/user`, {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+      },
+    });
     setPhoneNumberFromZleceniodawcy(response.data);
     if (response.error) {
       console.error(response.error);

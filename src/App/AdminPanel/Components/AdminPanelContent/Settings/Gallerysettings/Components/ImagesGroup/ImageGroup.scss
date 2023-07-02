@@ -1,12 +1,35 @@
 .gallerysettings-counter {
   .counter-settings {
     width: 100%;
-    height: 200px;
     margin: 10px;
-    padding: 10px;
+    padding: 20px;
     border: 2px solid orange;
     border-image: linear-gradient(200deg, black, orange, black);
     border-image-slice: 1;
+
+    .settings-folders {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      h3 {
+        margin-right: 10px;
+      }
+      img {
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+      }
+      .select-form-files {
+        color: black;
+        width: 90%;
+        .form-files__option {
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
   }
   .counter-content {
     width: 100%;

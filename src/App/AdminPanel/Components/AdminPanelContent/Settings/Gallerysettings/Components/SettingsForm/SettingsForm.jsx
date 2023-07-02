@@ -1,47 +1,27 @@
 import { useContext } from "react";
-import axios from "axios";
 import { SettingsProviderContext } from "../../../settingsProvider/SettingsProvider";
-import { AppContext } from "../../../../../../../Provider/Provider";
-
-const API_KEY = process.env.REACT_APP_API_KEY;
 
 const SettingsForm = ({ setSettings, settings }) => {
   const {
     handleAddCustomOption,
     handleFileChange,
     handleUpload,
-    setFilesToDelete,
-    filesToDelete,
     options,
     setCustomOption,
-    getPics,
     customOption,
+    setFilesModal,
   } = useContext(SettingsProviderContext);
 
-  const { HOST } = useContext(AppContext);
-
-  const deleteFunction = async (folderName, fileNameS) => {
-    await axios.delete(
-      `${HOST}/delete?s=${folderName}&fileName=${fileNameS}&api=${API_KEY}`
-    );
-    await getPics();
-  };
-
-  const handleDelete = async () => {
-    const filesToDeleteNew = filesToDelete;
-    filesToDeleteNew.forEach((el) =>
-      deleteFunction(el.name, el.fileNameToDelete)
-    );
-    setFilesToDelete([]);
-    await getPics();
+  const handleOpenModal = () => {
+    setFilesModal(true);
   };
 
   const OptionsSelectElement = options
     ? options.map(
         (option, index) =>
-          option && (
-            <option key={index} value={option}>
-              {option}
+          option.value && (
+            <option key={index} value={option.value}>
+              {option.value}
             </option>
           )
       )
@@ -127,7 +107,7 @@ const SettingsForm = ({ setSettings, settings }) => {
         <button
           onClick={(e) => {
             e.preventDefault();
-            handleDelete();
+            handleOpenModal();
           }}
           className="form__btn"
         >

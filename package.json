@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.12.1",
     "react-scripts": "5.0.1",
+    "react-select": "^5.7.3",
     "sass": "^1.58.3",
     "sequelize": "^6.29.0",
     "url": "^0.11.0",
