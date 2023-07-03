@@ -1,21 +1,23 @@
-import { Suspense, lazy, useEffect } from "react";
-import ContactPage from "./Components/ContactPage/ContactPage";
+import { Suspense, lazy, useEffect, useContext } from "react";
 
-import HomePage from "./Components/HomePage/HomePage";
-import Navi from "./Components/Navi/Navi";
-import Ofert from "./Components/Oferta/Oferta";
-import NaviMobile from "./Components/Navi/NaviMobile";
-// import Opinions from "./Components/Opinions/Opinions";
-import Modal from "./Components/Gallery/SubComponents/Modal/Modal";
-import Social from "./Components/Social/Social";
-import WhyThis from "./Components/WhyThis/WhyThis";
+import ContactPage from "./Pages/AppPage/Pages/ContactPage/ContactPage";
+import HomePage from "./Pages/AppPage/Pages/HomePage/HomePage";
+import Ofert from "./Pages/AppPage/Pages/OfertPage/Oferta";
+import WhyThis from "./Pages/AppPage/Pages/WhyUsPage/WhyThis";
 
-import LogoLoadPage from "./Components/LogoLoadPage/LogoLoadPage";
-import { useContext } from "react";
-import { AppContext } from "./Provider/Provider";
-import { ObserverSections } from "./Provider/SomeFunctions/ObserverSections";
+import Navi from "./Pages/AppPage/components/Navi/Navi";
+import NaviMobile from "./Pages/AppPage/components/Navi/NaviMobile";
+import Social from "./Pages/AppPage/components/Social/Social";
+import LogoLoadPage from "./Pages/AppPage/components/LogoLoad/LogoLoadPage";
 
-const GalleryPage = lazy(() => import("./Components/Gallery/GalleryPage"));
+import Modal from "./Pages/AppPage/Pages/GalleryPage/SubComponents/Modal/Modal";
+
+import { AppContext } from "./Pages/AppPage/AppPageProvider/AppPageProvider";
+import { ObserverSections } from "./Pages/AppPage/AppPageProvider/hooks/ObserverSections";
+
+const GalleryPage = lazy(() =>
+  import("./Pages/AppPage/Pages/GalleryPage/GalleryPage")
+);
 
 function App() {
   const { windowH, windowW } = useContext(AppContext);
