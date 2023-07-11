@@ -14,14 +14,14 @@ import Modal from "./Pages/AppPage/Pages/GalleryPage/SubComponents/Modal/Modal";
 
 import { AppContext } from "./Pages/AppPage/AppPageProvider/AppPageProvider";
 import { ObserverSections } from "./Pages/AppPage/AppPageProvider/hooks/ObserverSections";
-import TestResponsiveNavi from "./Pages/AppPage/components/Navi/_test_/_test_Navi";
+import Navi from "./Pages/AppPage/components/Navi/Navi";
 
 const GalleryPage = lazy(() =>
   import("./Pages/AppPage/Pages/GalleryPage/GalleryPage")
 );
 
 function App() {
-  const { windowH, windowW } = useContext(AppContext);
+  const { windowW } = useContext(AppContext);
 
   ///////////////////////////////////
   ///////////OBSERVERS///////////////
@@ -48,7 +48,7 @@ function App() {
   return (
     <div className="App">
       <Suspense fallback={<div>Loading...</div>}>
-        {/* {!windowW ? <LogoLoadPage /> : null} */}
+        {!windowW ? <LogoLoadPage /> : null}
       </Suspense>
       <HomePage />
       <GalleryPage />
@@ -56,8 +56,7 @@ function App() {
       <Ofert />
       <WhyThis />
       <ContactPage />
-      {/* {windowW && windowH ? <Navi /> : <NaviMobile />} */}
-      <TestResponsiveNavi />
+      <Navi />
       <Modal />
       <Social />
     </div>
