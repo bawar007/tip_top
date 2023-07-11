@@ -8,19 +8,25 @@ export const obliczProcentWidocznosci = (elRef) => {
       Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
     const visiblePercentage = (visibleHeight / sectionEl.clientHeight) * 100;
     const imgEl = document.querySelector(`${sectionElNaviItem} > img`);
+    const liEl = imgEl.parentElement.parentElement;
     if (imgEl) {
       imgEl.classList.remove("activeNaviLogo");
+      liEl.classList.remove("active");
       if (sectionElNaviItem === ".Projects--NaviItem") {
         if (visiblePercentage > 40) {
           imgEl.classList.add("activeNaviLogo");
+          liEl.classList.add("active");
         } else if (visiblePercentage < 20 && visiblePercentage > 0) {
           imgEl.classList.remove("activeNaviLogo");
+          liEl.classList.remove("active");
         }
       } else {
         if (visiblePercentage > 50) {
           imgEl.classList.add("activeNaviLogo");
+          liEl.classList.add("active");
         } else if (visiblePercentage < 40 && visiblePercentage > 0) {
           imgEl.classList.remove("activeNaviLogo");
+          liEl.classList.remove("active");
         }
       }
     }

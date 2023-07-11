@@ -1,20 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../../AppPageProvider/AppPageProvider";
-import { obliczProcentWidocznosci } from "../../AppPageProvider/hooks/HowPercentsIsVisibled";
 
 const Navi = () => {
   const { windowW, windowH } = useContext(AppContext);
-
-  useEffect(() => {
-    if (windowW) {
-      const sections = document.querySelectorAll("section");
-      sections.forEach((el) => {
-        const i = document.querySelector(`${el.dataset.naviitem} > img`);
-        i.classList.remove("activeNaviItem");
-        window.addEventListener("scroll", () => obliczProcentWidocznosci(el));
-      });
-    }
-  }, [windowW]);
 
   return (
     <div className="Navi">
