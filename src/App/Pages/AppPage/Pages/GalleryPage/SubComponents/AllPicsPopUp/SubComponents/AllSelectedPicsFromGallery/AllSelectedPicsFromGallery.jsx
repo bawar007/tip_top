@@ -9,7 +9,7 @@ const AllSelectedPicsFromGallery = () => {
       {allPicGalleryPop[0].all.map((el, index) => (
         <div className="Photos_Box--SinglePhoto" key={index + index + el}>
           <img
-            src={el}
+            src={`http://localhost:5000/images/${el}`}
             alt={el}
             className={picIndex === index ? "pic_img active" : "pic_img"}
             onClick={() => setPicIndex(index)}

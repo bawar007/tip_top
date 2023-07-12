@@ -1,19 +1,17 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
 
-import { images } from "../../data/image-data";
-
 const GalleryPics = () => {
-  const { handleClick, windowW } = useContext(AppContext);
+  const { handleClick, windowW, picsFromBG } = useContext(AppContext);
 
   const [showNumberOfPics, setShowNumberOfPics] = useState(4);
 
-  const gallery = images.map((image, index) => {
+  const gallery = picsFromBG.map((image, index) => {
     if (index < showNumberOfPics) {
       return (
         <div className="GalleryPicOnPage_content" key={index * 3 + image}>
           <img
-            src={image.first}
+            src={`http://localhost:5000/images/${image.first}`}
             alt={image.id}
             className="GalleryPicOnPage_content--img"
             onClick={() => handleClick(image.id)}

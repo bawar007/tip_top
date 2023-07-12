@@ -1,7 +1,10 @@
-import { images } from "../../../GalleryPage/data/image-data";
+import { useContext } from "react";
+import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
 
 const Slider = () => {
-  const imagesEl = images.filter((el, index) => index < 6);
+  const { picsFromBG } = useContext(AppContext);
+
+  const imagesEl = picsFromBG.filter((el, index) => index < 6);
 
   const sliderItems = imagesEl.map((el, index) => (
     <div
@@ -14,7 +17,7 @@ const Slider = () => {
       }
     >
       <img
-        src={el.first}
+        src={`http://localhost:5000/images/${el.first}`}
         alt={el.id}
         loading={index > 0 ? "lazy" : undefined}
       />

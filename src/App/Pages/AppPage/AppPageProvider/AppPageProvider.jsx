@@ -6,7 +6,6 @@ import React, {
   useCallback,
 } from "react";
 
-import { images } from "../Pages/GalleryPage/data/image-data";
 import axios from "axios";
 
 export const AppContext = createContext(null);
@@ -36,10 +35,11 @@ const AppProvider = ({ children }) => {
   const [allPics, setAllPics] = useState(false);
   const [picId, setPicId] = useState(1);
   const [picIndex, setPicIndex] = useState(0);
+  const [picsFromBG, setPicsFromBG] = useState([]);
 
   const [allPicsFromOpinion, setAllPicsFromOpinion] = useState(false);
 
-  const allPicGalleryPop = [...images].filter((el) => el.id === picId);
+  const allPicGalleryPop = [...picsFromBG].filter((el) => el.id === picId);
 
   const handleClick = (id) => {
     setPicId(id);
@@ -76,10 +76,35 @@ const AppProvider = ({ children }) => {
   const [phoneNumberFromZleceniodawcy, setPhoneNumberFromZleceniodawcy] =
     useState([]);
 
+  const getPics = useCallback(async () => {
+    await axios
+      .get(`${HOST}/files`, {
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      })
+      .then((response) => {
+        const files = response.data.files;
+        const test = files.map((file, index) => {
+          const id = index + 1;
+          const first = `/${file.name}/${file.table[0]}`;
+          const all = file.table.map((fileName) => `/${file.name}/${fileName}`);
+
+          return { id, first, all };
+        });
+        setPicsFromBG(test);
+        console.log(test);
+      })
+      .catch((error) => {
+        console.error("Error fetching file:", error);
+      });
+  }, [API_KEY, HOST]);
+
   useEffect(() => {
     //pobieranie opinni i użytkowników u których były wykonywane prace
     getOpinions();
     getUser();
+    getPics();
     const GetSize = () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
@@ -88,7 +113,7 @@ const AppProvider = ({ children }) => {
     };
     window.addEventListener("resize", () => GetSize());
     return window.removeEventListener("resize", () => GetSize());
-  }, [getOpinions, getUser]);
+  }, [getOpinions, getUser, getPics]);
 
   const handleClickCloseGalleryModal = () => {
     setAllPics(false);
@@ -118,6 +143,7 @@ const AppProvider = ({ children }) => {
         setAllPicsFromOpinion,
         HOST,
         handleClickCloseGalleryModal,
+        picsFromBG,
       }}
     >
       {children}

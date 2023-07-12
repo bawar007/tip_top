@@ -11,7 +11,7 @@ const OnePicFromGallery = () => {
         .map((el, index) => (
           <div className="Main_Photo--Content" key={index + el}>
             <img
-              src={el}
+              src={`http://localhost:5000/images/${el}`}
               alt={el}
               className="Main_Photo--Content_img"
               id="myImg"
