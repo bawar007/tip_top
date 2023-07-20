@@ -1,10 +1,10 @@
 import { useContext } from "react";
 
-import MobileGallery from "../Gallery/SubComponents/Mobile/MobileGallery";
+import MobileGallery from "../GalleryPage/SubComponents/Mobile/MobileGallery";
 
-import { AppContext } from "../../Provider/Provider";
+import { AppContext } from "../../AppPageProvider/AppPageProvider";
 
-import AllPicsPopUp from "../Gallery/SubComponents/AllPicsPopUp/AllPicsPopup";
+import AllPicsPopUp from "../GalleryPage/SubComponents/AllPicsPopUp/AllPicsPopup";
 import AddNewOpinion from "./subcomp/addOpinion/addNewOpinion";
 
 import OpinionBtn from "./subcomp/sub/OpinionBtn";

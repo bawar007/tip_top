@@ -3,10 +3,8 @@ import { Suspense, lazy, useEffect, useContext } from "react";
 import ContactPage from "./Pages/AppPage/Pages/ContactPage/ContactPage";
 import HomePage from "./Pages/AppPage/Pages/HomePage/HomePage";
 import Ofert from "./Pages/AppPage/Pages/OfertPage/Oferta";
+import Opinions from "./Pages/AppPage/Pages/OpinionsPage/Opinions";
 import WhyThis from "./Pages/AppPage/Pages/WhyUsPage/WhyThis";
-
-// import Navi from "./Pages/AppPage/components/Navi/Navi";
-// import NaviMobile from "./Pages/AppPage/components/Navi/NaviMobile";
 import Social from "./Pages/AppPage/components/Social/Social";
 import LogoLoadPage from "./Pages/AppPage/components/LogoLoad/LogoLoadPage";
 
@@ -52,7 +50,7 @@ function App() {
       </Suspense>
       <HomePage />
       <GalleryPage />
-      {/* <Opinions /> */}
+      <Opinions />
       <Ofert />
       <WhyThis />
       <ContactPage />

@@ -1,46 +1,6 @@
 const MyMap = () => {
   return (
     <div id="map">
-      {/* <LoadScript googleMapsApiKey="AIzaSyDeVwoOw-20wXKQ9dkqN3aPhGShjYKPADQ">
-        <GoogleMap
-          id="marker-example"
-          mapContainerStyle={windowW ? containerStyle : containerMobile}
-          center={center}
-          zoom={17}
-          options={{
-            zoomControl: false,
-            streetViewControl: false,
-          }}
-        >
-          <MarkerF
-            position={{
-              lat: 52.99440455242884,
-              lng: 20.276690939912914,
-            }}
-            animation={1}
-            onClick={handleClickMarker}
-          >
-            {info && (
-              <InfoWindowF
-                position={{
-                  lat: 52.99440455242884,
-                  lng: 20.276690939912914,
-                }}
-                onCloseClick={() => setinfo(false)}
-              >
-                <div className="infoBoxMap">
-                  <h4>TIP - TOP, glazura i wykończenia wnętrz</h4>
-                  <div className="infoBoxMapContent">
-                    <p>Kowalewko 48, 06-445 Strzegowo</p>
-                    <a
-                      href="https://goo.gl/maps/mR8iFw2kxzmN5Ldr8"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Wyznacz trasę
-                    </a>
-                  </div>
-                </div>*/}
       <iframe
         title="map"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2401.44445629043!2d20.274115777069962!3d52.99439230099879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471c4b487650795d%3A0xaa2fc1d8a57f73f6!2sKowalewko%2048%2C%2006-522%20Kowalewko!5e0!3m2!1spl!2spl!4v1686319480411!5m2!1spl!2spl"

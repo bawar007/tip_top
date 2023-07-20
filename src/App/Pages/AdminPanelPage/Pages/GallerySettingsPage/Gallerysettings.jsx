@@ -1,22 +1,17 @@
-import { useContext, useState } from "react";
-import ImagesGroup from "./components/ImagesGroup/ImagesGroup";
+import { useContext } from "react";
 import SettingsForm from "./components/SettingsForm/SettingsForm";
 import SettingsButton from "./components/SettingsButton/SettingsButton";
 import Modal from "./components/Modal/Modal";
 import { SettingsProviderContext } from "../../AdminPanelProvider/SettingsProvider";
+import TestImagesGroupBox from "./_tests_/_test_images_group/TestImagesGroupBox";
 
 const Gallerysettings = () => {
-  const [settings, setSettings] = useState(false);
-  const { filesModal } = useContext(SettingsProviderContext);
+  const { settingsFiles } = useContext(SettingsProviderContext);
   return (
     <div className="Gallerysettings">
-      {settings ? (
-        <SettingsForm setSettings={setSettings} settings={settings} />
-      ) : (
-        <SettingsButton setSettings={setSettings} />
-      )}
-      <ImagesGroup />
-      {filesModal && <Modal />}
+      {settingsFiles.settingsMenuIsOpen ? <SettingsForm /> : <SettingsButton />}
+      <TestImagesGroupBox />
+      {settingsFiles.modalIsOpen && <Modal />}
     </div>
   );
 };

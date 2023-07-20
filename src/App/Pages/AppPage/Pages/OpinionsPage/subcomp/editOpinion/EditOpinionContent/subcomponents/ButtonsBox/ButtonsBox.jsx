@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { handleDeleteOpinion } from "../../helpers/DeleteOpinion/DeleteOpinion";
-import { AppContext } from "../../../../../../../Provider/Provider";
+import { AppContext } from "../../../../../../../AppPageProvider/AppPageProvider";
 
 const ButtonsBox = ({ email, handleCloseAddOpinion }) => {
   const { HOST } = useContext(AppContext);

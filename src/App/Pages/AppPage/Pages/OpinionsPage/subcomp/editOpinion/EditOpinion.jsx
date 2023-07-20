@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 
 import EditOpinionContent from "./EditOpinionContent/EditOpinionContent";
-import { AppContext } from "../../../../Provider/Provider";
+import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
 
 const EditOpinion = () => {
   const [imie, setImie] = useState();

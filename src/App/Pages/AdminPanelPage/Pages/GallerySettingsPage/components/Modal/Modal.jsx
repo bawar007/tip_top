@@ -7,13 +7,9 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Modal = () => {
   const { HOST } = useContext(AppContext);
-  const {
-    setFilesToDelete,
-    filesToDelete,
-    filesModal,
-    handleGetPics,
-    setFilesModal,
-  } = useContext(SettingsProviderContext);
+  const { settingsFiles, setSettingsFiles } = useContext(
+    SettingsProviderContext
+  );
 
   const deleteFunction = async (folderName, fileNameS) => {
     await axios.delete(`${HOST}/delete?s=${folderName}&fileName=${fileNameS}`, {
@@ -21,35 +17,48 @@ const Modal = () => {
         Authorization: `Bearer ${API_KEY}`,
       },
     });
-    await handleGetPics();
   };
 
   const handleDeleteFiles = () => {
-    if (filesModal) {
-      const filesToDeleteNew = filesToDelete;
+    if (settingsFiles.modalIsOpen) {
+      const filesToDeleteNew = settingsFiles.filesToDelete;
+
       filesToDeleteNew.forEach((el) =>
         deleteFunction(el.name, el.fileNameToDelete)
       );
-      setFilesToDelete([]);
+      setSettingsFiles((prev) => ({
+        ...prev,
+        filesToDelete: [],
+        modalIsOpen: false,
+      }));
     }
   };
 
   const handleCancel = () => {
     const inputs = document.querySelectorAll(`input[type="checkbox"]`);
     inputs.forEach((item) => (item.checked = false));
-    setFilesModal(false);
-    setFilesToDelete([]);
+
+    setSettingsFiles((prev) => ({
+      ...prev,
+      filesToDelete: [],
+      modalIsOpen: false,
+    }));
   };
   return (
     <div className="modalCheckedFiles">
       <div className="modalcontent">
         <h2>Czy jesteś pewien, że chcesz usunąć wybrane pliki ?</h2>
-        <span className="closeBtn" onClick={() => setFilesModal(false)}>
+        <span
+          className="closeBtn"
+          onClick={() =>
+            setSettingsFiles((prev) => ({ ...prev, modalIsOpen: false }))
+          }
+        >
           &times;
         </span>
         <div className="filesToDeleteList">
           <ul>
-            {filesToDelete.map((el, index) => (
+            {settingsFiles.filesToDelete.map((el, index) => (
               <li key={el.fileNameToDelete + index}>{el.fileNameToDelete}</li>
             ))}
           </ul>
@@ -58,7 +67,7 @@ const Modal = () => {
           <button
             onClick={() => {
               handleDeleteFiles();
-              setFilesModal(false);
+              setSettingsFiles((prev) => ({ ...prev, modalIsOpen: false }));
             }}
             className="acceptBtn"
           >

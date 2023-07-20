@@ -33,7 +33,7 @@ const Navi = () => {
   };
 
   return (
-    <div className="testResponsiveMenu">
+    <header className="ResponsiveMenu">
       <input type="checkbox" id="menu-toggle" checked={toggleMenu} readOnly />
       <label
         htmlFor="menu-toggle"
@@ -42,7 +42,7 @@ const Navi = () => {
       >
         <span className="navicon"></span>
       </label>
-      <div className="menu-content">
+      <nav className="menu-content">
         <div className="imgBox">
           <img src="/icons/LogoTipTopCss.svg" alt="logo" />
         </div>
@@ -157,7 +157,7 @@ const Navi = () => {
             </a>
           </li>
         </ul>
-      </div>
+      </nav>
       <div className="arrowUp">
         <a href="#home">
           <img
@@ -169,7 +169,7 @@ const Navi = () => {
           />
         </a>
       </div>
-    </div>
+    </header>
   );
 };
 

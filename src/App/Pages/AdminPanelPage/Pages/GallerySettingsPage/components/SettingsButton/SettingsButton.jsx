@@ -1,4 +1,8 @@
-const SettingsButton = ({ setSettings }) => {
+import { useContext } from "react";
+import { SettingsProviderContext } from "../../../../AdminPanelProvider/SettingsProvider";
+
+const SettingsButton = () => {
+  const { setSettingsFiles } = useContext(SettingsProviderContext);
   return (
     <div className="settings_btn">
       <img
@@ -12,7 +16,9 @@ const SettingsButton = ({ setSettings }) => {
         alt="sett2"
         width="40"
         height="40"
-        onClick={() => setSettings(true)}
+        onClick={() =>
+          setSettingsFiles((prev) => ({ ...prev, settingsMenuIsOpen: true }))
+        }
       />
     </div>
   );

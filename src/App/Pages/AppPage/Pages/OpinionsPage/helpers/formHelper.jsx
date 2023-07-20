@@ -6,59 +6,70 @@ import {
   opinionsElCheckedEmail,
 } from "./variables";
 
-import { handleCloseAddOpinion } from "./handlers/handlers";
+import { handleCloseAddOpinion } from "./hooks/handlers";
 
-import axios from "axios";
-import { AppContext } from "../../../Provider/Provider";
+import { AppContext } from "../../../AppPageProvider/AppPageProvider";
 import { PopUpOpinions } from "../subcomp/editOpinion/EditOpinionContent/helpers/PopUp/PopUp";
+import { postNewOpinion } from "../../../AppPageProvider/hooks/ApiHooks";
 
 export const FormAddOpinionContext = createContext(null);
 
 const FormHelper = ({ children }) => {
-  const { phoneNumberFromZleceniodawcy, getOpinions, HOST, opinionsFromDB } =
+  const { phoneNumberFromZleceniodawcy, getOpinionsFromMyApi, opinionsFromDB } =
     useContext(AppContext);
 
-  const [imie, setImie] = useState();
-  const [nazwisko, setNazwisko] = useState();
-  const [email, setEmail] = useState("");
-  const [text, setText] = useState("");
-  const [textLenght, setTextLenght] = useState(0);
-  const [stars, setStars] = useState(0);
-  const [public_data, setPublic_data] = useState();
-  const [phone, setPhone] = useState();
+  const [formValues, setFormValues] = useState({
+    imie: "",
+    nazwisko: "",
+    email: "",
+    text: "",
+    textLenght: 0,
+    stars: 0,
+    public_data: "",
+    phone: "",
+  });
 
-  const [textValid, setTextValid] = useState(false);
-  const [starsValid, setStarsValid] = useState(false);
-  const [phoneValid, setPhoneValid] = useState(false);
-  const [emailValid, setEmailValid] = useState(false);
+  const [formValid, setFormValid] = useState({
+    textValid: false,
+    starsValid: false,
+    phoneValid: false,
+    emailValid: false,
+  });
+
+  //wyciąganie numeru projektu z bazy
+
+  const project_id_test = phoneNumberFromZleceniodawcy.filter(
+    (el) => el.phone_number === Number(formValues.phone)
+  );
 
   const validation = () => {
     //sprawdzanie czy numer jest w bazie danych
+    const { phone, email } = formValues;
     if (
       checkPhoneNumberFromZleceniodawcy(phoneNumberFromZleceniodawcy, phone) ||
       phone.length !== PHONE_LENGTH
     ) {
-      setPhoneValid(false);
+      setFormValid((prev) => ({ ...prev, phoneValid: false }));
       alert(`Numeru ${phone} nie ma w bazie danych !!`);
       return;
     } else {
-      setPhoneValid(true);
+      setFormValid((prev) => ({ ...prev, phoneValid: true }));
     }
 
     //sprawdzanie czy numer dodał już opinie
 
     if (checkTheNumberHasAlreadyAddedReview(opinionsFromDB, phone)) {
-      setPhoneValid(false);
+      setFormValid((prev) => ({ ...prev, phoneValid: false }));
       alert(`Numer ${phone} dodał już opinię, ale możesz ją edytować !!`);
       return;
     } else {
-      setPhoneValid(true);
+      setFormValid((prev) => ({ ...prev, phoneValid: true }));
     }
 
     // sprawdzanie czy email dodał już opinię
 
     if (opinionsElCheckedEmail(opinionsFromDB, email)) {
-      setEmailValid(false);
+      setFormValid((prev) => ({ ...prev, emailValid: false }));
       alert(
         "Podany email " +
           email +
@@ -67,58 +78,42 @@ const FormHelper = ({ children }) => {
 
       return;
     } else {
-      setEmailValid(true);
+      setFormValid((prev) => ({ ...prev, emailValid: true }));
     }
 
-    if (phoneValid && textValid && starsValid && emailValid) {
-      opinionPost();
+    if (
+      formValid.phoneValid &&
+      formValid.textValid &&
+      formValid.starsValid &&
+      formValid.emailValid
+    ) {
+      postNewOpinion(project_id_test, formValues);
       PopUpOpinions("Opinia została dodana!");
       resetForm();
     } else {
-      if (!textValid) {
+      if (!formValid.textValid) {
         alert(`Sprawdz swoją opinię !`);
         return;
       }
-      if (!starsValid) {
+      if (!formValid.starsValid) {
         alert(`Sprawdz gwiazdki !`);
       }
     }
   };
 
-  //wyciąganie numeru projektu z bazy
-
-  const project_id_test = phoneNumberFromZleceniodawcy.filter(
-    (el) => el.phone_number === Number(phone)
-  );
-
-  const opinionPost = async () => {
-    const { project_id, phone_number } = project_id_test[0];
-    try {
-      await axios.post(`${HOST}/opinions`, {
-        imie,
-        nazwisko,
-        email,
-        phone: phone_number,
-        project_id,
-        text,
-        stars,
-        public_data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const resetForm = () => {
-    setImie("");
-    setNazwisko("");
-    setEmail("");
-    setText("");
-    setStars(0);
-    setPublic_data("");
-    setPhone("");
-    setTextLenght(0);
-    getOpinions();
+    setFormValues({
+      imie: "",
+      nazwisko: "",
+      email: "",
+      text: "",
+      textLenght: 0,
+      stars: 0,
+      public_data: "",
+      phone: "",
+    });
+
+    getOpinionsFromMyApi();
     handleCloseAddOpinion();
   };
 
@@ -126,26 +121,29 @@ const FormHelper = ({ children }) => {
     const name = e.target.name;
     const value = e.target.value;
     if (name === "text") {
-      setText(value);
-      setTextLenght(value.length);
+      setFormValues((prev) => ({ ...prev, text: value }));
+      setFormValues((prev) => ({ ...prev, textLenght: value.length }));
       if (value.length <= 50) {
-        setTextValid(false);
+        setFormValid((prev) => ({ ...prev, textValid: false }));
       } else {
-        setTextValid(true);
+        setFormValid((prev) => ({ ...prev, textValid: true }));
       }
     }
     if (name === "public_data") {
-      setPublic_data(value);
+      setFormValues((prev) => ({ ...prev, public_data: value }));
     }
     if (name === "phone") {
-      setPhone(value);
+      setFormValues((prev) => ({ ...prev, phone: value }));
     }
     if (name === "email") {
-      setEmail(value);
+      setFormValues((prev) => ({ ...prev, email: value }));
     }
     if (project_id_test.length > 0) {
-      setImie(project_id_test[0].imie);
-      setNazwisko(project_id_test[0].nazwisko);
+      setFormValues((prev) => ({ ...prev, imie: project_id_test[0].imie }));
+      setFormValues((prev) => ({
+        ...prev,
+        nazwisko: project_id_test[0].nazwisko,
+      }));
     }
   };
 
@@ -153,21 +151,11 @@ const FormHelper = ({ children }) => {
     <FormAddOpinionContext.Provider
       value={{
         validation,
-        imie,
         handleChange,
-        nazwisko,
-        email,
-        phone,
-        text,
-        textLenght,
-        public_data,
         resetForm,
-        setStars,
-        stars,
-        setStarsValid,
-        setImie,
-        setNazwisko,
-        setEmail,
+        setFormValid,
+        formValues,
+        setFormValues,
       }}
     >
       {children}

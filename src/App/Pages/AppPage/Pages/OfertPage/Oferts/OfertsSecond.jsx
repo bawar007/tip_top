@@ -62,7 +62,7 @@ const OfertsSecond = () => {
   });
 
   return (
-    <div className="multi-container--infoBox animate__delay-1s">
+    <div className="multi-container--infoBox">
       <div className="ofert_title">
         <img
           src="/icons/interior.svg"

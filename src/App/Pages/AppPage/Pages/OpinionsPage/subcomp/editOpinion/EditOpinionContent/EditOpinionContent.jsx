@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 
-import { AppContext } from "../../../../../Provider/Provider";
+import { AppContext } from "../../../../../AppPageProvider/AppPageProvider";
 import { FormAddOpinionContext } from "../../../helpers/formHelper";
 import EditOpinionStars from "./subcomponents/EditOpinionStars/stars";
 import { OpinionUpdate } from "./helpers/OpinionUpdate/OpinionUpdate";
@@ -15,7 +15,7 @@ const EditOpinionContent = ({
 }) => {
   const { email, text, stars, public_data } = editOpinion[0];
 
-  const { getOpinions, HOST } = useContext(AppContext);
+  const { getOpinionsFromMyApi, HOST } = useContext(AppContext);
   const { resetForm } = useContext(FormAddOpinionContext);
 
   const [textO, setText] = useState(text);
@@ -52,7 +52,7 @@ const EditOpinionContent = ({
     setNextEditPage(false);
     resetFormOpinionEdit();
     resetForm();
-    getOpinions();
+    getOpinionsFromMyApi();
   };
 
   return (

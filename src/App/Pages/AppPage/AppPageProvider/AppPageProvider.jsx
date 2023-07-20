@@ -6,7 +6,11 @@ import React, {
   useCallback,
 } from "react";
 
-import axios from "axios";
+import {
+  getAllPicsFromApi,
+  getUserFromApi,
+  getOpinionsFromApi,
+} from "./hooks/ApiHooks";
 
 export const AppContext = createContext(null);
 
@@ -16,8 +20,6 @@ const AppProvider = ({ children }) => {
   const windowHeightFirst = useRef(window.innerHeight);
   const [windowWidth, setWindowWidth] = useState(windowWidthFirst.current);
   const [windowHeight, setWindowHeight] = useState(windowHeightFirst.current);
-
-  const API_KEY = process.env.REACT_APP_API_KEY;
 
   const windowW = windowWidth > 700;
   const windowH = windowHeight > 360;
@@ -48,72 +50,41 @@ const AppProvider = ({ children }) => {
   };
 
   //pobieranie opinii
-  const getOpinions = useCallback(async () => {
-    const response = await axios.get(`${HOST}/opinions`, {
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-      },
-    });
-    setOpinions(response.data);
-    if (response.error) {
-      console.error(response.error);
-    }
-  }, [HOST, API_KEY]);
-  //pobieranie użytkowników
-  const getUser = useCallback(async () => {
-    const response = await axios.get(`${HOST}/user`, {
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-      },
-    });
-    setPhoneNumberFromZleceniodawcy(response.data);
-    if (response.error) {
-      console.error(response.error);
-    }
-  }, [HOST, API_KEY]);
+  const getUserFromMyApi = useCallback(
+    async () => getUserFromApi(setPhoneNumberFromZleceniodawcy),
+    []
+  );
 
   const [opinionsFromDB, setOpinions] = useState([]);
   const [phoneNumberFromZleceniodawcy, setPhoneNumberFromZleceniodawcy] =
     useState([]);
 
-  const getPics = useCallback(async () => {
-    await axios
-      .get(`${HOST}/files`, {
-        headers: {
-          Authorization: `Bearer ${API_KEY}`,
-        },
-      })
-      .then((response) => {
-        const files = response.data.files;
-        const test = files.map((file, index) => {
-          const id = index + 1;
-          const first = `/${file.name}/${file.table[0]}`;
-          const all = file.table.map((fileName) => `/${file.name}/${fileName}`);
+  const getAllPicsFromMyApi = useCallback(
+    async () => getAllPicsFromApi(setPicsFromBG),
+    []
+  );
 
-          return { id, first, all };
-        });
-        setPicsFromBG(test);
-        console.log(test);
-      })
-      .catch((error) => {
-        console.error("Error fetching file:", error);
-      });
-  }, [API_KEY, HOST]);
+  const getOpinionsFromMyApi = useCallback(
+    async () => await getOpinionsFromApi(setOpinions),
+    []
+  );
+
+  const GetSize = () => {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    setWindowWidth(w);
+    setWindowHeight(h);
+  };
 
   useEffect(() => {
     //pobieranie opinni i użytkowników u których były wykonywane prace
-    getOpinions();
-    getUser();
-    getPics();
-    const GetSize = () => {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      setWindowWidth(w);
-      setWindowHeight(h);
-    };
+    getOpinionsFromMyApi();
+    getUserFromMyApi();
+    getAllPicsFromMyApi();
+
     window.addEventListener("resize", () => GetSize());
     return window.removeEventListener("resize", () => GetSize());
-  }, [getOpinions, getUser, getPics]);
+  }, [getOpinionsFromMyApi, getUserFromMyApi, getAllPicsFromMyApi]);
 
   const handleClickCloseGalleryModal = () => {
     setAllPics(false);
@@ -135,8 +106,7 @@ const AppProvider = ({ children }) => {
         handleClick,
         picIndex,
         setPicIndex,
-        getUser,
-        getOpinions,
+        getOpinionsFromMyApi,
         opinionsFromDB,
         phoneNumberFromZleceniodawcy,
         allPicsFromOpinion,

@@ -1,18 +1,3 @@
-export const testHandler = (fileData) => {
-  const imageMap = fileData
-    ? fileData.files.reduce((acc, file) => {
-        if (acc[file.name]) {
-          acc[file.name].push(...file.table);
-        } else {
-          acc[file.name] = [...file.table];
-        }
-        return acc;
-      }, {})
-    : null;
-
-  return imageMap;
-};
-
 export const HandleTableToMap = (
   e,
   imageMap,

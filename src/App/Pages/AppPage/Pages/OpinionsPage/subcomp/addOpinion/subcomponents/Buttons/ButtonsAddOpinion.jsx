@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FormAddOpinionContext } from "../../../../helpers/formHelper";
-import { handleCloseAddOpinion } from "../../../../helpers/handlers/handlers";
+import { handleCloseAddOpinion } from "../../../../helpers/hooks/handlers";
 
 const ButtonsAddOpinion = () => {
   const { resetForm } = useContext(FormAddOpinionContext);

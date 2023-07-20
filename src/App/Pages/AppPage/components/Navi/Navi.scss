@@ -5,7 +5,7 @@ $background-color_1: black;
 $background-color_2: white;
 $filter-black: brightness(0) saturate(100%);
 
-.testResponsiveMenu {
+.ResponsiveMenu {
   position: fixed;
   transition: all 0.2s ease;
   z-index: 100;
@@ -27,7 +27,7 @@ $filter-black: brightness(0) saturate(100%);
   .arrowUp {
     display: none;
   }
-  .testResponsiveMenu {
+  .ResponsiveMenu {
     top: 0;
     right: 0;
     width: 60px;
@@ -40,6 +40,7 @@ $filter-black: brightness(0) saturate(100%);
         img {
           transition: 0.4s ease-in-out;
           height: 100% !important;
+          border-bottom: 2px solid white;
         }
       }
     }
@@ -58,7 +59,6 @@ $filter-black: brightness(0) saturate(100%);
         img {
           height: 70%;
           width: 100%;
-          border-bottom: 2px solid white;
         }
       }
 
@@ -81,7 +81,7 @@ $filter-black: brightness(0) saturate(100%);
           justify-content: flex-start;
           height: calc(100% / 6);
           font-size: 0.7rem;
-          padding: 2px 5px 5px 5px;
+          padding: 2px 10px 5px 10px;
           margin: 5px 0;
           position: relative;
           overflow: hidden;
@@ -96,7 +96,7 @@ $filter-black: brightness(0) saturate(100%);
             top: 0;
             left: -40px;
             height: calc(100% + 10px);
-            width: 120px;
+            width: 130px;
           }
 
           &.active {
@@ -109,7 +109,7 @@ $filter-black: brightness(0) saturate(100%);
               left: -40px;
               top: 0;
               height: calc(100% + 10px);
-              width: 100px;
+              width: 110px;
             }
           }
           &.active > a {
@@ -152,7 +152,7 @@ $filter-black: brightness(0) saturate(100%);
 }
 
 @media (max-width: 700px) {
-  .testResponsiveMenu {
+  .ResponsiveMenu {
     top: 10px;
     right: 10px;
     width: 70px;

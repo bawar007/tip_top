@@ -21,7 +21,7 @@ const OnePicFromGallery = () => {
                   const modalEl = document.querySelector(".modal");
                   const modalImg = document.querySelector("#img01");
                   modalEl.style.display = "block";
-                  modalImg.src = { el };
+                  modalImg.src = `http://localhost:5000/images/${el}`;
                 }
               }}
             />

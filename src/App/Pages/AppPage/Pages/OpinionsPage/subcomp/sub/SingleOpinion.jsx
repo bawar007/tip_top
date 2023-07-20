@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AppContext } from "../../../../Provider/Provider";
+import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
 
 const SingleOpinion = () => {
   const { opinionsFromDB, setPicId, setPicIndex, setAllPicsFromOpinion } =
