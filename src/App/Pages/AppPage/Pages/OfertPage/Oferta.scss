@@ -86,7 +86,7 @@
             align-items: stretch;
             .infoBox_list--item {
               font-size: 16px;
-              padding: 10px 5%;
+              padding: 10px 5px;
               margin: 5px 0;
               display: flex;
               align-items: flex-start;
@@ -161,8 +161,9 @@
             justify-content: space-between;
             margin: 10px 0;
             border-bottom: 2px solid white;
+            padding: 10px 0;
             .OfertListItem--img {
-              height: 40px;
+              height: 20px;
               margin-right: 20px;
             }
           }

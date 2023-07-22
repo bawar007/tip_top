@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useContext } from "react";
+import { lazy, useEffect } from "react";
 
 import ContactPage from "./Pages/AppPage/Pages/ContactPage/ContactPage";
 import HomePage from "./Pages/AppPage/Pages/HomePage/HomePage";
@@ -6,11 +6,8 @@ import Ofert from "./Pages/AppPage/Pages/OfertPage/Oferta";
 import Opinions from "./Pages/AppPage/Pages/OpinionsPage/Opinions";
 import WhyThis from "./Pages/AppPage/Pages/WhyUsPage/WhyThis";
 import Social from "./Pages/AppPage/components/Social/Social";
-import LogoLoadPage from "./Pages/AppPage/components/LogoLoad/LogoLoadPage";
 
 import Modal from "./Pages/AppPage/Pages/GalleryPage/SubComponents/Modal/Modal";
-
-import { AppContext } from "./Pages/AppPage/AppPageProvider/AppPageProvider";
 import { ObserverSections } from "./Pages/AppPage/AppPageProvider/hooks/ObserverSections";
 import Navi from "./Pages/AppPage/components/Navi/Navi";
 
@@ -19,8 +16,6 @@ const GalleryPage = lazy(() =>
 );
 
 function App() {
-  const { windowW } = useContext(AppContext);
-
   ///////////////////////////////////
   ///////////OBSERVERS///////////////
   ///////////////////////////////////
@@ -45,9 +40,6 @@ function App() {
 
   return (
     <div className="App">
-      <Suspense fallback={<div>Loading...</div>}>
-        {!windowW ? <LogoLoadPage /> : null}
-      </Suspense>
       <HomePage />
       <GalleryPage />
       <Opinions />

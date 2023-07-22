@@ -24,15 +24,10 @@ export const ObserverSections = new IntersectionObserver((entries) => {
 
       if (entry.isIntersecting) {
         const homePageFlipContent = document.querySelectorAll(".flip-content");
-        homePageFlipContent[1].classList.add("flipFirst");
-        setTimeout(() => {
-          homePageFlipContent.forEach((el, index) =>
-            index !== 1 ? el.classList.add("shake") : null
-          );
-        }, 4000);
+        homePageFlipContent[0].classList.add("shake");
         setTimeout(
-          () => homePageFlipContent[1].classList.remove("flipFirst"),
-          7000
+          () => homePageFlipContent[0].classList.remove("shake"),
+          5000
         );
 
         if (arrowUpMobile) {

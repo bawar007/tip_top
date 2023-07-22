@@ -2,23 +2,12 @@ import Slider from "../Slider/Slider";
 
 const HomeInfo = () => {
   return (
-    <div className="testHomeInfo">
-      <div className="box-flip">
-        <div className="flip-content">
-          <div className="front" style={{ backgroundColor: "#e60881" }}>
-            <Slider />
-          </div>
-          <div className="back">
-            <button
-              className="btnShowMoreProjectsFirstPage"
-              onClick={() => {
-                document.querySelector(".galleryPage").scrollIntoView();
-              }}
-            >
-              Pokaż projekty
-            </button>
-          </div>
-        </div>
+    <div className="HomeInfo">
+      <div
+        className="box-flip--slider"
+        onClick={() => document.querySelector(".galleryPage").scrollIntoView()}
+      >
+        <Slider />
       </div>
 
       <div className="box-flip">
