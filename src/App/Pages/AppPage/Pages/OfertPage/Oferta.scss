@@ -115,6 +115,7 @@
 
 @media (min-width: 700px) {
   .Ofert_Page {
+    min-height: 100vh;
     .btnShowMoreOferts {
       height: 40px;
       width: 80%;
@@ -125,18 +126,19 @@
         font-size: 17px;
       }
     }
-    min-height: 100vh;
-    justify-content: center;
+
     .Ofert_Page--Content {
       margin: 10px auto;
       height: 80%;
-      width: 80%;
+      width: 100%;
       .content_multi-container {
+        justify-content: center;
         flex-direction: row;
         margin-top: 30px;
         margin-left: 20px;
         height: auto;
         flex-wrap: wrap;
+        padding: 0 80px;
         div:nth-child(2) {
           margin-top: 50px;
           margin-left: 20px;

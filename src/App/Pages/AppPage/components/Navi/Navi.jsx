@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { obliczProcentWidocznosci } from "../../AppPageProvider/hooks/HowPercentsIsVisibled";
+import { obliczProcentWidocznosci } from "../../AppPageProvider/helpers/HowPercentsIsVisibled";
 import { AppContext } from "../../AppPageProvider/AppPageProvider";
 
 const Navi = () => {

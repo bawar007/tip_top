@@ -13,7 +13,7 @@ const EditOpinionContent = ({
   setNextEditPage,
   resetFormOpinionEdit,
 }) => {
-  const { email, text, stars, public_data } = editOpinion[0];
+  const { id, email, text, stars, public_data } = editOpinion[0];
 
   const { getOpinionsFromMyApi, HOST } = useContext(AppContext);
   const { resetForm } = useContext(FormAddOpinionContext);
@@ -72,10 +72,7 @@ const EditOpinionContent = ({
           starsO={starsO}
         />
 
-        <ButtonsBox
-          email={email}
-          handleCloseAddOpinion={handleCloseAddOpinion}
-        />
+        <ButtonsBox id={id} handleCloseAddOpinion={handleCloseAddOpinion} />
       </form>
     </>
   );

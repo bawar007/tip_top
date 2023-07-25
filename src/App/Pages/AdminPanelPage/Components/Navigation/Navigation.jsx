@@ -21,6 +21,13 @@ const Navigation = () => {
         </li>
         <span></span>
         <li className="menu-item">
+          <Link to="opinionssettings" className="item-link">
+            <img src="/icons/whyUs.svg" alt="whyus" />
+            <h4>Opinie</h4>
+          </Link>
+        </li>
+        <span></span>
+        <li className="menu-item">
           <Link
             to="/admin"
             onClick={() => deletePassCookie()}

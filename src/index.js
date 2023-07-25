@@ -10,6 +10,7 @@ import AdminPanel from "./App/Pages/AdminPanelPage/AdminPanel";
 import Gallerysettings from "./App/Pages/AdminPanelPage/Pages/GallerySettingsPage/Gallerysettings";
 import WhyUsSettings from "./App/Pages/AdminPanelPage/Pages/WhyUsSettingsPage/WhyUsSettings";
 import LoginPage from "./App/Pages/AdminPanelPage/Pages/LoginSettingsPage/LoginPage";
+import OpinionsSettings from "./App/Pages/AdminPanelPage/Pages/OpinionsSettings/OpinionsSettings";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -23,6 +24,7 @@ root.render(
           <Route path="/adminpanel" element={<AdminPanel />}>
             <Route path="gallerysettings" element={<Gallerysettings />} />
             <Route path="whyussettings" element={<WhyUsSettings />} />
+            <Route path="opinionssettings" element={<OpinionsSettings />} />
           </Route>
         </Routes>
       </BrowserRouter>
