@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../AppPageProvider/AppPageProvider";
 
-import AllPicsPopUp from "./SubComponents/AllPicsPopUp/AllPicsPopup";
-
-import MobileGallery from "./SubComponents/Mobile/MobileGallery";
-import GalleryPics from "./SubComponents/GalleryPics/GalleryPics";
+import FirstGalleryList from "./Components/FirstGalleryList/FirstGalleryList";
+import DesktopGalleryModal from "./Components/modals/PC/DesktopGalleryModal";
+import MobileGalleryModal from "./Components/modals/Mobile/MobileGalleryModal";
 
 const GalleryPage = React.memo(() => {
   const { windowW, windowH, allPics } = useContext(AppContext);
@@ -16,12 +15,12 @@ const GalleryPage = React.memo(() => {
       data-naviitem=".Projects--NaviItem"
     >
       <h1 className="title_page">REALIZACJE</h1>
-      <GalleryPics />
+      <FirstGalleryList />
       {allPics ? (
         windowW && windowH ? (
-          <AllPicsPopUp />
+          <DesktopGalleryModal />
         ) : (
-          <MobileGallery />
+          <MobileGalleryModal />
         )
       ) : null}
     </section>

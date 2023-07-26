@@ -2,9 +2,9 @@ import { useContext, useEffect } from "react";
 
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import "photoswipe/style.css";
-import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
+import { AppContext } from "../../../../../AppPageProvider/AppPageProvider";
 
-const MobileGallery = () => {
+const MobileGalleryModal = () => {
   const { allPicGalleryPop, handleClickCloseGalleryModal } =
     useContext(AppContext);
 
@@ -51,4 +51,4 @@ const MobileGallery = () => {
   );
 };
 
-export default MobileGallery;
+export default MobileGalleryModal;

@@ -1,12 +1,20 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
+import useGetAllPics from "../../../../hooks/useGetAllPics";
 
-const GalleryPics = () => {
-  const { handleClick, windowW, picsFromBG } = useContext(AppContext);
+const API_KEY = process.env.REACT_APP_API_KEY;
+const HOST = "http://localhost:5000";
+
+const FirstGalleryList = () => {
+  const { handleClick, windowW } = useContext(AppContext);
 
   const [showNumberOfPics, setShowNumberOfPics] = useState(4);
 
-  const gallery = picsFromBG.map((image, index) => {
+  const { data, loading, error } = useGetAllPics(HOST, API_KEY);
+
+  if (loading || error) return;
+
+  const gallery = data.map((image, index) => {
     if (index < showNumberOfPics) {
       return (
         <div className="GalleryPicOnPage_content" key={index * 3 + image}>
@@ -105,4 +113,4 @@ const GalleryPics = () => {
   );
 };
 
-export default GalleryPics;
+export default FirstGalleryList;

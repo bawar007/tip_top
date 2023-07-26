@@ -1,7 +1,8 @@
-@import "./SubComponents/Modal/Modal.scss";
-@import "./SubComponents/Mobile/MobileGallery.scss";
-@import "./SubComponents/AllPicsPopUp/AllPicsPop.scss";
-@import "./SubComponents/GalleryPics/GalleryPics.scss";
+@import "./Components/modals/PC/Modal/Modal.scss";
+
+@import "./Components/modals/Mobile/MobileGalleryModal.scss";
+@import "./Components/modals/PC/DesktopGalleryModal.scss";
+@import "./Components/FirstGalleryList/FirstGalleryList.scss";
 
 .galleryPage {
   width: 100%;

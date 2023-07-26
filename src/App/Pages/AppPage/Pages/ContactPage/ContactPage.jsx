@@ -1,6 +1,6 @@
-import MyMap from "./subcomponents/MyMap/MyMap";
+import MyMap from "./MyMap/MyMap";
 
-import { listContactData } from "./helper/contactData/contactData";
+import { listContactData } from "./data/contactData";
 
 const ContactPage = () => {
   return (

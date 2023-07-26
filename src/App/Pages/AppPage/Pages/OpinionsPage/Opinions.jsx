@@ -1,16 +1,15 @@
 import { useContext } from "react";
 
-import MobileGallery from "../GalleryPage/SubComponents/Mobile/MobileGallery";
-
 import { AppContext } from "../../AppPageProvider/AppPageProvider";
 
-import AllPicsPopUp from "../GalleryPage/SubComponents/AllPicsPopUp/AllPicsPopup";
 import AddNewOpinion from "./subcomp/addOpinion/addNewOpinion";
 
 import OpinionBtn from "./subcomp/sub/OpinionBtn";
 import EditOpinion from "./subcomp/editOpinion/EditOpinion";
 import FormHelper from "./helpers/formHelper";
 import SingleOpinion from "./subcomp/sub/SingleOpinion";
+import MobileGalleryModal from "../GalleryPage/Components/modals/Mobile/MobileGalleryModal";
+import DesktopGalleryModal from "../GalleryPage/Components/modals/PC/DesktopGalleryModal";
 
 const Opinions = () => {
   const { windowW, allPicsFromOpinion } = useContext(AppContext);
@@ -32,9 +31,9 @@ const Opinions = () => {
       </section>
       {allPicsFromOpinion ? (
         !windowW ? (
-          <MobileGallery />
+          <MobileGalleryModal />
         ) : (
-          <AllPicsPopUp />
+          <DesktopGalleryModal />
         )
       ) : null}
     </FormHelper>

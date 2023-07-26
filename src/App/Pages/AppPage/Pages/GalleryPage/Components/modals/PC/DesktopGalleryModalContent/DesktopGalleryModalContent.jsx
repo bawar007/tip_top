@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import AllSelectedPicsFromGallery from "../SubComponents/AllSelectedPicsFromGallery/AllSelectedPicsFromGallery";
-import { AppContext } from "../../../../../AppPageProvider/AppPageProvider";
 
-import { clickBack, clickNext } from "./helpers/clickMove";
+import { AppContext } from "../../../../../../AppPageProvider/AppPageProvider";
 
-const AllPics = () => {
+import { clickBack, clickNext } from "../helpers/clickMove";
+
+const DesktopGalleryModalContent = () => {
   const {
     allPicGalleryPop,
     setPicIndex,
@@ -49,7 +49,21 @@ const AllPics = () => {
           width="70"
         />
       </div>
-      <AllSelectedPicsFromGallery />
+      <div className="Group_Photos_From_Project--Photos_Box">
+        {allPicGalleryPop[0].all.map((el, index) => (
+          <div className="Photos_Box--SinglePhoto" key={index + index + el}>
+            <img
+              src={`http://localhost:5000/images/${el}`}
+              alt={el}
+              className={picIndex === index ? "pic_img active" : "pic_img"}
+              onClick={() => setPicIndex(index)}
+              loading="lazy"
+              height="150"
+              width="150"
+            />
+          </div>
+        ))}
+      </div>
       <div className="next" onClick={handleNextPic}>
         <img
           src="/icons/arrowcircleright.svg"
@@ -64,6 +78,6 @@ const AllPics = () => {
   );
 };
 
-export default AllPics;
+export default DesktopGalleryModalContent;
 
 //component małych zdjęć

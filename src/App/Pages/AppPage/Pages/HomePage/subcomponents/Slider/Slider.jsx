@@ -1,10 +1,14 @@
-import { useContext } from "react";
-import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
+import useGetAllPics from "../../../../hooks/useGetAllPics";
+
+const API_KEY = process.env.REACT_APP_API_KEY;
+const HOST = "http://localhost:5000";
 
 const Slider = () => {
-  const { picsFromBG } = useContext(AppContext);
+  const { data, loading } = useGetAllPics(HOST, API_KEY);
 
-  const imagesEl = picsFromBG.filter((el, index) => index < 6);
+  if (loading) return;
+
+  const imagesEl = data.filter((el, index) => index < 6);
 
   const sliderItems = imagesEl.map((el, index) => (
     <div

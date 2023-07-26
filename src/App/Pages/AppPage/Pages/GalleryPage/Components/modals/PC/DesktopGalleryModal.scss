@@ -1,5 +1,5 @@
-@import "./OnePicFromGallery/OnePicFromGallery.scss";
-@import "./SubComponents/allPics.scss";
+@import "../../../styles/OnePicFromGallery";
+@import "./DesktopGalleryModalContent/DesktopGalleryModalContent.scss";
 
 .Selected_Pics_Modal--Bg {
   position: fixed;

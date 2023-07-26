@@ -10,7 +10,7 @@ import { handleCloseAddOpinion } from "./hooks/handlers";
 
 import { AppContext } from "../../../AppPageProvider/AppPageProvider";
 import { PopUpOpinions } from "../subcomp/editOpinion/EditOpinionContent/helpers/PopUp/PopUp";
-import { postNewOpinion } from "../../../AppPageProvider/hooks/ApiHooks";
+import { postNewOpinion } from "../../../AppPageProvider/helpers/ApiHooks";
 
 export const FormAddOpinionContext = createContext(null);
 
@@ -42,6 +42,14 @@ const FormHelper = ({ children }) => {
     (el) => el.phone_number === Number(formValues.phone)
   );
 
+  const setPhoneValid = (value) => {
+    setFormValid((prev) => ({ ...prev, phoneValid: value }));
+  };
+
+  const setEmailValid = (value) => {
+    setFormValid((prev) => ({ ...prev, emailValid: value }));
+  };
+
   const validation = () => {
     //sprawdzanie czy numer jest w bazie danych
     const { phone, email } = formValues;
@@ -49,27 +57,27 @@ const FormHelper = ({ children }) => {
       checkPhoneNumberFromZleceniodawcy(phoneNumberFromZleceniodawcy, phone) ||
       phone.length !== PHONE_LENGTH
     ) {
-      setFormValid((prev) => ({ ...prev, phoneValid: false }));
+      setPhoneValid(false);
       alert(`Numeru ${phone} nie ma w bazie danych !!`);
       return;
     } else {
-      setFormValid((prev) => ({ ...prev, phoneValid: true }));
+      setPhoneValid(true);
     }
 
     //sprawdzanie czy numer dodał już opinie
 
     if (checkTheNumberHasAlreadyAddedReview(opinionsFromDB, phone)) {
-      setFormValid((prev) => ({ ...prev, phoneValid: false }));
+      setPhoneValid(false);
       alert(`Numer ${phone} dodał już opinię, ale możesz ją edytować !!`);
       return;
     } else {
-      setFormValid((prev) => ({ ...prev, phoneValid: true }));
+      setPhoneValid(true);
     }
 
     // sprawdzanie czy email dodał już opinię
 
     if (opinionsElCheckedEmail(opinionsFromDB, email)) {
-      setFormValid((prev) => ({ ...prev, emailValid: false }));
+      setEmailValid(false);
       alert(
         "Podany email " +
           email +
@@ -78,26 +86,24 @@ const FormHelper = ({ children }) => {
 
       return;
     } else {
-      setFormValid((prev) => ({ ...prev, emailValid: true }));
+      setEmailValid(true);
     }
 
-    if (
-      formValid.phoneValid &&
-      formValid.textValid &&
-      formValid.starsValid &&
-      formValid.emailValid
-    ) {
+    const { phoneValid, textValid, starsValid, emailValid } = formValid;
+
+    if (phoneValid && textValid && starsValid && emailValid) {
       postNewOpinion(project_id_test, formValues);
       PopUpOpinions("Opinia została dodana!");
       resetForm();
     } else {
-      if (!formValid.textValid) {
+      if (!textValid) {
         alert(`Sprawdz swoją opinię !`);
         return;
       }
-      if (!formValid.starsValid) {
+      if (!starsValid) {
         alert(`Sprawdz gwiazdki !`);
       }
+      return;
     }
   };
 

@@ -6,11 +6,10 @@ import React, {
   useCallback,
 } from "react";
 
-import {
-  getAllPicsFromApi,
-  getUserFromApi,
-  getOpinionsFromApi,
-} from "./hooks/ApiHooks";
+import { getUserFromApi, getOpinionsFromApi } from "./helpers/ApiHooks";
+import useGetAllPics from "../hooks/useGetAllPics";
+
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 export const AppContext = createContext(null);
 
@@ -37,11 +36,13 @@ const AppProvider = ({ children }) => {
   const [allPics, setAllPics] = useState(false);
   const [picId, setPicId] = useState(1);
   const [picIndex, setPicIndex] = useState(0);
-  const [picsFromBG, setPicsFromBG] = useState([]);
 
   const [allPicsFromOpinion, setAllPicsFromOpinion] = useState(false);
 
-  const allPicGalleryPop = [...picsFromBG].filter((el) => el.id === picId);
+  const { data, loading } = useGetAllPics(HOST, API_KEY);
+
+  const allPicGalleryPop =
+    !loading && [...data].filter((el) => el.id === picId);
 
   const handleClick = (id) => {
     setPicId(id);
@@ -59,11 +60,6 @@ const AppProvider = ({ children }) => {
   const [phoneNumberFromZleceniodawcy, setPhoneNumberFromZleceniodawcy] =
     useState([]);
 
-  const getAllPicsFromMyApi = useCallback(
-    async () => getAllPicsFromApi(setPicsFromBG),
-    []
-  );
-
   const getOpinionsFromMyApi = useCallback(
     async () => await getOpinionsFromApi(setOpinions),
     []
@@ -80,11 +76,10 @@ const AppProvider = ({ children }) => {
     //pobieranie opinni i użytkowników u których były wykonywane prace
     getOpinionsFromMyApi();
     getUserFromMyApi();
-    getAllPicsFromMyApi();
 
     window.addEventListener("resize", () => GetSize());
     return window.removeEventListener("resize", () => GetSize());
-  }, [getOpinionsFromMyApi, getUserFromMyApi, getAllPicsFromMyApi]);
+  }, [getOpinionsFromMyApi, getUserFromMyApi]);
 
   const handleClickCloseGalleryModal = () => {
     setAllPics(false);
@@ -113,7 +108,6 @@ const AppProvider = ({ children }) => {
         setAllPicsFromOpinion,
         HOST,
         handleClickCloseGalleryModal,
-        picsFromBG,
       }}
     >
       {children}
