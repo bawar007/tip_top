@@ -1,8 +1,8 @@
-@import "./Components/styles/btnstyles.scss";
-@import "./Components/SettingsButton/SettingsButton.scss";
-@import "./Components/SettingsForm/styles/SettingsForm.scss";
-@import "./Components/ImagesGroup/ImageGroup.scss";
-@import "./Components/Modal/Modal.scss";
+@import "./components/styles/btnstyles.scss";
+@import "./components//SettingsButton//SettingsButton.scss";
+@import "./components/SettingsForm/styles/SettingsForm.scss";
+@import "./components/ImagesGroup/ImageGroup.scss";
+@import "./components/Modal/Modal.scss";
 
 $gallerysettings-width-form: 50%;
 $gallerysettings-width-pics: calc(100% - $gallerysettings-width-form);
