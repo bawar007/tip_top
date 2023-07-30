@@ -7,8 +7,9 @@ import Opinions from "./Pages/AppPage/Pages/OpinionsPage/Opinions";
 import WhyThis from "./Pages/AppPage/Pages/WhyUsPage/WhyThis";
 import Social from "./Pages/AppPage/components/Social/Social";
 
-import Modal from "./Pages/AppPage/Pages/GalleryPage/SubComponents/Modal/Modal";
-import { ObserverSections } from "./Pages/AppPage/AppPageProvider/helpers/ObserverSections";
+import Modal from "./Pages/AppPage/Pages/GalleryPage/Components/modals/PC/Modal/Modal";
+
+import { ObserverSections } from "./Pages/AppPage/helpers/ObserverSections";
 import Navi from "./Pages/AppPage/components/Navi/Navi";
 
 const GalleryPage = lazy(() =>

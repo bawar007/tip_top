@@ -1,12 +1,5 @@
-import React, {
-  createContext,
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-} from "react";
+import React, { createContext, useState, useRef, useEffect } from "react";
 
-import { getUserFromApi, getOpinionsFromApi } from "./helpers/ApiHooks";
 import useGetAllPics from "../hooks/useGetAllPics";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -14,7 +7,6 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 export const AppContext = createContext(null);
 
 const AppProvider = ({ children }) => {
-  const [page, setPage] = useState(1);
   const windowWidthFirst = useRef(window.innerWidth);
   const windowHeightFirst = useRef(window.innerHeight);
   const [windowWidth, setWindowWidth] = useState(windowWidthFirst.current);
@@ -40,7 +32,6 @@ const AppProvider = ({ children }) => {
   const [allPicsFromOpinion, setAllPicsFromOpinion] = useState(false);
 
   const { data, loading } = useGetAllPics(HOST, API_KEY);
-
   const allPicGalleryPop =
     !loading && [...data].filter((el) => el.id === picId);
 
@@ -51,19 +42,6 @@ const AppProvider = ({ children }) => {
   };
 
   //pobieranie opinii
-  const getUserFromMyApi = useCallback(
-    async () => getUserFromApi(setPhoneNumberFromZleceniodawcy),
-    []
-  );
-
-  const [opinionsFromDB, setOpinions] = useState([]);
-  const [phoneNumberFromZleceniodawcy, setPhoneNumberFromZleceniodawcy] =
-    useState([]);
-
-  const getOpinionsFromMyApi = useCallback(
-    async () => await getOpinionsFromApi(setOpinions),
-    []
-  );
 
   const GetSize = () => {
     const w = window.innerWidth;
@@ -73,13 +51,9 @@ const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    //pobieranie opinni i użytkowników u których były wykonywane prace
-    getOpinionsFromMyApi();
-    getUserFromMyApi();
-
     window.addEventListener("resize", () => GetSize());
     return window.removeEventListener("resize", () => GetSize());
-  }, [getOpinionsFromMyApi, getUserFromMyApi]);
+  }, []);
 
   const handleClickCloseGalleryModal = () => {
     setAllPics(false);
@@ -89,8 +63,6 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        page,
-        setPage,
         windowW,
         windowH,
         setAllPics,
@@ -101,13 +73,11 @@ const AppProvider = ({ children }) => {
         handleClick,
         picIndex,
         setPicIndex,
-        getOpinionsFromMyApi,
-        opinionsFromDB,
-        phoneNumberFromZleceniodawcy,
         allPicsFromOpinion,
         setAllPicsFromOpinion,
         HOST,
         handleClickCloseGalleryModal,
+        API_KEY,
       }}
     >
       {children}
