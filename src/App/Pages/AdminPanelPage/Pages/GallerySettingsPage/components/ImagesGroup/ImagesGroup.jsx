@@ -39,7 +39,7 @@ const ImagesGroup = () => {
 
   useEffect(() => {
     fetchFilesStructure(setSelectedFilesFromApi, setSettingsFiles, HOST);
-  }, [setSelectedFilesFromApi, setSettingsFiles]);
+  }, [setSelectedFilesFromApi, setSettingsFiles, HOST]);
 
   return (
     <div className="gallerysettings-counter">
