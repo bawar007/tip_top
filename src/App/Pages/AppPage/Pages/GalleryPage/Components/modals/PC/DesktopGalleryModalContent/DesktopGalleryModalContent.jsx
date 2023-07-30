@@ -10,6 +10,7 @@ const DesktopGalleryModalContent = () => {
     setPicIndex,
     picIndex,
     handleClickCloseGalleryModal,
+    HOST,
   } = useContext(AppContext);
 
   const handleNextPic = () => {
@@ -53,7 +54,7 @@ const DesktopGalleryModalContent = () => {
         {allPicGalleryPop[0].all.map((el, index) => (
           <div className="Photos_Box--SinglePhoto" key={index + index + el}>
             <img
-              src={`http://localhost:5000/images/${el}`}
+              src={`${HOST}/images/${el}`}
               alt={el}
               className={picIndex === index ? "pic_img active" : "pic_img"}
               onClick={() => setPicIndex(index)}

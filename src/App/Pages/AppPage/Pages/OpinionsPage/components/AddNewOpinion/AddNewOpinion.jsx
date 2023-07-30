@@ -16,14 +16,15 @@ import useGetAllPics from "../../../../hooks/useGetAllPics";
 
 import axios from "axios";
 import { postNewOpinion } from "../../../../helpers/ApiHooks";
+import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const HOST = "https://tip-top-backend-worker.onrender.com";
 
 const AddNewOpinion = () => {
   const { setFormValues, formValues, resetForm } = useContext(
     FormAddOpinionContext
   );
+  const { HOST } = useContext(AppContext);
 
   const [newOpinionFormValues, setNewOpinionFormValues] = useState({
     imie: "",
@@ -99,7 +100,7 @@ const AddNewOpinion = () => {
       value: filename,
       label: (
         <img
-          src={`http://localhost:5000/images/${item.first}`}
+          src={`${HOST}/images/${item.first}`}
           alt={item.first}
           width={40}
           height={40}

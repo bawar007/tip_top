@@ -5,18 +5,18 @@ import "photoswipe/style.css";
 import { AppContext } from "../../../../../AppPageProvider/AppPageProvider";
 
 const MobileGalleryModal = () => {
-  const { allPicGalleryPop, handleClickCloseGalleryModal } =
+  const { allPicGalleryPop, handleClickCloseGalleryModal, HOST } =
     useContext(AppContext);
 
   const GalleryMobilePics = allPicGalleryPop[0].all.map((image, index) => (
     <a
-      href={`http://localhost:5000/images/${image}`}
+      href={`${HOST}/images/${image}`}
       key={index + image}
       target="_blank"
       rel="noreferrer"
     >
       <img
-        src={`http://localhost:5000/images/${image}`}
+        src={`${HOST}/images/${image}`}
         alt={image}
         height="155"
         width="150"

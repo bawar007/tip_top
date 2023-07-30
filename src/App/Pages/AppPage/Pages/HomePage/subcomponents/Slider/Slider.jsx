@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import useGetAllPics from "../../../../hooks/useGetAllPics";
+import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const HOST = "https://tip-top-backend-worker.onrender.com";
 
 const Slider = () => {
+  const { HOST } = useContext(AppContext);
+
   const { data, loading } = useGetAllPics(HOST, API_KEY);
 
   if (loading) return;
@@ -21,7 +24,7 @@ const Slider = () => {
       }
     >
       <img
-        src={`http://localhost:5000/images/${el.first}`}
+        src={`${HOST}/images/${el.first}`}
         alt={el.id}
         loading={index > 0 ? "lazy" : undefined}
       />

@@ -10,6 +10,7 @@ const DesktopGalleryModal = () => {
     allPicGalleryPop,
     picIndex,
     windowW,
+    HOST,
   } = useContext(AppContext);
   useEffect(() => {
     const c = document.querySelector(".Selected_Pics_Modal--Bg");
@@ -29,7 +30,7 @@ const DesktopGalleryModal = () => {
             .map((el, index) => (
               <div className="Main_Photo--Content" key={index + el}>
                 <img
-                  src={`http://localhost:5000/images/${el}`}
+                  src={`${HOST}/images/${el}`}
                   alt={el}
                   className="Main_Photo--Content_img"
                   id="myImg"
@@ -39,7 +40,7 @@ const DesktopGalleryModal = () => {
                       const modalEl = document.querySelector(".modal");
                       const modalImg = document.querySelector("#img01");
                       modalEl.style.display = "block";
-                      modalImg.src = `http://localhost:5000/images/${el}`;
+                      modalImg.src = `${HOST}/images/${el}`;
                     }
                   }}
                 />
