@@ -3,7 +3,7 @@ import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
 import useGetAllPics from "../../../../hooks/useGetAllPics";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const HOST = "http://localhost:5000";
+const HOST = "https://tip-top-backend-worker.onrender.com";
 
 const FirstGalleryList = () => {
   const { handleClick, windowW } = useContext(AppContext);

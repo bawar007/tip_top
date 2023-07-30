@@ -18,7 +18,7 @@ import axios from "axios";
 import { postNewOpinion } from "../../../../helpers/ApiHooks";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const HOST = "http://localhost:5000";
+const HOST = "https://tip-top-backend-worker.onrender.com";
 
 const AddNewOpinion = () => {
   const { setFormValues, formValues, resetForm } = useContext(

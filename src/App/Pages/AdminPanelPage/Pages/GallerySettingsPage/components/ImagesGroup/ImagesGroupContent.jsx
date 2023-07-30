@@ -1,11 +1,14 @@
 import { useContext } from "react";
 
 import { SettingsProviderContext } from "../../../../AdminPanelProvider/SettingsProvider";
+import { AppContext } from "../../../../../AppPage/AppPageProvider/AppPageProvider";
 
 const ImagesGroupContent = ({ imageMap }) => {
   const { settingsFiles, setSettingsFiles } = useContext(
     SettingsProviderContext
   );
+
+  const { HOST } = useContext(AppContext);
 
   const handleChangeChecbox = (e) => {
     const state = settingsFiles.filesToDelete;
@@ -128,7 +131,7 @@ const ImagesGroupContent = ({ imageMap }) => {
                 {item.table.map((imageName) => (
                   <div className="image_checkbox__group" key={imageName}>
                     <img
-                      src={`http://localhost:5000/images/${item.name}/${imageName}`}
+                      src={`${HOST}/images/${item.name}/${imageName}`}
                       alt={imageName}
                       className="counter__image"
                       onClick={() =>

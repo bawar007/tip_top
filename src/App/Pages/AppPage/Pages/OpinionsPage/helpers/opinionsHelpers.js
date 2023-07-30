@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const HOST = "http://localhost:5000";
+const HOST = "https://tip-top-backend-worker.onrender.com";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 export const handleDeleteOpinion = async (id) => {

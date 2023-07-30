@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const HOST = "http://localhost:5000";
+const HOST = "https://tip-top-backend-worker.onrender.com";
 
 export const postNewOpinion = async (formValues) => {
   const { imie, email, opinion_text, date, selected_project, rate } =

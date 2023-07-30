@@ -4,12 +4,14 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { SettingsProviderContext } from "../../../../AdminPanelProvider/SettingsProvider";
 import { fetchFilesStructure } from "../../hooks/useHooksImages";
+import { AppContext } from "../../../../../AppPage/AppPageProvider/AppPageProvider";
 
 const ImagesGroup = () => {
   const animatedComponents = makeAnimated();
 
   const { selectedFilesFromApi, setSelectedFilesFromApi, setSettingsFiles } =
     useContext(SettingsProviderContext);
+  const { HOST } = useContext(AppContext);
 
   const handleFilesInView = (itemsToView) => {
     const filesInView = itemsToView.map((file) => file.value);
@@ -36,7 +38,7 @@ const ImagesGroup = () => {
   };
 
   useEffect(() => {
-    fetchFilesStructure(setSelectedFilesFromApi, setSettingsFiles);
+    fetchFilesStructure(setSelectedFilesFromApi, setSettingsFiles, HOST);
   }, [setSelectedFilesFromApi, setSettingsFiles]);
 
   return (

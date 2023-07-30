@@ -1,10 +1,10 @@
 import axios from "axios";
 const API_KEY = process.env.REACT_APP_API_KEY;
-const HOST = "http://localhost:5000";
 
 export const fetchFilesStructure = async (
   setSelectedFilesFromApi,
-  setSettingsFiles
+  setSettingsFiles,
+  HOST
 ) => {
   await axios
     .get(`${HOST}/files`, {
