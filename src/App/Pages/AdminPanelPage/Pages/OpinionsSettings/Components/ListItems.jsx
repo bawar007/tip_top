@@ -4,30 +4,40 @@ import {
 } from "../../../../AppPage/Pages/OpinionsPage/helpers/opinionsHelpers";
 
 const ListItems = ({ item, data, setData }) => {
-  const updateStatusById = (id) => {
-    // Skopiowanie tablicy, aby nie modyfikować oryginalnej
-    let updatedItems = data.slice();
+  const handleAcceptData = async (id) => {
+    let updatedItems = data;
 
-    // Wyszukanie indeksu elementu o danym id
-    const indexToUpdate = updatedItems.findIndex((item) => item.id === id);
+    const indexToUpdate = updatedItems.queued.findIndex(
+      (item) => item.id === id
+    );
 
     if (indexToUpdate !== -1) {
-      // Aktualizacja statusu, jeśli element został znaleziony
-      updatedItems[indexToUpdate].status = "accepted";
+      updatedItems.queued[indexToUpdate].status = "accepted";
     } else {
-      // Można również rzucić wyjątek, jeśli element o podanym id nie istnieje
       console.error("Element o podanym id nie został znaleziony.");
     }
-
     // Zwrócenie zaktualizowanej tablicy
-    setData(updatedItems);
-    handleAcceptOpinion(id);
+    const updatedQue = updatedItems.queued.filter(
+      (item) => item.status === "queued"
+    );
+
+    setData((prev) => ({
+      queued: updatedQue,
+      accepted: [...prev.accepted, updatedItems.queued[indexToUpdate]],
+    }));
+    await handleAcceptOpinion(id);
   };
 
-  const deleteOpinion = (id) => {
-    const updatedItems = data.filter((item) => item.id !== id);
-    setData(updatedItems);
-    handleDeleteOpinion(id);
+  const deleteOpinion = async (id) => {
+    const deleteQue = data.queued.filter((item) => item.id !== id);
+    const deleteAccepted = data.accepted.filter((item) => item.id !== id);
+
+    setData({
+      accepted: deleteAccepted,
+      queued: deleteQue,
+    });
+
+    await handleDeleteOpinion(id);
   };
 
   return (
@@ -41,16 +51,8 @@ const ListItems = ({ item, data, setData }) => {
         <span>{item.imie}</span>
       </div>
       <div>
-        <h3>nazwisko</h3>
-        <span>{item.nazwisko}</span>
-      </div>
-      <div>
         <h3>email</h3>
         <span>{item.email}</span>
-      </div>
-      <div>
-        <h3>telefon</h3>
-        <span>{item.phone}</span>
       </div>
       <div>
         <h3>project</h3>
@@ -74,7 +76,7 @@ const ListItems = ({ item, data, setData }) => {
       </div>
       <div>
         {item.status === "queued" && (
-          <button onClick={() => updateStatusById(item.id)}>Accept</button>
+          <button onClick={() => handleAcceptData(item.id)}>Accept</button>
         )}
         <button onClick={() => deleteOpinion(item.id)}>Delete</button>
       </div>

@@ -11,7 +11,6 @@ import {
 } from "../../helpers/feedbackService";
 import { OpinionsAlert } from "../OpinionsAlert/OpinionsAlert";
 
-import { FormAddOpinionContext } from "../../provider/formHelper";
 import useGetAllPics from "../../../../hooks/useGetAllPics";
 
 import axios from "axios";
@@ -21,9 +20,6 @@ import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const AddNewOpinion = () => {
-  const { setFormValues, formValues, resetForm } = useContext(
-    FormAddOpinionContext
-  );
   const { HOST } = useContext(AppContext);
 
   const [newOpinionFormValues, setNewOpinionFormValues] = useState({
@@ -67,7 +63,19 @@ const AddNewOpinion = () => {
       OpinionsAlert("Opinia jest za krótka");
       return;
     }
+    if (newOpinionFormValues.selected_project === "") {
+      OpinionsAlert("Wybierz projekt");
+      return;
+    }
     postNewOpinion(newOpinionFormValues);
+    setNewOpinionFormValues({
+      imie: "",
+      email: "",
+      opinion_text: "",
+      date: "",
+      selected_project: "",
+      rate: null,
+    });
     handleCloseAddOpinion();
   };
 
@@ -96,6 +104,7 @@ const AddNewOpinion = () => {
   const test = data.map((item) => {
     let filename = fileNameReducer(item.first);
     filename = filename.slice(2);
+
     return {
       value: filename,
       label: (
@@ -215,7 +224,7 @@ const AddNewOpinion = () => {
             <h2>Ocena usługi</h2>
             <div
               className="starsBox"
-              onMouseOut={() => mouseOutAddOpinion(formValues)}
+              onMouseOut={() => mouseOutAddOpinion(newOpinionFormValues)}
             >
               {IconsForStars.map((el, index) => (
                 <img
@@ -226,12 +235,7 @@ const AddNewOpinion = () => {
                   height="20"
                   className={el.class}
                   onClick={() =>
-                    handleChangeAddOpinionStars(
-                      el.id,
-
-                      setFormValues,
-                      setNewOpinionFormValues
-                    )
+                    handleChangeAddOpinionStars(el.id, setNewOpinionFormValues)
                   }
                   onMouseOver={() => hoverChangeAddOpinionStars(el.id)}
                 />
@@ -249,7 +253,14 @@ const AddNewOpinion = () => {
             <button
               onClick={() => {
                 handleCloseAddOpinion();
-                resetForm();
+                setNewOpinionFormValues({
+                  imie: "",
+                  email: "",
+                  opinion_text: "",
+                  date: "",
+                  selected_project: "",
+                  rate: null,
+                });
               }}
               className="btn_send"
             >

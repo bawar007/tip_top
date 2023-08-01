@@ -17,12 +17,21 @@ export const handleDeleteOpinion = async (id) => {
   }
 };
 
-export const handleOpinionUpdate = async (email, textO, starsO) => {
+export const handleOpinionUpdate = async (id, textO, starsO) => {
+  console.log(id);
   try {
-    await axios.patch(`${HOST}/opinions/${email}`, {
-      text: textO,
-      stars: starsO,
-    });
+    await axios.patch(
+      `${HOST}/opinions/${id}`,
+      {
+        text: textO,
+        stars: starsO,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      }
+    );
     setTimeout(() => alert("Dane zostały zaktualizowane"), 500);
   } catch (error) {
     console.log(error);

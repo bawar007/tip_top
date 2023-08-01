@@ -127,7 +127,6 @@ $paddingTopBot: 10px;
   .opinionsPage {
     align-items: flex-start;
     .opinionsBox {
-      flex-wrap: wrap;
       margin-top: 5%;
       justify-content: center;
       .opinion {
@@ -135,6 +134,39 @@ $paddingTopBot: 10px;
         justify-content: center;
         margin-bottom: 5%;
         text-align: center;
+      }
+    }
+  }
+}
+
+@media (min-width: 1250px) {
+  .opinionsBox {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 940px) {
+  .opinionsBox {
+    flex-wrap: none;
+    overflow-x: scroll;
+    width: 90vw;
+    .opinion {
+      min-width: 250px;
+      &:first-child {
+        margin-left: 500px;
+      }
+    }
+  }
+}
+@media (max-width: 1250px) and (min-width: 940px) {
+  .opinionsBox {
+    flex-wrap: none;
+    overflow-x: scroll;
+    width: 90vw;
+    .opinion {
+      min-width: 250px;
+      &:first-child {
+        margin-left: 250px;
       }
     }
   }

@@ -5,7 +5,7 @@ const HOST = "https://tip-top-backend-worker.onrender.com";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const OpinionsSettings = () => {
-  const { data, loading, error, setData } = useGetOpinions(HOST, API_KEY);
+  const { loading, data, error, setData } = useGetOpinions(HOST, API_KEY);
 
   const loadingItem = (
     <div className="lds-ring">
@@ -18,17 +18,13 @@ const OpinionsSettings = () => {
 
   if (loading || error) return loadingItem;
 
-  const opinionsQue = data
-    .filter((item) => item.status === "queued")
-    .map((item) => (
-      <ListItems key={item.id} item={item} data={data} setData={setData} />
-    ));
+  const opinionsQue = data.queued.map((item) => (
+    <ListItems key={item.id} item={item} setData={setData} data={data} />
+  ));
 
-  const opinionsAccepted = data
-    .filter((item) => item.status === "accepted")
-    .map((item) => (
-      <ListItems key={item.id} item={item} data={data} setData={setData} />
-    ));
+  const opinionsAccepted = data.accepted.map((item) => (
+    <ListItems key={item.id} item={item} setData={setData} data={data} />
+  ));
 
   return (
     <div className="opinionssettings-content">

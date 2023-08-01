@@ -1,59 +1,66 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import axios from "axios";
 
 import EditOpinionContent from "./components/EditOpinionContent";
+import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
 
 const EditOpinion = () => {
-  const [imie, setImie] = useState();
-  const [nazwisko, setNazwisko] = useState();
-  const [email, setEmail] = useState("");
+  const { HOST, API_KEY } = useContext(AppContext);
 
-  const [imieValid, setImieValid] = useState(false);
-  const [nazwiskoValid, setNazwiskoValid] = useState(false);
+  const [editData, setEditData] = useState({
+    imie: "",
+    email: "",
+  });
 
   const [editOpinion, setEditOpinion] = useState(null);
   const [NextEditPage, setNextEditPage] = useState(false);
+
+  const checkEmailFetch = async (email) => {
+    const result = await axios.get(`${HOST}/opinions/${email}`, {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+      },
+    });
+    if (result.data !== null) return true;
+
+    return false;
+  };
 
   const saveOpinion = (e) => {
     e.preventDefault();
     validation();
   };
 
-  const validation = () => {
-    if (imieValid && nazwiskoValid) {
-      getOpinion();
+  const fetchData = async (email) => {
+    const data = await axios.get(`${HOST}/opinions/${email}`, {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+        "Cache-Control": "no-cache",
+      },
+    });
+    return data.data;
+  };
+
+  const validation = async () => {
+    const checkEmail = await checkEmailFetch(editData.email);
+    if (!checkEmail) {
+      alert("Podałeś niewłaściwe dane lub nie dodałeś opini");
+
+      return;
     } else {
-      alert("Formularz zawiera błędy");
+      const c = await fetchData(editData.email);
+      setEditOpinion(c);
+      setNextEditPage(true);
     }
   };
 
   //mydło
 
-  const opinionsFromDB = [];
-
-  const getOpinion = async () => {
-    const emailFound = opinionsFromDB.filter((el) => el.email === email);
-    if (emailFound.length >= 1) {
-      const imieEl = emailFound[0].imie.toLowerCase();
-      const nazwiskoEl = emailFound[0].nazwisko.toLowerCase();
-      if (
-        imieEl === imie.toLowerCase() &&
-        nazwiskoEl === nazwisko.toLowerCase()
-      ) {
-        setEditOpinion(emailFound);
-        setNextEditPage(true);
-      } else {
-        alert("Formularz zawiera błędy !!!");
-        setNextEditPage(false);
-      }
-    } else {
-      alert("Formularz zawiera błędy !!!");
-    }
-  };
-
   const resetFormOpinionEdit = () => {
-    setImie("");
-    setNazwisko("");
-    setEmail("");
+    setEditData({
+      imie: "",
+      email: "",
+    });
     handleCloseAddOpinion();
   };
 
@@ -61,23 +68,10 @@ const EditOpinion = () => {
     const name = e.target.name;
     const value = e.target.value;
     if (name === "imie") {
-      setImie(value);
-      if (!value.match(/^[a-zA-Z]+$/)) {
-        setImieValid(false);
-      } else {
-        setImieValid(true);
-      }
-    }
-    if (name === "nazwisko") {
-      setNazwisko(value);
-      if (value.match(/[0-9]+$/)) {
-        setNazwiskoValid(false);
-      } else {
-        setNazwiskoValid(true);
-      }
+      setEditData((prev) => ({ ...prev, imie: value }));
     }
     if (name === "email") {
-      setEmail(value);
+      setEditData((prev) => ({ ...prev, email: value }));
     }
   };
 
@@ -107,7 +101,7 @@ const EditOpinion = () => {
               <label className="omrs-input-underlined">
                 <input
                   type="text"
-                  value={imie}
+                  value={editData.imie}
                   onChange={handleChange}
                   className="imie_form"
                   name="imie"
@@ -117,25 +111,12 @@ const EditOpinion = () => {
                 <span className="omrs-input-helper"></span>
               </label>
             </div>
-            <div className="omrs-input-group">
-              <label className="omrs-input-underlined">
-                <input
-                  type="text"
-                  value={nazwisko}
-                  onChange={handleChange}
-                  className="nazwisko_form"
-                  name="nazwisko"
-                  required
-                />
-                <span className="omrs-input-label">Nazwisko</span>
-                <span className="omrs-input-helper"></span>
-              </label>
-            </div>
+
             <div className="omrs-input-group">
               <label className="omrs-input-underlined">
                 <input
                   type="email"
-                  value={email}
+                  value={editData.email}
                   onChange={handleChange}
                   className="email_form"
                   name="email"

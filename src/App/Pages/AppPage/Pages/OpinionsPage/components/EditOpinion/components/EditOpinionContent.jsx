@@ -13,7 +13,7 @@ const EditOpinionContent = ({
   setNextEditPage,
   resetFormOpinionEdit,
 }) => {
-  const { id, email, text, stars, public_data, imie } = editOpinion[0];
+  const { id, email, text, stars, public_data, imie } = editOpinion;
 
   const { resetForm } = useContext(FormAddOpinionContext);
 
@@ -25,8 +25,9 @@ const EditOpinionContent = ({
 
   const saveOpinion = (e) => {
     e.preventDefault();
+
     if (textValid && starsValid) {
-      handleOpinionUpdate(email, textO, starsO);
+      handleOpinionUpdate(id, textO, starsO);
       handleCloseAddOpinion();
     } else {
       alert("Formularz zawiera błędy");

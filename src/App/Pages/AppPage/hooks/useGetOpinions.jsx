@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const useGetOpinions = (HOST, API_KEY) => {
@@ -13,10 +13,18 @@ const useGetOpinions = (HOST, API_KEY) => {
         const response = await axios.get(`${HOST}/opinions`, {
           headers: {
             Authorization: `Bearer ${API_KEY}`,
+            "Cache-Control": "no-cache",
           },
         });
+        const queued = response.data.filter((item) => item.status === "queued");
+        const accepted = response.data.filter(
+          (item) => item.status === "accepted"
+        );
+        setData({
+          accepted: accepted,
+          queued: queued,
+        });
 
-        setData(response.data);
         setError(null);
       } catch (error) {
         setError(error);
@@ -24,6 +32,7 @@ const useGetOpinions = (HOST, API_KEY) => {
         setLoading(false);
       }
     };
+    // Po zmianie klucza pamięci podręcznej, hook użyje nowych danych do renderowania komponentu.
     fetchData();
   }, [API_KEY, HOST]);
 

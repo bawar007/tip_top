@@ -18,8 +18,7 @@ const OpinionsBoxContent = () => {
 
   if (loading || error) return;
 
-  const acceptedOpinions = data.filter((item) => item.status === "accepted");
-  const opinion = acceptedOpinions.map((opinion) => (
+  const opinion = data.accepted.map((opinion) => (
     <div className="opinion" key={opinion.id + "a"}>
       <h2>{opinion.imie}</h2>
       <p>{opinion.text}</p>
