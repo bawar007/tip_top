@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 
 import { SettingsProviderContext } from "../../../../AdminPanelProvider/SettingsProvider";
 import { AppContext } from "../../../../../AppPage/AppPageProvider/AppPageProvider";
@@ -9,6 +9,9 @@ const ImagesGroupContent = ({ imageMap }) => {
   );
 
   const { HOST } = useContext(AppContext);
+
+  const previevRef = useRef(null);
+  const imgRef = useRef(null);
 
   const handleChangeChecbox = (e) => {
     const state = settingsFiles.filesToDelete;
@@ -84,6 +87,20 @@ const ImagesGroupContent = ({ imageMap }) => {
     images.forEach((el) => (el.checked = false));
   };
 
+  const showImagePreview = (e) => {
+    const src = e.target.src;
+    const div = previevRef.current;
+    div.style.left = `${e.clientX - 150}px`;
+    div.style.top = `${e.clientY + 5}px`;
+    const imgEl = imgRef.current;
+    div.style.display = "block";
+    imgEl.src = src;
+  };
+
+  const hiddenImagePreview = () => {
+    const div = previevRef.current;
+    div.style.display = "none";
+  };
   const imageGroups =
     imageMap.length !== 0
       ? imageMap.map((item) => {
@@ -137,6 +154,8 @@ const ImagesGroupContent = ({ imageMap }) => {
                       onClick={() =>
                         handleCheckBoxFromIcon(item.name, imageName)
                       }
+                      onMouseOver={(e) => showImagePreview(e)}
+                      onMouseOut={(e) => hiddenImagePreview(e)}
                       style={
                         imageMap.length === 1
                           ? { width: "120px", height: "120px" }
@@ -157,7 +176,14 @@ const ImagesGroupContent = ({ imageMap }) => {
         })
       : null;
 
-  return <div className="test_counter-content">{imageGroups}</div>;
+  return (
+    <div className="test_counter-content">
+      {imageGroups}
+      <div className="previev" ref={previevRef}>
+        <img src="" alt="preview" width={150} height={150} ref={imgRef} />
+      </div>
+    </div>
+  );
 };
 
 export default ImagesGroupContent;

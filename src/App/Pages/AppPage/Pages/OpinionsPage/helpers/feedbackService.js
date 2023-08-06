@@ -39,7 +39,6 @@ export const mouseOutAddOpinion = (newOpinionFormValues) => {
 export const handleChangeAddOpinionStars = (star, setNewOpinionFormValues) => {
   setNewOpinionFormValues((prev) => ({ ...prev, rate: star }));
   const starsEl = document.querySelectorAll(".checkedAdd");
-  const numbers = document.querySelector(".starInfoBox > .info");
 
   starsEl.forEach((el, index) => {
     if (index < star) {
@@ -49,8 +48,6 @@ export const handleChangeAddOpinionStars = (star, setNewOpinionFormValues) => {
       el.style.filter = "";
     }
   });
-  numbers.innerHTML = `Twoja ocena: ${star}/5`;
-  numbers.style.visibility = "visible";
 };
 
 export const IconsForStars = [

@@ -10,20 +10,22 @@ const EditOpinion = () => {
   const [editData, setEditData] = useState({
     imie: "",
     email: "",
+    loading: false,
   });
 
   const [editOpinion, setEditOpinion] = useState(null);
   const [NextEditPage, setNextEditPage] = useState(false);
 
   const checkEmailFetch = async (email) => {
+    setEditData((prev) => ({ ...prev, loading: true }));
     const result = await axios.get(`${HOST}/opinions/${email}`, {
       headers: {
         Authorization: `Bearer ${API_KEY}`,
+        "Cache-Control": "no-cache",
       },
     });
-    if (result.data !== null) return true;
-
-    return false;
+    if (result.data === null) return false;
+    return result.data;
   };
 
   const saveOpinion = (e) => {
@@ -31,26 +33,16 @@ const EditOpinion = () => {
     validation();
   };
 
-  const fetchData = async (email) => {
-    const data = await axios.get(`${HOST}/opinions/${email}`, {
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-        "Cache-Control": "no-cache",
-      },
-    });
-    return data.data;
-  };
-
   const validation = async () => {
     const checkEmail = await checkEmailFetch(editData.email);
     if (!checkEmail) {
       alert("Podałeś niewłaściwe dane lub nie dodałeś opini");
-
+      setEditData((prev) => ({ ...prev, loading: false }));
       return;
     } else {
-      const c = await fetchData(editData.email);
-      setEditOpinion(c);
+      setEditOpinion(checkEmail);
       setNextEditPage(true);
+      setEditData((prev) => ({ ...prev, loading: false }));
     }
   };
 
@@ -60,6 +52,7 @@ const EditOpinion = () => {
     setEditData({
       imie: "",
       email: "",
+      loading: false,
     });
     handleCloseAddOpinion();
   };
@@ -67,12 +60,7 @@ const EditOpinion = () => {
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    if (name === "imie") {
-      setEditData((prev) => ({ ...prev, imie: value }));
-    }
-    if (name === "email") {
-      setEditData((prev) => ({ ...prev, email: value }));
-    }
+    setEditData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleCloseAddOpinion = () => {
@@ -82,6 +70,23 @@ const EditOpinion = () => {
     opinion_box.classList.remove("openModalBg");
     opinion_box.classList.remove("openModalBgEdit");
   };
+
+  const loadingItem = (
+    <div className="lds-ring">
+      <div
+        style={{ borderColor: "black transparent transparent transparent" }}
+      ></div>
+      <div
+        style={{ borderColor: "black transparent transparent transparent" }}
+      ></div>
+      <div
+        style={{ borderColor: "black transparent transparent transparent" }}
+      ></div>
+      <div
+        style={{ borderColor: "black transparent transparent transparent" }}
+      ></div>
+    </div>
+  );
 
   return (
     <div className="edit_opinion_box opinion_form_box">
@@ -125,21 +130,25 @@ const EditOpinion = () => {
                 <span className="omrs-input-label">Email</span>
               </label>
             </div>
-            <div className="btnBox">
-              <button type="submit" className="btn_send">
-                Zaakceptuj
-              </button>
-              <button
-                onClick={() => {
-                  handleCloseAddOpinion();
-                  resetFormOpinionEdit();
-                }}
-                className="btn_send"
-                type="button"
-              >
-                Odrzuć
-              </button>
-            </div>
+            {editData.loading ? (
+              loadingItem
+            ) : (
+              <div className="btnBox">
+                <button type="submit" className="btn_send">
+                  Zaakceptuj
+                </button>
+                <button
+                  onClick={() => {
+                    handleCloseAddOpinion();
+                    resetFormOpinionEdit();
+                  }}
+                  className="btn_send"
+                  type="button"
+                >
+                  Odrzuć
+                </button>
+              </div>
+            )}
           </form>
         )}
       </div>

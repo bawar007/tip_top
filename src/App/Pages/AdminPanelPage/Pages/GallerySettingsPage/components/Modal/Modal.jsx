@@ -12,11 +12,13 @@ const Modal = () => {
   );
 
   const deleteFunction = async (folderName, fileNameS) => {
-    await axios.delete(`${HOST}/delete?s=${folderName}&fileName=${fileNameS}`, {
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-      },
-    });
+    await axios
+      .delete(`${HOST}/delete?s=${folderName}&fileName=${fileNameS}`, {
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      })
+      .catch((error) => console.log(error));
   };
 
   const handleDeleteFiles = () => {
@@ -31,6 +33,9 @@ const Modal = () => {
         filesToDelete: [],
         modalIsOpen: false,
       }));
+
+      alert("Pliki zostały usunięte");
+      window.location.reload();
     }
   };
 

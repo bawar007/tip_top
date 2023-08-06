@@ -49,12 +49,17 @@ const SettingsForm = () => {
       for (let i = 0; i < filesToDelete.length; i++) {
         formData.append("files", filesToDelete[i]);
       }
-      await axios.post(`${HOST}/upload?s=${folderToDelete}`, formData, {
-        headers: {
-          Authorization: `Bearer ${API_KEY}`,
-        },
-      });
-      alert("Pliki zostały dodane do serwera");
+      await axios
+        .post(`${HOST}/upload?s=${folderToDelete}`, formData, {
+          headers: {
+            Authorization: `Bearer ${API_KEY}`,
+          },
+        })
+        .catch((error) => console.log(error))
+        .finally(() => {
+          alert("Pliki zostały dodane do serwera");
+          window.location.reload();
+        });
     } else {
       alert("Nie wybrałeś plików");
     }

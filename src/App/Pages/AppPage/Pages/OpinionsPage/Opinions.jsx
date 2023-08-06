@@ -6,7 +6,6 @@ import AddNewOpinion from "./components/AddNewOpinion/AddNewOpinion";
 
 import OpinionInformation from "./components/OpinionInformation/OpinionInformation";
 import EditOpinion from "./components/EditOpinion/EditOpinion";
-import FormHelper from "./provider/formHelper";
 import OpinionsBoxContent from "./components/OpinionsBoxContent/OpinionsBoxContent";
 import MobileGalleryModal from "../GalleryPage/Components/modals/Mobile/MobileGalleryModal";
 import DesktopGalleryModal from "../GalleryPage/Components/modals/PC/DesktopGalleryModal";
@@ -15,7 +14,7 @@ const Opinions = () => {
   const { windowW, allPicsFromOpinion } = useContext(AppContext);
 
   return (
-    <FormHelper>
+    <>
       <section
         className="opinionsPage"
         id="opinions"
@@ -37,7 +36,7 @@ const Opinions = () => {
           <DesktopGalleryModal />
         )
       ) : null}
-    </FormHelper>
+    </>
   );
 };
 

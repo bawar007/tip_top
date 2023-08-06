@@ -1,24 +1,45 @@
-import { useContext, useEffect } from "react";
+import { useContext, useState } from "react";
 import ImagesGroupContent from "./ImagesGroupContent";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import { SettingsProviderContext } from "../../../../AdminPanelProvider/SettingsProvider";
-import { fetchFilesStructure } from "../../hooks/useHooksImages";
+
 import { AppContext } from "../../../../../AppPage/AppPageProvider/AppPageProvider";
+import useImages from "../../hooks/useImages";
 
 const ImagesGroup = () => {
   const animatedComponents = makeAnimated();
 
-  const { selectedFilesFromApi, setSelectedFilesFromApi, setSettingsFiles } =
-    useContext(SettingsProviderContext);
   const { HOST } = useContext(AppContext);
 
+  const { loading, selectedFilesFromApi, error, setSelectedFilesFromApi } =
+    useImages(HOST);
+
+  const [allSelectItems, setAllSelectItems] = useState(false);
+
+  const loadingItem = (
+    <div className="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  );
+
+  if (loading || error) return loadingItem;
+
   const handleFilesInView = (itemsToView) => {
+    const test = itemsToView.findIndex((item) => item.value === "all");
+
     const filesInView = itemsToView.map((file) => file.value);
-    const itsAllFiles = filesInView.indexOf("all");
+
+    if (test !== -1) {
+      setAllSelectItems(true);
+    } else {
+      setAllSelectItems(false);
+    }
 
     const TableSelectedFolders = [];
-    if (itsAllFiles === 0) {
+    if (test !== -1) {
       selectedFilesFromApi.fetchFilesStructure.files.forEach((item) =>
         TableSelectedFolders.push(item)
       );
@@ -32,14 +53,9 @@ const ImagesGroup = () => {
 
     setSelectedFilesFromApi((prev) => ({
       ...prev,
-      selectedItems: itemsToView,
       filesInView: TableSelectedFolders,
     }));
   };
-
-  useEffect(() => {
-    fetchFilesStructure(setSelectedFilesFromApi, setSettingsFiles, HOST);
-  }, [setSelectedFilesFromApi, setSettingsFiles, HOST]);
 
   return (
     <div className="gallerysettings-counter">
@@ -50,19 +66,29 @@ const ImagesGroup = () => {
             closeMenuOnSelect={false}
             components={animatedComponents}
             isMulti
-            value={selectedFilesFromApi.optionsFromFiles.value}
+            value={
+              allSelectItems
+                ? { value: "all", label: "all" }
+                : selectedFilesFromApi.optionsFromFiles.value
+            }
+            defaultValue={selectedFilesFromApi.optionsFromFiles[1]}
             options={selectedFilesFromApi.optionsFromFiles}
             className="select-form-files"
             classNamePrefix="form-files"
             onChange={(value) => handleFilesInView(value)}
             placeholder={"Wybierz foldery"}
           />
-          <img src="/icons/refresh.svg" alt="refresh" width="50" height="50" />
+          <img
+            src="/icons/refresh.svg"
+            alt="refresh"
+            width="50"
+            height="50"
+            onClick={() => window.location.reload()}
+          />
         </div>
       </div>
-      {selectedFilesFromApi.fetchFilesIsDone && (
-        <ImagesGroupContent imageMap={selectedFilesFromApi.filesInView} />
-      )}
+
+      <ImagesGroupContent imageMap={selectedFilesFromApi.filesInView} />
     </div>
   );
 };

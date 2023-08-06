@@ -80,11 +80,6 @@ const AddNewOpinion = () => {
   };
 
   const animatedComponents = makeAnimated();
-  const saveOpinion = (e) => {
-    e.preventDefault();
-
-    validation();
-  };
 
   const fileNameReducer = (tekst) => {
     const startIdx = tekst.indexOf("/");
@@ -99,6 +94,12 @@ const AddNewOpinion = () => {
     }
 
     return tekst.slice(startIdxOffset, endIdx);
+  };
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setNewOpinionFormValues((prev) => ({ ...prev, [name]: value }));
   };
 
   const test = data.map((item) => {
@@ -121,7 +122,13 @@ const AddNewOpinion = () => {
   return (
     <div className="add_opinion_box opinion_form_box">
       <div className="add_opinion opinion_form_content">
-        <form onSubmit={saveOpinion} className="opinion_form ">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            validation();
+          }}
+          className="opinion_form "
+        >
           <div className="omrs-input-group">
             <label className="omrs-input-underlined">
               <input
@@ -130,12 +137,7 @@ const AddNewOpinion = () => {
                 className="imie_form"
                 name="imie"
                 required
-                onChange={(e) =>
-                  setNewOpinionFormValues((prev) => ({
-                    ...prev,
-                    imie: e.target.value,
-                  }))
-                }
+                onChange={(e) => handleChange(e)}
               />
               <span className="omrs-input-label">Imie</span>
             </label>
@@ -146,12 +148,7 @@ const AddNewOpinion = () => {
               <input
                 type="email"
                 value={newOpinionFormValues.email}
-                onChange={(e) =>
-                  setNewOpinionFormValues((prev) => ({
-                    ...prev,
-                    email: e.target.value,
-                  }))
-                }
+                onChange={(e) => handleChange(e)}
                 className="email_form"
                 name="email"
                 required
@@ -165,14 +162,9 @@ const AddNewOpinion = () => {
               <input
                 type="text"
                 value={newOpinionFormValues.opinion_text}
-                onChange={(e) =>
-                  setNewOpinionFormValues((prev) => ({
-                    ...prev,
-                    opinion_text: e.target.value,
-                  }))
-                }
+                onChange={(e) => handleChange(e)}
                 className="opinion_form"
-                name="text"
+                name="opinion_text"
                 required
               />
               <span className="omrs-input-label">Opinia</span>
@@ -188,15 +180,10 @@ const AddNewOpinion = () => {
               <input
                 type="date"
                 value={newOpinionFormValues.date}
-                onChange={(e) =>
-                  setNewOpinionFormValues((prev) => ({
-                    ...prev,
-                    date: e.target.value,
-                  }))
-                }
+                onChange={(e) => handleChange(e)}
                 className="date_form"
                 min="2020-01-01"
-                name="public_data"
+                name="date"
                 required
               />
               <span className="omrs-input-helper">
@@ -242,7 +229,10 @@ const AddNewOpinion = () => {
               ))}
             </div>
             <div className="starInfoBox">
-              <span className="info"></span>
+              <span className="info">
+                {newOpinionFormValues.rate !== null &&
+                  `Twoja ocena: ${newOpinionFormValues.rate}/5`}
+              </span>
             </div>
           </label>
 

@@ -1,4 +1,15 @@
 .gallerysettings-counter {
+  .previev {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    img {
+      border-radius: 20px;
+    }
+  }
   .counter-settings {
     width: 100%;
     margin: 10px;
@@ -6,7 +17,6 @@
     border: 2px solid orange;
     border-image: linear-gradient(200deg, black, orange, black);
     border-image-slice: 1;
-
     .settings-folders {
       display: flex;
       flex-direction: row;
@@ -37,11 +47,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     .gallerysettings-counter-images {
-      max-width: calc(50% - 20px);
       width: 100%;
-      min-width: 260px;
-      min-height: 450px;
-      padding: 10px;
+      padding: 30px 10px;
       margin: 10px;
       border-image: linear-gradient(200deg, black, orange, black);
       border-image-slice: 1;

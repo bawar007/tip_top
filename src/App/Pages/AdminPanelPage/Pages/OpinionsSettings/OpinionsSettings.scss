@@ -2,11 +2,14 @@
   display: block;
   color: white;
   width: 100%;
+  max-height: 100vh;
+  overflow-y: scroll;
   .queued_list {
     width: 100%;
     .queued_list--item {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       padding: 10px;
       div {
         text-align: center;
@@ -14,10 +17,10 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        border-left: 2px solid white;
-        border-bottom: 2px solid white;
-        border-top: 2px solid white;
+        border: 2px solid white;
         padding: 10px;
+        width: clamp(150px, 20%, 250px);
+        height: auto;
         h3,
         span {
           margin-top: 5px;
@@ -32,6 +35,14 @@
           border-right: 2px solid white;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .queued_list--item {
+    div {
+      width: 100% !important;
     }
   }
 }

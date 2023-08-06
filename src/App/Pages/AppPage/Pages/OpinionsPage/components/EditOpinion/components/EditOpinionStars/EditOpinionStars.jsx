@@ -1,9 +1,8 @@
-const EditOpinionStars = ({ setStars, setStarsValid, starsO }) => {
+const EditOpinionStars = ({ setStars, starsO }) => {
   const handleChangeStars = (star) => {
     setStars(star);
     const starsEl = document.querySelectorAll(".editStar");
-    const numbers = document.querySelector(".starInfoBoxEdit > .info");
-    setStarsValid(true);
+
     starsEl.forEach((el, index) => {
       if (index < star) {
         el.classList.add("checked");
@@ -11,8 +10,6 @@ const EditOpinionStars = ({ setStars, setStarsValid, starsO }) => {
         el.classList.remove("checked");
       }
     });
-    numbers.innerHTML = `Twoja ocena: ${star}/5`;
-    numbers.style.visibility = "visible";
   };
 
   const hoverChangeStars = (star) => {
@@ -101,7 +98,7 @@ const EditOpinionStars = ({ setStars, setStarsValid, starsO }) => {
         />
       </div>
       <div className="starInfoBoxEdit">
-        <span className="info"></span>
+        <span className="info">{`Twoja ocena: ${starsO}/5`}</span>
       </div>
     </>
   );

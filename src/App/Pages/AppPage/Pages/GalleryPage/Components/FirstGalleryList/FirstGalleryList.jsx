@@ -44,13 +44,13 @@ const FirstGalleryList = () => {
       setShowNumberOfPics(4);
     }
     if (i === "last") {
-      setShowNumberOfPics(19);
+      setShowNumberOfPics(data.length);
     }
     if (i === 4) {
-      if (showNumberOfPics + 4 < 19) {
+      if (showNumberOfPics + 4 < data.length) {
         setShowNumberOfPics((prev) => prev + 4);
       } else {
-        setShowNumberOfPics(19);
+        setShowNumberOfPics(data.length);
       }
     }
     if (i === "minus") {
@@ -67,7 +67,7 @@ const FirstGalleryList = () => {
       <>
         {gallery}
         <div className="btnShowMore">
-          {showNumberOfPics === 19 ? (
+          {showNumberOfPics === data.length ? (
             <>
               <button
                 onClick={() => ShowMorePics("minus")}

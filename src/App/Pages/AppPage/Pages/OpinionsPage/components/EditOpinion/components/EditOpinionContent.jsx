@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 
-import { FormAddOpinionContext } from "../../../provider/formHelper";
 import EditOpinionStars from "./EditOpinionStars/EditOpinionStars";
 
 import {
@@ -15,29 +14,27 @@ const EditOpinionContent = ({
 }) => {
   const { id, email, text, stars, public_data, imie } = editOpinion;
 
-  const { resetForm } = useContext(FormAddOpinionContext);
-
   const [textO, setText] = useState(text);
   const [starsO, setStars] = useState(stars);
 
   const [textValid, setTextValid] = useState(true);
-  const [starsValid, setStarsValid] = useState(true);
 
   const saveOpinion = (e) => {
     e.preventDefault();
 
-    if (textValid && starsValid) {
+    if (textValid) {
       handleOpinionUpdate(id, textO, starsO);
       handleCloseAddOpinion();
     } else {
-      alert("Formularz zawiera błędy");
+      alert("Opinia jest za krótka");
     }
   };
 
   const handleChangeText = (e) => {
     const value = e.target.value;
     setText(value);
-    if (value <= 50) {
+
+    if (value.length <= 50) {
       setTextValid(false);
     } else {
       setTextValid(true);
@@ -51,7 +48,6 @@ const EditOpinionContent = ({
     opinion_box.classList.remove("openModalBg");
     setNextEditPage(false);
     resetFormOpinionEdit();
-    resetForm();
   };
 
   return (
@@ -106,11 +102,7 @@ const EditOpinionContent = ({
           </label>
         </div>
 
-        <EditOpinionStars
-          setStars={setStars}
-          setStarsValid={setStarsValid}
-          starsO={starsO}
-        />
+        <EditOpinionStars setStars={setStars} starsO={starsO} />
 
         <div className="btnBox">
           <button type="submit" className="btn_send">

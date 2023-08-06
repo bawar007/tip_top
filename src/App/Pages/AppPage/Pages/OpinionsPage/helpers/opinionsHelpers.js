@@ -18,7 +18,6 @@ export const handleDeleteOpinion = async (id) => {
 };
 
 export const handleOpinionUpdate = async (id, textO, starsO) => {
-  console.log(id);
   try {
     await axios.patch(
       `${HOST}/opinions/${id}`,

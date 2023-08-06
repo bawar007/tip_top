@@ -3,14 +3,6 @@ import { createContext, useState } from "react";
 export const SettingsProviderContext = createContext(null);
 
 const SettingsProvider = ({ children }) => {
-  const [selectedFilesFromApi, setSelectedFilesFromApi] = useState({
-    fetchFilesIsDone: false,
-    fetchFilesStructure: [],
-    selectedItems: [],
-    optionsFromFiles: [],
-    filesInView: [],
-  });
-
   const [settingsFiles, setSettingsFiles] = useState({
     settingsMenuIsOpen: false,
     modaIsOpen: false,
@@ -24,8 +16,6 @@ const SettingsProvider = ({ children }) => {
   return (
     <SettingsProviderContext.Provider
       value={{
-        selectedFilesFromApi,
-        setSelectedFilesFromApi,
         settingsFiles,
         setSettingsFiles,
       }}
