@@ -35,24 +35,13 @@ const AddNewOpinion = () => {
 
   if (loading || error) return;
 
-  const checkEmailFetch = async (email) => {
-    const result = await axios.get(`${HOST}/opinions/${email}`, {
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-      },
-    });
-    if (result.data !== null) return false;
-
-    return true;
-  };
-
   const validation = async () => {
-    const checkEmailIsExist = await checkEmailFetch(newOpinionFormValues.email);
-
-    if (!checkEmailIsExist) {
-      OpinionsAlert("Możesz dodać tylko jedną opinię");
-      return;
-    }
+    // const checkEmailIsExist = await checkEmailFetch(newOpinionFormValues.email);
+    // console.log(checkEmailIsExist);
+    // if (!checkEmailIsExist) {
+    //   OpinionsAlert("Możesz dodać tylko jedną opinię");
+    //   return;
+    // }
 
     if (newOpinionFormValues.rate === null) {
       OpinionsAlert("Nie oceniłeś usługi");
@@ -68,6 +57,16 @@ const AddNewOpinion = () => {
       return;
     }
     postNewOpinion(newOpinionFormValues);
+
+    axios
+      .post(`${HOST}/send-email`, {
+        data: newOpinionFormValues.opinion_text,
+        email: newOpinionFormValues.email,
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+      });
+
     setNewOpinionFormValues({
       imie: "",
       email: "",
