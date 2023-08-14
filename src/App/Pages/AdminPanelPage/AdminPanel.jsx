@@ -1,28 +1,51 @@
 import { Navigate, Outlet } from "react-router-dom";
 import Navigation from "./Components/Navigation/Navigation";
-import { deletePassCookie } from "./Pages/LoginSettingsPage/helpers/SetCookie";
-import { useCallback, useEffect, useState } from "react";
+import {
+  deletePassCookie,
+  getSesionPasCookie,
+} from "./Pages/LoginSettingsPage/helpers/SetCookie";
+import { useCallback, useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 import SettingsProvider from "./AdminPanelProvider/SettingsProvider";
+import { AppContext } from "../AppPage/AppPageProvider/AppPageProvider";
+import LogoItem from "../../components/LogoItem";
 
 const AdminPanel = () => {
-  const [isMatch, setIsMatch] = useState(true);
+  const { HOST } = useContext(AppContext);
+  const [isMatch, setIsMatch] = useState(null);
+
   const SESION_TOKEN = sessionStorage.getItem("accessToken");
 
-  const deleteCookie = useCallback(() => deletePassCookie(), []);
-
   const checkSesionToken = useCallback(async () => {
-    if (SESION_TOKEN) {
-      setIsMatch(true);
-    } else {
-      setIsMatch(false);
-      deleteCookie();
-    }
-  }, [SESION_TOKEN, deleteCookie]);
+    let accessToken = !SESION_TOKEN
+      ? getSesionPasCookie("SESION_TOKEN")
+      : SESION_TOKEN;
+
+    await axios
+      .get(`${HOST}/verify`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Cache-Control": "no-cache",
+        },
+      })
+      .then((response) => {
+        if (response.status === 201) setIsMatch(true);
+      })
+      .catch((error) => {
+        deletePassCookie();
+        sessionStorage.clear();
+        setIsMatch(false);
+        console.error(error.response.data.msg);
+      });
+  }, [HOST, SESION_TOKEN]);
 
   useEffect(() => {
+    setIsMatch(null);
     checkSesionToken();
-  }, [checkSesionToken]);
+  }, [checkSesionToken, SESION_TOKEN, setIsMatch]);
+
+  if (isMatch === null) return <LogoItem color="black" />;
 
   return (
     <SettingsProvider>

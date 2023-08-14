@@ -3,6 +3,7 @@ import axios from "axios";
 
 import EditOpinionContent from "./components/EditOpinionContent";
 import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
+import LogoItem from "../../../../../../components/LogoItem";
 
 const EditOpinion = () => {
   const { HOST, API_KEY } = useContext(AppContext);
@@ -71,23 +72,6 @@ const EditOpinion = () => {
     opinion_box.classList.remove("openModalBgEdit");
   };
 
-  const loadingItem = (
-    <div className="lds-ring">
-      <div
-        style={{ borderColor: "black transparent transparent transparent" }}
-      ></div>
-      <div
-        style={{ borderColor: "black transparent transparent transparent" }}
-      ></div>
-      <div
-        style={{ borderColor: "black transparent transparent transparent" }}
-      ></div>
-      <div
-        style={{ borderColor: "black transparent transparent transparent" }}
-      ></div>
-    </div>
-  );
-
   return (
     <div className="edit_opinion_box opinion_form_box">
       <div className="edit_opinion opinion_form_content">
@@ -131,7 +115,7 @@ const EditOpinion = () => {
               </label>
             </div>
             {editData.loading ? (
-              loadingItem
+              <LogoItem color="black" />
             ) : (
               <div className="btnBox">
                 <button type="submit" className="btn_send">

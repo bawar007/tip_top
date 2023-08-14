@@ -16,6 +16,7 @@ import useGetAllPics from "../../../../hooks/useGetAllPics";
 import axios from "axios";
 import { postNewOpinion } from "../../../../helpers/ApiHooks";
 import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
+import useGetOpinions from "../../../../hooks/useGetOpinions";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -33,15 +34,25 @@ const AddNewOpinion = () => {
 
   const { data, loading, error } = useGetAllPics(HOST, API_KEY);
 
+  const { data: dataOpinions } = useGetOpinions(HOST, API_KEY);
+
   if (loading || error) return;
 
+  const checkEmail = (email) => {
+    const opinions = [...dataOpinions.accepted, ...dataOpinions.queued].filter(
+      (item) => item.email === email
+    );
+    if (opinions.length === 0) return true;
+    return false;
+  };
+
   const validation = async () => {
-    // const checkEmailIsExist = await checkEmailFetch(newOpinionFormValues.email);
-    // console.log(checkEmailIsExist);
-    // if (!checkEmailIsExist) {
-    //   OpinionsAlert("Możesz dodać tylko jedną opinię");
-    //   return;
-    // }
+    const emailAddOpinion = checkEmail(newOpinionFormValues.email);
+
+    if (!emailAddOpinion) {
+      OpinionsAlert("Dodałeś już opinie, możesz ją edytować");
+      return;
+    }
 
     if (newOpinionFormValues.rate === null) {
       OpinionsAlert("Nie oceniłeś usługi");

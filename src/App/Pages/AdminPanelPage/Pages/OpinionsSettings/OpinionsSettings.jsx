@@ -1,5 +1,6 @@
 import ListItems from "./Components/ListItems";
 import useGetOpinions from "../../../AppPage/hooks/useGetOpinions";
+import LogoItem from "../../../../components/LogoItem";
 
 const HOST = "https://tip-top-backend-worker.onrender.com";
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -7,16 +8,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 const OpinionsSettings = () => {
   const { loading, data, error, setData } = useGetOpinions(HOST, API_KEY);
 
-  const loadingItem = (
-    <div className="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  );
-
-  if (loading || error) return loadingItem;
+  if (loading || error) return <LogoItem />;
 
   const opinionsQue = data.queued.map((item) => (
     <ListItems key={item.id} item={item} setData={setData} data={data} />

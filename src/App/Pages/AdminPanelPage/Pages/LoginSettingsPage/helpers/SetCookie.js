@@ -15,9 +15,10 @@ export const setPassCookie = async (SESION_TOKEN) => {
 };
 
 export const deletePassCookie = () => {
-  // Usuwanie ciasteczka o nazwie "pass"
   document.cookie =
     "SESION_TOKEN=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie =
+    "SESION_TOKEN=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/adminpanel;";
 };
 
 export const getSesionPasCookie = (name) => {

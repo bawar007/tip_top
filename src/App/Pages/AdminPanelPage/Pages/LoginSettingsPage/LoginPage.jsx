@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { deletePassCookie, setPassCookie } from "./helpers/SetCookie";
 import { WrongHandler } from "./helpers/Wrong/WrongHelpers";
 import axios from "axios";
+import { verifyPassword } from "../../Helper/PasswordEncryption";
+import LogoItem from "../../../../components/LogoItem";
 
 const USER_ADMIN = Number(process.env.REACT_APP_USER_ADMIN);
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -22,6 +24,21 @@ const LoginPage = () => {
   const wrongSpan = useRef(null);
   const inputs = document.querySelectorAll(".adminInput");
 
+  const handleTest = async (response) => {
+    const { file, userToken } = response.data;
+    const checkpass = await verifyPassword(USER_HOST.password, file.password);
+    if (!checkpass) {
+      WrongHandler(wrongSpan, inputs, "BAD_L_P");
+      deletePassCookie();
+      return;
+    }
+    const userRole = file.role;
+    if (userRole !== USER_ADMIN) return;
+    sessionStorage.setItem("accessToken", userToken);
+    setPassCookie(userToken);
+    navigate("/adminpanel");
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -30,37 +47,28 @@ const LoginPage = () => {
       return;
     }
     setLoading(true);
-    const headers = {
-      Authorization: `Bearer ${API_KEY}`,
-    };
-    try {
-      await axios
-        .post(`${HOST}/login`, USER_HOST, {
-          headers,
-        })
-        .then((response) => {
-          const userRole = response.data.file.role;
-          if (userRole === USER_ADMIN) {
-            const SESION_TOKEN = response.data.file.accesToken;
-            return SESION_TOKEN;
-          }
-        })
-        .then((token) => {
-          const ACCESS_TOKEN = token;
-          navigate("/adminpanel");
-          sessionStorage.setItem("accessToken", ACCESS_TOKEN);
-          setPassCookie(ACCESS_TOKEN);
-        });
-    } catch (error) {
-      if (error.response && error.response.status === 401) {
-        WrongHandler(wrongSpan, inputs, "BAD_L_P");
-        deletePassCookie();
-      } else {
-        console.error("Wystąpił błąd podczas logowania:", error.message);
-      }
-    } finally {
-      setLoading(false);
-    }
+
+    await axios
+      .post(
+        `${HOST}/login`,
+        { login: USER_HOST.login },
+        {
+          headers: {
+            Authorization: `Bearer ${API_KEY}`,
+          },
+        }
+      )
+      .then((response) => {
+        handleTest(response);
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 404) {
+          WrongHandler(wrongSpan, inputs, "BAD_L_P");
+          deletePassCookie();
+          sessionStorage.clear();
+        }
+      })
+      .finally(() => setLoading(false));
   };
 
   const handleChange = (e) => {
@@ -126,12 +134,7 @@ const LoginPage = () => {
           <span ref={wrongSpan}></span>
 
           {loading ? (
-            <div className="lds-ring">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
+            <LogoItem />
           ) : (
             <button className="btn draw-border" type="submit">
               Zaloguj

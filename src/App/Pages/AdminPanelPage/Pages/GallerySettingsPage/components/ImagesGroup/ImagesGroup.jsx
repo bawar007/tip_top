@@ -5,6 +5,7 @@ import makeAnimated from "react-select/animated";
 
 import { AppContext } from "../../../../../AppPage/AppPageProvider/AppPageProvider";
 import useImages from "../../hooks/useImages";
+import LogoItem from "../../../../../../components/LogoItem";
 
 const ImagesGroup = () => {
   const animatedComponents = makeAnimated();
@@ -16,16 +17,7 @@ const ImagesGroup = () => {
 
   const [allSelectItems, setAllSelectItems] = useState(false);
 
-  const loadingItem = (
-    <div className="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  );
-
-  if (loading || error) return loadingItem;
+  if (loading || error) return <LogoItem />;
 
   const handleFilesInView = (itemsToView) => {
     const test = itemsToView.findIndex((item) => item.value === "all");

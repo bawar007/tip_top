@@ -19,6 +19,7 @@ root.render(
     <AppProvider>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
+          <Route path="*" element={<App />} />
           <Route path="/" element={<App />} />
           <Route path="/admin" element={<LoginPage />} />
           <Route path="/adminpanel" element={<AdminPanel />}>

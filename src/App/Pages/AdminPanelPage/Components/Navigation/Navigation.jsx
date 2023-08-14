@@ -30,7 +30,10 @@ const Navigation = () => {
         <li className="menu-item">
           <Link
             to="/admin"
-            onClick={() => deletePassCookie()}
+            onClick={() => {
+              deletePassCookie();
+              sessionStorage.clear();
+            }}
             className="item-link"
           >
             <img src="/icons/logout.svg" alt="logout" />
