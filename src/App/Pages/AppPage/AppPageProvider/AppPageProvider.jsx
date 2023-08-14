@@ -18,7 +18,7 @@ const AppProvider = ({ children }) => {
   const SERVER = "https://tip-top-backend-worker.onrender.com";
   const LOCAL = "http://localhost:5000";
 
-  const SETHOST = 1;
+  const SETHOST = 0;
 
   // 0 - SERVER
   // 1 - LOCALSERVER
