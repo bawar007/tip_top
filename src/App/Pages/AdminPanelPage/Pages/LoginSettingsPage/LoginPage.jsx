@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { deletePassCookie, setPassCookie } from "./helpers/SetCookie";
 import { WrongHandler } from "./helpers/Wrong/WrongHelpers";
 import axios from "axios";
-import { verifyPassword } from "../../Helper/PasswordEncryption";
+
 import LogoItem from "../../../../components/LogoItem";
 
 const USER_ADMIN = Number(process.env.REACT_APP_USER_ADMIN);
@@ -25,15 +25,16 @@ const LoginPage = () => {
   const inputs = document.querySelectorAll(".adminInput");
 
   const handleTest = async (response) => {
-    const { file, userToken } = response.data;
-    const checkpass = await verifyPassword(USER_HOST.password, file.password);
-    if (!checkpass) {
+    const { role, userToken } = response.data;
+    console.log(role);
+    //uzyć bcrypt do sprawdzania hasła po stronie serwera i zwracania odpowiednich błędów
+
+    if (response === "wrong") {
       WrongHandler(wrongSpan, inputs, "BAD_L_P");
       deletePassCookie();
       return;
     }
-    const userRole = file.role;
-    if (userRole !== USER_ADMIN) return;
+    if (role !== USER_ADMIN) return;
     sessionStorage.setItem("accessToken", userToken);
     setPassCookie(userToken);
     navigate("/adminpanel");
@@ -51,7 +52,7 @@ const LoginPage = () => {
     await axios
       .post(
         `${HOST}/login`,
-        { login: USER_HOST.login },
+        { login: USER_HOST.login, password: USER_HOST.password },
         {
           headers: {
             Authorization: `Bearer ${API_KEY}`,
@@ -66,6 +67,7 @@ const LoginPage = () => {
           WrongHandler(wrongSpan, inputs, "BAD_L_P");
           deletePassCookie();
           sessionStorage.clear();
+          handleTest("wrong");
         }
       })
       .finally(() => setLoading(false));
