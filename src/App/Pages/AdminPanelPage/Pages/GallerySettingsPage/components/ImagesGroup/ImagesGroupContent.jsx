@@ -148,6 +148,7 @@ const ImagesGroupContent = ({ imageMap }) => {
                 {item.table.map((imageName) => (
                   <div className="image_checkbox__group" key={imageName}>
                     <img
+                      loading="lazy"
                       src={`${HOST}/images/${item.name}/${imageName}`}
                       alt={imageName}
                       className="counter__image"

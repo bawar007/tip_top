@@ -124,6 +124,7 @@ const AddNewOpinion = () => {
           alt={item.first}
           width={40}
           height={40}
+          loading="lazy"
         />
       ),
     };

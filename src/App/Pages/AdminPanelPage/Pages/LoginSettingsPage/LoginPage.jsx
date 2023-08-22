@@ -26,8 +26,6 @@ const LoginPage = () => {
 
   const handleTest = async (response) => {
     const { role, userToken } = response.data;
-    console.log(role);
-    //uzyć bcrypt do sprawdzania hasła po stronie serwera i zwracania odpowiednich błędów
 
     if (response === "wrong") {
       WrongHandler(wrongSpan, inputs, "BAD_L_P");

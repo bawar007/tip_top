@@ -16,6 +16,7 @@ const MobileGalleryModal = () => {
       rel="noreferrer"
     >
       <img
+        loading="lazy"
         src={`${HOST}/images/${image}`}
         alt={image}
         height="155"
