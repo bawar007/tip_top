@@ -16,6 +16,11 @@
         rgba(0, 0, 0, 0)
       )
       1;
+
+    input {
+      display: none;
+    }
+
     .navigation-menu {
       display: flex;
       flex-direction: column;
@@ -72,8 +77,8 @@
     position: fixed;
     bottom: 20px;
     left: 20px;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background-color: white;
     border-radius: 50%;
     input {
@@ -82,8 +87,8 @@
     .menuToggleAdmin {
       display: block;
       position: fixed;
-      bottom: 20px;
-      left: 20px;
+      bottom: 25px;
+      left: 25px;
       width: 50px;
       height: 50px;
       z-index: 101000;
@@ -117,6 +122,7 @@
     }
     .navigation-menu {
       display: none;
+      transform: scale(0);
     }
 
     input:checked ~ .navigation-menu {
@@ -130,7 +136,7 @@
       width: 100vw;
       height: 100vh;
       background-color: black;
-
+      transform: scale(1);
       .menu-item {
         list-style: none;
         display: flex;
@@ -141,6 +147,7 @@
         border-bottom: 3px solid transparent;
         border-image: linear-gradient(90deg, black, orange, black);
         border-image-slice: 1;
+
         .item-link {
           display: flex;
           flex-direction: column;
@@ -185,10 +192,12 @@
         &::before {
           transform: rotate(-45deg);
           top: 0;
+          background-color: white;
         }
         &::after {
           transform: rotate(45deg);
           top: 0;
+          background-color: white;
         }
       }
     }

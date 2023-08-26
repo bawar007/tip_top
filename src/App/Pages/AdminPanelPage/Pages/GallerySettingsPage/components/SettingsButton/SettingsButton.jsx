@@ -11,6 +11,7 @@ const SettingsButton = () => {
         width="70"
         height="70"
       />
+
       <img
         src="/icons/settings_file.svg"
         alt="sett2"
@@ -19,6 +20,13 @@ const SettingsButton = () => {
         onClick={() =>
           setSettingsFiles((prev) => ({ ...prev, settingsMenuIsOpen: true }))
         }
+      />
+      <img
+        src="/icons/refresh.svg"
+        alt="refresh"
+        width="50"
+        height="50"
+        onClick={() => window.location.reload()}
       />
     </div>
   );

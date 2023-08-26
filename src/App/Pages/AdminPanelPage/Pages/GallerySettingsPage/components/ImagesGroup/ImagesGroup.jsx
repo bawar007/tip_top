@@ -70,13 +70,6 @@ const ImagesGroup = () => {
             onChange={(value) => handleFilesInView(value)}
             placeholder={"Wybierz foldery"}
           />
-          <img
-            src="/icons/refresh.svg"
-            alt="refresh"
-            width="50"
-            height="50"
-            onClick={() => window.location.reload()}
-          />
         </div>
       </div>
 

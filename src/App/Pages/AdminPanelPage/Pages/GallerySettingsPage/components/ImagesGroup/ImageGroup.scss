@@ -41,6 +41,7 @@
       }
     }
   }
+
   .test_counter-content {
     width: 100%;
     display: flex;
@@ -129,6 +130,40 @@
     &:hover {
       cursor: pointer;
       transform: scale(1.05);
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .test_counter-content {
+    height: 40vh;
+    overflow-y: scroll;
+    box-shadow: 0px 0px 6px 0px rgba(255, 165, 0, 1);
+  }
+  .previev {
+    visibility: hidden;
+  }
+  .gallerysettings-counter-images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    padding: 10px !important;
+  }
+  .counter-settings {
+    padding: 10px;
+    margin: 10px 0 !important;
+    .settings-folders {
+      flex-wrap: wrap;
+      justify-content: center !important;
+      h3 {
+        font-size: 1.6rem;
+      }
+      .select-form-files {
+        width: 100% !important;
+        margin: 10px 0;
+      }
     }
   }
 }

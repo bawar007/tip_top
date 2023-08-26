@@ -25,3 +25,11 @@
     }
   }
 }
+
+@media (max-width: 700px) {
+  .settings_btn {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
