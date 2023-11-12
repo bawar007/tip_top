@@ -42,43 +42,43 @@ const ListItems = ({ item, data, setData }) => {
 
   return (
     <li className="queued_list--item">
-      <div>
-        <h3>ID</h3>
-        <span>{item.id}</span>
-      </div>
-      <div>
-        <h3>Imie</h3>
+      <h3>
+        IMIE:
         <span>{item.imie}</span>
-      </div>
-      <div>
-        <h3>email</h3>
-        <span>{item.email}</span>
-      </div>
-      <div>
-        <h3>project</h3>
-        <span>{item.project_id}</span>
-      </div>
-      <div>
-        <h3>Opinia</h3>
-        <span>{item.text}</span>
-      </div>
-      <div>
-        <h3>Gwiazdki</h3>
-        <span>{item.stars}</span>
-      </div>
-      <div>
-        <h3>Data publikacji</h3>
-        <span>{item.public_data}</span>
-      </div>
-      <div>
-        <h3>Status</h3>
-        <span>{item.status}</span>
-      </div>
-      <div>
+      </h3>
+      <h3>
+        EMAIL: <span>{item.email}</span>
+      </h3>
+      <h3>
+        PROJECT: <span>{item.project_id}</span>
+      </h3>
+      <h3>
+        OPINIA: <span>{item.text}</span>
+      </h3>
+      <h3>
+        OCENA: <span>{item.stars}</span>
+      </h3>
+      <h3>
+        DATA PUBLIKACJI: <span>{item.public_data}</span>
+      </h3>
+      <div className="yes_no_group">
         {item.status === "queued" && (
-          <button onClick={() => handleAcceptData(item.id)}>Accept</button>
+          <img
+            src="/icons/yesicon.svg"
+            alt="accept_opinion"
+            onClick={() => handleAcceptData(item.id)}
+            width={40}
+            className="yes_icon"
+          />
         )}
-        <button onClick={() => deleteOpinion(item.id)}>Delete</button>
+
+        <img
+          src="/icons/noicon.svg"
+          alt="delete_opinion"
+          onClick={() => deleteOpinion(item.id)}
+          width={40}
+          className="no_icon"
+        />
       </div>
     </li>
   );

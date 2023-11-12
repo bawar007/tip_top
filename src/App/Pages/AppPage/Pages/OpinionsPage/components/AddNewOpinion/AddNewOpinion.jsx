@@ -9,6 +9,9 @@ import {
   handleCloseAddOpinion,
   IconsForStars,
 } from "../../helpers/feedbackService";
+
+import { setDate } from "../../helpers/opinionsHelpers";
+
 import { OpinionsAlert } from "../OpinionsAlert/OpinionsAlert";
 
 import useGetAllPics from "../../../../hooks/useGetAllPics";
@@ -196,6 +199,7 @@ const AddNewOpinion = () => {
                 min="2020-01-01"
                 name="date"
                 required
+                onFocus={() => setDate()}
               />
               <span className="omrs-input-helper">
                 Data ukończenia projektu

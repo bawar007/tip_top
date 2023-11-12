@@ -111,7 +111,7 @@ const ImagesGroupContent = ({ imageMap }) => {
                 className="gallerysettings-counter-images"
                 style={imageMap.length === 1 ? { maxWidth: "100%" } : null}
               >
-                <h2>Folder: "{item.name}"</h2>
+                <h2>{item.name}</h2>
 
                 <div className="butttonsImageGroup">
                   <img

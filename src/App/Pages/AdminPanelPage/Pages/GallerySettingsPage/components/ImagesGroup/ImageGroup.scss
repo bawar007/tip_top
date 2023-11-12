@@ -47,6 +47,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    max-height: 90%;
+    overflow-y: auto;
     .gallerysettings-counter-images {
       width: 100%;
       padding: 30px 10px;

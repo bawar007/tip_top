@@ -25,13 +25,12 @@ const LoginPage = () => {
   const inputs = document.querySelectorAll(".adminInput");
 
   const handleTest = async (response) => {
-    const { role, userToken } = response.data;
-
     if (response === "wrong") {
       WrongHandler(wrongSpan, inputs, "BAD_L_P");
       deletePassCookie();
       return;
     }
+    const { role, userToken } = response.data;
     if (role !== USER_ADMIN) return;
     sessionStorage.setItem("accessToken", userToken);
     setPassCookie(userToken);

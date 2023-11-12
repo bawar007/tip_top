@@ -56,3 +56,22 @@ export const handleAcceptOpinion = async (data) => {
     alert("Opinie zostały zaakceptowane");
   }
 };
+
+export const setDate = () => {
+  const inputsDate = document.querySelectorAll(".date_form");
+  if (!inputsDate) return;
+
+  const today = new Date();
+  const year = today.getFullYear();
+  let month = today.getMonth() + 1;
+  let day = today.getDate();
+
+  // Dodanie 0 przed miesiącem/dniem, jeśli są jednocyfrowe
+  month = month < 10 ? `0${month}` : month;
+  day = day < 10 ? `0${day}` : day;
+
+  // Ustawienie maksymalnej daty w formacie YYYY-MM-DD
+  const maxDate = `${year}-${month}-${day}`;
+  console.log(inputsDate);
+  inputsDate.forEach((item) => item.setAttribute("max", maxDate));
+};
