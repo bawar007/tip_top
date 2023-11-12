@@ -25,6 +25,12 @@ body {
   overflow-x: hidden;
 }
 
+@media (max-width: 700px) {
+  body {
+    font-size: 12px;
+  }
+}
+
 $titlePagePadding: 10px 0 10px 30px;
 $titlePageMargin: 0 0 30px 50px;
 
