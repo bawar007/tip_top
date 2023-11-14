@@ -1,9 +1,15 @@
+import { useState } from "react";
 import {
   handleDeleteOpinion,
   handleAcceptOpinion,
 } from "../../../../AppPage/Pages/OpinionsPage/helpers/opinionsHelpers";
 
 const ListItems = ({ item, data, setData }) => {
+  const [formValue, setFormValue] = useState({
+    text: "",
+    status: false,
+  });
+
   const handleAcceptData = async (id) => {
     let updatedItems = data;
 
@@ -25,7 +31,11 @@ const ListItems = ({ item, data, setData }) => {
       queued: updatedQue,
       accepted: [...prev.accepted, updatedItems.queued[indexToUpdate]],
     }));
-    await handleAcceptOpinion(id);
+    if (formValue.status) {
+      await handleAcceptOpinion(id, formValue.text);
+    } else {
+      await handleAcceptOpinion(id);
+    }
   };
 
   const deleteOpinion = async (id) => {
@@ -61,6 +71,43 @@ const ListItems = ({ item, data, setData }) => {
       <h3>
         DATA PUBLIKACJI: <span>{item.public_data}</span>
       </h3>
+
+      {item.answerFromAdmin && (
+        <h3>
+          Twoja odpowiedź: <span>{item.answerFromAdmin}</span>
+        </h3>
+      )}
+      {formValue.status && (
+        <h3>
+          Twoja odpowiedź: <span>{formValue.text}</span>
+        </h3>
+      )}
+
+      <div className="Answer">
+        <div className="Answer--form">
+          {!formValue.status && (
+            <textarea
+              value={formValue.text}
+              onChange={(e) =>
+                setFormValue((prev) => ({ ...prev, text: e.target.value }))
+              }
+              placeholder="Wpisz swoją odpowiedź..."
+            />
+          )}
+          <h4>Co zrobić z odpowiedzią?</h4>
+          <div>
+            <button
+              onClick={() => setFormValue((p) => ({ ...p, status: true }))}
+            >
+              Zaakceptuj
+            </button>
+            <button onClick={() => setFormValue({ text: "", status: false })}>
+              Odrzuć
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div className="yes_no_group">
         {item.status === "queued" && (
           <img
@@ -69,6 +116,7 @@ const ListItems = ({ item, data, setData }) => {
             onClick={() => handleAcceptData(item.id)}
             width={40}
             className="yes_icon"
+            title="Zaakceptuj opinie"
           />
         )}
 
@@ -78,6 +126,7 @@ const ListItems = ({ item, data, setData }) => {
           onClick={() => deleteOpinion(item.id)}
           width={40}
           className="no_icon"
+          title="Odrzuć opinie"
         />
       </div>
     </li>

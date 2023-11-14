@@ -37,12 +37,13 @@ export const handleOpinionUpdate = async (id, textO, starsO) => {
   }
 };
 
-export const handleAcceptOpinion = async (data) => {
+export const handleAcceptOpinion = async (data, answerFromAdm) => {
   try {
     await axios.patch(
       `${HOST}/opinions/${data}`,
       {
         status: "accepted",
+        answerFromAdmin: answerFromAdm,
       },
       {
         headers: {

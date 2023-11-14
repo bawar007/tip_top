@@ -21,7 +21,7 @@ const AdminPanel = () => {
     let accessToken = !SESION_TOKEN
       ? getSesionPasCookie("SESION_TOKEN")
       : SESION_TOKEN;
-
+    if (accessToken.length === 0) setIsMatch(false);
     await axios
       .get(`${HOST}/verify`, {
         headers: {
@@ -41,10 +41,10 @@ const AdminPanel = () => {
   }, [HOST, SESION_TOKEN]);
 
   useEffect(() => {
-    setIsMatch(null);
     checkSesionToken();
-  }, [checkSesionToken, SESION_TOKEN, setIsMatch]);
+  }, [checkSesionToken, SESION_TOKEN]);
 
+  console.log(isMatch);
   if (isMatch === null) return <LogoItem color="black" />;
 
   return (

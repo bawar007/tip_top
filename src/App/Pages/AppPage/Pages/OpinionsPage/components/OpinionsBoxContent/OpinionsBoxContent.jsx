@@ -21,7 +21,15 @@ const OpinionsBoxContent = () => {
   const opinion = data.accepted.map((opinion) => (
     <div className="opinion" key={opinion.id + "a"}>
       <h2>{opinion.imie}</h2>
-      <p>{opinion.text}</p>
+      <p>
+        {opinion.text}
+        {opinion.answerFromAdmin.length > 0 && (
+          <h4 style={{ marginTop: 5, width: 100, textAlign: "left" }}>
+            Odp: {opinion.answerFromAdmin}
+          </h4>
+        )}
+      </p>
+
       <div className="stars">
         <img
           src="/icons/star.svg"

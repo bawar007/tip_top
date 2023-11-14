@@ -38,6 +38,51 @@
         border-right: 2px solid white;
       }
 
+      .Answer {
+        width: 100%;
+        margin: 10px 0;
+        padding: 5px;
+        text-align: center;
+        .Answer--form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 10px;
+          textarea {
+            width: 45%;
+            transition: width 0.4s ease-in-out;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            resize: none;
+            padding: 5px;
+            &:focus {
+              width: 90%;
+              height: 100px;
+            }
+          }
+          h4 {
+            width: 100%;
+            text-align: center;
+          }
+          div {
+            width: 100%;
+            margin: 5px 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            button {
+              width: clamp(130px, 40%, 200px);
+              height: 30px;
+              margin: 5px 5%;
+            }
+          }
+        }
+      }
+
       .yes_no_group {
         display: flex;
         flex-direction: row;
