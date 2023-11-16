@@ -27,7 +27,7 @@ const HomeInfo = () => {
 
       <div className="box-flip">
         <div className="flip-content">
-          <div className="front" style={{ backgroundColor: "#e60881" }}>
+          <div className="front" style={{ backgroundColor: "#F75EB1" }}>
             <img
               src="/icons/experience.svg"
               alt="exp"

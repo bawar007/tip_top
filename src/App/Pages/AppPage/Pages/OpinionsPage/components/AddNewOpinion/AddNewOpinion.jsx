@@ -71,7 +71,7 @@ const AddNewOpinion = () => {
       return;
     }
     postNewOpinion(newOpinionFormValues);
-
+    OpinionsAlert("Twoja opinia została przekazana");
     axios
       .post(`${HOST}/send-email`, {
         data: newOpinionFormValues.opinion_text,

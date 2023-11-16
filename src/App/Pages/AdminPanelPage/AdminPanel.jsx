@@ -44,7 +44,6 @@ const AdminPanel = () => {
     checkSesionToken();
   }, [checkSesionToken, SESION_TOKEN]);
 
-  console.log(isMatch);
   if (isMatch === null) return <LogoItem color="black" />;
 
   return (

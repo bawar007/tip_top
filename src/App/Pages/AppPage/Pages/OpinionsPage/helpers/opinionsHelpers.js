@@ -73,6 +73,5 @@ export const setDate = () => {
 
   // Ustawienie maksymalnej daty w formacie YYYY-MM-DD
   const maxDate = `${year}-${month}-${day}`;
-  console.log(inputsDate);
   inputsDate.forEach((item) => item.setAttribute("max", maxDate));
 };

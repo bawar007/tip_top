@@ -83,31 +83,32 @@ const ListItems = ({ item, data, setData }) => {
         </h3>
       )}
 
-      <div className="Answer">
-        <div className="Answer--form">
-          {!formValue.status && (
-            <textarea
-              value={formValue.text}
-              onChange={(e) =>
-                setFormValue((prev) => ({ ...prev, text: e.target.value }))
-              }
-              placeholder="Wpisz swoją odpowiedź..."
-            />
-          )}
-          <h4>Co zrobić z odpowiedzią?</h4>
-          <div>
-            <button
-              onClick={() => setFormValue((p) => ({ ...p, status: true }))}
-            >
-              Zaakceptuj
-            </button>
-            <button onClick={() => setFormValue({ text: "", status: false })}>
-              Odrzuć
-            </button>
+      {item.status === "queued" && (
+        <div className="Answer">
+          <div className="Answer--form">
+            {!formValue.status && (
+              <textarea
+                value={formValue.text}
+                onChange={(e) =>
+                  setFormValue((prev) => ({ ...prev, text: e.target.value }))
+                }
+                placeholder="Wpisz swoją odpowiedź..."
+              />
+            )}
+            <p>Co zrobić z odpowiedzią?</p>
+            <div>
+              <button
+                onClick={() => setFormValue((p) => ({ ...p, status: true }))}
+              >
+                Zaakceptuj
+              </button>
+              <button onClick={() => setFormValue({ text: "", status: false })}>
+                Odrzuć
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-
+      )}
       <div className="yes_no_group">
         {item.status === "queued" && (
           <img

@@ -43,7 +43,7 @@ const Navigation = () => {
               width={40}
               height={40}
             />
-            <h4>Projekty</h4>
+            <p>Projekty</p>
           </Link>
         </li>
         <span></span>
@@ -54,7 +54,7 @@ const Navigation = () => {
             onClick={() => setMenu(false)}
           >
             <img src="/icons/whyUs.svg" alt="whyus" width={40} height={40} />
-            <h4>Dlaczego my</h4>
+            <p>Dlaczego my</p>
           </Link>
         </li>
         <span></span>
@@ -65,7 +65,7 @@ const Navigation = () => {
             onClick={() => setMenu(false)}
           >
             <img src="/icons/whyUs.svg" alt="whyus" width={40} height={40} />
-            <h4>Opinie</h4>
+            <p>Opinie</p>
           </Link>
         </li>
         <span></span>

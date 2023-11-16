@@ -16,10 +16,19 @@ const useGetAllPics = (HOST, API_KEY) => {
           },
         });
         const files = response.data.files;
+
         const test = files.map((file, index) => {
           const id = index + 1;
-          const first = `/${file.name}/${file.table[0]}`;
-          const all = file.table.map((fileName) => `/${file.name}/${fileName}`);
+
+          const firstTab = file.table.filter((element) =>
+            element.includes("_250px")
+          );
+
+          const first = `/${file.name}/${firstTab[0]}`;
+
+          const all = file.table
+            .filter((element) => !element.includes("250px"))
+            .map((fileName) => `/${file.name}/${fileName}`);
           return { id, first, all };
         });
         setData(test);

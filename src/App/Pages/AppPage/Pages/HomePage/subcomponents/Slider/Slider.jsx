@@ -30,6 +30,13 @@ const Slider = () => {
         width={100}
         height={100}
       />
+      <img
+        src={`${HOST}/images/${el.all[el.all.length - 1]}`}
+        alt={el.id}
+        loading={index > 0 ? "lazy" : ""}
+        width={100}
+        height={100}
+      />
     </div>
   ));
 

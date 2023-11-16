@@ -40,7 +40,7 @@
           border-image: linear-gradient(90deg, black, orange, black);
           border-image-slice: 1;
           &:hover {
-            h4 {
+            p {
               color: orange;
             }
             img:last-child {
@@ -51,7 +51,7 @@
           }
         }
 
-        h4 {
+        p {
           color: white;
           font-weight: 600;
           text-transform: uppercase;
@@ -158,7 +158,7 @@
           padding: 5px;
           color: white;
           &:hover {
-            h4 {
+            p {
               color: orange;
             }
             img:last-child {
@@ -169,7 +169,7 @@
           }
         }
 
-        h4 {
+        p {
           font-weight: 600;
           text-transform: uppercase;
           letter-spacing: 1px;
