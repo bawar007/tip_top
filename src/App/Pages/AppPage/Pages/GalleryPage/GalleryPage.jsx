@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../AppPageProvider/AppPageProvider";
 
-import FirstGalleryList from "./Components/FirstGalleryList/FirstGalleryList";
 import DesktopGalleryModal from "./Components/modals/PC/DesktopGalleryModal";
 import MobileGalleryModal from "./Components/modals/Mobile/MobileGalleryModal";
+import FirstGalleryList from "./Components/FirstGalleryList/FirstGalleryList";
 
 const GalleryPage = React.memo(() => {
   const { windowW, windowH, allPics } = useContext(AppContext);

@@ -22,8 +22,8 @@ const Opinions = () => {
       >
         <h1 className="title_page">opinie</h1>
         <div className="opinionsBox">
-          <OpinionsBoxContent />
           <OpinionInformation />
+          <OpinionsBoxContent />
         </div>
         <AddNewOpinion />
         <EditOpinion />

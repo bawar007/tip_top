@@ -7,6 +7,7 @@ const Navi = () => {
   const { windowW } = useContext(AppContext);
 
   useEffect(() => {
+    console.log(windowW);
     if (windowW) {
       const sections = document.querySelectorAll("section");
       sections.forEach((el, index) => {
@@ -65,6 +66,25 @@ const Navi = () => {
               <span className="tool">Strona Główna</span>
             </a>
           </li>
+
+          <li
+            onClick={(e) => {
+              setToggleMenu(false);
+              handleToggleList("whyus-li");
+            }}
+            id="whyus-li"
+          >
+            <a href="#whyUs" className="WhyUs-NaviItem">
+              <img
+                src="/icons/whyus.svg"
+                alt="ofert"
+                className="OfertNavi list-img"
+                width="40"
+                height="40"
+              />
+              <span className="tool">Dlaczego My?</span>
+            </a>
+          </li>
           <li
             onClick={(e) => {
               setToggleMenu(false);
@@ -81,25 +101,6 @@ const Navi = () => {
                 height="40"
               />
               <span className="tool">Realizacje</span>
-            </a>
-          </li>
-
-          <li
-            onClick={(e) => {
-              setToggleMenu(false);
-              handleToggleList("opinions-li");
-            }}
-            id="opinions-li"
-          >
-            <a href="#opinions" className="Opinions-NaviItem">
-              <img
-                src="/icons/medalstar.svg"
-                alt="opinion"
-                className="OfertNavitest list-img"
-                width="40"
-                height="40"
-              />
-              <span className="tool">Opinie</span>
             </a>
           </li>
           <li
@@ -123,19 +124,19 @@ const Navi = () => {
           <li
             onClick={(e) => {
               setToggleMenu(false);
-              handleToggleList("whyus-li");
+              handleToggleList("opinions-li");
             }}
-            id="whyus-li"
+            id="opinions-li"
           >
-            <a href="#whyUs" className="WhyUs-NaviItem">
+            <a href="#opinions" className="Opinions-NaviItem">
               <img
-                src="/icons/whyus.svg"
-                alt="ofert"
-                className="OfertNavi list-img"
+                src="/icons/medalstar.svg"
+                alt="opinion"
+                className="OfertNavitest list-img"
                 width="40"
                 height="40"
               />
-              <span className="tool">Dlaczego My?</span>
+              <span className="tool">Opinie</span>
             </a>
           </li>
           <li

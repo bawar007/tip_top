@@ -16,17 +16,31 @@ export const obliczProcentWidocznosci = (elRef) => {
         if (visiblePercentage > 40) {
           imgEl.classList.add("activeNaviLogo");
           liEl.classList.add("active");
+          sectionEl.childNodes[0].classList.add("customWidthTitlePage");
         } else if (visiblePercentage < 20 && visiblePercentage > 0) {
           imgEl.classList.remove("activeNaviLogo");
           liEl.classList.remove("active");
+          sectionEl.childNodes[0].classList.remove("customWidthTitlePage");
+        }
+      } else if (sectionElNaviItem === ".WhyUs-NaviItem") {
+        if (visiblePercentage > 11) {
+          sectionEl.childNodes[0].classList.add("customWidthTitlePage");
+          imgEl.classList.add("activeNaviLogo");
+          liEl.classList.add("active");
+        } else if (visiblePercentage < 10 && visiblePercentage > 0) {
+          imgEl.classList.remove("activeNaviLogo");
+          liEl.classList.remove("active");
+          sectionEl.childNodes[0].classList.remove("customWidthTitlePage");
         }
       } else {
         if (visiblePercentage > 50) {
           imgEl.classList.add("activeNaviLogo");
           liEl.classList.add("active");
+          sectionEl.childNodes[0].classList.add("customWidthTitlePage");
         } else if (visiblePercentage < 40 && visiblePercentage > 0) {
           imgEl.classList.remove("activeNaviLogo");
           liEl.classList.remove("active");
+          sectionEl.childNodes[0].classList.remove("customWidthTitlePage");
         }
       }
     }

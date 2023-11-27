@@ -22,17 +22,20 @@ function App() {
   ///////////////////////////////////
   useEffect(() => {
     const homePageObserverEl = document.querySelector(".homePage");
+    ObserverSections.observe(homePageObserverEl);
+
     const contactPageObserverEl = document.querySelector(".contactPage");
+    ObserverSections.observe(contactPageObserverEl);
+
     const footerObserverEl = document.querySelector(".footer");
+    ObserverSections.observe(footerObserverEl);
+
     const infoFromOfertsEl = document.querySelectorAll(
       ".multi-container--infoBox"
     );
-    const whyUsEl = document.querySelectorAll(".whyUs--item");
-
-    ObserverSections.observe(homePageObserverEl);
-    ObserverSections.observe(contactPageObserverEl);
-    ObserverSections.observe(footerObserverEl);
     infoFromOfertsEl.forEach((el) => ObserverSections.observe(el));
+
+    const whyUsEl = document.querySelectorAll(".whyUs--item");
     whyUsEl.forEach((el) => ObserverSections.observe(el));
   });
   /////////////////////////////////
@@ -42,10 +45,10 @@ function App() {
   return (
     <div className="App">
       <HomePage />
-      <GalleryPage />
-      <Opinions />
-      <Ofert />
       <WhyThis />
+      <GalleryPage />
+      <Ofert />
+      <Opinions />
       <ContactPage />
       <Navi />
       <Modal />

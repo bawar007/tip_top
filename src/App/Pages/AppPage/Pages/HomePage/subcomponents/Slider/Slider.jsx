@@ -5,7 +5,7 @@ import { AppContext } from "../../../../AppPageProvider/AppPageProvider";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Slider = () => {
-  const { HOST } = useContext(AppContext);
+  const { HOST, windowW } = useContext(AppContext);
 
   const { data, loading } = useGetAllPics(HOST, API_KEY);
 
@@ -30,13 +30,15 @@ const Slider = () => {
         width={100}
         height={100}
       />
-      <img
-        src={`${HOST}/images/${el.all[el.all.length - 1]}`}
-        alt={el.id}
-        loading={index > 0 ? "lazy" : ""}
-        width={100}
-        height={100}
-      />
+      {windowW && (
+        <img
+          src={`${HOST}/images/${el.all[el.all.length - 1]}`}
+          alt={el.id}
+          loading={index > 0 ? "lazy" : ""}
+          width={100}
+          height={100}
+        />
+      )}
     </div>
   ));
 

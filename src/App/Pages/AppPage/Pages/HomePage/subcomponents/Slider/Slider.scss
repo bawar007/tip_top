@@ -22,11 +22,10 @@ $shadow: 0px 0px 17px 0px #000000;
         overflow: hidden;
 
         img {
-          width: 100%;
+          width: 50%;
           min-height: 100%;
-          object-fit: contain;
+          object-fit: cover;
           object-position: center;
-          max-width: 100%;
         }
       }
     }
