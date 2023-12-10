@@ -125,8 +125,10 @@ $paddingTopBot: 10px;
   .opinionsPage {
     align-items: flex-start;
     .opinionsBox {
+      margin: 0 auto;
       margin-top: 5%;
       justify-content: center;
+      width: 85%;
       .opinion {
         width: 250px;
         justify-content: center;
@@ -145,7 +147,7 @@ $paddingTopBot: 10px;
 
 @media (max-width: 940px) {
   .opinionsBox {
-    flex-wrap: none;
+    flex-wrap: nowrap;
     overflow-x: scroll;
     width: 90vw;
     .opinion {
@@ -160,9 +162,6 @@ $paddingTopBot: 10px;
     width: 90vw;
     .opinion {
       min-width: 250px;
-      &:first-child {
-        margin-left: 250px;
-      }
     }
   }
 }

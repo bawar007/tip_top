@@ -103,6 +103,7 @@ $shadow: 0px 0px 17px 0px #000000;
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 40vw;
       }
     }
   }
@@ -185,6 +186,12 @@ $shadow: 0px 0px 17px 0px #000000;
 }
 
 @media only screen and (min-width: 700px) {
+  .HomeInfo {
+    width: 40vw;
+  }
+  .front {
+    background-color: #ffffff56 !important;
+  }
   .box-flip,
   .box-flip--slider {
     margin: 10px;

@@ -20,7 +20,38 @@ function App() {
   ///////////////////////////////////
   ///////////OBSERVERS///////////////
   ///////////////////////////////////
+
   useEffect(() => {
+    function handleIntersection(entries, observer) {
+      const AppSection = document.querySelector(".App");
+      entries.forEach((entry) => {
+        // entry.intersectionRatio zawiera procent widoczności elementu
+
+        if (entry.intersectionRatio < 0.6) {
+          AppSection.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+        }
+        if (entry.intersectionRatio < 0.5) {
+          AppSection.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+        }
+        if (entry.intersectionRatio < 0.4) {
+          AppSection.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+        } else {
+          AppSection.style.backgroundColor = "";
+        }
+      });
+    }
+
+    // Utwórz nowy obiekt Intersection Observer
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: [0.6, 0.5, 0.4], // Określa procent widoczności, który wywoła funkcję obsługi
+    });
+
+    // Wybierz element do obserwacji
+    const sekcjaElement = document.querySelector(".homePage");
+
+    // Rozpocznij obserwację elementu
+    observer.observe(sekcjaElement);
+
     const homePageObserverEl = document.querySelector(".homePage");
     ObserverSections.observe(homePageObserverEl);
 

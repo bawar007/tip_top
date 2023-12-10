@@ -5,9 +5,7 @@
   font-family: "Asap", sans-serif;
 }
 @import "./Pages/AppPage/styles/animate.scss";
-
 @import "./Pages/AppPage/components/Social/Social.scss";
-
 @import "./Pages/AppPage/Pages/ContactPage/ContactPage.scss";
 @import "./Pages/AppPage/Pages/GalleryPage/GalleryPage.scss";
 @import "./Pages/AppPage/Pages/HomePage/HomePage.scss";
@@ -19,6 +17,15 @@ body {
   max-width: 100vw;
   height: 100%;
   overflow-x: hidden;
+  background-image: url("assets/bg_gallery.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.App {
+  transition: background 2s ease;
 }
 
 @media (max-width: 700px) {
@@ -33,7 +40,7 @@ $titlePageMargin: 0 0 30px 50px;
 .title_page {
   padding: $titlePagePadding;
   margin: $titlePageMargin;
-  text-align: left;
+  text-align: center;
   width: 35%;
   border: 3.5px solid orange;
   font-size: 2.25rem;
@@ -46,6 +53,7 @@ $titlePageMargin: 0 0 30px 50px;
 
 .customWidthTitlePage {
   width: 90%;
+  text-align: center;
 }
 
 @media (min-width: 700px) {
