@@ -29,26 +29,12 @@ const Ofert = () => {
 
   const ListItemsFirst = ofertsFirst.map((item) => (
     <li key={item} className="infoBox_list--item">
-      <img
-        src="/icons/measure.svg"
-        alt="da"
-        className="OfertListItem--img"
-        width="40"
-        height="40"
-      />
       {item}
     </li>
   ));
 
   const ListItemsSecond = ofertsSecond.map((item) => (
     <li key={item} className="infoBox_list--item">
-      <img
-        src="/icons/measure.svg"
-        alt="da"
-        className="OfertListItem--img"
-        width="40"
-        height="40"
-      />
       {item}
     </li>
   ));
@@ -63,24 +49,25 @@ const Ofert = () => {
               <img
                 src="/icons/shower.svg"
                 alt="houseforofert"
-                width="45"
-                height="45"
+                width="55"
+                height="55"
               />
               <h1>Łazienka</h1>
             </div>
+            <hr />
             <ul className="infoBox_list">{ListItemsFirst}</ul>
           </div>
-
           <div className="multi-container--infoBox">
             <div className="ofert_title">
               <img
                 src="/icons/interior.svg"
                 alt="houseforofert"
-                width="60"
-                height="60"
+                width="55"
+                height="55"
               />
               <h1>Wykończenia</h1>
             </div>
+            <hr />
             <ul className="infoBox_list">{ListItemsSecond}</ul>
           </div>
         </div>

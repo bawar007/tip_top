@@ -33,6 +33,7 @@
   }
 
   .galleryPage {
+    width: calc(100% - 80px);
     min-height: 100vh;
     justify-content: flex-start;
     flex-wrap: wrap;

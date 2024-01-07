@@ -14,10 +14,7 @@ export const WhyThisItems = [
         title: "Dostosowane Rozwiązania",
         text: "Nasze doświadczenie to nie tylko lata praktyki, ale także nauka z różnych projektów. Potrafimy dostosować się do indywidualnych potrzeb klientów, oferując kompleksowe, spersonalizowane rozwiązania.",
       },
-      {
-        title: "Nowoczesność w Tradycji",
-        text: "Pomimo bogatego doświadczenia, nieustannie śledzimy nowości i trendy branżowe. Dzięki temu łączymy tradycję z nowoczesnością, dostarczając usługi, które są zarówno klasyczne, jak i zgodne z najnowszymi standardami.",
-      },
+
       {
         title: "Zaufanie Klientów",
         text: "15 lat to nie tylko liczba, to również zaufanie naszych klientów, którzy zawsze wracają do nas z nowymi projektami. To dla nas największa nagroda i potwierdzenie, że nasze podejście do pracy przynosi satysfakcję.",
@@ -32,10 +29,6 @@ export const WhyThisItems = [
       "Inwestujemy w najnowsze technologie, aby nasze usługi były jeszcze lepsze.",
     imgSrc: "/icons/wkretarka.svg",
     content: [
-      {
-        title: "Precyzja na Najwyższym Poziomie",
-        text: "Dzięki zastosowaniu najnowszych technologii, nasz sprzęt zapewnia niezrównaną precyzję. Każdy element wykończeniowy jest dopracowany do perfekcji, co przekłada się na efekt finalny, który zawsze spełnia najwyższe standardy.",
-      },
       {
         title: "Efektywność w Działaniu",
         text: "Nowoczesny sprzęt nie tylko podnosi jakość naszych usług, ale również sprawia, że prace przebiegają efektywnie. Dzięki temu możemy dostarczyć kompleksowe wykończenia wnętrz w krótszym czasie, nie rezygnując przy tym z najwyższej jakości.",
@@ -69,10 +62,6 @@ export const WhyThisItems = [
         title: "Dostosowanie do Twoich Terminów",
         text: "Jesteśmy elastyczni i dostosowujemy się do Twoich potrzeb. Szanujemy Twój czas, dlatego pracujemy nad projektem tak, abyś mógł cieszyć się efektami końcowymi dokładnie wtedy, kiedy tego oczekujesz.",
       },
-      {
-        title: "Zaplanowane Rezerwy Czasowe",
-        text: "Zawsze uwzględniamy pewne rezerwy czasowe w harmonogramie, abyśmy mieli pewność, że nawet niespodziewane wyzwania nie wpłyną negatywnie na terminowość dostarczenia projektu.",
-      },
     ],
   },
   {
@@ -82,10 +71,6 @@ export const WhyThisItems = [
       "Nie tylko wykonujemy, ale i doradzamy. Dostosujemy materiały do Twoich potrzeb.",
     imgSrc: "/icons/friendly.svg",
     content: [
-      {
-        title: "Ekspercka Wiedza Branżowa",
-        text: "Nasz zespół składa się z doświadczonych specjalistów, którzy nie tylko doskonale znają się na wykończeniach wnętrz, ale także są na bieżąco z najnowszymi trendami i innowacjami w branży materiałów budowlanych.",
-      },
       {
         title: "Dostosowanie do Indywidualnych Preferencji",
         text: "Wspólnie z Tobą analizujemy Twoje oczekiwania, preferencje i styl, aby dobrać materiały, które doskonale oddadzą charakter Twojego projektu. Chcemy, abyś był pewien, że każdy detal spełnia Twoje oczekiwania.",
@@ -114,10 +99,6 @@ export const WhyThisItems = [
       {
         title: "Dostosowanie do Budżetu",
         text: "Rozumiemy, że każdy projekt ma swoje ograniczenia budżetowe. Nasza elastyczność pozwala nam dostosować ofertę do Twoich możliwości finansowych, nie rezygnując przy tym z jakości.",
-      },
-      {
-        title: "Promocje i Rabaty",
-        text: "Regularnie oferujemy promocje i rabaty, aby nasze usługi były jeszcze bardziej dostępne. Dbamy o to, aby korzystanie z naszych usług było nie tylko satysfakcjonujące, ale także ekonomicznie opłacalne.",
       },
       {
         title: "Optymalne Wykorzystanie Zasobów",

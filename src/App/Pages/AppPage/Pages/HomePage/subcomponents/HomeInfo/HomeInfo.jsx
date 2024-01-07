@@ -1,13 +1,12 @@
-import Slider from "../Slider/Slider";
-
 const HomeInfo = () => {
   return (
     <div className="HomeInfo">
       <div
-        className="box-flip--slider"
+        className="box-flip--slider "
+        style={{ backgroundColor: "rgba(247, 94, 178, 0.8)" }}
         onClick={() => document.querySelector(".galleryPage").scrollIntoView()}
       >
-        <Slider />
+        {/* <Slider /> */}
       </div>
 
       <div className="box-flip">
@@ -27,7 +26,10 @@ const HomeInfo = () => {
 
       <div className="box-flip">
         <div className="flip-content">
-          <div className="front" style={{ backgroundColor: "#F75EB1" }}>
+          <div
+            className="front"
+            style={{ backgroundColor: "rgba(247, 94, 178, 0.8)" }}
+          >
             <img
               src="/icons/experience.svg"
               alt="exp"

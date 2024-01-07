@@ -19,24 +19,16 @@
       display: flex;
       height: 50%;
       width: 100%;
-      .content_multi-conrainer--arrow {
-        visibility: hidden;
-        position: absolute;
-        width: 0;
-        height: 0;
-      }
-    }
-    .multi-container--infoBox {
-      border: 0.5px solid black;
-      padding: 20px;
-      border-radius: 25px;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.3);
-      text-align: center;
-      .ofert_title {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+      .multi-container--infoBox {
+        padding: 20px;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        text-align: center;
+        .ofert_title {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
       }
     }
   }
@@ -46,7 +38,6 @@
   .Ofert_Page {
     min-height: 70vh;
     align-items: flex-start;
-
     .Ofert_Page--Content {
       width: 100%;
       height: 100%;
@@ -55,26 +46,31 @@
         flex-direction: column;
         .multi-container--infoBox {
           margin: 20px 0;
-          h1 {
-            font-size: 30px;
-            margin: 10px 0 10px 20px;
-            text-align: left;
+          .ofert_title {
+            align-items: flex-start;
+            img {
+              filter: invert(99%) sepia(43%) saturate(2%) hue-rotate(203deg)
+                brightness(112%) contrast(101%);
+            }
+            h1 {
+              font-size: 30px;
+              margin: 10px 0 20px 20px;
+              text-align: left;
+              text-transform: uppercase;
+            }
           }
+
           .infoBox_list {
             display: flex;
             flex-direction: column;
             align-items: stretch;
             .infoBox_list--item {
-              font-size: 16px;
+              font-size: 18px;
               padding: 10px 5px;
               margin: 5px 0;
               display: flex;
-              align-items: flex-start;
-              justify-content: space-between;
+              justify-content: center;
               border-bottom: 2px solid white;
-              .OfertListItem--img {
-                height: 20px;
-              }
             }
           }
         }
@@ -86,67 +82,71 @@
 @media (min-width: 700px) {
   .Ofert_Page {
     min-height: 100vh;
-
+    width: calc(100% - 80px);
     .Ofert_Page--Content {
       margin: 10px auto;
       height: 80%;
-      width: 100%;
+      width: 90%;
       .content_multi-container {
         justify-content: center;
         flex-direction: column;
-        margin-top: 30px;
-        margin-left: 20px;
-        height: auto;
         flex-wrap: wrap;
-        padding: 0 80px;
+        padding: 10px;
         width: 100%;
         div:nth-child(2) {
           margin-top: 50px;
-          margin-left: 20px;
           animation-delay: 0.5s;
         }
-      }
-      .multi-container--infoBox {
-        width: 90%;
-        max-height: 50%;
-        box-shadow: rgba(3, 106, 65, 0.1) 1px 1px 5px 2px;
-        border: 0;
-        h1 {
-          font-size: 32px;
-          text-transform: uppercase;
-          margin-left: 50px;
-        }
-        .infoBox_list {
-          margin: 10px 0;
-          padding: 5px;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          justify-content: space-around;
-          .infoBox_list--item {
+        .multi-container--infoBox {
+          width: 100%;
+          max-height: 50%;
+          background-color: transparent;
+
+          .ofert_title {
+            flex-direction: column;
+            margin: 10px 0;
+            padding: 10px;
+            img {
+              width: 55px;
+              height: 55px;
+              margin: 10px 0;
+            }
+            h1 {
+              font-size: 34px;
+              text-transform: uppercase;
+              color: black;
+              letter-spacing: 2px;
+              font-weight: 600;
+            }
+          }
+          hr {
+            border-radius: 25px;
+            background-color: orange;
+            width: 50%;
+            height: 5px;
+            margin: auto;
+            border: 0;
+          }
+          .infoBox_list {
+            margin: 10px 0;
+            padding: 5px;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            font-size: 22px;
-            justify-content: space-between;
-            margin: 10px 0;
-            padding: 10px 0;
-            width: 40%;
-            position: relative;
-            &::after {
-              display: inline-block;
-              width: 50%;
-              height: 3px;
-              content: "";
-              background-color: orange;
-              border-radius: 25px;
-              position: absolute;
-              bottom: -10px;
-              left: 25%;
-            }
-            .OfertListItem--img {
-              height: 20px;
-              margin-right: 20px;
+            justify-content: center;
+            .infoBox_list--item {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: clamp(16px, 1.6vw, 22px);
+              margin: 10px;
+              padding: 10px;
+              width: calc(20% - 20px);
+              height: 10vw;
+              background-color: white;
+              color: black;
+              box-shadow: rgba(3, 106, 65, 0.8) 1px 1px 5px 2px;
+              list-style: none;
             }
           }
         }

@@ -10,14 +10,9 @@
 
 @media (min-width: 700px) {
   .homePage {
-    width: 100vw;
+    width: calc(100% - 80px);
     padding: 50px 0;
     min-height: 100vh;
-    // background-image: url("../../../../assets/bg_test.jpg");
-    // background-repeat: no-repeat;
-    // background-position: bottom;
-    // background-size: cover;
-    // background-attachment: fixed;
     .homePage_content {
       width: 80%;
       display: flex;

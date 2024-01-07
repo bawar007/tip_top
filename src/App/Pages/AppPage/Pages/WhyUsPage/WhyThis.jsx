@@ -20,7 +20,7 @@ const WhyThis = () => {
             <div className="item__content">
               {el.content.map((item) => (
                 <div className="content--item" key={item.title}>
-                  <h3>{item.title}</h3>
+                  <h2>{item.title}</h2>
                   <p>{item.text}</p>
                 </div>
               ))}

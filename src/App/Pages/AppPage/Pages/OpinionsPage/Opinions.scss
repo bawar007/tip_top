@@ -25,7 +25,7 @@ $paddingTopBot: 10px;
       padding: calc($paddingTopBot * 2);
       margin: 5px;
       box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.5);
-
+      background-color: white;
       h2 {
         border-top: 4px solid orange;
         border-bottom: 3px orange solid;
@@ -124,6 +124,7 @@ $paddingTopBot: 10px;
 @media (min-width: 700px) {
   .opinionsPage {
     align-items: flex-start;
+    width: calc(100% - 80px);
     .opinionsBox {
       margin: 0 auto;
       margin-top: 5%;

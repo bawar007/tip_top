@@ -31,29 +31,32 @@ body {
 @media (max-width: 700px) {
   body {
     font-size: 14px;
+    background-size: auto;
   }
 }
 
-$titlePagePadding: 10px 0 10px 30px;
-$titlePageMargin: 0 0 30px 50px;
+$titlePagePadding: 10px;
+$titlePageMargin: 0 0 30px 30px;
 
 .title_page {
   padding: $titlePagePadding;
   margin: $titlePageMargin;
   text-align: center;
   width: 35%;
-  border: 3.5px solid orange;
-  font-size: 2.25rem;
+  border: 5px solid orange;
+  font-size: 2.5rem;
   text-transform: uppercase;
   color: white;
   letter-spacing: 2px;
   border-radius: 50px;
-  transition: width 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .customWidthTitlePage {
-  width: 90%;
+  width: calc(100% - 60px);
   text-align: center;
+  letter-spacing: 10px;
 }
 
 @media (min-width: 700px) {
@@ -67,6 +70,7 @@ $titlePageMargin: 0 0 30px 50px;
   .title_page {
     width: 98.5%;
     margin: 0 auto;
+    font-size: 2.25rem;
   }
 }
 
