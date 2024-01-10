@@ -1,0 +1,115 @@
+$shadow: 0px 0px 17px 0px #000000;
+@import "../Slider/Slider.scss";
+
+.HomeInfo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .box-flip,
+  .box-flip--slider {
+    &:nth-child(odd) {
+      transform: translateX(-50vw);
+    }
+    &:nth-child(even) {
+      transform: translateX(50vw);
+    }
+  }
+  .box-flip--slider {
+    width: calc(50% - 20px);
+    height: calc(50% - 20px);
+    display: block;
+    animation: boxFlipAnimationOdd 0.8s ease-in-out forwards;
+    background-color: #f75eb1;
+    overflow: hidden;
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 1);
+  }
+  .box-flip {
+    width: calc(50% - 20px);
+    height: calc(50% - 20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 1);
+    &:nth-child(odd) {
+      animation: boxFlipAnimationOdd 0.8s ease-in-out forwards;
+    }
+    &:nth-child(2) {
+      animation: boxFlipAnimationChild--2 0.8s ease forwards;
+    }
+    &:nth-child(4) {
+      animation: boxFlipAnimationChild--4 0.8s ease forwards;
+    }
+    img {
+      width: 60%;
+      height: 60%;
+    }
+    span {
+      text-transform: uppercase;
+      font-size: clamp(16px, 3vw, 30px);
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .HomeInfo {
+    width: 100vw;
+    min-height: calc(40px + 100vw);
+    padding: 20px 0;
+    overflow-x: hidden;
+    font-size: 13px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .box-flip {
+      width: calc(50vw - 15px);
+      height: calc(50vw - 15px);
+      margin: 5px;
+      padding: 10px;
+      span {
+        font-size: 1rem !important;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .HomeInfo {
+    width: 40vw;
+  }
+
+  .box-flip {
+    margin: 10px;
+  }
+}
+
+@keyframes boxFlipAnimationOdd {
+  from {
+    transform: translateX(-50vw) scale(0.5);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes boxFlipAnimationChild--2 {
+  from {
+    transform: translateY(-50vw) scale(0.5);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes boxFlipAnimationChild--4 {
+  from {
+    transform: translateY(50vw) scale(0.5);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
