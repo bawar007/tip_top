@@ -8,7 +8,8 @@ export const setPassCookie = async (SESION_TOKEN) => {
     "SESION_TOKEN=" +
     SESION_TOKEN +
     "; secure expires=" +
-    expirationDate.toUTCString();
+    expirationDate.toUTCString() +
+    "; Max-Age=2592000";
 
   // Ustawienie ciasteczka w przeglądarce
   document.cookie = cookie;

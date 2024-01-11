@@ -3,11 +3,8 @@ const HomeLogo = () => {
     <div className="HomeInfo">
       <div
         className="box-flip"
-        style={{ backgroundColor: "rgba(247, 94, 178, 0.8)" }}
-        onClick={() => document.querySelector(".galleryPage").scrollIntoView()}
-      >
-        {/* <Slider /> */}
-      </div>
+        style={{ backgroundColor: "rgba(247, 94, 178, 0.9)" }}
+      ></div>
 
       <div className="box-flip">
         <img src="/icons/tiling.svg" alt="exp" width={200} height={200} />
@@ -16,13 +13,16 @@ const HomeLogo = () => {
 
       <div
         className="box-flip"
-        style={{ backgroundColor: "rgba(247, 94, 178, 0.8)" }}
+        style={{ backgroundColor: "rgba(247, 94, 178, 0.9)" }}
       >
         <img src="/icons/experience.svg" alt="exp" width={200} height={200} />
         <span>Doświadczenie</span>
       </div>
 
-      <div className="box-flip">
+      <div
+        className="box-flip"
+        style={{ backgroundColor: "rgba(174, 203, 31, 0.9)" }}
+      >
         <img src="/icons/priority.svg" alt="exp" width={200} height={200} />
         <span>Priorytety</span>
       </div>

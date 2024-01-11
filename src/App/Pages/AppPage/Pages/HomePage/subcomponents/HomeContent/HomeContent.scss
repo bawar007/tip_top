@@ -45,6 +45,7 @@
 @media (max-width: 700px) {
   .home_info--content {
     width: 100%;
+    overflow: hidden;
     .content_info {
       width: 90%;
       animation: animationMobile 0.8s ease forwards;
@@ -56,8 +57,10 @@
 @keyframes animationMobile {
   from {
     transform: translateX(100vw);
+    display: none;
   }
   to {
     transform: translateX(0);
+    display: flex;
   }
 }

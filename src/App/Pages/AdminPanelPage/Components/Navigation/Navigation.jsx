@@ -49,17 +49,6 @@ const Navigation = () => {
         <span></span>
         <li className="menu-item">
           <Link
-            to="whyussettings"
-            className="item-link"
-            onClick={() => setMenu(false)}
-          >
-            <img src="/icons/whyUs.svg" alt="whyus" width={40} height={40} />
-            <p>Dlaczego my</p>
-          </Link>
-        </li>
-        <span></span>
-        <li className="menu-item">
-          <Link
             to="opinionssettings"
             className="item-link"
             onClick={() => setMenu(false)}

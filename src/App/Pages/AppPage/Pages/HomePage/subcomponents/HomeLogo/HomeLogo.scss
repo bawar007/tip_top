@@ -1,5 +1,4 @@
 $shadow: 0px 0px 17px 0px #000000;
-@import "../Slider/Slider.scss";
 
 .HomeInfo {
   display: flex;
@@ -10,8 +9,7 @@ $shadow: 0px 0px 17px 0px #000000;
   justify-content: center;
   align-items: center;
 
-  .box-flip,
-  .box-flip--slider {
+  .box-flip {
     &:nth-child(odd) {
       transform: translateX(-50vw);
     }
@@ -19,15 +17,7 @@ $shadow: 0px 0px 17px 0px #000000;
       transform: translateX(50vw);
     }
   }
-  .box-flip--slider {
-    width: calc(50% - 20px);
-    height: calc(50% - 20px);
-    display: block;
-    animation: boxFlipAnimationOdd 0.8s ease-in-out forwards;
-    background-color: #f75eb1;
-    overflow: hidden;
-    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 1);
-  }
+
   .box-flip {
     width: calc(50% - 20px);
     height: calc(50% - 20px);
@@ -51,7 +41,7 @@ $shadow: 0px 0px 17px 0px #000000;
     }
     span {
       text-transform: uppercase;
-      font-size: clamp(16px, 3vw, 30px);
+      font-size: clamp(16px, 1.7vw, 30px);
       font-weight: 600;
       letter-spacing: 2px;
     }

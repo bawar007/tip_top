@@ -8,7 +8,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import AdminPanel from "./App/Pages/AdminPanelPage/AdminPanel";
 import Gallerysettings from "./App/Pages/AdminPanelPage/Pages/GallerySettingsPage/Gallerysettings";
-import WhyUsSettings from "./App/Pages/AdminPanelPage/Pages/WhyUsSettingsPage/WhyUsSettings";
 import LoginPage from "./App/Pages/AdminPanelPage/Pages/LoginSettingsPage/LoginPage";
 import OpinionsSettings from "./App/Pages/AdminPanelPage/Pages/OpinionsSettings/OpinionsSettings";
 
@@ -24,7 +23,6 @@ root.render(
           <Route path="/admin" element={<LoginPage />} />
           <Route path="/adminpanel" element={<AdminPanel />}>
             <Route path="gallerysettings" element={<Gallerysettings />} />
-            <Route path="whyussettings" element={<WhyUsSettings />} />
             <Route path="opinionssettings" element={<OpinionsSettings />} />
           </Route>
         </Routes>

@@ -23,13 +23,6 @@ export const ObserverSections = new IntersectionObserver((entries) => {
       const menu = document.querySelector(".menu");
 
       if (entry.isIntersecting) {
-        const homePageFlipContent = document.querySelectorAll(".flip-content");
-        homePageFlipContent[0].classList.add("shake");
-        setTimeout(
-          () => homePageFlipContent[0].classList.remove("shake"),
-          5000
-        );
-
         if (arrowUpMobile) {
           arrowUpMobile.style.display = "none";
           menu.style.bottom = "10px";
