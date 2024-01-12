@@ -21,9 +21,9 @@ const AdminPanel = () => {
     let accessToken = !SESION_TOKEN
       ? getSesionPasCookie("SESION_TOKEN")
       : SESION_TOKEN;
-    console.log(accessToken);
+
     if (accessToken.length === 0) setIsMatch(false);
-    console.log(accessToken);
+
     await axios
       .get(`${HOST}/verify`, {
         headers: {

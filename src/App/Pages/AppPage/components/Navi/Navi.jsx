@@ -7,7 +7,6 @@ const Navi = () => {
   const { windowW } = useContext(AppContext);
 
   useEffect(() => {
-    console.log(windowW);
     if (windowW) {
       const sections = document.querySelectorAll("section");
       sections.forEach((el, index) => {

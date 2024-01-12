@@ -12,7 +12,7 @@ export const obliczProcentWidocznosci = (elRef) => {
     if (imgEl) {
       imgEl.classList.remove("activeNaviLogo");
       liEl.classList.remove("active");
-      console.log(sectionElNaviItem);
+
       if (
         sectionElNaviItem === ".Projects--NaviItem" ||
         sectionElNaviItem === ".Ofert-NaviItem"
