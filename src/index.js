@@ -16,7 +16,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AppProvider>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename="/">
         <Routes>
           <Route path="*" element={<App />} />
           <Route exact path="/" element={<App />} />
