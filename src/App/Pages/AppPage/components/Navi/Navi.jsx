@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { obliczProcentWidocznosci } from "../../helpers/HowPercentsIsVisibled";
 import { AppContext } from "../../AppPageProvider/AppPageProvider";
+import { HashLink } from "react-router-hash-link";
 
 const Navi = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -56,14 +57,14 @@ const Navi = () => {
             className="active"
             id="home-li"
           >
-            <a href="#home" className="Home--NaviItem">
+            <HashLink to="#home" className="Home--NaviItem">
               <img
                 src="/icons/Home.svg"
                 alt="home"
                 className="HomeNavi--logo activeNaviLogo list-img"
               />
               <span className="tool">Strona Główna</span>
-            </a>
+            </HashLink>
           </li>
 
           <li
@@ -73,7 +74,7 @@ const Navi = () => {
             }}
             id="whyus-li"
           >
-            <a href="#whyUs" className="WhyUs-NaviItem">
+            <HashLink to="#whyUs" className="WhyUs-NaviItem">
               <img
                 src="/icons/whyus.svg"
                 alt="ofert"
@@ -82,7 +83,7 @@ const Navi = () => {
                 height="40"
               />
               <span className="tool">Dlaczego My?</span>
-            </a>
+            </HashLink>
           </li>
           <li
             onClick={(e) => {
@@ -91,7 +92,7 @@ const Navi = () => {
             }}
             id="gallery-li"
           >
-            <a href="#gallery" className="Projects--NaviItem">
+            <HashLink to="#gallery" className="Projects--NaviItem">
               <img
                 src="/icons/projects.svg"
                 alt="ofert"
@@ -100,7 +101,7 @@ const Navi = () => {
                 height="40"
               />
               <span className="tool">Realizacje</span>
-            </a>
+            </HashLink>
           </li>
           <li
             onClick={(e) => {
@@ -109,7 +110,7 @@ const Navi = () => {
             }}
             id="offert-li"
           >
-            <a href="#ofert" className="Ofert-NaviItem">
+            <HashLink to="#ofert" className="Ofert-NaviItem">
               <img
                 src="/icons/offert.svg"
                 alt="ofert"
@@ -118,7 +119,7 @@ const Navi = () => {
                 height="40"
               />
               <span className="tool">OFERTA</span>
-            </a>
+            </HashLink>
           </li>
           <li
             onClick={(e) => {
@@ -127,7 +128,7 @@ const Navi = () => {
             }}
             id="opinions-li"
           >
-            <a href="#opinions" className="Opinions-NaviItem">
+            <HashLink to="#opinions" className="Opinions-NaviItem">
               <img
                 src="/icons/medalstar.svg"
                 alt="opinion"
@@ -136,7 +137,7 @@ const Navi = () => {
                 height="40"
               />
               <span className="tool">Opinie</span>
-            </a>
+            </HashLink>
           </li>
           <li
             onClick={(e) => {
@@ -145,7 +146,7 @@ const Navi = () => {
             }}
             id="contact-li"
           >
-            <a href="#contact" className="Contact-NaviItem">
+            <HashLink to="#contact" className="Contact-NaviItem">
               <img
                 src="/icons/Contact.svg"
                 alt="contact"
@@ -154,12 +155,12 @@ const Navi = () => {
                 height="40"
               />
               <span className="tool">KONTAKT</span>
-            </a>
+            </HashLink>
           </li>
         </ul>
       </nav>
       <div className="arrowUp">
-        <a href="#home">
+        <HashLink to="#home">
           <img
             src="/icons/arrowcircleup.svg"
             alt="arrowUp"
@@ -167,7 +168,7 @@ const Navi = () => {
             width="40"
             height="40"
           />
-        </a>
+        </HashLink>
       </div>
     </header>
   );

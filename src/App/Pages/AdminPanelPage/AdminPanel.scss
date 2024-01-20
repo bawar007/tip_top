@@ -15,6 +15,7 @@ $background-color_settings: rgb(15, 15, 15);
   justify-content: center;
   background-color: $background-color_settings;
   padding: 50px 0;
+  overflow-y: scroll;
   .AdminPanelContent--setings {
     width: 80vw;
     height: 80%;
@@ -24,6 +25,5 @@ $background-color_settings: rgb(15, 15, 15);
 @media (max-width: 700px) {
   .AdminPanelContent--setings {
     width: 95vw !important;
-    overflow-y: scroll;
   }
 }

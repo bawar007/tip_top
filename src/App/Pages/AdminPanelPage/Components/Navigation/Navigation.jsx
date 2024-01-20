@@ -53,7 +53,7 @@ const Navigation = () => {
             className="item-link"
             onClick={() => setMenu(false)}
           >
-            <img src="/icons/whyUs.svg" alt="whyus" width={40} height={40} />
+            <img src="/icons/whyus.svg" alt="whyus" width={40} height={40} />
             <p>Opinie</p>
           </Link>
         </li>

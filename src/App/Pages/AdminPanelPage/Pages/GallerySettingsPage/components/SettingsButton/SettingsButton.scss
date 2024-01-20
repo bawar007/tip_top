@@ -1,10 +1,9 @@
 .settings_btn {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  width: 80px;
-  min-height: 100%;
+  width: auto;
   border-width: 3px;
   border-style: solid;
   border-image: linear-gradient(to bottom, red, rgba(0, 0, 0, 0)) 1 100%;
@@ -15,9 +14,9 @@
     border-bottom: 2px solid transparent;
     border-image: linear-gradient(90deg, black, orange, black);
     border-image-slice: 1;
+    width: 70px;
+    height: 70px;
     &:nth-child(2) {
-      width: 60px;
-      height: 60px;
       padding-bottom: 20px;
       &:hover {
         cursor: pointer;
@@ -28,7 +27,6 @@
 
 @media (max-width: 700px) {
   .settings_btn {
-    flex-direction: row;
     width: 100%;
     justify-content: space-between;
   }
