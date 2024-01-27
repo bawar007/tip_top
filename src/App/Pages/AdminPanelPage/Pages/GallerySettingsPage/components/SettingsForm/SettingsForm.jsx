@@ -41,8 +41,7 @@ const SettingsForm = () => {
 
   const handleUploadNewFiles = async (e) => {
     e.preventDefault();
-    const filesToUpload = settingsFiles.filesToUpload;
-    const folderToUpload = settingsFiles.folderToUpload;
+    const { filesToUpload, folderToUpload } = settingsFiles;
     if (!folderToUpload) {
       alert("musisz wybrać folder lub dodać nowy");
       return;

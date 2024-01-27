@@ -24,23 +24,19 @@ const ImagesGroup = () => {
 
     const filesInView = itemsToView.map((file) => file.value);
 
-    if (test !== -1) {
-      setAllSelectItems(true);
-    } else {
-      setAllSelectItems(false);
-    }
-
     const TableSelectedFolders = [];
     if (test !== -1) {
-      selectedFilesFromApi.fetchFilesStructure.files.forEach((item) =>
+      selectedFilesFromApi.fetchFilesStructure.forEach((item) =>
         TableSelectedFolders.push(item)
       );
+      setAllSelectItems(true);
     } else {
       filesInView.forEach((file) => {
-        selectedFilesFromApi.fetchFilesStructure.files.filter(
+        selectedFilesFromApi.fetchFilesStructure.filter(
           (e) => e.name === file && TableSelectedFolders.push(e)
         );
       });
+      setAllSelectItems(false);
     }
 
     setSelectedFilesFromApi((prev) => ({
@@ -63,12 +59,12 @@ const ImagesGroup = () => {
                 ? { value: "all", label: "all" }
                 : selectedFilesFromApi.optionsFromFiles.value
             }
-            defaultValue={selectedFilesFromApi.optionsFromFiles[1]}
             options={selectedFilesFromApi.optionsFromFiles}
             className="select-form-files"
             classNamePrefix="form-files"
             onChange={(value) => handleFilesInView(value)}
             placeholder={"Wybierz foldery"}
+            defaultValue={selectedFilesFromApi.optionsFromFiles[1]}
           />
         </div>
       </div>

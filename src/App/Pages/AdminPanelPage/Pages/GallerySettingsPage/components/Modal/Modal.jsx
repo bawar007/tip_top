@@ -11,23 +11,26 @@ const Modal = () => {
     SettingsProviderContext
   );
 
-  const deleteFunction = async (folderName, fileNameS) => {
-    await axios
-      .delete(`${HOST}/delete?s=${folderName}&fileName=${fileNameS}`, {
-        headers: {
-          Authorization: `Bearer ${API_KEY}`,
+  const handleDeleteFilesTest = async () => {
+    try {
+      await axios.post(
+        `${HOST}/delete`,
+        {
+          filesToDelete: settingsFiles.filesToDelete,
         },
-      })
-      .catch((error) => console.log(error));
+        {
+          headers: { Authorization: `Bearer ${API_KEY}` },
+        }
+      );
+    } catch (error) {
+      console.error("Wystąpił błąd podczas usuwania plików:", error);
+    }
   };
 
-  const handleDeleteFiles = () => {
+  const handleDeleteFiles = async () => {
     if (settingsFiles.modalIsOpen) {
-      const filesToDeleteNew = settingsFiles.filesToDelete;
+      handleDeleteFilesTest();
 
-      filesToDeleteNew.forEach((el) =>
-        deleteFunction(el.name, el.fileNameToDelete)
-      );
       setSettingsFiles((prev) => ({
         ...prev,
         filesToDelete: [],
@@ -49,6 +52,7 @@ const Modal = () => {
       modalIsOpen: false,
     }));
   };
+
   return (
     <div className="modalCheckedFiles">
       <div className="modalcontent">
@@ -62,11 +66,14 @@ const Modal = () => {
           &times;
         </span>
         <div className="filesToDeleteList">
-          <ul>
-            {settingsFiles.filesToDelete.map((el, index) => (
-              <li key={el.fileNameToDelete + index}>{el.fileNameToDelete}</li>
-            ))}
-          </ul>
+          {settingsFiles.filesToDelete.map((el, index) => (
+            <ul key={el.folderName}>
+              <h1>{el.folderName}</h1>
+              {el.filesFromFolder.map((file) => (
+                <li key={file}>{file}</li>
+              ))}
+            </ul>
+          ))}
         </div>
         <div className="btngroup">
           <button

@@ -42,6 +42,7 @@ const SelectFiles = () => {
         ...prev,
         optionsFiles: tab,
         customNewFolder: "",
+        folderToUpload: customNewFolder,
       }));
     }
   };
@@ -60,7 +61,6 @@ const SelectFiles = () => {
           className="select-new-files"
           classNamePrefix="new-files"
           placeholder="Zapisz pliki w..."
-          defaultValue={settingsFiles.optionsFiles[0]}
         />
 
         <label className="foldername">

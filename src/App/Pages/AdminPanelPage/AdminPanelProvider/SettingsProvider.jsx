@@ -9,7 +9,7 @@ const SettingsProvider = ({ children }) => {
     filesToDelete: [],
     optionsFiles: [],
     customNewFolder: "",
-    folderToUpload: "p_01",
+    folderToUpload: "",
     filesToUpload: [],
   });
 

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { SettingsProviderContext } from "../../../AdminPanelProvider/SettingsProvider";
 
@@ -17,7 +17,7 @@ const useImages = (HOST) => {
   const [error, setError] = useState(null);
 
   const sortItems = (files) => {
-    const filesToSort = files.files
+    const filesToSort = files
       .filter((item) => item.table.length !== 0)
       .map((fileName) => {
         return {
@@ -45,50 +45,58 @@ const useImages = (HOST) => {
     return { optionsFromFilesSort };
   };
 
-  useEffect(() => {
-    const fetchFilesStructure = async () => {
-      setLoading(true);
-      await axios
-        .get(`${HOST}/files`, {
-          headers: {
-            Authorization: `Bearer ${API_KEY}`,
-            "Cache-Control": "no-cache",
-          },
-        })
-        .then((response) => {
-          const files = response.data;
+  const fetchFilesStructure = useCallback(async () => {
+    setLoading(true);
 
-          const firstVisibleItems = files.files.filter(
-            (e) => e.name === "p_01"
-          );
-          setSelectedFilesFromApi((prev) => ({
-            ...prev,
-            fetchFilesStructure: files,
-            filesInView: firstVisibleItems,
-          }));
+    await axios
+      .get(`${HOST}/files`, {
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+          "Cache-Control": "no-cache",
+        },
+      })
+      .then((response) => {
+        const files = response.data;
+        const filesWhereFolderHaveImages = files.files.filter(
+          (item) => item.table.length !== 0
+        );
 
-          const { optionsFromFilesSort } = sortItems(files);
+        setSelectedFilesFromApi((prev) => ({
+          ...prev,
+          fetchFilesStructure: filesWhereFolderHaveImages,
+          filesInView: [filesWhereFolderHaveImages[0]],
+        }));
 
-          setSelectedFilesFromApi((prev) => ({
-            ...prev,
-            optionsFromFiles: optionsFromFilesSort,
-          }));
+        const { optionsFromFilesSort } = sortItems(filesWhereFolderHaveImages);
 
-          const settingsOptions = optionsFromFilesSort.filter(
-            (item) => item.value !== "all"
-          );
-          setSettingsFiles((prev) => ({
-            ...prev,
-            optionsFiles: settingsOptions,
-          }));
-        })
-        .catch((error) => setError(error))
-        .finally(() => setLoading(false));
-    };
-    fetchFilesStructure();
+        setSelectedFilesFromApi((prev) => ({
+          ...prev,
+          optionsFromFiles: optionsFromFilesSort,
+        }));
+
+        const settingsOptions = optionsFromFilesSort.filter(
+          (item) => item.value !== "all"
+        );
+        setSettingsFiles((prev) => ({
+          ...prev,
+          optionsFiles: settingsOptions,
+        }));
+      })
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
   }, [HOST, setSettingsFiles]);
 
-  return { loading, error, selectedFilesFromApi, setSelectedFilesFromApi };
+  useEffect(() => {
+    fetchFilesStructure();
+  }, [fetchFilesStructure]);
+
+  return {
+    loading,
+    error,
+    selectedFilesFromApi,
+    setSelectedFilesFromApi,
+    fetchFilesStructure,
+  };
 };
 
 export default useImages;
