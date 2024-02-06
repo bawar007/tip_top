@@ -1,20 +1,18 @@
 import { lazy, useEffect } from "react";
 
-import ContactPage from "./Pages/AppPage/Pages/ContactPage/ContactPage";
-import HomePage from "./Pages/AppPage/Pages/HomePage/HomePage";
-import Ofert from "./Pages/AppPage/Pages/OfertPage/Oferta";
-import Opinions from "./Pages/AppPage/Pages/OpinionsPage/Opinions";
-import WhyThis from "./Pages/AppPage/Pages/WhyUsPage/WhyThis";
-import Social from "./Pages/AppPage/components/Social/Social";
+import ContactPage from "./pages/ContactPage/ContactPage";
+import HomePage from "./pages/HomePage/HomePage";
+import Ofert from "./pages/OfertPage/Oferta";
+import Opinions from "./pages/OpinionsPage/Opinions";
+import WhyThis from "./pages/WhyUsPage/WhyThis";
+import Social from "./components/Social/Social";
 
-import Modal from "./Pages/AppPage/Pages/GalleryPage/Components/modals/PC/Modal/Modal";
+import Modal from "./components/modals/PC/Modal/Modal";
 
-import { ObserverSections } from "./Pages/AppPage/helpers/ObserverSections";
-import Navi from "./Pages/AppPage/components/Navi/Navi";
+import { ObserverSections } from "./helpers/ObserverSections";
+import Navi from "./components/Navi/Navi";
 
-const GalleryPage = lazy(() =>
-  import("./Pages/AppPage/Pages/GalleryPage/GalleryPage")
-);
+const GalleryPage = lazy(() => import("./pages/GalleryPage/GalleryPage"));
 
 function App() {
   ///////////////////////////////////
