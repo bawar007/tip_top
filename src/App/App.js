@@ -7,8 +7,6 @@ import Opinions from "./pages/OpinionsPage/Opinions";
 import WhyThis from "./pages/WhyUsPage/WhyThis";
 import Social from "./components/Social/Social";
 
-import Modal from "./components/modals/PC/Modal/Modal";
-
 import { ObserverSections } from "./helpers/ObserverSections";
 import Navi from "./components/Navi/Navi";
 
@@ -78,7 +76,6 @@ function App() {
       <Opinions />
       <ContactPage />
       <Navi />
-      <Modal />
       <Social />
     </div>
   );

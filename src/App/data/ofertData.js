@@ -1,0 +1,36 @@
+export const oferts = [
+  {
+    title: "Łazienka",
+    srcPic: "/icons/shower.svg",
+    items: [
+      "pełny zakres remontu",
+      "renowacja łazienki",
+      "przeróbki hydrauliczne",
+      "montaż baterii podtynkowych",
+      "montaż odpływu liniowego",
+      "montaż kabin prysznicowych",
+      "biały montaż",
+      "glazura, terakota",
+      "montaż drzwi",
+      "montaż oświetlenia typu LED",
+    ],
+  },
+  {
+    title: "Wykończenia",
+    srcPic: "/icons/interior.svg",
+    items: [
+      "malowanie",
+      "szpachlowanie sufitów i ścian",
+      "suche zabudowy",
+      "sufity podwieszane",
+      "panele",
+      "listwy przypodłogowe",
+      "terakota, gres",
+      "płytki ceramiczne",
+      "płytki gipsowe",
+      "cegła",
+      "montaż drzwi wewnętrznych",
+      "montaż oświetlenia typu LED",
+    ],
+  },
+];

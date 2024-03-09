@@ -1,15 +1,8 @@
 export const handleCloseAddOpinion = () => {
-  const opinion_box = document.querySelector(".add_opinion_box");
-  const opinionAdd = document.querySelector(".add_opinion");
   const stars = document.querySelectorAll(".checkedAdd");
-
   stars.forEach((item) => {
     item.style.filter = "";
   });
-
-  opinionAdd.classList.remove("openModalOpinion");
-  opinion_box.classList.remove("openModalBg");
-  opinion_box.classList.remove("openModalBgAdding");
 };
 
 export const hoverChangeAddOpinionStars = (star) => {

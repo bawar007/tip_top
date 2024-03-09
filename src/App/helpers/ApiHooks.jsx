@@ -6,7 +6,6 @@ export const postNewOpinion = async (formValues, HOST) => {
   const { imie, email, opinion_text, date, selected_project, rate } =
     formValues;
   try {
-    console.log(HOST);
     await axios.post(
       `${HOST}/opinions`,
       {
@@ -24,6 +23,10 @@ export const postNewOpinion = async (formValues, HOST) => {
         },
       }
     );
+    await axios.post(`${HOST}/send-email`, {
+      data: formValues.opinion_text,
+      email,
+    });
   } catch (error) {
     console.log(error);
   }

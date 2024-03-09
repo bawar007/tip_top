@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
+import "./AddNewOpinion.scss";
 import Select from "react-select";
+import Star from "../Star/Star";
 
-import makeAnimated from "react-select/animated";
 import {
   hoverChangeAddOpinionStars,
   mouseOutAddOpinion,
@@ -10,22 +11,22 @@ import {
   IconsForStars,
 } from "../../helpers/feedbackService";
 
-import { setDate } from "../../helpers/opinionsHelpers";
-
 import { OpinionsAlert } from "../OpinionsAlert/OpinionsAlert";
 
-import useGetAllPics from "../../hooks/useGetAllPics";
-
-import axios from "axios";
 import { postNewOpinion } from "../../helpers/ApiHooks";
 import { AppContext } from "../../provider/AppProvider";
 import useGetOpinions from "../../hooks/useGetOpinions";
+import useGetAllPics from "../../hooks/useGetAllPics";
 
-import "./AddNewOpinion.scss";
+import OpinionBox from "../../pages/OpinionsPage/components/OpinionBox/OpinionBox";
+import BackGroundForModals from "../BackGroundForModals/BackGroundForModals";
+import ButtonsBox from "../ButtonsBox/ButtonsBox";
+import StarsInfoBox from "../StarsInfoBox/StarsInfoBox";
+import Form from "../Form/Form";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-const AddNewOpinion = () => {
+const AddNewOpinion = ({ setToggleAddOpinionModal }) => {
   const { HOST } = useContext(AppContext);
 
   const [newOpinionFormValues, setNewOpinionFormValues] = useState({
@@ -43,16 +44,18 @@ const AddNewOpinion = () => {
 
   if (loading || error) return;
 
-  const checkEmail = (email) => {
+  const checkEmail = () => {
     const opinions = [...dataOpinions.accepted, ...dataOpinions.queued].filter(
-      (item) => item.email === email
+      (item) =>
+        item.email === newOpinionFormValues.email &&
+        item.imie === newOpinionFormValues.imie
     );
     if (opinions.length === 0) return true;
     return false;
   };
 
   const validation = async () => {
-    const emailAddOpinion = checkEmail(newOpinionFormValues.email);
+    const emailAddOpinion = checkEmail();
 
     if (!emailAddOpinion) {
       OpinionsAlert("Dodałeś już opinie, możesz ją edytować");
@@ -72,16 +75,9 @@ const AddNewOpinion = () => {
       OpinionsAlert("Wybierz projekt");
       return;
     }
+
     postNewOpinion(newOpinionFormValues, HOST);
     OpinionsAlert("Twoja opinia została przekazana");
-    axios
-      .post(`${HOST}/send-email`, {
-        data: newOpinionFormValues.opinion_text,
-        email: newOpinionFormValues.email,
-      })
-      .catch((error) => {
-        console.error("Error sending email:", error);
-      });
 
     setNewOpinionFormValues({
       imie: "",
@@ -92,9 +88,8 @@ const AddNewOpinion = () => {
       rate: null,
     });
     handleCloseAddOpinion();
+    setToggleAddOpinionModal(false);
   };
-
-  const animatedComponents = makeAnimated();
 
   const fileNameReducer = (tekst) => {
     const startIdx = tekst.indexOf("/");
@@ -112,12 +107,11 @@ const AddNewOpinion = () => {
   };
 
   const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name, value } = e.target;
     setNewOpinionFormValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  const test = data.map((item) => {
+  const selectValues = data.map((item) => {
     let filename = fileNameReducer(item.first);
     filename = filename.slice(2);
 
@@ -136,130 +130,65 @@ const AddNewOpinion = () => {
   });
 
   return (
-    <div className="add_opinion_box opinion_form_box">
-      <div className="add_opinion opinion_form_content">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            validation();
-          }}
-          className="opinion_form "
-        >
-          <div className="omrs-input-group">
-            <label className="omrs-input-underlined">
-              <input
-                type="text"
-                value={newOpinionFormValues.imie}
-                className="imie_form"
-                name="imie"
-                required
-                onChange={(e) => handleChange(e)}
-              />
-              <span className="omrs-input-label">Imie</span>
+    <div className="add_opinion_box">
+      <BackGroundForModals>
+        <OpinionBox className="opinion_form_content" id="add_opinion">
+          <Form
+            onSubmit={(e) => {
+              e.preventDefault();
+              validation();
+            }}
+            valueImie={newOpinionFormValues.imie}
+            valueImieCheck={true}
+            onChange={handleChange}
+            valueEmail={newOpinionFormValues.email}
+            valueEmailCheck={true}
+            valueOpinionText={newOpinionFormValues.opinion_text}
+            valueOpinionTextCheck={true}
+            valueDate={newOpinionFormValues.date}
+            valueDateCheck={true}
+          >
+            <Select
+              value={selectValues.value}
+              options={selectValues}
+              placeholder={"Wybierz projekt do oceny"}
+              className="select-form-files"
+              classNamePrefix="form-files"
+              onChange={(e) =>
+                setNewOpinionFormValues((prev) => ({
+                  ...prev,
+                  selected_project: e.value,
+                }))
+              }
+            />
+
+            <label>
+              <h2>Ocena usługi</h2>
+              <div
+                className="starsBox"
+                onMouseOut={() => mouseOutAddOpinion(newOpinionFormValues)}
+              >
+                {IconsForStars.map((el, index) => (
+                  <Star
+                    key={el.src + index}
+                    className={el.class}
+                    onClick={() =>
+                      handleChangeAddOpinionStars(
+                        el.id,
+                        setNewOpinionFormValues
+                      )
+                    }
+                    onMouseOver={() => hoverChangeAddOpinionStars(el.id)}
+                  />
+                ))}
+              </div>
+              <StarsInfoBox rate={newOpinionFormValues.rate} />
             </label>
-          </div>
 
-          <div className="omrs-input-group">
-            <label className="omrs-input-underlined">
-              <input
-                type="email"
-                value={newOpinionFormValues.email}
-                onChange={(e) => handleChange(e)}
-                className="email_form"
-                name="email"
-                required
-              />
-              <span className="omrs-input-label">Email</span>
-            </label>
-          </div>
-
-          <div className="omrs-input-group">
-            <label className="omrs-input-underlined">
-              <input
-                type="text"
-                value={newOpinionFormValues.opinion_text}
-                onChange={(e) => handleChange(e)}
-                className="opinion_form"
-                name="opinion_text"
-                required
-              />
-              <span className="omrs-input-label">Opinia</span>
-              <span className="omrs-input-helper">
-                Minimum 50 znaków. Ilość znaków{" "}
-                {newOpinionFormValues.opinion_text.length}
-              </span>
-            </label>
-          </div>
-
-          <div className="omrs-input-group">
-            <label className="omrs-input-underlined">
-              <input
-                type="date"
-                value={newOpinionFormValues.date}
-                onChange={(e) => handleChange(e)}
-                className="date_form"
-                min="2020-01-01"
-                name="date"
-                required
-                onFocus={() => setDate()}
-              />
-              <span className="omrs-input-helper">
-                Data ukończenia projektu
-              </span>
-            </label>
-          </div>
-
-          <Select
-            value={test.value}
-            options={test}
-            placeholder={"Wybierz projekt do oceny"}
-            className="select-form-files"
-            classNamePrefix="form-files"
-            components={animatedComponents}
-            onChange={(e) =>
-              setNewOpinionFormValues((prev) => ({
-                ...prev,
-                selected_project: e.value,
-              }))
-            }
-          />
-
-          <label>
-            <h2>Ocena usługi</h2>
-            <div
-              className="starsBox"
-              onMouseOut={() => mouseOutAddOpinion(newOpinionFormValues)}
-            >
-              {IconsForStars.map((el, index) => (
-                <img
-                  src={el.src}
-                  alt={el.src}
-                  key={el.src + index}
-                  width="20"
-                  height="20"
-                  className={el.class}
-                  onClick={() =>
-                    handleChangeAddOpinionStars(el.id, setNewOpinionFormValues)
-                  }
-                  onMouseOver={() => hoverChangeAddOpinionStars(el.id)}
-                />
-              ))}
-            </div>
-            <div className="starInfoBox">
-              <span className="info">
-                {newOpinionFormValues.rate !== null &&
-                  `Twoja ocena: ${newOpinionFormValues.rate}/5`}
-              </span>
-            </div>
-          </label>
-
-          <div className="btnBox">
-            <button type="submit" className="btn_send">
-              Dodaj Opinię
-            </button>
-            <button
+            <ButtonsBox
               onClick={() => {
                 handleCloseAddOpinion();
+                setToggleAddOpinionModal(false);
                 setNewOpinionFormValues({
                   imie: "",
                   email: "",
@@ -269,13 +198,11 @@ const AddNewOpinion = () => {
                   rate: null,
                 });
               }}
-              className="btn_send"
-            >
-              Odrzuć
-            </button>
-          </div>
-        </form>
-      </div>
+              textOne="Dodaj Opinię"
+            />
+          </Form>
+        </OpinionBox>
+      </BackGroundForModals>
     </div>
   );
 };

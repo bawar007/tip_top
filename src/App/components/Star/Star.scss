@@ -1,0 +1,28 @@
+img.checked {
+  filter: invert(58%) sepia(48%) saturate(1566%) hue-rotate(2deg)
+    brightness(107%) contrast(104%);
+}
+
+.stars {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding: 5px 0;
+  border-bottom: 3px orange solid;
+  width: 100%;
+  text-align: center;
+  img {
+    font-size: 1.4rem;
+    margin: 0 2px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.opinionBox > .stars {
+  img {
+    cursor: default !important;
+  }
+}

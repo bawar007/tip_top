@@ -1,12 +1,17 @@
+import Section from "../../components/Section/Section";
 import { WhyThisItems } from "../../data/whyusData";
 
 import "./WhyThis.scss";
 
 const WhyThis = () => {
   return (
-    <section className="WhyThisPage" id="whyUs" data-naviitem=".WhyUs-NaviItem">
-      <h1 className="title_page">Dlaczego my?</h1>
-      <div className="WhyThis-Content">
+    <Section
+      className="WhyThisPage"
+      id="whyUs"
+      dataNaviitem=".WhyUs-NaviItem"
+      title="dlaczego my?"
+    >
+      <div className="WhyThis__content">
         {WhyThisItems.map((el) => (
           <div key={el.id + "b"} className="whyUs--item">
             <div className="title">
@@ -30,7 +35,7 @@ const WhyThis = () => {
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   );
 };
 

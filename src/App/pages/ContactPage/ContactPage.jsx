@@ -1,17 +1,21 @@
 import MyMap from "../../components/MyMap/MyMap";
+import Section from "../../components/Section/Section";
 
 import { listContactData } from "../../data/contactData";
 import "./ContactPage.scss";
 
+const Settings = {
+  className: "contactPage",
+  id: "contact",
+  dataNaviitem: ".Contact-NaviItem",
+  title: "kontakt",
+  footer: true,
+};
+
 const ContactPage = () => {
   return (
-    <section
-      className="contactPage"
-      id="contact"
-      data-naviitem=".Contact-NaviItem"
-    >
-      <h1 className="title_page">KONTAKT</h1>
-      <div className="con">
+    <Section {...Settings}>
+      <div className="contactPage__content">
         <div className="contact">
           <ul className="contact_list">{listContactData}</ul>
         </div>
@@ -19,12 +23,7 @@ const ContactPage = () => {
           <MyMap />
         </div>
       </div>
-      <footer className="footer">
-        <p>Copyright © 2023 Tip-Top</p>
-        <p>Wszelkie prawa zastrzeżone</p>
-        <p>Powered By Kamil Barski</p>
-      </footer>
-    </section>
+    </Section>
   );
 };
 

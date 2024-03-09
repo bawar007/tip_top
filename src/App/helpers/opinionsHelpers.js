@@ -13,6 +13,7 @@ export const handleDeleteOpinion = async (id, HOST) => {
     console.log(error);
   } finally {
     alert("Dane zostały zaktualizowane");
+    window.location.reload();
   }
 };
 

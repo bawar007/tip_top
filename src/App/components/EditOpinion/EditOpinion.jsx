@@ -1,13 +1,18 @@
 import { useContext, useState } from "react";
-import axios from "axios";
-
-import EditOpinionContent from "./components/EditOpinionContent";
-import { AppContext } from "../../provider/AppProvider";
-import LogoItem from "../../components/LogoItem";
-
 import "./EditOpinion.scss";
 
-const EditOpinion = () => {
+import EditOpinionNextPage from "./components/EditOpinionNextPage";
+import { AppContext } from "../../provider/AppProvider";
+import LoadingRing from "../../components/LoadingRing/LoadingRing";
+import OpinionBox from "../../pages/OpinionsPage/components/OpinionBox/OpinionBox";
+import BackGroundForModals from "../BackGroundForModals/BackGroundForModals";
+
+import ButtonsBox from "../ButtonsBox/ButtonsBox";
+
+import useGetOpinions from "../../hooks/useGetOpinions";
+import Form from "../Form/Form";
+
+const EditOpinion = ({ setToggleEditOpinionModal }) => {
   const { HOST, API_KEY } = useContext(AppContext);
 
   const [editData, setEditData] = useState({
@@ -19,38 +24,14 @@ const EditOpinion = () => {
   const [editOpinion, setEditOpinion] = useState(null);
   const [NextEditPage, setNextEditPage] = useState(false);
 
-  const checkEmailFetch = async (email) => {
-    setEditData((prev) => ({ ...prev, loading: true }));
+  const { data: dataOpinions } = useGetOpinions(HOST, API_KEY);
 
-    try {
-      const result = await axios.get(`${HOST}/opinions/${email}`, {
-        headers: {
-          Authorization: `Bearer ${API_KEY}`,
-          "Cache-Control": "no-cache",
-        },
-      });
-
-      // Tutaj możesz przetwarzać dane z sukcesem (result.data)
-
-      if (result.data === null) return false;
-      return result.data;
-    } catch (error) {
-      // Tutaj obsługuj błędy
-      if (error.response) {
-        // Żądanie zostało zrealizowane, ale serwer zwrócił status inny niż 2xx
-        console.error(
-          "Błąd serwera:",
-          error.response.status,
-          error.response.data
-        );
-      } else if (error.request) {
-        // Żądanie zostało wysłane, ale nie otrzymało odpowiedzi
-        console.error("Brak odpowiedzi od serwera:", error.request);
-      } else {
-        // Wystąpił inny błąd
-        console.error("Wystąpił błąd:", error.message);
-      }
-    }
+  const checkEmail = () => {
+    const opinions = [...dataOpinions.accepted, ...dataOpinions.queued].filter(
+      (item) => item.email === editData.email && item.imie === editData.imie
+    );
+    if (opinions.length === 0) return false;
+    return { ok: true, opinion: opinions[0] };
   };
 
   const saveOpinion = (e) => {
@@ -59,15 +40,16 @@ const EditOpinion = () => {
   };
 
   const validation = async () => {
-    const checkEmail = await checkEmailFetch(editData.email);
-    if (!checkEmail) {
+    const emailTest = checkEmail();
+
+    if (!emailTest.ok) {
       alert("Podałeś niewłaściwe dane lub nie dodałeś opini");
       setEditData((prev) => ({ ...prev, loading: false }));
       return;
     } else {
-      setEditOpinion(checkEmail);
+      setEditOpinion(emailTest.opinion);
       setNextEditPage(true);
-      setEditData((prev) => ({ ...prev, loading: false }));
+      setEditData((prev) => ({ ...prev, loading: true }));
     }
   };
 
@@ -79,87 +61,52 @@ const EditOpinion = () => {
       email: "",
       loading: false,
     });
-    handleCloseAddOpinion();
   };
 
   const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name, value } = e.target;
     setEditData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleCloseAddOpinion = () => {
-    const opinion_box = document.querySelector(".edit_opinion_box");
-    const opinionAdd = document.querySelector(".edit_opinion");
-    opinionAdd.classList.remove("openModalOpinion");
-    opinion_box.classList.remove("openModalBg");
-    opinion_box.classList.remove("openModalBgEdit");
-  };
-
   return (
-    <div className="edit_opinion_box opinion_form_box">
-      <div className="edit_opinion opinion_form_content">
-        {NextEditPage ? (
-          <EditOpinionContent
-            editOpinion={editOpinion}
-            setNextEditPage={setNextEditPage}
-            resetFormOpinionEdit={resetFormOpinionEdit}
-          />
-        ) : (
-          <form onSubmit={saveOpinion} className="opinion_form ">
-            <h2 style={{ paddingBottom: 20 }}>
-              Podaj dane abyśmy mogli znaleźć Twoją opinię
-            </h2>
-            <div className="omrs-input-group">
-              <label className="omrs-input-underlined">
-                <input
-                  type="text"
-                  value={editData.imie}
-                  onChange={handleChange}
-                  className="imie_form"
-                  name="imie"
-                  required
-                />
-                <span className="omrs-input-label">Imię</span>
-                <span className="omrs-input-helper"></span>
-              </label>
-            </div>
+    <div className="edit_opinion_box">
+      <BackGroundForModals>
+        <OpinionBox className="opinion_form_content" id="edit_opinion">
+          {NextEditPage ? (
+            <EditOpinionNextPage
+              editOpinion={editOpinion}
+              setNextEditPage={setNextEditPage}
+              resetFormOpinionEdit={resetFormOpinionEdit}
+              setToggleEditOpinionModal={setToggleEditOpinionModal}
+            />
+          ) : (
+            <Form
+              onSubmit={saveOpinion}
+              valueImie={editData.imie}
+              valueImieCheck={true}
+              onChange={handleChange}
+              valueEmail={editData.email}
+              valueEmailCheck={true}
+            >
+              <h2 style={{ paddingBottom: 20 }}>
+                Podaj dane abyśmy mogli znaleźć Twoją opinię
+              </h2>
 
-            <div className="omrs-input-group">
-              <label className="omrs-input-underlined">
-                <input
-                  type="email"
-                  value={editData.email}
-                  onChange={handleChange}
-                  className="email_form"
-                  name="email"
-                  required
-                />
-                <span className="omrs-input-label">Email</span>
-              </label>
-            </div>
-            {editData.loading ? (
-              <LogoItem color="black" />
-            ) : (
-              <div className="btnBox">
-                <button type="submit" className="btn_send">
-                  Zaakceptuj
-                </button>
-                <button
+              {editData.loading ? (
+                <LoadingRing color="black" />
+              ) : (
+                <ButtonsBox
                   onClick={() => {
-                    handleCloseAddOpinion();
                     resetFormOpinionEdit();
+                    setToggleEditOpinionModal(false);
                   }}
-                  className="btn_send"
-                  type="button"
-                >
-                  Odrzuć
-                </button>
-              </div>
-            )}
-          </form>
-        )}
-      </div>
+                  textOne="Zaakceptuj"
+                />
+              )}
+            </Form>
+          )}
+        </OpinionBox>
+      </BackGroundForModals>
     </div>
   );
 };

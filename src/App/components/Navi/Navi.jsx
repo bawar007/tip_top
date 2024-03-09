@@ -4,6 +4,7 @@ import { AppContext } from "../../provider/AppProvider";
 import { HashLink } from "react-router-hash-link";
 
 import "./Navi.scss";
+import NavigationItem from "../NavigationItem/NavigationItem";
 
 const Navi = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -24,8 +25,8 @@ const Navi = () => {
   }, [windowW]);
 
   const handleToggleList = (e) => {
-    const liEl = document.querySelectorAll(".testMenu > li");
-    const imgEl = document.querySelectorAll(".testMenu > li > a > img");
+    const liEl = document.querySelectorAll(".menu > li");
+    const imgEl = document.querySelectorAll(".menu > li > a > img");
 
     const liToActive = document.querySelector(`#${e}`);
     const liImgToActive = liToActive.lastElementChild.children[0];
@@ -50,115 +51,111 @@ const Navi = () => {
           <img src="/icons/LogoTipTopCss.svg" alt="logo" />
         </div>
 
-        <ul className="testMenu">
-          <li
-            onClick={(e) => {
+        <ul className="menu">
+          <NavigationItem
+            onClick={() => {
               setToggleMenu(false);
               handleToggleList("home-li");
             }}
-            className="active"
-            id="home-li"
+            className="Home--NaviItem"
+            name="home"
           >
-            <HashLink to="#home" className="Home--NaviItem">
-              <img
-                src="/icons/Home.svg"
-                alt="home"
-                className="HomeNavi--logo activeNaviLogo list-img"
-              />
-              <span className="tool">Strona Główna</span>
-            </HashLink>
-          </li>
-
-          <li
-            onClick={(e) => {
+            <img
+              src="/icons/Home.svg"
+              alt="home"
+              className="HomeNavi--logo activeNaviLogo list-img"
+            />
+            <span className="tool">Strona Główna</span>
+          </NavigationItem>
+          <NavigationItem
+            onClick={() => {
               setToggleMenu(false);
               handleToggleList("whyus-li");
             }}
-            id="whyus-li"
+            className="WhyUs-NaviItem"
+            name="whyUs"
           >
-            <HashLink to="#whyUs" className="WhyUs-NaviItem">
-              <img
-                src="/icons/whyus.svg"
-                alt="ofert"
-                className="OfertNavi list-img"
-                width="40"
-                height="40"
-              />
-              <span className="tool">Dlaczego My?</span>
-            </HashLink>
-          </li>
-          <li
-            onClick={(e) => {
+            <img
+              src="/icons/whyus.svg"
+              alt="ofert"
+              className="OfertNavi list-img"
+              width="40"
+              height="40"
+            />
+            <span className="tool">Dlaczego My?</span>
+          </NavigationItem>
+
+          <NavigationItem
+            onClick={() => {
               setToggleMenu(false);
               handleToggleList("gallery-li");
             }}
-            id="gallery-li"
+            className="Projects--NaviItem"
+            name="gallery"
           >
-            <HashLink to="#gallery" className="Projects--NaviItem">
-              <img
-                src="/icons/projects.svg"
-                alt="ofert"
-                className="OfertNavitest list-img"
-                width="40"
-                height="40"
-              />
-              <span className="tool">Realizacje</span>
-            </HashLink>
-          </li>
-          <li
-            onClick={(e) => {
+            <img
+              src="/icons/projects.svg"
+              alt="ofert"
+              className="OfertNavitest list-img"
+              width="40"
+              height="40"
+            />
+            <span className="tool">Realizacje</span>
+          </NavigationItem>
+
+          <NavigationItem
+            onClick={() => {
               setToggleMenu(false);
-              handleToggleList("offert-li");
+              handleToggleList("ofert-li");
             }}
-            id="offert-li"
+            className="Ofert-NaviItem"
+            name="ofert"
           >
-            <HashLink to="#ofert" className="Ofert-NaviItem">
-              <img
-                src="/icons/offert.svg"
-                alt="ofert"
-                className="OfertNavi-img list-img"
-                width="40"
-                height="40"
-              />
-              <span className="tool">OFERTA</span>
-            </HashLink>
-          </li>
-          <li
-            onClick={(e) => {
+            <img
+              src="/icons/offert.svg"
+              alt="ofert"
+              className="OfertNavi-img list-img"
+              width="40"
+              height="40"
+            />
+            <span className="tool">OFERTA</span>
+          </NavigationItem>
+
+          <NavigationItem
+            onClick={() => {
               setToggleMenu(false);
               handleToggleList("opinions-li");
             }}
-            id="opinions-li"
+            className="Opinions-NaviItem"
+            name="opinions"
           >
-            <HashLink to="#opinions" className="Opinions-NaviItem">
-              <img
-                src="/icons/medalstar.svg"
-                alt="opinion"
-                className="OfertNavitest list-img"
-                width="40"
-                height="40"
-              />
-              <span className="tool">Opinie</span>
-            </HashLink>
-          </li>
-          <li
-            onClick={(e) => {
+            <img
+              src="/icons/medalstar.svg"
+              alt="opinion"
+              className="OfertNavitest list-img"
+              width="40"
+              height="40"
+            />
+            <span className="tool">Opinie</span>
+          </NavigationItem>
+
+          <NavigationItem
+            onClick={() => {
               setToggleMenu(false);
               handleToggleList("contact-li");
             }}
-            id="contact-li"
+            className="Contact-NaviItem"
+            name="contact"
           >
-            <HashLink to="#contact" className="Contact-NaviItem">
-              <img
-                src="/icons/Contact.svg"
-                alt="contact"
-                className="Contact list-img"
-                width="40"
-                height="40"
-              />
-              <span className="tool">KONTAKT</span>
-            </HashLink>
-          </li>
+            <img
+              src="/icons/Contact.svg"
+              alt="contact"
+              className="Contact list-img"
+              width="40"
+              height="40"
+            />
+            <span className="tool">KONTAKT</span>
+          </NavigationItem>
         </ul>
       </nav>
       <div className="arrowUp">

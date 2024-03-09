@@ -1,43 +1,47 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { AppContext } from "../../provider/AppProvider";
 
 import AddNewOpinion from "../../components/AddNewOpinion/AddNewOpinion";
 
-import OpinionInformation from "../../components/OpinionInformation/OpinionInformation";
+import OpinionInformation from "./components/OpinionInformation/OpinionInformation";
 import EditOpinion from "../../components/EditOpinion/EditOpinion";
-import OpinionsBoxContent from "../../components/OpinionsBoxContent/OpinionsBoxContent";
-import MobileGalleryModal from "../../components/modals/Mobile/MobileGalleryModal";
-import DesktopGalleryModal from "../../components/modals/PC/DesktopGalleryModal";
+import OpinionsBoxContent from "./components/OpinionsBoxContent/OpinionsBoxContent";
 
 import "./Opinions.scss";
+import Section from "../../components/Section/Section";
+import Modal from "../../components/Modal/Modal";
 
 const Opinions = () => {
-  const { windowW, allPicsFromOpinion } = useContext(AppContext);
+  const { allPicsFromOpinion } = useContext(AppContext);
+
+  const [toggleAddOpinionModal, setToggleAddOpinionModal] = useState(false);
+  const [toggleEditOpinionModal, setToggleEditOpinionModal] = useState(false);
 
   return (
     <>
-      <section
+      <Section
         className="opinionsPage"
         id="opinions"
-        data-naviitem=".Opinions-NaviItem"
+        dataNaviitem=".Opinions-NaviItem"
+        title="opinie"
       >
-        <h1 className="title_page">opinie</h1>
         <div className="opinionsBox">
-          <OpinionInformation />
+          <OpinionInformation
+            setToggleAddOpinionModal={setToggleAddOpinionModal}
+            setToggleEditOpinionModal={setToggleEditOpinionModal}
+          />
           <OpinionsBoxContent />
         </div>
-        <AddNewOpinion />
-        <EditOpinion />
-      </section>
+        {toggleAddOpinionModal && (
+          <AddNewOpinion setToggleAddOpinionModal={setToggleAddOpinionModal} />
+        )}
+        {toggleEditOpinionModal && (
+          <EditOpinion setToggleEditOpinionModal={setToggleEditOpinionModal} />
+        )}
+      </Section>
 
-      {allPicsFromOpinion ? (
-        !windowW ? (
-          <MobileGalleryModal />
-        ) : (
-          <DesktopGalleryModal />
-        )
-      ) : null}
+      {allPicsFromOpinion && <Modal />}
     </>
   );
 };
