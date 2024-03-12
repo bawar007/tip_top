@@ -2,7 +2,6 @@ import "./Modal.scss";
 import BackGroundForModals from "../BackGroundForModals/BackGroundForModals";
 import { useContext } from "react";
 
-import "photoswipe/style.css";
 import { AppContext } from "../../provider/AppProvider";
 
 // Import Swiper React components

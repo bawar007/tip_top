@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../../../../provider/AppProvider";
 import useGetOpinions from "../../../../hooks/useGetOpinions";
 import Star from "../../../../components/Star/Star";
-
+import OpinionBox from "../OpinionBox/OpinionBox";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const OpinionsBoxContent = () => {
@@ -20,7 +20,7 @@ const OpinionsBoxContent = () => {
   if (loading || error) return;
 
   const opinion = data.accepted.map((opinion) => (
-    <div className="opinion" key={opinion.id + "a"}>
+    <OpinionBox className="opinion" key={opinion.id + "a"}>
       <h2>{opinion.imie}</h2>
       <h3>
         {opinion.text}
@@ -47,7 +47,7 @@ const OpinionsBoxContent = () => {
         <span>DATA PUBLIKACJI</span>
         <span>{opinion.public_data}</span>
       </div>
-    </div>
+    </OpinionBox>
   ));
 
   return <>{opinion}</>;

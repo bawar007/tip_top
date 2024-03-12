@@ -9,7 +9,7 @@ import EditOpinion from "../../components/EditOpinion/EditOpinion";
 import OpinionsBoxContent from "./components/OpinionsBoxContent/OpinionsBoxContent";
 
 import "./Opinions.scss";
-import Section from "../../components/Section/Section";
+
 import Modal from "../../components/Modal/Modal";
 
 const Opinions = () => {
@@ -20,12 +20,7 @@ const Opinions = () => {
 
   return (
     <>
-      <Section
-        className="opinionsPage"
-        id="opinions"
-        dataNaviitem=".Opinions-NaviItem"
-        title="opinie"
-      >
+      <div className="opinionsPage" title="opinie">
         <div className="opinionsBox">
           <OpinionInformation
             setToggleAddOpinionModal={setToggleAddOpinionModal}
@@ -39,7 +34,7 @@ const Opinions = () => {
         {toggleEditOpinionModal && (
           <EditOpinion setToggleEditOpinionModal={setToggleEditOpinionModal} />
         )}
-      </Section>
+      </div>
 
       {allPicsFromOpinion && <Modal />}
     </>

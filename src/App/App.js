@@ -3,7 +3,6 @@ import { lazy, useEffect } from "react";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import HomePage from "./pages/HomePage/HomePage";
 import Ofert from "./pages/OfertPage/Oferta";
-import Opinions from "./pages/OpinionsPage/Opinions";
 import WhyThis from "./pages/WhyUsPage/WhyThis";
 import Social from "./components/Social/Social";
 
@@ -73,7 +72,6 @@ function App() {
       <WhyThis />
       <GalleryPage />
       <Ofert />
-      <Opinions />
       <ContactPage />
       <Navi />
       <Social />

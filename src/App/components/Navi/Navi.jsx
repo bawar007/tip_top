@@ -36,13 +36,27 @@ const Navi = () => {
     liImgToActive.classList.add("activeNaviLogo");
   };
 
+  useEffect(() => {
+    const item = document.querySelector(".ResponsiveMenu");
+
+    if (toggleMenu) {
+      item.style.top = "10px";
+      item.style.bottom = "";
+    } else {
+      item.style.top = "";
+      item.style.bottom = "90px";
+    }
+  }, [toggleMenu]);
+
   return (
     <header className="ResponsiveMenu">
       <input type="checkbox" id="menu-toggle" checked={toggleMenu} readOnly />
       <label
         htmlFor="menu-toggle"
         className="menuToggle"
-        onClick={() => setToggleMenu((prev) => !prev)}
+        onClick={() => {
+          setToggleMenu((prev) => !prev);
+        }}
       >
         <span className="navicon"></span>
       </label>
@@ -124,24 +138,6 @@ const Navi = () => {
           <NavigationItem
             onClick={() => {
               setToggleMenu(false);
-              handleToggleList("opinions-li");
-            }}
-            className="Opinions-NaviItem"
-            name="opinions"
-          >
-            <img
-              src="/icons/medalstar.svg"
-              alt="opinion"
-              className="OfertNavitest list-img"
-              width="40"
-              height="40"
-            />
-            <span className="tool">Opinie</span>
-          </NavigationItem>
-
-          <NavigationItem
-            onClick={() => {
-              setToggleMenu(false);
               handleToggleList("contact-li");
             }}
             className="Contact-NaviItem"
@@ -154,7 +150,7 @@ const Navi = () => {
               width="40"
               height="40"
             />
-            <span className="tool">KONTAKT</span>
+            <span className="tool">O NAS</span>
           </NavigationItem>
         </ul>
       </nav>

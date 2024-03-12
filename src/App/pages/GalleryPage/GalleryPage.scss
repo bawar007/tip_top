@@ -47,11 +47,7 @@
   .GalleryPicOnPage_box {
     width: 100%;
     margin: 20px;
-    overflow-y: scroll;
     height: 75vh;
-    .multi__gallery {
-      display: none;
-    }
   }
 }
 @media only screen and (max-width: 700px) {
@@ -62,23 +58,7 @@
     text-align: center;
     margin-top: 20px;
     flex-wrap: nowrap;
-    overflow-x: scroll;
     width: 100%;
     justify-content: flex-start;
-
-    .multi__gallery {
-      width: 100%;
-      .multi__first,
-      .multi__second {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        overflow-x: scroll;
-        width: 100%;
-        margin: 20px 0;
-        padding: 0 10px;
-      }
-    }
   }
 }

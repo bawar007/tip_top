@@ -64,6 +64,7 @@ const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         windowW,
+        windowWidth,
         windowH,
         setAllPics,
         allPics,

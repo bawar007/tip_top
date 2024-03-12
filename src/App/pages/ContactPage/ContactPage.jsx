@@ -1,14 +1,17 @@
 import MyMap from "../../components/MyMap/MyMap";
 import Section from "../../components/Section/Section";
 
+import Opinions from "../OpinionsPage/Opinions";
+
 import { listContactData } from "../../data/contactData";
 import "./ContactPage.scss";
+import ContactPageItem from "../../components/ContactPageItem/ContactPageItem";
 
 const Settings = {
   className: "contactPage",
   id: "contact",
   dataNaviitem: ".Contact-NaviItem",
-  title: "kontakt",
+  title: "O NAS",
   footer: true,
 };
 
@@ -16,12 +19,13 @@ const ContactPage = () => {
   return (
     <Section {...Settings}>
       <div className="contactPage__content">
-        <div className="contact">
+        <ContactPageItem>
           <ul className="contact_list">{listContactData}</ul>
-        </div>
-        <div className="picture">
+        </ContactPageItem>
+        <ContactPageItem>
           <MyMap />
-        </div>
+        </ContactPageItem>
+        <Opinions />
       </div>
     </Section>
   );
