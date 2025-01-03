@@ -10,10 +10,13 @@ export const ObserverSections = new IntersectionObserver((entries) => {
 
     if (checkedContactPage) {
       const social = document.querySelector(".social");
+      const contactPage__content = document.querySelector(".contactPage");
       if (entry.isIntersecting) {
         social.style.visibility = "visible";
+        contactPage__content.style.backdropFilter = "blur(3px)";
       } else {
         social.style.visibility = "hidden";
+        contactPage__content.style.backdropFilter = "blur(0px)";
       }
     }
 

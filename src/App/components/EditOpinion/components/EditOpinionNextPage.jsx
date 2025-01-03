@@ -5,7 +5,7 @@ import EditOpinionStars from "./EditOpinionStars";
 import {
   handleOpinionUpdate,
   handleDeleteOpinion,
-} from "../../../helpers/opinionsHelpers";
+} from "../../../../utils/opinionsHelpers";
 import { AppContext } from "../../../provider/AppProvider";
 import InputGroup from "../../InputGroup/InputGroup";
 import ButtonsBox from "../../ButtonsBox/ButtonsBox";

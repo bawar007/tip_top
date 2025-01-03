@@ -1,2 +1,5 @@
+<!-- filepath: /f:/Repozytoria/tip_top/public/robots.txt -->
 User-agent: *
-Disallow:
+Disallow: /private/
+Allow: /
+Sitemap: https://tiptopglazura.pl/sitemap.xml

@@ -1,5 +1,5 @@
 import InputGroup from "../InputGroup/InputGroup";
-import { setDate } from "../../helpers/opinionsHelpers";
+import { setDate } from "../../../utils/opinionsHelpers";
 
 const Form = ({
   children,

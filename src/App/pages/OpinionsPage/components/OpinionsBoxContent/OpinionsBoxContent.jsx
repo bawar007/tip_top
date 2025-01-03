@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../../../../provider/AppProvider";
-import useGetOpinions from "../../../../hooks/useGetOpinions";
+import useGetOpinions from "../../../../../hooks/useGetOpinions";
 import Star from "../../../../components/Star/Star";
 import OpinionBox from "../OpinionBox/OpinionBox";
 const API_KEY = process.env.REACT_APP_API_KEY;

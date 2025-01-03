@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { obliczProcentWidocznosci } from "../../helpers/HowPercentsIsVisibled";
+import { obliczProcentWidocznosci } from "../../../utils/HowPercentsIsVisibled";
 import { AppContext } from "../../provider/AppProvider";
 import { HashLink } from "react-router-hash-link";
 

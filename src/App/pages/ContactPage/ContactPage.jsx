@@ -3,7 +3,7 @@ import Section from "../../components/Section/Section";
 
 import Opinions from "../OpinionsPage/Opinions";
 
-import { listContactData } from "../../data/contactData";
+import { listContactData } from "../../../constants/contactData";
 import "./ContactPage.scss";
 import ContactPageItem from "../../components/ContactPageItem/ContactPageItem";
 

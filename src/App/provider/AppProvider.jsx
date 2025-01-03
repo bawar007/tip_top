@@ -1,6 +1,6 @@
 import React, { createContext, useState, useRef, useEffect } from "react";
 
-import useGetAllPics from "../hooks/useGetAllPics";
+import useGetAllPics from "../../hooks/useGetAllPics";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -43,16 +43,16 @@ const AppProvider = ({ children }) => {
 
   //pobieranie opinii
 
-  const GetSize = () => {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-    setWindowWidth(w);
-    setWindowHeight(h);
+  const updateWindowSize = () => {
+    setWindowWidth(window.innerWidth);
+    setWindowHeight(window.innerHeight);
   };
 
   useEffect(() => {
-    window.addEventListener("resize", () => GetSize());
-    return window.removeEventListener("resize", () => GetSize());
+    window.addEventListener("resize", updateWindowSize);
+    return () => {
+      window.removeEventListener("resize", updateWindowSize);
+    };
   }, []);
 
   const handleClickCloseGalleryModal = () => {

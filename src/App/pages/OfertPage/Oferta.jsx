@@ -1,7 +1,7 @@
 import MultiContainerInfoBox from "../../components/MultiContainerInfoBox/MultiContainerInfoBox";
 import Section from "../../components/Section/Section";
 import "./Oferta.scss";
-import { oferts } from "../../data/ofertData";
+import { oferts } from "../../../constants/ofertData";
 
 const Ofert = () => {
   return (

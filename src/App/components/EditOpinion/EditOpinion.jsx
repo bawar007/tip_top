@@ -9,7 +9,7 @@ import BackGroundForModals from "../BackGroundForModals/BackGroundForModals";
 
 import ButtonsBox from "../ButtonsBox/ButtonsBox";
 
-import useGetOpinions from "../../hooks/useGetOpinions";
+import useGetOpinions from "../../../hooks/useGetOpinions";
 import Form from "../Form/Form";
 
 const EditOpinion = ({ setToggleEditOpinionModal }) => {

@@ -1,5 +1,5 @@
 import Section from "../../components/Section/Section";
-import { WhyThisItems } from "../../data/whyusData";
+import { WhyThisItems } from "../../../constants/whyusData";
 
 import "./WhyThis.scss";
 

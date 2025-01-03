@@ -9,14 +9,14 @@ import {
   handleChangeAddOpinionStars,
   handleCloseAddOpinion,
   IconsForStars,
-} from "../../helpers/feedbackService";
+} from "../../../utils/feedbackService";
 
 import { OpinionsAlert } from "../OpinionsAlert/OpinionsAlert";
 
 import { postNewOpinion } from "../../helpers/ApiHooks";
 import { AppContext } from "../../provider/AppProvider";
-import useGetOpinions from "../../hooks/useGetOpinions";
-import useGetAllPics from "../../hooks/useGetAllPics";
+import useGetOpinions from "../../../hooks/useGetOpinions";
+import useGetAllPics from "../../../hooks/useGetAllPics";
 
 import OpinionBox from "../../pages/OpinionsPage/components/OpinionBox/OpinionBox";
 import BackGroundForModals from "../BackGroundForModals/BackGroundForModals";

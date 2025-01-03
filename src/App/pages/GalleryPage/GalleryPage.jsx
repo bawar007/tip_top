@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import useGetAllPics from "../../hooks/useGetAllPics";
+import useGetAllPics from "../../../hooks/useGetAllPics";
 import { AppContext } from "../../provider/AppProvider";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
