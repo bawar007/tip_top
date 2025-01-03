@@ -37,7 +37,6 @@ const GalleryPage = React.memo(() => {
 
   return (
     <Section {...Settings}>
-      {console.log(Math.floor(windowWidth / 250))}
       <div className="GalleryPicOnPage_box">
         <Swiper
           spaceBetween={10}

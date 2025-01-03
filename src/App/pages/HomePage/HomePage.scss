@@ -3,6 +3,7 @@
   align-items: center;
   flex-direction: column;
   max-width: 100%;
+  transition: backdrop-filter 0.7s ease;
   .homePage__content {
     .homeCustomLogo {
       display: flex;

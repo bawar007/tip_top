@@ -17,18 +17,30 @@ function App() {
   ///////////////////////////////////
 
   useEffect(() => {
-    function handleIntersection(entries, observer) {
-      const AppSection = document.querySelector(".App");
+    function handleIntersection(entries) {
+      const contactPage = document.querySelector(".contactPage");
+      const whyThisPage = document.querySelector(".WhyThisPage");
+      const galleryPage = document.querySelector(".galleryPage");
+      const ofertPage = document.querySelector(".Ofert_Page");
+
       entries.forEach((entry) => {
-        if (entry.intersectionRatio < 0.4) {
+        if (entry.intersectionRatio < 0.6) {
+          contactPage.style.backdropFilter = "blur(8px)";
+          whyThisPage.style.backdropFilter = "blur(8px)";
+          galleryPage.style.backdropFilter = "blur(8px)";
+          ofertPage.style.backdropFilter = "blur(8px)";
         } else {
+          contactPage.style.backdropFilter = "blur(0px)";
+          whyThisPage.style.backdropFilter = "blur(0px)";
+          galleryPage.style.backdropFilter = "blur(0px)";
+          ofertPage.style.backdropFilter = "blur(0px)";
         }
       });
     }
 
     // Utwórz nowy obiekt Intersection Observer
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: [0.6, 0.5, 0.4], // Określa procent widoczności, który wywoła funkcję obsługi
+      threshold: [0.6], // Określa procent widoczności, który wywoła funkcję obsługi
     });
 
     // Rozpocznij obserwację elementu

@@ -6,6 +6,7 @@
   justify-content: flex-start;
   padding-top: 30px;
   position: relative;
+  transition: backdrop-filter 0.7s ease;
   .title_page {
     color: black !important;
   }
