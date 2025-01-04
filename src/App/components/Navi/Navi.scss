@@ -92,17 +92,19 @@ $filter-black: brightness(0) saturate(100%);
           position: relative;
           overflow: hidden;
           width: 100%;
-
-          &:hover::before {
-            cursor: pointer;
+          transition: all 0.2s ease-in-out;
+          &::before {
             content: "";
             position: absolute;
-            clip-path: circle(40%);
             background-color: rgba(255, 255, 255, 0.141);
             top: 0;
-            left: -40px;
             height: calc(100% + 10px);
-            width: 130px;
+            width: 65px;
+            transform: translateX(-75px);
+            transition: all 0.2s ease-in-out;
+          }
+          &:hover::before {
+            transform: translateX(-10px);
           }
 
           &.active {
@@ -110,13 +112,11 @@ $filter-black: brightness(0) saturate(100%);
               transition: all 0.2s ease-in-out;
               content: "";
               position: absolute;
-              clip-path: circle(50% at 50% 50%);
               background-color: rgba(255, 255, 255, 0.141);
-              // left: -30px;
-              left: -45px;
               top: -5px;
               height: calc(100% + 10px);
               width: 250px;
+              transform: translateX(-50px);
             }
           }
           &.active > a {

@@ -13,15 +13,22 @@ export const obliczProcentWidocznosci = (elRef) => {
       imgEl.classList.remove("activeNaviLogo");
       liEl.classList.remove("active");
 
-      if (
-        sectionElNaviItem === ".Projects--NaviItem" ||
-        sectionElNaviItem === ".Ofert-NaviItem"
-      ) {
+      if (sectionElNaviItem === ".Ofert-NaviItem") {
         if (visiblePercentage > 40) {
           imgEl.classList.add("activeNaviLogo");
           liEl.classList.add("active");
           sectionEl.childNodes[0].classList.add("customWidthTitlePage");
         } else if (visiblePercentage < 20 && visiblePercentage > 0) {
+          imgEl.classList.remove("activeNaviLogo");
+          liEl.classList.remove("active");
+          sectionEl.childNodes[0].classList.remove("customWidthTitlePage");
+        }
+      } else if (sectionElNaviItem === ".Projects--NaviItem") {
+        if (visiblePercentage > 11) {
+          sectionEl.childNodes[0].classList.add("customWidthTitlePage");
+          imgEl.classList.add("activeNaviLogo");
+          liEl.classList.add("active");
+        } else if (visiblePercentage < 10 && visiblePercentage > 0) {
           imgEl.classList.remove("activeNaviLogo");
           liEl.classList.remove("active");
           sectionEl.childNodes[0].classList.remove("customWidthTitlePage");

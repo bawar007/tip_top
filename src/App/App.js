@@ -1,4 +1,4 @@
-import { lazy, useEffect } from "react";
+import React, { lazy, useEffect, useRef, useState } from "react";
 
 import ContactPage from "./pages/ContactPage/ContactPage";
 import HomePage from "./pages/HomePage/HomePage";
@@ -16,29 +16,58 @@ function App() {
   ///////////OBSERVERS///////////////
   ///////////////////////////////////
 
-  useEffect(() => {
-    function handleIntersection(entries) {
-      const contactPage = document.querySelector(".contactPage");
-      const whyThisPage = document.querySelector(".WhyThisPage");
-      const galleryPage = document.querySelector(".galleryPage");
-      const ofertPage = document.querySelector(".Ofert_Page");
+  const windowWidthFirst = useRef(window.innerWidth);
+  const [windowW, setWindowW] = useState(windowWidthFirst.current);
 
-      entries.forEach((entry) => {
-        if (entry.intersectionRatio < 0.6) {
-          contactPage.style.backdropFilter = "blur(8px)";
-          whyThisPage.style.backdropFilter = "blur(8px)";
-          galleryPage.style.backdropFilter = "blur(8px)";
-          ofertPage.style.backdropFilter = "blur(8px)";
-        } else {
-          contactPage.style.backdropFilter = "blur(0px)";
-          whyThisPage.style.backdropFilter = "blur(0px)";
-          galleryPage.style.backdropFilter = "blur(0px)";
-          ofertPage.style.backdropFilter = "blur(0px)";
-        }
-      });
+  const handleIntersection = (entries) => {
+    const contactPage = document.querySelector(".contactPage");
+    const whyThisPage = document.querySelector(".WhyThisPage");
+    const galleryPage = document.querySelector(".galleryPage");
+    const ofertPage = document.querySelector(".Ofert_Page");
+
+    if (!contactPage || !whyThisPage || !galleryPage || !ofertPage) {
+      return;
     }
 
-    // Utwórz nowy obiekt Intersection Observer
+    entries.forEach((entry) => {
+      if (entry.intersectionRatio < 0.6) {
+        contactPage.style.backdropFilter = "blur(8px)";
+        whyThisPage.style.backdropFilter = "blur(8px)";
+        galleryPage.style.backdropFilter = "blur(8px)";
+        ofertPage.style.backdropFilter = "blur(8px)";
+      } else {
+        contactPage.style.backdropFilter = "blur(0px)";
+        whyThisPage.style.backdropFilter = "blur(0px)";
+        galleryPage.style.backdropFilter = "blur(0px)";
+        ofertPage.style.backdropFilter = "blur(0px)";
+      }
+    });
+  };
+
+  const handleClearBlur = () => {
+    const contactPage = document.querySelector(".contactPage");
+    const whyThisPage = document.querySelector(".WhyThisPage");
+    const galleryPage = document.querySelector(".galleryPage");
+    const ofertPage = document.querySelector(".Ofert_Page");
+
+    contactPage.style = "";
+    whyThisPage.style = "";
+    galleryPage.style = "";
+    ofertPage.style = "";
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", () => setWindowW(window.innerWidth));
+    return () => {
+      window.removeEventListener("resize", () => setWindowW(window.innerWidth));
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log(windowW);
+
+    if (windowW < 700) return () => handleClearBlur();
+
     const observer = new IntersectionObserver(handleIntersection, {
       threshold: [0.6], // Określa procent widoczności, który wywoła funkcję obsługi
     });
@@ -63,7 +92,7 @@ function App() {
 
     const whyUsEl = document.querySelectorAll(".whyUs--item");
     whyUsEl.forEach((el) => ObserverSections.observe(el));
-  });
+  }, [windowW]);
   /////////////////////////////////
   /////////////////////////////////
   /////////////////////////////////
