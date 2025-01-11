@@ -1,0 +1,31 @@
+.customLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  animation: none;
+  margin-bottom: 10px;
+  .box-flip {
+    height: 100%;
+    width: 40%;
+    animation: none;
+    transform: translate(0);
+    height: 250px;
+    backdrop-filter: blur(10px);
+  }
+  .leftSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    height: 250px;
+    .box-flip {
+      width: 100%;
+      animation: none;
+      transform: translate(0);
+      height: 120px;
+      margin: 0;
+    }
+  }
+}

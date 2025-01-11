@@ -8,7 +8,6 @@ import "./HomePage.scss";
 const Settings = {
   className: "homePage",
   id: "home",
-  dataNaviitem: ".Home--NaviItem",
 };
 
 const HomePage = () => {

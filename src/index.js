@@ -4,19 +4,16 @@ import App from "./App/App";
 import "./Index.scss";
 import AppProvider from "./App/provider/AppProvider";
 
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <AppProvider>
-      <HashRouter basename={process.env.PUBLIC_URL}>
-        <Routes>
-          <Route path="*" element={<App />} />
-          <Route exact path="/" element={<App />} />
-        </Routes>
-      </HashRouter>
-    </AppProvider>
+    <BrowserRouter>
+      <AppProvider>
+        <App />
+      </AppProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

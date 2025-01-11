@@ -1,0 +1,32 @@
+.mainLayout {
+  .footer {
+    width: 100vw;
+    border-top: 5px solid orange;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 700px) {
+  .mainLayout {
+    .footer {
+      height: 12vh;
+      width: 100vw;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .mainLayout {
+    .footer {
+      min-height: 15vh;
+    }
+  }
+}

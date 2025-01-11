@@ -1,11 +1,14 @@
-import { HashLink } from "react-router-hash-link";
+import { NavLink } from "react-router";
 
 const NavigationItem = ({ onClick, className, children, name }) => {
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <li onClick={onClick} id={`${name.toLowerCase()}-li`}>
-      <HashLink to={`#${name}`} className={className}>
+      <NavLink to={`${name}`} className={className} onClick={handleClick}>
         {children}
-      </HashLink>
+      </NavLink>
     </li>
   );
 };

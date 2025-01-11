@@ -22,6 +22,10 @@
       align-items: center;
       justify-content: center;
       width: 100%;
+      backdrop-filter: blur(7px);
+      border-radius: 25px;
+      overflow: hidden;
+      margin-bottom: 20px;
 
       .title {
         width: 100%;
@@ -123,6 +127,14 @@
   .content--item {
     h2 {
       font-size: clamp(16px, 1.6vw, 21px);
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .WhyThisPage {
+    .title_page {
+      margin-bottom: 20px;
     }
   }
 }

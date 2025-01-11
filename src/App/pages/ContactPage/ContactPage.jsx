@@ -10,9 +10,8 @@ import ContactPageItem from "../../components/ContactPageItem/ContactPageItem";
 const Settings = {
   className: "contactPage",
   id: "contact",
-  dataNaviitem: ".Contact-NaviItem",
   title: "O NAS",
-  footer: true,
+  boxFlip: true,
 };
 
 const ContactPage = () => {

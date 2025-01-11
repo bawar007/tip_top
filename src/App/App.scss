@@ -14,8 +14,23 @@ body {
   background-attachment: fixed;
 }
 
-.App {
-  transition: backdrop-filter 0.7s ease;
+.page-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+.page-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.page-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 500ms ease, transform 500ms ease;
 }
 
 @media (max-width: 700px) {
@@ -43,12 +58,18 @@ $titlePageMargin: 0 0 30px 0;
     rgba(255, 255, 255, 0.6) 28%,
     rgba(41, 53, 86, 0) 98%
   );
+  animation: openTitle 0.6s ease-in forwards;
 }
 
-.customWidthTitlePage {
-  width: 100vw;
-  text-align: center;
-  letter-spacing: 10px;
+@keyframes openTitle {
+  0% {
+    width: 35%;
+  }
+  100% {
+    width: 100vw;
+    text-align: center;
+    letter-spacing: 10px;
+  }
 }
 
 @media (min-width: 700px) {

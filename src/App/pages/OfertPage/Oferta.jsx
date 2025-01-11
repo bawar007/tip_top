@@ -5,12 +5,7 @@ import { oferts } from "../../../constants/ofertData";
 
 const Ofert = () => {
   return (
-    <Section
-      className="Ofert_Page"
-      id="ofert"
-      dataNaviitem=".Ofert-NaviItem"
-      title="OFERTA"
-    >
+    <Section className="Ofert_Page" id="ofert" title="OFERTA" boxFlip={true}>
       <div className="Ofert_Page__content">
         <div className="content_multi-container">
           <MultiContainerInfoBox {...oferts[0]} />

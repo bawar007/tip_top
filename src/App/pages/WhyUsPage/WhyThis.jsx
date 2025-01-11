@@ -5,12 +5,7 @@ import "./WhyThis.scss";
 
 const WhyThis = () => {
   return (
-    <Section
-      className="WhyThisPage"
-      id="whyUs"
-      dataNaviitem=".WhyUs-NaviItem"
-      title="dlaczego my?"
-    >
+    <Section className="WhyThisPage" id="whyUs" title="dlaczego my?">
       <div className="WhyThis__content">
         {WhyThisItems.map((el) => (
           <div key={el.id + "b"} className="whyUs--item">

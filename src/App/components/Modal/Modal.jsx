@@ -38,6 +38,7 @@ const Modal = () => {
         style={{
           "--swiper-navigation-color": "#fff",
           "--swiper-pagination-color": "#fff",
+          width: "80%",
         }}
         spaceBetween={10}
         pagination={{
